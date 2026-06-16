@@ -5,7 +5,7 @@ from app.load_model import embedding_model
 # =====================================================
 # CONFIG
 # =====================================================
-VECTOR_DB_DIR = Path(r"D:\Runbook_Agent\vector_db")
+VECTOR_DB_DIR = Path(r"D:\vector_db")
 VECTOR_DB_DIR.mkdir(parents=True, exist_ok=True)
 
 # ✅ IMPORTANT: dùng PersistentClient
