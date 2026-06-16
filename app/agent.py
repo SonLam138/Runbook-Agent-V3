@@ -4,12 +4,14 @@ import numpy as np
 import faiss
 from sentence_transformers import SentenceTransformer
 from pathlib import Path
-
+from app.service_resolver import resolve_service
 from app.llm import call_llm
 from app.session_store import get_session, update_session, reset_session
 from app.tool import retrieve_candidates_meta, search_RB_topk
 
 from app.load_model import embedding_model as CACHE_MODEL
+from app.load_knowledge import get_clarify_knowledge, get_decision_knowledge
+
 # =====================================================
 # CONFIG
 # =====================================================
@@ -275,12 +277,14 @@ def is_generic_clarify_message(msg: str):
 
     return any(p in m for p in generic_patterns)
 
-
 def generate_clarify_message_llm(user_input, state, next_slot):
     """
     Dùng LLM để sinh câu hỏi clarify thông minh theo slot còn thiếu.
-    Chỉ trả 1 câu ngắn gọn, đúng kiểu IT support.
+    Đã inject Knowledge Grounding theo service đã resolve.
     """
+    service = state.get("resolved_service")
+    knowledge = get_clarify_knowledge(service)
+
     slot_guide = {
         "issue_type": "Hỏi rõ vấn đề hoặc loại lỗi user đang gặp.",
         "service": "Hỏi rõ user đang thao tác trên hệ thống/dịch vụ nào.",
@@ -292,7 +296,9 @@ def generate_clarify_message_llm(user_input, state, next_slot):
     known_error = state["slots"].get("error_message")
 
     prompt = f"""
-Bạn là IT support agent chuyên xử lý sự cố.
+{knowledge}
+
+Bạn là IT support agent nội bộ.
 
 User vừa nói:
 "{user_input}"
@@ -301,6 +307,7 @@ Trạng thái hội thoại hiện tại:
 - issue_type: {known_issue}
 - service: {known_service}
 - error_message: {known_error}
+- resolved_service: {service}
 
 Slot còn thiếu cần hỏi tiếp:
 - next_slot: {next_slot}
@@ -308,18 +315,16 @@ Slot còn thiếu cần hỏi tiếp:
 
 YÊU CẦU:
 1. Chỉ hỏi đúng 1 câu ngắn gọn bằng tiếng Việt.
-2. Câu hỏi phải cụ thể, đúng kiểu IT support thật.
-3. KHÔNG được hỏi chung chung kiểu:
-   - "bạn mô tả rõ hơn"
-   - "cho tôi biết thêm"
-4. Nếu đã biết một phần context, hãy dựa vào đó để hỏi sâu hơn.
+2. Phải tuân theo knowledge ở trên.
+3. Không hỏi chung chung kiểu:
+   - "Bạn mô tả rõ hơn"
+   - "Cho tôi biết thêm"
+4. Nếu đã biết service hoặc context, hãy hỏi sâu hơn theo service đó.
 5. Không giải thích, không liệt kê, chỉ trả đúng 1 câu hỏi.
 
-Ví dụ tốt:
-- "Bạn không đăng nhập được vào Windows, domain hay ứng dụng nào?"
-- "Mailbox lỗi khi gửi thư, nhận thư hay khi đăng nhập Outlook?"
-- "Bạn có thấy mã lỗi hoặc thông báo cụ thể nào không?"
-- "Lỗi này xảy ra trên AD, Exchange hay Windows?"
+QUAN TRỌNG:
+- KHÔNG được hỏi lại thông tin user đã cung cấp
+- Nếu user đã nói rõ loại lỗi, phải hỏi sâu hơn, không lặp lại
 """
 
     try:
@@ -327,11 +332,11 @@ Ví dụ tốt:
         msg = (msg or "").strip()
 
         if msg:
-            # lấy dòng đầu nếu LLM trả nhiều dòng
             msg = msg.split("\n")[0].strip()
 
-            # nếu vẫn quá generic thì coi như fail
+            # nếu câu vẫn generic thì coi như fail
             if is_generic_clarify_message(msg):
+                print("⚠️ Clarify rejected as generic:", msg)
                 return None
 
             return msg
@@ -546,6 +551,9 @@ def detect_strong_match_by_score(full_candidates, threshold=STRONG_MATCH_THRESHO
 # LLM DECISION ON CANDIDATES
 # =====================================================
 def decide_with_candidates(user_input, state, meta_candidates):
+    service = state.get("resolved_service")
+    knowledge = get_decision_knowledge(service)
+
     if not meta_candidates:
         return {
             "action": "ask_more",
@@ -562,9 +570,12 @@ def decide_with_candidates(user_input, state, meta_candidates):
         )
 
     raw = call_llm(f"""
+{knowledge}
+
 Bạn là IT agent nội bộ.
 
 User query: "{user_input}"
+Resolved service: {service}
 
 Candidate runbook metadata:
 {candidate_text}
@@ -574,6 +585,7 @@ NHIỆM VỤ:
 - Nếu query còn mơ hồ => chọn "ask_more"
 
 QUAN TRỌNG:
+- Ưu tiên quyết định phù hợp với resolved service nếu đã có
 - Chỉ chọn "search" khi thực sự có candidate phù hợp
 - Nếu chưa chắc, hãy chọn "ask_more"
 - Nếu ask_more thì KHÔNG cần message quá chi tiết ở đây, có thể để message rỗng
@@ -638,6 +650,7 @@ def handle_retry(session_id, state):
 # =====================================================
 # MAIN
 # =====================================================
+"""
 def run_agent(session_id, user_input):
     state = get_session(session_id)
     ensure_state(state)
@@ -689,7 +702,7 @@ def run_agent(session_id, user_input):
 
         start_clarify(state, user_input, "issue_type")
 
-        msg = generate_clarify_message_llm(user_input, state, "issue_type")
+        msg = larify_message_llmgenerate_c(user_input, state, "issue_type")
         if not msg:
             msg = generate_clarify_message_fallback("issue_type", user_input)
 
@@ -738,6 +751,131 @@ def run_agent(session_id, user_input):
         msg = generate_clarify_message_fallback(next_slot, user_input)
 
     # safety net cuối cùng
+    if not msg:
+        msg = "Bạn có thể mô tả rõ hơn vấn đề bạn đang gặp không?"
+
+    start_clarify(state, user_input, next_slot)
+
+    return reply(session_id, state, msg)
+"""
+
+def run_agent(session_id, user_input):
+    state = get_session(session_id)
+    ensure_state(state)
+
+    # append user message
+    state["history"].append({"role": "user", "text": user_input})
+
+    # 0) semantic cache
+    cached = check_semantic_cache(user_input)
+    if cached:
+        print("⚡ SEMANTIC CACHE HIT")
+        return reply(
+            session_id,
+            state,
+            "✅ (từ semantic cache)\n\n" + format_runbook(cached)
+        )
+
+    # 0.5) resolve service early
+    service_info = resolve_service(user_input, state)
+    if service_info:
+        state["resolved_service"] = service_info["service"]
+        print(
+            f"🧭 RESOLVED SERVICE: {service_info['service']} "
+            f"(score={service_info['score']:.3f}, source={service_info['source']}, "
+            f"strong={service_info['is_strong']})"
+        )
+
+        # nếu resolver đủ mạnh thì fill luôn service slot
+        if service_info.get("is_strong") and not state["slots"].get("service"):
+            state["slots"]["service"] = service_info["service"]
+
+    # 1) failure handling
+    if is_failure(user_input, state):
+        return handle_retry(session_id, state)
+
+    # 2) clarifying block
+    if state["mode"] == "clarifying":
+        fill_pending_slot(state, user_input)
+        state["clarify_turns"] += 1
+
+        if state["clarify_turns"] > MAX_CLARIFY_TURNS:
+            reset_session(session_id)
+            return "❌ Tôi chưa đủ thông tin. Bạn vui lòng đặt lại câu hỏi rõ hơn."
+
+        # nếu resolver đã biết service mà slot service chưa có, tự fill luôn
+        if not state["slots"].get("service") and state.get("resolved_service"):
+            state["slots"]["service"] = state["resolved_service"]
+
+        effective_query = build_semantic_query(state)
+    else:
+        effective_query = user_input
+
+    # 3) save current semantic query
+    if state["mode"] == "clarifying" or not state.get("semantic_query"):
+        state["semantic_query"] = effective_query
+
+    # 4) retrieve candidates
+    full_candidates, meta_candidates = retrieve_candidates_meta(
+        query=effective_query,
+        state=state
+    )
+
+    # 5) confidence gate: score quá thấp -> ask_more
+    # CHỈ áp dụng confidence gate khi KHÔNG đang clarify
+    if state["mode"] == "idle" and not is_candidate_confident(full_candidates):
+        print("⚠️ LOW CONFIDENCE (idle) → ASK MORE")
+
+        start_clarify(state, user_input, "issue_type")
+
+        # dùng LLM clarify riêng
+        msg = generate_clarify_message_llm(user_input, state, "issue_type")
+        if not msg:
+            msg = generate_clarify_message_fallback("issue_type", user_input)
+
+        return reply(session_id, state, msg)
+
+    # 6) strong match -> direct search
+    match, idx = detect_strong_match_by_score(full_candidates)
+    if match:
+        rb = full_candidates[idx]
+
+        remember_success(state, effective_query, rb)
+        state["mode"] = "idle"
+        state["pending_slot"] = None
+
+        return reply(session_id, state, format_runbook(rb))
+
+    # 7) LLM decision
+    d = decide_with_candidates(user_input, state, meta_candidates)
+
+    if d.get("action") == "search":
+        idx = d.get("selected_index", 1)
+        try:
+            idx = int(idx) - 1
+        except Exception:
+            idx = 0
+
+        if idx < 0 or idx >= len(full_candidates):
+            idx = 0
+
+        rb = full_candidates[idx]
+
+        remember_success(state, effective_query, rb)
+        state["mode"] = "idle"
+        state["pending_slot"] = None
+
+        return reply(session_id, state, format_runbook(rb))
+
+    # 8) ask_more
+    next_slot = d.get("next_slot") or "issue_type"
+
+    # Clarify: luôn ưu tiên LLM riêng, không dùng message generic từ decision
+    msg = generate_clarify_message_llm(user_input, state, next_slot)
+
+    if not msg or not msg.strip():
+        msg = generate_clarify_message_fallback(next_slot, user_input)
+
     if not msg:
         msg = "Bạn có thể mô tả rõ hơn vấn đề bạn đang gặp không?"
 

@@ -1,0 +1,60 @@
+{
+  "general_rules": {
+    "clarify_rules": [
+      "Không hỏi chung chung kiểu: 'Bạn mô tả rõ hơn' hoặc 'Cho tôi biết thêm'.",
+      "Luôn hỏi đúng 1 câu ngắn gọn, cụ thể, để thu thập đúng thông tin còn thiếu.",
+      "Nếu đã biết user đang gặp lỗi, hãy hỏi sâu hơn theo ngữ cảnh thay vì hỏi lại từ đầu.",
+      "Nếu chưa rõ service, ưu tiên hỏi user đang thao tác trên hệ thống nào.",
+      "Nếu đã rõ service nhưng chưa rõ lỗi, ưu tiên hỏi loại lỗi hoặc thông báo lỗi cụ thể."
+    ],
+    "decision_rules": [
+      "Chỉ chọn search khi candidate metadata thực sự phù hợp với query hoặc context đã rõ.",
+      "Nếu query mơ hồ hoặc candidate chưa đủ chắc chắn, chọn ask_more.",
+      "Không suy diễn service nếu service chưa được resolver hoặc context chưa đủ rõ.",
+      "Ưu tiên quyết định nhất quán với service đã được resolve trước đó."
+    ]
+  },
+  "services": [
+    {
+      "service": "Exchange",
+      "description": "Hệ thống email, Outlook, OWA, mailbox, gửi nhận thư, mailbox access.",
+      "clarify_rules": [
+        "Khi user nói mailbox lỗi, ưu tiên hỏi: lỗi khi gửi thư, nhận thư, hay khi truy cập mailbox.",
+        "Nếu user nhắc Outlook hoặc mail không đồng bộ, hỏi rõ user dùng Outlook desktop hay OWA.",
+        "Nếu user nói không vào được mailbox, ưu tiên hỏi đây là lỗi truy cập Outlook, OWA hay lỗi permission mailbox.",
+        "Nếu user nói không gửi được mail, ưu tiên hỏi có thông báo NDR hoặc lỗi cụ thể nào không."
+      ],
+      "decision_rules": [
+        "Nếu query nhắc mailbox, Outlook, OWA, gửi mail, nhận mail thì ưu tiên các candidate thuộc Exchange.",
+        "Không map về Exchange nếu query chỉ nói login máy tính hoặc domain login."
+      ]
+    },
+    {
+      "service": "Active Directory",
+      "description": "Quản lý account domain, login domain, reset password, account lock, ADSS.",
+      "clarify_rules": [
+        "Khi user nói không đăng nhập được, ưu tiên hỏi đó là login domain, login máy local hay login ứng dụng.",
+        "Khi user nói quên mật khẩu, ưu tiên hỏi đây là mật khẩu domain hay hệ thống khác.",
+        "Nếu query liên quan account locked hoặc password expired, ưu tiên hỏi có thông báo lỗi cụ thể hay không.",
+        "Nếu user nói reset password, có thể hỏi user có dùng ADSS hay cần thao tác hỗ trợ."
+      ],
+      "decision_rules": [
+        "Nếu query nhắc domain, AD, ADSS, reset password, account locked, password expired thì ưu tiên candidate Active Directory.",
+        "Không map về Active Directory nếu query chỉ nói gửi nhận mail hoặc mailbox."
+      ]
+    },
+    {
+      "service": "Windows",
+      "description": "Đăng nhập máy local, lỗi máy tính, workstation, Windows sign-in.",
+      "clarify_rules": [
+        "Khi user nói không đăng nhập được máy tính, ưu tiên hỏi login local hay domain.",
+        "Nếu user nói lỗi Windows, hỏi rõ lỗi xảy ra ở màn hình login hay sau khi đăng nhập.",
+        "Nếu user nói máy tính lỗi, ưu tiên hỏi lỗi khởi động, lỗi đăng nhập hay lỗi ứng dụng."
+      ],
+      "decision_rules": [
+        "Nếu query nhắc máy tính, Windows, PC, desktop, laptop thì ưu tiên candidate Windows.",
+        "Không map về Windows nếu query tập trung vào mailbox hoặc gửi nhận mail."
+      ]
+    }
+  ]
+}

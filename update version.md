@@ -120,3 +120,25 @@ Các kỹ thuật bổ sung :
             print("⚠️ FAILURE FEEDBACK DETECTED")
             return handle_failure_retry(session_id, state, user_input)
 --> Sau khi turning : agent nhận biết failure qua rule trước, nếu không có trong rule thì để LLM phân tích và trả kết quả
+
+10. thêm 2 layer : service resolution engine và Knowledge  Grounding Layer
+ - issue : 
+    LLM dựa vào general knowledge
+    Không hiểu môi trường IT nội bộ
+    Dẫn đến khi cần hỏi clarify thì hỏi chung chung, không sát thực tế PV
+ - Giải pháp : thêm 2 layer như trên
+  + Service Resolution Engine : xác định service ngay từ đầu, dựa vào cả rule và semantic
+   Hàm chính : resolve_service(query, state)
+    Hàm con :
+     rule_match_service(query) : match nhanh bằng rule(trong file service catalog.json) : khi rule không match, dùng embed + faiss để hiểu ngữ nghĩa 
+  --> LLM không đoán service mà làm việc trong service
+  + Knowledge Grounding Layer : Kiểm soát cách LLM suy nghĩ và hỏi
+   Các hàm :
+    get_clarify_knowledge(service) : trả về rule để LLM hỏi
+    get_decision_knowledge(service) : trả về rule để LLM quyết định action : search / ask more
+   Các hàm được inject knowledge
+    generate_clarify_message_llm
+    decide_with_candidates
+   Các hàm loại bỏ :
+    build_semantic_query
+--> LLM hỏi sát thực tế hơn (knowledge base càng nhiều, càng sát thì LLM hỏi càng đúng với nghiệp vụ tại PV, có promt không hỏi lại thông tin user đã cung cấp)
