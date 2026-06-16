@@ -1,6 +1,6 @@
-__pycache__/
-*.pyc
-.env
-venv\
-sessions.json
-data/
+	__pycache__/
+	*.pyc
+	.env
+	venv/
+	sessions.json
+	data/
