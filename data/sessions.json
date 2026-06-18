@@ -1585,5 +1585,880 @@
     ],
     "last_action": "search",
     "resolved_service": "Exchange"
+  },
+  "2e66a9de-b68b-450b-9295-9b515de4a740": {
+    "mode": "idle",
+    "original_query": "tôi bị lỗi Exchange",
+    "clarify_turns": 2,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": "khi truy cập mailbox",
+      "service": "Active Directory",
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "tôi muốn reset password"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: reset password\n🖥 Dịch vụ: Active Directory\n\n🔹 Điều kiện thực hiện:\n- Tài khoản enabled\n- Tài khoản không bị khóa\n\n🔹 Các bước thực hiện:\n1. Truy cập ADSS theo link : https://adss.pvcb.vn\n2. Chọn nút Quên mật khẩu\n3. Nhập code MFA và đặt lại mật khẩu mới\n\n🔹 Kiểm tra sau thực hiện:\n- Truy cập Microsoft login hoặc exchange online. Nhập mật khẩu mới"
+      },
+      {
+        "role": "user",
+        "text": "tôi bị lỗi Exchange"
+      },
+      {
+        "role": "assistant",
+        "text": "\"Bạn đang gặp lỗi nào trên Exchange? Lỗi khi gửi thư, nhận thư, hay khi truy cập mailbox?\""
+      },
+      {
+        "role": "user",
+        "text": "khi truy cập mailbox"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: enable remote mailbox\n🖥 Dịch vụ: Exchange\n\n🔹 Điều kiện thực hiện:\n- User phải có license 365\n\n🔹 Các bước thực hiện:\n1. Truy cập máy chủ exchange server\n2. Mở powershell thực hiện lệnh disabled mailbox\n3. Mở powershell thực hiện lệnh enable-remotemailbox\n\n🔹 Kiểm tra sau thực hiện:\n- Đăng nhập exchange online"
+      }
+    ],
+    "semantic_query": "\"Tìm runbook phù hợp cho lỗi khi truy cập mailbox trên dịch vụ Active Directory\"",
+    "last_runbook": {
+      "title": "enable remote mailbox",
+      "service": "Exchange",
+      "keyword": "remote mailbox, hòm mail 365",
+      "description": "Người dung có license 365 nhưng mailbox ở on-prem",
+      "precheck": [
+        "User phải có license 365"
+      ],
+      "steps": [
+        "Truy cập máy chủ exchange server",
+        "Mở powershell thực hiện lệnh disabled mailbox",
+        "Mở powershell thực hiện lệnh enable-remotemailbox"
+      ],
+      "postcheck": [
+        "Đăng nhập exchange online"
+      ],
+      "source_file": "D:\\Runbook\\RB_enable remote mailbox.docx",
+      "score": 0.5734328627586365
+    },
+    "tried_runbooks": [
+      "reset password",
+      "enable remote mailbox"
+    ],
+    "last_result_status": "returned",
+    "semantic_cache": [
+      {
+        "semantic_query": "tôi muốn reset password",
+        "runbook_title": "reset password",
+        "service": "Active Directory"
+      },
+      {
+        "semantic_query": "\"Tìm runbook phù hợp cho lỗi khi truy cập mailbox trên dịch vụ Active Directory\"",
+        "runbook_title": "enable remote mailbox",
+        "service": "Exchange"
+      }
+    ],
+    "last_action": "search",
+    "resolved_service": "Exchange"
+  },
+  "592a3c9f-e2f3-48de-ab03-1133ac9dc2f2": {
+    "mode": "idle",
+    "original_query": "",
+    "clarify_turns": 0,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": null,
+      "service": "Active Directory",
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "reset password"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: reset password\n🖥 Dịch vụ: Active Directory\n\n🔹 Điều kiện thực hiện:\n- Tài khoản enabled\n- Tài khoản không bị khóa\n\n🔹 Các bước thực hiện:\n1. Truy cập ADSS theo link : https://adss.pvcb.vn\n2. Chọn nút Quên mật khẩu\n3. Nhập code MFA và đặt lại mật khẩu mới\n\n🔹 Kiểm tra sau thực hiện:\n- Truy cập Microsoft login hoặc exchange online. Nhập mật khẩu mới"
+      }
+    ],
+    "semantic_query": "reset password",
+    "last_runbook": {
+      "title": "reset password",
+      "service": "Active Directory",
+      "keyword": "Quên mật khẩu, đặt lại mật khẩu",
+      "description": "người dung quên mật khẩu hoặc hết hạn mật khẩu mà không đổi",
+      "precheck": [
+        "Tài khoản enabled",
+        "Tài khoản không bị khóa"
+      ],
+      "steps": [
+        "Truy cập ADSS theo link : https://adss.pvcb.vn",
+        "Chọn nút Quên mật khẩu",
+        "Nhập code MFA và đặt lại mật khẩu mới"
+      ],
+      "postcheck": [
+        "Truy cập Microsoft login hoặc exchange online. Nhập mật khẩu mới"
+      ],
+      "source_file": "D:\\Runbook\\RB_Reset password.docx",
+      "score": 0.648713231086731
+    },
+    "tried_runbooks": [
+      "reset password"
+    ],
+    "last_result_status": "returned",
+    "semantic_cache": [
+      {
+        "semantic_query": "reset password",
+        "runbook_title": "reset password",
+        "service": "Active Directory"
+      }
+    ],
+    "last_action": "search",
+    "resolved_service": "Active Directory"
+  },
+  "9ff9a3c4-ebee-48c4-8296-17b44044df97": {
+    "mode": "idle",
+    "original_query": "tôi bị lỗi domain",
+    "clarify_turns": 2,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": "quên mật khẩu",
+      "service": "Active Directory",
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "tôi bị lỗi domain"
+      },
+      {
+        "role": "assistant",
+        "text": "\"Bạn đang gặp sai lầm nào với Active Directory? (Lỗi nhập mật khẩu, không đăng nhập, tài khoản bị lock...)\""
+      },
+      {
+        "role": "user",
+        "text": "quên mật khẩu"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: reset password\n🖥 Dịch vụ: Active Directory\n\n🔹 Điều kiện thực hiện:\n- Tài khoản enabled\n- Tài khoản không bị khóa\n\n🔹 Các bước thực hiện:\n1. Truy cập ADSS theo link : https://adss.pvcb.vn\n2. Chọn nút Quên mật khẩu\n3. Nhập code MFA và đặt lại mật khẩu mới\n\n🔹 Kiểm tra sau thực hiện:\n- Truy cập Microsoft login hoặc exchange online. Nhập mật khẩu mới"
+      }
+    ],
+    "semantic_query": "\"Tìm runbook phù hợp cho vấn đề quên mật khẩu trong Active Directory\"",
+    "last_runbook": {
+      "title": "reset password",
+      "service": "Active Directory",
+      "keyword": "Quên mật khẩu, đặt lại mật khẩu",
+      "description": "người dung quên mật khẩu hoặc hết hạn mật khẩu mà không đổi",
+      "precheck": [
+        "Tài khoản enabled",
+        "Tài khoản không bị khóa"
+      ],
+      "steps": [
+        "Truy cập ADSS theo link : https://adss.pvcb.vn",
+        "Chọn nút Quên mật khẩu",
+        "Nhập code MFA và đặt lại mật khẩu mới"
+      ],
+      "postcheck": [
+        "Truy cập Microsoft login hoặc exchange online. Nhập mật khẩu mới"
+      ],
+      "source_file": "D:\\Runbook\\RB_Reset password.docx",
+      "score": 0.6881999969482422
+    },
+    "tried_runbooks": [
+      "reset password"
+    ],
+    "last_result_status": "returned",
+    "semantic_cache": [
+      {
+        "semantic_query": "\"Tìm runbook phù hợp cho vấn đề quên mật khẩu trong Active Directory\"",
+        "runbook_title": "reset password",
+        "service": "Active Directory"
+      }
+    ],
+    "last_action": "search",
+    "resolved_service": "Active Directory"
+  },
+  "3f7f576c-a049-4e40-b879-bb755c35eec9": {
+    "mode": "idle",
+    "original_query": "",
+    "clarify_turns": 0,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": null,
+      "service": null,
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "tôi bị lỗi đăng nhập"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: reset MFA\n🖥 Dịch vụ: Active Directory\n\n🔹 Điều kiện thực hiện:\n- Tài khoản enabled\n- Tài khoản không bị khóa\n\n🔹 Các bước thực hiện:\n1. Truy cập Entra, tìm tài khoản user\n2. Trong properties chọn Muilti Authenticator\n3. Chọn reset MFA\n\n🔹 Kiểm tra sau thực hiện:\n- (không có)"
+      }
+    ],
+    "semantic_query": "tôi bị lỗi đăng nhập",
+    "last_runbook": {
+      "title": "reset MFA",
+      "service": "Active Directory",
+      "keyword": "Lỗi MFA, reset MFA",
+      "description": "Người dùng bị lỗi đăng nhập, đã qua bước nhập mật khẩu nhưng không gửi thông báo MFA qua điện thoại",
+      "precheck": [
+        "Tài khoản enabled",
+        "Tài khoản không bị khóa"
+      ],
+      "steps": [
+        "Truy cập Entra, tìm tài khoản user",
+        "Trong properties chọn Muilti Authenticator",
+        "Chọn reset MFA"
+      ],
+      "postcheck": [],
+      "source_file": "D:\\Runbook\\RB_Reset MFA.docx",
+      "score": 0.6352688074111938
+    },
+    "tried_runbooks": [
+      "reset MFA"
+    ],
+    "last_result_status": "returned",
+    "semantic_cache": [
+      {
+        "semantic_query": "tôi bị lỗi đăng nhập",
+        "runbook_title": "reset MFA",
+        "service": "Active Directory"
+      }
+    ],
+    "last_action": "search",
+    "resolved_service": "Windows"
+  },
+  "c7701ac4-791f-4789-8abc-bfa66dfe0224": {
+    "mode": "clarifying",
+    "original_query": "lỗi login mailbox",
+    "clarify_turns": 1,
+    "pending_slot": "service",
+    "slots": {
+      "issue_type": null,
+      "service": "Exchange",
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "lỗi login mailbox"
+      },
+      {
+        "role": "assistant",
+        "text": "\"Bạn có gặp lỗi nào trong quá trình login mailbox? Lỗi khi gửi thư, nhận thư hay khi truy cập mailbox?\""
+      }
+    ],
+    "semantic_query": "lỗi login mailbox",
+    "last_runbook": null,
+    "tried_runbooks": [],
+    "last_result_status": null,
+    "semantic_cache": [],
+    "last_action": "ask_more",
+    "resolved_service": "Exchange"
+  },
+  "429f335e-f4a1-406b-b76a-efd0dda085e5": {
+    "mode": "clarifying",
+    "original_query": "lỗi mailbox",
+    "clarify_turns": 1,
+    "pending_slot": "service",
+    "slots": {
+      "issue_type": null,
+      "service": "Exchange",
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "lỗi mailbox"
+      },
+      {
+        "role": "assistant",
+        "text": "\"Lỗi mailbox bạn gặp là gửi thư, nhận thư hay truy cập mailbox?\""
+      }
+    ],
+    "semantic_query": "lỗi mailbox",
+    "last_runbook": null,
+    "tried_runbooks": [],
+    "last_result_status": null,
+    "semantic_cache": [],
+    "last_action": "ask_more",
+    "resolved_service": "Exchange"
+  },
+  "286bcbcb-fbff-46a9-bf5e-43316b577983": {
+    "mode": "clarifying",
+    "original_query": "lỗi mailbox",
+    "clarify_turns": 1,
+    "pending_slot": "service",
+    "slots": {
+      "issue_type": null,
+      "service": "Exchange",
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "lỗi mailbox"
+      },
+      {
+        "role": "assistant",
+        "text": "\"Bạn đang thao tác trên một hệ thống nào để gặp vấn đề mailbox? Mail cho phép dùng Outlook Desktop hoặc OWA?\""
+      }
+    ],
+    "semantic_query": "lỗi mailbox",
+    "last_runbook": null,
+    "tried_runbooks": [],
+    "last_result_status": null,
+    "semantic_cache": [],
+    "last_action": "ask_more",
+    "resolved_service": "Exchange"
+  },
+  "dc0642ac-f895-4dba-9753-7bfe955ba7b3": {
+    "mode": "idle",
+    "original_query": "",
+    "clarify_turns": 0,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": null,
+      "service": null,
+      "error_message": null
+    },
+    "history": [],
+    "semantic_query": "",
+    "last_runbook": null,
+    "tried_runbooks": [],
+    "last_result_status": null,
+    "semantic_cache": [],
+    "last_action": null
+  },
+  "f188087a-bc04-4393-8a4a-61ee8a0e29f8": {
+    "mode": "idle",
+    "original_query": "",
+    "clarify_turns": 0,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": null,
+      "service": "Exchange",
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "lỗi mailbox"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: enable remote mailbox\n🖥 Dịch vụ: Exchange\n\n🔹 Điều kiện thực hiện:\n- User phải có license 365\n\n🔹 Các bước thực hiện:\n1. Truy cập máy chủ exchange server\n2. Mở powershell thực hiện lệnh disabled mailbox\n3. Mở powershell thực hiện lệnh enable-remotemailbox\n\n🔹 Kiểm tra sau thực hiện:\n- Đăng nhập exchange online"
+      }
+    ],
+    "semantic_query": "lỗi mailbox",
+    "last_runbook": {
+      "title": "enable remote mailbox",
+      "service": "Exchange",
+      "keyword": "remote mailbox, hòm mail 365",
+      "description": "Người dung có license 365 nhưng mailbox ở on-prem",
+      "precheck": [
+        "User phải có license 365"
+      ],
+      "steps": [
+        "Truy cập máy chủ exchange server",
+        "Mở powershell thực hiện lệnh disabled mailbox",
+        "Mở powershell thực hiện lệnh enable-remotemailbox"
+      ],
+      "postcheck": [
+        "Đăng nhập exchange online"
+      ],
+      "source_file": "D:\\Runbook\\RB_enable remote mailbox.docx",
+      "score": 0.5940605401992798
+    },
+    "tried_runbooks": [
+      "enable remote mailbox"
+    ],
+    "last_result_status": "returned",
+    "semantic_cache": [
+      {
+        "semantic_query": "lỗi mailbox",
+        "runbook_title": "enable remote mailbox",
+        "service": "Exchange"
+      }
+    ],
+    "last_action": "search",
+    "resolved_service": "Exchange"
+  },
+  "b55cbda8-7462-4b88-9e01-5754b8a0a464": {
+    "mode": "idle",
+    "original_query": "",
+    "clarify_turns": 0,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": null,
+      "service": null,
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "không sử dụng được hòm thư"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: enable remote mailbox\n🖥 Dịch vụ: Exchange\n\n🔹 Điều kiện thực hiện:\n- User phải có license 365\n\n🔹 Các bước thực hiện:\n1. Truy cập máy chủ exchange server\n2. Mở powershell thực hiện lệnh disabled mailbox\n3. Mở powershell thực hiện lệnh enable-remotemailbox\n\n🔹 Kiểm tra sau thực hiện:\n- Đăng nhập exchange online"
+      }
+    ],
+    "semantic_query": "không sử dụng được hòm thư",
+    "last_runbook": {
+      "title": "enable remote mailbox",
+      "service": "Exchange",
+      "keyword": "remote mailbox, hòm mail 365",
+      "description": "Người dung có license 365 nhưng mailbox ở on-prem",
+      "precheck": [
+        "User phải có license 365"
+      ],
+      "steps": [
+        "Truy cập máy chủ exchange server",
+        "Mở powershell thực hiện lệnh disabled mailbox",
+        "Mở powershell thực hiện lệnh enable-remotemailbox"
+      ],
+      "postcheck": [
+        "Đăng nhập exchange online"
+      ],
+      "source_file": "D:\\Runbook\\RB_enable remote mailbox.docx",
+      "score": 0.553972601890564
+    },
+    "tried_runbooks": [
+      "enable remote mailbox"
+    ],
+    "last_result_status": "returned",
+    "semantic_cache": [
+      {
+        "semantic_query": "không sử dụng được hòm thư",
+        "runbook_title": "enable remote mailbox",
+        "service": "Exchange"
+      }
+    ],
+    "last_action": "search"
+  },
+  "4bb1c7ee-ce7a-4486-8bdb-340d061d0bb7": {
+    "mode": "idle",
+    "original_query": "",
+    "clarify_turns": 0,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": null,
+      "service": "Active Directory",
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "active directory"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: Tạo tài khoản mới\n🖥 Dịch vụ: Active Directory\n\n🔹 Điều kiện thực hiện:\n- Phiếu đề nghị tạo tài khoản\n\n🔹 Các bước thực hiện:\n1. Truy cập ADMD\n2. Chọn menu User Management\n3. Chọn template P_create_user\n\n🔹 Kiểm tra sau thực hiện:\n- Đăng nhập máy tính bằng tài khoản mới"
+      }
+    ],
+    "semantic_query": "active directory",
+    "last_runbook": {
+      "title": "Tạo tài khoản mới",
+      "service": "Active Directory",
+      "keyword": "tạo tài khoản, create user",
+      "description": "tạo tài khoản domain mới",
+      "precheck": [
+        "Phiếu đề nghị tạo tài khoản"
+      ],
+      "steps": [
+        "Truy cập ADMD",
+        "Chọn menu User Management",
+        "Chọn template P_create_user"
+      ],
+      "postcheck": [
+        "Đăng nhập máy tính bằng tài khoản mới"
+      ],
+      "source_file": "D:\\Runbook\\RB_Tạo tài khoản mới.docx",
+      "score": 0.5582438707351685
+    },
+    "tried_runbooks": [
+      "Tạo tài khoản mới"
+    ],
+    "last_result_status": "returned",
+    "semantic_cache": [
+      {
+        "semantic_query": "active directory",
+        "runbook_title": "Tạo tài khoản mới",
+        "service": "Active Directory"
+      }
+    ],
+    "last_action": "search",
+    "resolved_service": "Active Directory"
+  },
+  "be6e7741-6372-4512-815e-3cfbcadd34d0": {
+    "mode": "clarifying",
+    "original_query": "không sử dụng được mailbox",
+    "clarify_turns": 2,
+    "pending_slot": "issue_type",
+    "slots": {
+      "issue_type": null,
+      "service": "Exchange",
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "không sử dụng được mailbox"
+      },
+      {
+        "role": "assistant",
+        "text": "Tôi hiểu bạn đang gặp vấn đề trên hệ thống Exchange. Đúng không?"
+      },
+      {
+        "role": "user",
+        "text": "đúng vậy"
+      },
+      {
+        "role": "assistant",
+        "text": "\"Vui lòng chia sẻ với tôi chi tiết hơn về vấn đề mà bạn đang gặp. Lỗi nào khi gửi hoặc nhận thư, hoặc truy cập mailbox?\""
+      }
+    ],
+    "semantic_query": "không sử dụng được mailbox",
+    "last_runbook": null,
+    "tried_runbooks": [],
+    "last_result_status": null,
+    "semantic_cache": [],
+    "last_action": "ask_more",
+    "resolved_service": "Exchange"
+  },
+  "7788d2d1-acf9-4061-bfd2-6c1dd5aa79ed": {
+    "mode": "idle",
+    "original_query": "",
+    "clarify_turns": 0,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": null,
+      "service": null,
+      "error_message": null
+    },
+    "history": [],
+    "semantic_query": "",
+    "last_runbook": null,
+    "tried_runbooks": [],
+    "last_result_status": null,
+    "semantic_cache": [],
+    "last_action": null
+  },
+  "e4405266-ae4a-4df0-9517-c4b503e2c621": {
+    "mode": "idle",
+    "original_query": "",
+    "clarify_turns": 0,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": null,
+      "service": null,
+      "error_message": null
+    },
+    "history": [],
+    "semantic_query": "",
+    "last_runbook": null,
+    "tried_runbooks": [],
+    "last_result_status": null,
+    "semantic_cache": [],
+    "last_action": null
+  },
+  "c0397f3f-ccec-4cc7-93c5-e5172de735da": {
+    "mode": "clarifying",
+    "original_query": "lỗi mailbox",
+    "clarify_turns": 3,
+    "pending_slot": "error_message",
+    "slots": {
+      "issue_type": null,
+      "service": "Active Directory",
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "lỗi mailbox"
+      },
+      {
+        "role": "assistant",
+        "text": "Tôi hiểu bạn đang gặp vấn đề trên hệ thống Exchange. Đúng không?"
+      },
+      {
+        "role": "user",
+        "text": "không, Active Directory"
+      },
+      {
+        "role": "assistant",
+        "text": "Chúng tôi cần thêm chút thông tin để tìm đúng runbook cho bạn. Bạn vui lòng mô tả yêu cầu/vấn đề có chứa các từ khóa liên quan.\n                Ví dụ:\n                - Lỗi mailbox --> 1 số từ khóa : không đăng nhập được/lỗi gửi mail/dung lượng mailbox...\n                - Lỗi đăng nhập --> 1 số từ khóa : đăng nhập máy tính/đăng nhập ứng dụng A,B/MFA...\n                Từ khóa càng gần yêu cầu/vấn đề của bạn thì kết quả tìm kiếm sẽ càng chính xác."
+      },
+      {
+        "role": "user",
+        "text": "lỗi khi đăng nhập"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn có nhận được thông báo lỗi hoặc mã lỗi nào không? Nếu có, bạn hãy nhập lên đây để tôi có thể tìm kiếm chính xác hơn."
+      }
+    ],
+    "semantic_query": "lỗi mailbox",
+    "last_runbook": null,
+    "tried_runbooks": [],
+    "last_result_status": null,
+    "semantic_cache": [],
+    "last_action": "ask_more",
+    "resolved_service": "Active Directory"
+  },
+  "7703a949-0f19-4e75-be3f-1fa5c51319b8": {
+    "mode": "clarifying",
+    "original_query": "lỗi mailbox",
+    "clarify_turns": 4,
+    "pending_slot": "error_message",
+    "slots": {
+      "issue_type": null,
+      "service": "Active Directory",
+      "error_message": "reset password"
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "lỗi mailbox"
+      },
+      {
+        "role": "assistant",
+        "text": "Tôi hiểu bạn đang gặp vấn đề trên hệ thống Exchange. Đúng không?"
+      },
+      {
+        "role": "user",
+        "text": "không, Active Directory"
+      },
+      {
+        "role": "assistant",
+        "text": "Chúng tôi cần thêm chút thông tin để tìm đúng runbook cho bạn. Bạn vui lòng mô tả yêu cầu/vấn đề có chứa các từ khóa liên quan.\n                Ví dụ:\n                - Lỗi mailbox --> 1 số từ khóa : không đăng nhập được/lỗi gửi mail/dung lượng mailbox...\n                - Lỗi đăng nhập --> 1 số từ khóa : đăng nhập máy tính/đăng nhập ứng dụng A,B/MFA...\n                Từ khóa càng gần yêu cầu/vấn đề của bạn thì kết quả tìm kiếm sẽ càng chính xác."
+      },
+      {
+        "role": "user",
+        "text": "không hiện thông báo MFA"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn có nhận được thông báo lỗi hoặc mã lỗi nào không? Nếu có, bạn hãy nhập lên đây để tôi có thể tìm kiếm chính xác hơn."
+      },
+      {
+        "role": "user",
+        "text": "reset password"
+      },
+      {
+        "role": "assistant",
+        "text": "\"Bạn có thể liên hệ với tài khoản cụ thể đang bị mật khẩu hay mã lỗi sao khi reset password?\""
+      }
+    ],
+    "semantic_query": "Active Directory reset password",
+    "last_runbook": null,
+    "tried_runbooks": [],
+    "last_result_status": null,
+    "semantic_cache": [],
+    "last_action": "ask_more",
+    "resolved_service": "Active Directory"
+  },
+  "2220ed9c-b014-4004-a7e5-3c99e86fbdb3": {
+    "mode": "clarifying",
+    "original_query": "lỗi tài khoản",
+    "clarify_turns": 4,
+    "pending_slot": "error_message",
+    "slots": {
+      "issue_type": "Reset MFA",
+      "service": "Active Directory",
+      "error_message": "reset MFA"
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "lỗi tài khoản"
+      },
+      {
+        "role": "assistant",
+        "text": "Tôi hiểu bạn đang gặp vấn đề trên hệ thống Windows. Đúng không?"
+      },
+      {
+        "role": "user",
+        "text": "không, Active Directory"
+      },
+      {
+        "role": "assistant",
+        "text": "Chúng tôi cần thêm chút thông tin để tìm đúng runbook cho bạn. Bạn vui lòng mô tả yêu cầu/vấn đề có chứa các từ khóa liên quan.\n                Ví dụ:\n                - Lỗi mailbox --> 1 số từ khóa : không đăng nhập được/lỗi gửi mail/dung lượng mailbox...\n                - Lỗi đăng nhập --> 1 số từ khóa : đăng nhập máy tính/đăng nhập ứng dụng A,B/MFA...\n                Từ khóa càng gần yêu cầu/vấn đề của bạn thì kết quả tìm kiếm sẽ càng chính xác."
+      },
+      {
+        "role": "user",
+        "text": "Không hiện MFA"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn có nhận được thông báo lỗi hoặc mã lỗi nào không? Nếu có, bạn hãy nhập lên đây để tôi có thể tìm kiếm chính xác hơn."
+      },
+      {
+        "role": "user",
+        "text": "reset MFA"
+      },
+      {
+        "role": "assistant",
+        "text": "\"Có thể bạn có mã lỗi hoặc thông báo lỗi khi reset MFA? Hãy cho tôi biết.\""
+      }
+    ],
+    "semantic_query": "Active Directory Reset MFA reset MFA",
+    "last_runbook": null,
+    "tried_runbooks": [],
+    "last_result_status": null,
+    "semantic_cache": [],
+    "last_action": "ask_more",
+    "resolved_service": "Active Directory"
+  },
+  "737a8b0a-f053-4f93-8741-3f145357e44b": {
+    "mode": "clarifying",
+    "original_query": "quên mật khẩu",
+    "clarify_turns": 1,
+    "pending_slot": "service",
+    "slots": {
+      "issue_type": null,
+      "service": null,
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "quên mật khẩu"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: reset password\n🖥 Dịch vụ: Active Directory\n\n🔹 Điều kiện thực hiện:\n- Tài khoản enabled\n- Tài khoản không bị khóa\n\n🔹 Các bước thực hiện:\n1. Truy cập ADSS theo link : https://adss.pvcb.vn\n2. Chọn nút Quên mật khẩu\n3. Nhập code MFA và đặt lại mật khẩu mới\n\n🔹 Kiểm tra sau thực hiện:\n- Truy cập Microsoft login hoặc exchange online. Nhập mật khẩu mới"
+      },
+      {
+        "role": "user",
+        "text": "quên mật khẩu"
+      },
+      {
+        "role": "assistant",
+        "text": "Tôi hiểu bạn đang gặp vấn đề trên hệ thống Active Directory. Đúng không?"
+      }
+    ],
+    "semantic_query": "quên mật khẩu",
+    "last_runbook": {
+      "title": "reset password",
+      "service": "Active Directory",
+      "keyword": "Quên mật khẩu, đặt lại mật khẩu",
+      "description": "người dung quên mật khẩu hoặc hết hạn mật khẩu mà không đổi",
+      "precheck": [
+        "Tài khoản enabled",
+        "Tài khoản không bị khóa"
+      ],
+      "steps": [
+        "Truy cập ADSS theo link : https://adss.pvcb.vn",
+        "Chọn nút Quên mật khẩu",
+        "Nhập code MFA và đặt lại mật khẩu mới"
+      ],
+      "postcheck": [
+        "Truy cập Microsoft login hoặc exchange online. Nhập mật khẩu mới"
+      ],
+      "source_file": "D:\\Runbook\\RB_Reset password.docx",
+      "score": 0.6640607118606567
+    },
+    "tried_runbooks": [
+      "reset password"
+    ],
+    "last_result_status": "returned",
+    "semantic_cache": [
+      {
+        "semantic_query": "quên mật khẩu",
+        "runbook_title": "reset password",
+        "service": "Active Directory"
+      }
+    ],
+    "last_action": "ask_more",
+    "resolved_service": "Active Directory"
+  },
+  "ab5d3c48-2532-43da-b852-b8a6026d9f31": {
+    "mode": "idle",
+    "original_query": "",
+    "clarify_turns": 0,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": null,
+      "service": null,
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "quên mật khẩu"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: reset password\n🖥 Dịch vụ: Active Directory\n\n🔹 Điều kiện thực hiện:\n- Tài khoản enabled\n- Tài khoản không bị khóa\n\n🔹 Các bước thực hiện:\n1. Truy cập ADSS theo link : https://adss.pvcb.vn\n2. Chọn nút Quên mật khẩu\n3. Nhập code MFA và đặt lại mật khẩu mới\n\n🔹 Kiểm tra sau thực hiện:\n- Truy cập Microsoft login hoặc exchange online. Nhập mật khẩu mới"
+      },
+      {
+        "role": "user",
+        "text": "vẫn lỗi"
+      },
+      {
+        "role": "assistant",
+        "text": "⚠️ Tôi sẽ thử runbook khác phù hợp hơn:\n\nBạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: reset MFA\n🖥 Dịch vụ: Active Directory\n\n🔹 Điều kiện thực hiện:\n- Tài khoản enabled\n- Tài khoản không bị khóa\n\n🔹 Các bước thực hiện:\n1. Truy cập Entra, tìm tài khoản user\n2. Trong properties chọn Muilti Authenticator\n3. Chọn reset MFA\n\n🔹 Kiểm tra sau thực hiện:\n- (không có)"
+      },
+      {
+        "role": "user",
+        "text": "vẫn lỗi"
+      },
+      {
+        "role": "assistant",
+        "text": "⚠️ Tôi sẽ thử runbook khác phù hợp hơn:\n\nBạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: Tạo tài khoản mới\n🖥 Dịch vụ: Active Directory\n\n🔹 Điều kiện thực hiện:\n- Phiếu đề nghị tạo tài khoản\n\n🔹 Các bước thực hiện:\n1. Truy cập ADMD\n2. Chọn menu User Management\n3. Chọn template P_create_user\n\n🔹 Kiểm tra sau thực hiện:\n- Đăng nhập máy tính bằng tài khoản mới"
+      }
+    ],
+    "semantic_query": "quên mật khẩu",
+    "last_runbook": {
+      "title": "Tạo tài khoản mới",
+      "service": "Active Directory",
+      "keyword": "tạo tài khoản, create user",
+      "description": "tạo tài khoản domain mới",
+      "precheck": [
+        "Phiếu đề nghị tạo tài khoản"
+      ],
+      "steps": [
+        "Truy cập ADMD",
+        "Chọn menu User Management",
+        "Chọn template P_create_user"
+      ],
+      "postcheck": [
+        "Đăng nhập máy tính bằng tài khoản mới"
+      ],
+      "source_file": "D:\\Runbook\\RB_Tạo tài khoản mới.docx",
+      "score": 0.5217384696006775
+    },
+    "tried_runbooks": [
+      "reset password",
+      "reset MFA",
+      "Tạo tài khoản mới"
+    ],
+    "last_result_status": "retry_returned",
+    "semantic_cache": [
+      {
+        "semantic_query": "quên mật khẩu",
+        "runbook_title": "reset password",
+        "service": "Active Directory"
+      },
+      {
+        "semantic_query": "quên mật khẩu",
+        "runbook_title": "reset MFA",
+        "service": "Active Directory"
+      },
+      {
+        "semantic_query": "quên mật khẩu",
+        "runbook_title": "Tạo tài khoản mới",
+        "service": "Active Directory"
+      }
+    ],
+    "last_action": "retry",
+    "resolved_service": "Active Directory"
   }
 }

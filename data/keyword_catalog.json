@@ -1,0 +1,71 @@
+{
+  "exchange": [
+    {
+      "keyword": "remote mailbox",
+      "patterns": ["Không nhận được mail từ 1 số người",
+       "không nhận được mail từ exchange",
+       "không nhận mail",
+       "đăng nhập được 2 mailbox"],
+      "synonyms": ["mail 365","license 365"],
+      "description": "Người dùng có license 365 nhưng mailbox ở on-prem/exchange. Có thể đăng nhập được cả 2 mailbox cùng lúc. Và khi đăng nhập ở mailbox này sẽ không thấy email ở mailbox còn lại, nghĩ là không nhận được email."
+    },
+    {
+      "keyword": "mail_send_fail",
+      "patterns": [
+        "không gửi mail",
+        "không send được mail",
+        "mail không đi",
+        "send mail fail"
+      ],
+      "synonyms": [
+        "email send error",
+        "mail sending issue"
+      ],
+      "description": "Không gửi được email"
+    }
+  ],
+
+  "Active Directory": [
+    {
+      "keyword": "Reset MFA",
+      "patterns": [
+        "Nhập mật khẩu xong nhưng không nhận được thông báo MFA",
+        "Không bật thông báo MFA trên điện thoại",
+        "Không bật MFA",
+        "Không hiện MFA",
+        "Mất điện thoại",
+        "Đổi điện thoại"
+      ],
+      "synonyms": [
+        "Đăng ký lại MFA",
+        "Rest xác thực Entra"
+      ],
+      "description": "Người dùng thay đổi điện thoại khác, hoặc mất điện thoại cũ, khi dùng điện thoại mới thì không nhận được thông báo MFA. Hoặc người dùng không bật thông báo MFA trên điện thoại."
+    },
+    {
+     "keyword": "quên mật khẩu",
+      "patterns": [
+        "sai mật khẩu",
+        "sai password",
+        "incorrect password"
+      ],
+      "synonyms": [
+        "Đặt lại mật khẩu",
+        "Reset password"
+      ],
+      "description":  "Người dùng đăng nhập máy tính hoặc Entra bị lỗi thông báo incorrect password, hoặc quên mật khẩu, hoặc hết hạn mật khẩu mà không đổi."
+    },
+    {
+      "keyword": "Tạo tài khoản mới",
+      "patterns": [
+        "Nhân viên mới",
+        "Mới vào làm việc"
+      ],
+      "synonyms": [
+        "Create new account",
+        "Create new user"
+      ],
+      "description":  "Tạo tài khoản mới cho nhân viên mới hoặc dịch vụ mới."
+    }
+  ]
+}

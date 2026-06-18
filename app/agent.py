@@ -2,6 +2,7 @@ import json
 import re
 import numpy as np
 import faiss
+from app.vector_store import FaissStore
 from sentence_transformers import SentenceTransformer
 from pathlib import Path
 from app.service_resolver import resolve_service
@@ -12,18 +13,21 @@ from app.tool import retrieve_candidates_meta, search_RB_topk
 from app.load_model import embedding_model as CACHE_MODEL
 from app.load_knowledge import get_clarify_knowledge, get_decision_knowledge
 
+from app.issue_type_resolver import resolve_issue_type
+
+
 # =====================================================
 # CONFIG
 # =====================================================
-MAX_CLARIFY_TURNS = 3
+MAX_CLARIFY_TURNS = 5
 MAX_RETRY_RUNBOOKS = 3
 CACHE_THRESHOLD = 0.82
 
 # Nếu top score thấp hơn ngưỡng này → KHÔNG được trả runbook
-MIN_CANDIDATE_CONFIDENCE = 0.6
+MIN_CANDIDATE_CONFIDENCE = 0.59
 
 # Nếu top score cao hơn ngưỡng này → search luôn, không cần LLM
-STRONG_MATCH_THRESHOLD = 0.7
+STRONG_MATCH_THRESHOLD = 0.65
 
 FAILURE_SIGNALS = [
     "vẫn bị lỗi",
@@ -51,7 +55,12 @@ NEGATIVE_HINTS = [
     "unable"
 ]
 
-#CACHE_MODEL_PATH = Path(r"D:\bge-m3")
+# INIT VECTOR STORE
+vector_store = FaissStore(
+    search_func=search_RB_topk,
+    retrieve_func=retrieve_candidates_meta
+)
+
 
 # =====================================================
 # SEMANTIC CACHE (GLOBAL IN-MEMORY)
@@ -498,6 +507,21 @@ YES hoặc NO
 
 
 def is_failure(user_input, state):
+    """
+    Chỉ coi là failure/retry nếu trước đó agent đã trả runbook.
+    Tránh việc query đầu tiên kiểu 'không đăng nhập được mail'
+    bị hiểu nhầm là user đang phản hồi thất bại.
+    """
+
+    if not state.get("last_runbook"):
+        return False
+
+    if state.get("last_action") not in ["search", "retry"]:
+        return False
+
+    if state.get("mode") != "idle":
+        return False
+
     if rule_detect_failure(user_input):
         print("✅ FAILURE detected by RULE")
         return True
@@ -616,41 +640,61 @@ Trả JSON:
 # FAILURE RETRY
 # =====================================================
 def handle_retry(session_id, state):
+    """
+    Khi user phản hồi runbook trước chưa đúng:
+    - dùng lại semantic_query gần nhất
+    - loại bỏ các runbook đã trả trong tried_runbooks
+    - trả runbook tiếp theo trong top-k
+    """
+
     query = state.get("semantic_query")
     tried = state.get("tried_runbooks", [])
+
+    print("🔁 RETRY REQUESTED")
+    print("🔁 semantic_query:", query)
+    print("🔁 tried_runbooks:", tried)
 
     if not query:
         return reply(
             session_id,
             state,
-            "❌ Tôi chưa đủ thông tin để thử lại. Bạn mô tả rõ hơn giúp tôi."
+            "❌ Tôi chưa có đủ thông tin truy vấn trước đó để thử runbook khác. Bạn mô tả lại lỗi giúp tôi nhé."
         )
 
-    results = search_RB_topk(
+    results = vector_store.search(
         query=query,
         exclude_titles=tried,
-        topk=3
+        top_k=MAX_RETRY_RUNBOOKS
     )
 
     if not results:
-        return reply(session_id, state, "❌ Không tìm thấy hướng khác")
+        state["last_result_status"] = "retry_failed"
+        state["last_action"] = "retry"
+
+        return reply(
+            session_id,
+            state,
+            "❌ Tôi chưa tìm thấy runbook khác phù hợp hơn với thông tin hiện tại. Bạn có thể bổ sung thêm thông báo lỗi hoặc mô tả chi tiết hơn không?"
+        )
 
     rb = results[0]
 
     remember_success(state, query, rb)
     state["last_result_status"] = "retry_returned"
+    state["last_action"] = "retry"
+    state["mode"] = "idle"
+    state["pending_slot"] = None
 
     return reply(
         session_id,
         state,
-        "⚠️ Thử phương án khác:\n\n" + format_runbook(rb)
+        "⚠️ Tôi sẽ thử runbook khác phù hợp hơn:\n\n" + format_runbook(rb)
     )
-
 
 # =====================================================
 # MAIN
 # =====================================================
-"""
+
 def run_agent(session_id, user_input):
     state = get_session(session_id)
     ensure_state(state)
@@ -658,125 +702,261 @@ def run_agent(session_id, user_input):
     # append user message
     state["history"].append({"role": "user", "text": user_input})
 
-    # 0) semantic cache
-    cached = check_semantic_cache(user_input)
-    if cached:
-        print("⚡ SEMANTIC CACHE HIT")
-        return reply(
-            session_id,
-            state,
-            "✅ (từ semantic cache)\n\n" + format_runbook(cached)
-        )
+    # =====================================================
+    # 1) CLARIFYING FLOW
+    # =====================================================
+    # Nếu đang trong chế độ clarify thì xử lý riêng và return luôn.
+    # KHÔNG cho rơi xuống idle search flow bên dưới.
+    if state["mode"] == "clarifying":
 
-    # 1) failure handling
+        print("🟡 CLARIFY MODE ACTIVE:", state.get("pending_slot"))
+
+        pending_slot = state.get("pending_slot")
+        state["clarify_turns"] += 1
+
+        # quá số lượt hỏi → stop
+        if state["clarify_turns"] > MAX_CLARIFY_TURNS:
+            reset_session(session_id)
+            return "❌ Tôi chưa đủ thông tin để xác định runbook phù hợp. Bạn vui lòng đặt lại câu hỏi rõ hơn."
+
+        # =====================================================
+        # SERVICE CONFIRM
+        # =====================================================
+        if pending_slot == "service":
+            resolved = state.get("resolved_service")
+            user_text = normalize(user_input)
+
+            confirmed_service = None
+
+            # Case 1: user xác nhận service hiện tại là đúng
+            if "đúng" in user_text or "phải" in user_text or "ok" in user_text:
+                if resolved:
+                    confirmed_service = resolved
+
+            # Case 2: user nói service khác → resolve lại service từ câu trả lời
+            else:
+                new_service_info = resolve_service(user_input, state)
+
+                if new_service_info:
+                    confirmed_service = new_service_info.get("service")
+
+                    if confirmed_service:
+                        print(f"🔁 SERVICE UPDATED → {confirmed_service}")
+
+            # Nếu xác định được service thì update state
+            if confirmed_service:
+                state["slots"]["service"] = confirmed_service
+                state["resolved_service"] = confirmed_service
+
+                next_slot = "issue_type"
+
+                #msg = generate_clarify_message_llm(user_input, state, next_slot)
+                #if not msg:
+                #    msg = generate_clarify_message_fallback(next_slot, user_input)
+                service = state.get("resolved_service") or state["slots"].get("service")
+
+                msg = f"""Chúng tôi cần thêm chút thông tin để tìm đúng runbook cho bạn. Bạn vui lòng mô tả yêu cầu/vấn đề có chứa các từ khóa liên quan.
+
+                Ví dụ:
+                - Lỗi mailbox --> 1 số từ khóa : không đăng nhập được/lỗi gửi mail/dung lượng mailbox...
+                - Lỗi đăng nhập --> 1 số từ khóa : đăng nhập máy tính/đăng nhập ứng dụng A,B/MFA...
+                Từ khóa càng gần yêu cầu/vấn đề của bạn thì kết quả tìm kiếm sẽ càng chính xác."""
+
+                start_clarify(state, user_input, next_slot)
+
+                return reply(session_id, state, msg)
+
+            # Nếu vẫn chưa xác nhận được service → hỏi lại service
+            msg = generate_clarify_message_fallback("service", user_input)
+
+            start_clarify(state, user_input, "service")
+
+            return reply(session_id, state, msg)
+
+        # =====================================================
+        # ISSUE TYPE RESOLUTION
+        # =====================================================
+        if pending_slot == "issue_type":
+            service = state["slots"].get("service") or state.get("resolved_service")
+
+            # Nếu vì lý do nào đó chưa có service chắc chắn → quay lại confirm service
+            if not service:
+                msg = generate_clarify_message_fallback("service", user_input)
+                start_clarify(state, user_input, "service")
+                return reply(session_id, state, msg)
+
+            result = resolve_issue_type(user_input, service, state)
+
+            print("🧩 ISSUE TYPE RESULT:", result)
+
+            # Nếu match keyword → lưu issue_type và SEARCH NGAY
+            if result.get("issue_type"):
+                state["slots"]["issue_type"] = result["issue_type"]
+
+                query = f"{service} {result['issue_type']}"
+                state["semantic_query"] = query
+
+                full_candidates, meta_candidates = vector_store.retrieve_candidates(
+                    query=query,
+                    state=state
+                )
+
+                match, idx = detect_strong_match_by_score(full_candidates)
+
+                if match:
+                    rb = full_candidates[idx]
+
+                    remember_success(state, query, rb)
+                    state["mode"] = "idle"
+                    state["pending_slot"] = None
+
+                    return reply(session_id, state, format_runbook(rb))
+
+                # Có keyword nhưng search chưa đủ mạnh → hỏi error_message
+                next_slot = "error_message"
+
+                #msg = "generate_clarify_message_llm(user_input, state, next_slot)"
+                msg = "Bạn có nhận được thông báo lỗi hoặc mã lỗi nào không? Nếu có, bạn hãy nhập lên đây để tôi có thể tìm kiếm chính xác hơn."
+                #if not msg:
+                #    msg = generate_clarify_message_fallback(next_slot, user_input)
+
+                start_clarify(state, user_input, next_slot)
+
+                return reply(session_id, state, msg)
+
+            # Không match keyword → hỏi error_message để refine
+            if result.get("needs_more"):
+                next_slot = "error_message"
+
+                msg = "Bạn có nhận được thông báo lỗi hoặc mã lỗi nào không? Nếu có, bạn hãy nhập lên đây để tôi có thể tìm kiếm chính xác hơn."
+                #msg = generate_clarify_message_llm(user_input, state, next_slot)
+                #if not msg:
+                #    msg = generate_clarify_message_fallback(next_slot, user_input)
+
+                start_clarify(state, user_input, next_slot)
+
+                return reply(session_id, state, msg)
+
+            # Safety fallback
+            msg = generate_clarify_message_fallback("error_message", user_input)
+            start_clarify(state, user_input, "error_message")
+            return reply(session_id, state, msg)
+
+        # =====================================================
+        # ERROR MESSAGE
+        # =====================================================
+        if pending_slot == "error_message":
+            service = state["slots"].get("service") or state.get("resolved_service")
+            issue_type = state["slots"].get("issue_type")
+
+            # Lấy thông tin lỗi user vừa nhập
+            new_error_msg = user_input.strip()
+            # 🔥 BACKFILL ISSUE_TYPE từ error_message nếu chưa có
+            service = state["slots"].get("service") or state.get("resolved_service")
+
+            # chỉ backfill nếu hiện tại chưa có issue_type
+            if not state["slots"].get("issue_type") and service:
+                retry_result = resolve_issue_type(new_error_msg, service, state)
+
+                if retry_result and retry_result.get("issue_type"):
+                    state["slots"]["issue_type"] = retry_result["issue_type"]
+                    print("🔁 ISSUE TYPE BACKFILLED:", retry_result["issue_type"])
+
+            # Nếu trước đó đã có error_message thì cộng dồn thêm,
+            # vì user có thể bổ sung thông tin qua nhiều lượt clarify.
+            old_error_msg = state["slots"].get("error_message")
+
+            if old_error_msg:
+                combined_error_msg = f"{old_error_msg} {new_error_msg}".strip()
+            else:
+                combined_error_msg = new_error_msg
+
+            state["slots"]["error_message"] = combined_error_msg
+
+            # Build query từ đủ 3 slot:
+            # service + issue_type + error_message
+            query_parts = []
+
+            if service:
+                query_parts.append(service)
+
+            if issue_type:
+                query_parts.append(issue_type)
+
+            if combined_error_msg:
+                query_parts.append(combined_error_msg)
+
+            query = " ".join(query_parts)
+            state["semantic_query"] = query
+
+            print("🔎 ERROR MESSAGE SEARCH QUERY:", query)
+
+            full_candidates, meta_candidates = vector_store.retrieve_candidates(
+                query=query,
+                state=state
+            )
+
+            # Search trước, chỉ trả runbook nếu strong match
+            match, idx = detect_strong_match_by_score(full_candidates)
+
+            if match:
+                rb = full_candidates[idx]
+
+                remember_success(state, query, rb)
+                state["mode"] = "idle"
+                state["pending_slot"] = None
+
+                return reply(session_id, state, format_runbook(rb))
+
+            # Nếu chưa match mà vẫn còn lượt clarify thì hỏi thêm thông tin lỗi
+            if state["clarify_turns"] < MAX_CLARIFY_TURNS:
+                next_slot = "error_message"
+
+                msg = generate_clarify_message_llm(user_input, state, next_slot)
+
+                if not msg:
+                    msg = (
+                        "Bạn có thể cung cấp thêm thông báo lỗi, mã lỗi "
+                        "hoặc thao tác cụ thể trước khi lỗi xảy ra không?"
+                    )
+
+                start_clarify(state, user_input, next_slot)
+
+                return reply(session_id, state, msg)
+
+            # Nếu đã hết lượt clarify mà vẫn không match → dừng và reset
+            reset_session(session_id)
+            return "❌ Tôi chưa đủ thông tin để xác định runbook phù hợp."
+
+        # =====================================================
+        # UNKNOWN CLARIFY STATE
+        # =====================================================
+        reset_session(session_id)
+        return "❌ Trạng thái làm rõ chưa hợp lệ. Bạn vui lòng đặt lại câu hỏi."
+
+    # =====================================================
+    # 2) IDLE FLOW
+    # =====================================================
+    # Từ đây trở xuống chỉ chạy khi state["mode"] != "clarifying"
+
+    # 2.1) failure handling
     if is_failure(user_input, state):
         return handle_retry(session_id, state)
 
-    # 2) clarifying block
-    if state["mode"] == "clarifying":
-        fill_pending_slot(state, user_input)
-        state["clarify_turns"] += 1
-
-        if state["clarify_turns"] > MAX_CLARIFY_TURNS:
-            reset_session(session_id)
-            return "❌ Tôi chưa đủ thông tin. Bạn vui lòng đặt lại câu hỏi rõ hơn."
-
-        effective_query = build_semantic_query(state)
-    else:
-        effective_query = user_input
-
-    # 3) save current semantic query
-    if state["mode"] == "clarifying" or not state.get("semantic_query"):
-        state["semantic_query"] = effective_query
-
-    # 4) retrieve candidates
-    full_candidates, meta_candidates = retrieve_candidates_meta(
-        query=effective_query,
-        state=state
-    )
-
-    # 5) confidence gate: score quá thấp -> ask_more
-    # CHỈ áp dụng confidence gate khi KHÔNG đang clarify
-    if state["mode"] == "idle" and not is_candidate_confident(full_candidates):
-        print("⚠️ LOW CONFIDENCE (idle) → ASK MORE")
-
-        start_clarify(state, user_input, "issue_type")
-
-        msg = larify_message_llmgenerate_c(user_input, state, "issue_type")
-        if not msg:
-            msg = generate_clarify_message_fallback("issue_type", user_input)
-
-        return reply(session_id, state, msg)
-
-    # 6) strong match -> direct search
-    match, idx = detect_strong_match_by_score(full_candidates)
-    if match:
-        rb = full_candidates[idx]
-
-        remember_success(state, effective_query, rb)
-        state["mode"] = "idle"
-        state["pending_slot"] = None
-
-        return reply(session_id, state, format_runbook(rb))
-
-    # 7) LLM decision
-    d = decide_with_candidates(user_input, state, meta_candidates)
-
-    if d.get("action") == "search":
-        idx = d.get("selected_index", 1)
-        try:
-            idx = int(idx) - 1
-        except Exception:
-            idx = 0
-
-        if idx < 0 or idx >= len(full_candidates):
-            idx = 0
-
-        rb = full_candidates[idx]
-
-        remember_success(state, effective_query, rb)
-        state["mode"] = "idle"
-        state["pending_slot"] = None
-
-        return reply(session_id, state, format_runbook(rb))
-
-    # 8) ask_more
-    next_slot = d.get("next_slot") or "issue_type"
-
-    # 🔥 CLARIFY: luôn ưu tiên LLM riêng, KHÔNG dùng message chung chung từ decision
-    msg = generate_clarify_message_llm(user_input, state, next_slot)
-
-    # fallback nếu LLM clarify fail
-    if not msg or not msg.strip():
-        msg = generate_clarify_message_fallback(next_slot, user_input)
-
-    # safety net cuối cùng
-    if not msg:
-        msg = "Bạn có thể mô tả rõ hơn vấn đề bạn đang gặp không?"
-
-    start_clarify(state, user_input, next_slot)
-
-    return reply(session_id, state, msg)
-"""
-
-def run_agent(session_id, user_input):
-    state = get_session(session_id)
-    ensure_state(state)
-
-    # append user message
-    state["history"].append({"role": "user", "text": user_input})
-
-    # 0) semantic cache
+    # 2.2) semantic cache
     cached = check_semantic_cache(user_input)
     if cached:
         print("⚡ SEMANTIC CACHE HIT")
+        remember_success(state, user_input, cached)
+        state["last_result_status"] = "cache_returned"
+        state["last_action"] = "search"
         return reply(
             session_id,
             state,
             "✅ (từ semantic cache)\n\n" + format_runbook(cached)
         )
-
-    # 0.5) resolve service early
+    
+    # 2.3) resolve service early
     service_info = resolve_service(user_input, state)
     if service_info:
         state["resolved_service"] = service_info["service"]
@@ -786,57 +966,27 @@ def run_agent(session_id, user_input):
             f"strong={service_info['is_strong']})"
         )
 
-        # nếu resolver đủ mạnh thì fill luôn service slot
-        if service_info.get("is_strong") and not state["slots"].get("service"):
-            state["slots"]["service"] = service_info["service"]
+        # QUAN TRỌNG:
+        # Không fill state["slots"]["service"] ở đây nữa.
+        # resolved_service chỉ là guess.
+        # slots["service"] chỉ được fill sau khi user confirm.
+        #
+        # if service_info.get("is_strong") and not state["slots"].get("service"):
+        #     state["slots"]["service"] = service_info["service"]
 
-    # 1) failure handling
-    if is_failure(user_input, state):
-        return handle_retry(session_id, state)
 
-    # 2) clarifying block
-    if state["mode"] == "clarifying":
-        fill_pending_slot(state, user_input)
-        state["clarify_turns"] += 1
 
-        if state["clarify_turns"] > MAX_CLARIFY_TURNS:
-            reset_session(session_id)
-            return "❌ Tôi chưa đủ thông tin. Bạn vui lòng đặt lại câu hỏi rõ hơn."
+    # 2.4) first search
+    effective_query = user_input
+    state["semantic_query"] = effective_query
 
-        # nếu resolver đã biết service mà slot service chưa có, tự fill luôn
-        if not state["slots"].get("service") and state.get("resolved_service"):
-            state["slots"]["service"] = state["resolved_service"]
-
-        effective_query = build_semantic_query(state)
-    else:
-        effective_query = user_input
-
-    # 3) save current semantic query
-    if state["mode"] == "clarifying" or not state.get("semantic_query"):
-        state["semantic_query"] = effective_query
-
-    # 4) retrieve candidates
-    full_candidates, meta_candidates = retrieve_candidates_meta(
+    full_candidates, meta_candidates = vector_store.retrieve_candidates(
         query=effective_query,
         state=state
     )
-
-    # 5) confidence gate: score quá thấp -> ask_more
-    # CHỈ áp dụng confidence gate khi KHÔNG đang clarify
-    if state["mode"] == "idle" and not is_candidate_confident(full_candidates):
-        print("⚠️ LOW CONFIDENCE (idle) → ASK MORE")
-
-        start_clarify(state, user_input, "issue_type")
-
-        # dùng LLM clarify riêng
-        msg = generate_clarify_message_llm(user_input, state, "issue_type")
-        if not msg:
-            msg = generate_clarify_message_fallback("issue_type", user_input)
-
-        return reply(session_id, state, msg)
-
-    # 6) strong match -> direct search
+    # 2.5) STRONG MATCH → RETURN NGAY
     match, idx = detect_strong_match_by_score(full_candidates)
+
     if match:
         rb = full_candidates[idx]
 
@@ -846,19 +996,14 @@ def run_agent(session_id, user_input):
 
         return reply(session_id, state, format_runbook(rb))
 
-    # 7) LLM decision
-    d = decide_with_candidates(user_input, state, meta_candidates)
+    # =====================================================
+    # 3) FIRST SEARCH DECISION
+    # =====================================================
+    # Query đầu tiên LUÔN được search.
+    # Nhưng chỉ trả runbook nếu strong match.
+    match, idx = detect_strong_match_by_score(full_candidates)
 
-    if d.get("action") == "search":
-        idx = d.get("selected_index", 1)
-        try:
-            idx = int(idx) - 1
-        except Exception:
-            idx = 0
-
-        if idx < 0 or idx >= len(full_candidates):
-            idx = 0
-
+    if match:
         rb = full_candidates[idx]
 
         remember_success(state, effective_query, rb)
@@ -867,18 +1012,20 @@ def run_agent(session_id, user_input):
 
         return reply(session_id, state, format_runbook(rb))
 
-    # 8) ask_more
-    next_slot = d.get("next_slot") or "issue_type"
+    # =====================================================
+    # 4) NOT STRONG → SERVICE CONFIRM
+    # =====================================================
+    print("⚠️ FIRST SEARCH NOT STRONG → SERVICE CONFIRM")
 
-    # Clarify: luôn ưu tiên LLM riêng, không dùng message generic từ decision
-    msg = generate_clarify_message_llm(user_input, state, next_slot)
+    start_clarify(state, user_input, "service")
 
-    if not msg or not msg.strip():
-        msg = generate_clarify_message_fallback(next_slot, user_input)
+    resolved = state.get("resolved_service")
 
-    if not msg:
-        msg = "Bạn có thể mô tả rõ hơn vấn đề bạn đang gặp không?"
-
-    start_clarify(state, user_input, next_slot)
+    if resolved:
+        msg = f"Tôi hiểu bạn đang gặp vấn đề trên hệ thống {resolved}. Đúng không?"
+    else:
+        msg = generate_clarify_message_fallback("service", user_input)
 
     return reply(session_id, state, msg)
+
+

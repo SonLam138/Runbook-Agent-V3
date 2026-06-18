@@ -3,3 +3,19 @@ cách chạy:
 streamlit run ui.py
 
 pip install --no-index --find-links=./offline_pkgs streamlit
+
+chuyển sang chroma:
+- cài chroma
+- thêm class ChromaStore(VectorStore): đã thêm vào vector_store.py
+- tạo load_chroma.py : đã tạo trong app
+- sửa trong agent.py :
+  + from app.vector_store import ChromaStore
+  + vector_store = FaissStore(
+     search_func=search_RB_topk,
+     retrieve_func=retrieve_candidates_meta
+     )
+
+    --> vector_store = ChromaStore(
+     search_func=search_RB_topk,
+     retrieve_func=retrieve_candidates_meta
+     )
