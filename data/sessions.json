@@ -2460,5 +2460,293 @@
     ],
     "last_action": "retry",
     "resolved_service": "Active Directory"
+  },
+  "9e474b29-d2d4-427e-8362-e2e29c3457da": {
+    "mode": "idle",
+    "original_query": "lỗi mailbox",
+    "clarify_turns": 5,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": null,
+      "service": "Active Directory",
+      "error_message": "password incorrect quên mật khẩu"
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "lỗi mailbox"
+      },
+      {
+        "role": "assistant",
+        "text": "Tôi hiểu bạn đang gặp vấn đề trên hệ thống Exchange. Đúng không?"
+      },
+      {
+        "role": "user",
+        "text": "không, active directory"
+      },
+      {
+        "role": "assistant",
+        "text": "Chúng tôi cần thêm chút thông tin để tìm đúng runbook cho bạn. Bạn vui lòng mô tả yêu cầu/vấn đề có chứa các từ khóa liên quan.\n\n                Ví dụ:\n                - Lỗi mailbox --> 1 số từ khóa : không đăng nhập được/lỗi gửi mail/dung lượng mailbox...\n                - Lỗi đăng nhập --> 1 số từ khóa : đăng nhập máy tính/đăng nhập ứng dụng A,B/MFA...\n                Từ khóa càng gần yêu cầu/vấn đề của bạn thì kết quả tìm kiếm sẽ càng chính xác."
+      },
+      {
+        "role": "user",
+        "text": "không truy cập được mailbox"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn có nhận được thông báo lỗi hoặc mã lỗi nào không? Nếu có, bạn hãy nhập lên đây để tôi có thể tìm kiếm chính xác hơn."
+      },
+      {
+        "role": "user",
+        "text": "password incorrect"
+      },
+      {
+        "role": "assistant",
+        "text": "\"Xin lỗi vì bạn gặp lỗi password incorrect. Có thể có thông báo hoặc mã lỗi cụ thể? Chúng tôi sẽ đơn giản hơn nhiều nếu bạn cho ta biết.\""
+      },
+      {
+        "role": "user",
+        "text": "quên mật khẩu"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: reset password\n🖥 Dịch vụ: Active Directory\n\n🔹 Điều kiện thực hiện:\n- Tài khoản enabled\n- Tài khoản không bị khóa\n\n🔹 Các bước thực hiện:\n1. Truy cập ADSS theo link : https://adss.pvcb.vn\n2. Chọn nút Quên mật khẩu\n3. Nhập code MFA và đặt lại mật khẩu mới\n\n🔹 Kiểm tra sau thực hiện:\n- Truy cập Microsoft login hoặc exchange online. Nhập mật khẩu mới"
+      }
+    ],
+    "semantic_query": "Active Directory password incorrect quên mật khẩu",
+    "last_runbook": {
+      "title": "reset password",
+      "service": "Active Directory",
+      "keyword": "Quên mật khẩu, đặt lại mật khẩu",
+      "description": "người dung quên mật khẩu hoặc hết hạn mật khẩu mà không đổi",
+      "precheck": [
+        "Tài khoản enabled",
+        "Tài khoản không bị khóa"
+      ],
+      "steps": [
+        "Truy cập ADSS theo link : https://adss.pvcb.vn",
+        "Chọn nút Quên mật khẩu",
+        "Nhập code MFA và đặt lại mật khẩu mới"
+      ],
+      "postcheck": [
+        "Truy cập Microsoft login hoặc exchange online. Nhập mật khẩu mới"
+      ],
+      "source_file": "D:\\Runbook\\RB_Reset password.docx",
+      "score": 0.6630298495292664
+    },
+    "tried_runbooks": [
+      "reset password"
+    ],
+    "last_result_status": "returned",
+    "semantic_cache": [
+      {
+        "semantic_query": "Active Directory password incorrect quên mật khẩu",
+        "runbook_title": "reset password",
+        "service": "Active Directory"
+      }
+    ],
+    "last_action": "search",
+    "resolved_service": "Active Directory"
+  },
+  "5a8bb5bc-5231-44fa-81ee-18005fc2cc29": {
+    "mode": "idle",
+    "original_query": "",
+    "clarify_turns": 0,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": null,
+      "service": null,
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "lỗi mailbox"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: enable remote mailbox\n🖥 Dịch vụ: Exchange\n\n🔹 Điều kiện thực hiện:\n- (không có)\n\n🔹 Các bước thực hiện:\n(không có)\n\n🔹 Kiểm tra sau thực hiện:\n- (không có)"
+      }
+    ],
+    "semantic_query": "lỗi mailbox",
+    "last_runbook": {
+      "description": "Người dung có license 365 nhưng mailbox ở on-prem",
+      "keyword": "remote mailbox, hòm mail 365",
+      "service": "Exchange",
+      "title": "enable remote mailbox",
+      "score": 0.5907006261759163,
+      "distance": 0.40929937382408366
+    },
+    "tried_runbooks": [
+      "enable remote mailbox"
+    ],
+    "last_result_status": "returned",
+    "semantic_cache": [
+      {
+        "semantic_query": "lỗi mailbox",
+        "runbook_title": "enable remote mailbox",
+        "service": "Exchange"
+      }
+    ],
+    "last_action": "search",
+    "resolved_service": "Exchange"
+  },
+  "ee6540a1-7abc-4c14-9612-34aea49a9610": {
+    "mode": "idle",
+    "original_query": "",
+    "clarify_turns": 0,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": null,
+      "service": null,
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "lỗi mailbox"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: enable remote mailbox\n🖥 Dịch vụ: Exchange\n\n🔹 Điều kiện thực hiện:\n- User phải có license 365\n\n🔹 Các bước thực hiện:\n1. Truy cập máy chủ exchange server\n2. Mở powershell thực hiện lệnh disabled mailbox\n3. Mở powershell thực hiện lệnh enable-remotemailbox\n\n🔹 Kiểm tra sau thực hiện:\n- Đăng nhập exchange online"
+      }
+    ],
+    "semantic_query": "lỗi mailbox",
+    "last_runbook": {
+      "title": "enable remote mailbox",
+      "service": "Exchange",
+      "keyword": "remote mailbox, hòm mail 365",
+      "description": "Người dung có license 365 nhưng mailbox ở on-prem",
+      "intents": [
+        "remote mailbox",
+        "hòm mail 365"
+      ],
+      "precheck": [
+        "User phải có license 365"
+      ],
+      "steps": [
+        "Truy cập máy chủ exchange server",
+        "Mở powershell thực hiện lệnh disabled mailbox",
+        "Mở powershell thực hiện lệnh enable-remotemailbox"
+      ],
+      "postcheck": [
+        "Đăng nhập exchange online"
+      ],
+      "source_file": "D:\\Runbook\\RB_enable remote mailbox.docx"
+    },
+    "tried_runbooks": [
+      "enable remote mailbox"
+    ],
+    "last_result_status": "returned",
+    "semantic_cache": [
+      {
+        "semantic_query": "lỗi mailbox",
+        "runbook_title": "enable remote mailbox",
+        "service": "Exchange"
+      }
+    ],
+    "last_action": "search",
+    "resolved_service": "Exchange"
+  },
+  "d0359596-e4fe-41e0-895b-d455c8cc973c": {
+    "mode": "idle",
+    "original_query": "",
+    "clarify_turns": 0,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": null,
+      "service": null,
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "đăng nhập mail lỗi"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: reset MFA\n🖥 Dịch vụ: Active Directory\n\n🔹 Điều kiện thực hiện:\n- Tài khoản enabled\n- Tài khoản không bị khóa\n\n🔹 Các bước thực hiện:\n1. Truy cập Entra, tìm tài khoản user\n2. Trong properties chọn Muilti Authenticator\n3. Chọn reset MFA\n\n🔹 Kiểm tra sau thực hiện:\n- (không có)"
+      },
+      {
+        "role": "user",
+        "text": "vẫn lỗi"
+      },
+      {
+        "role": "assistant",
+        "text": "⚠️ Tôi sẽ thử runbook khác phù hợp hơn:\n\nBạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: enable remote mailbox\n🖥 Dịch vụ: Exchange\n\n🔹 Điều kiện thực hiện:\n- (không có)\n\n🔹 Các bước thực hiện:\n(không có)\n\n🔹 Kiểm tra sau thực hiện:\n- (không có)"
+      }
+    ],
+    "semantic_query": "đăng nhập mail lỗi",
+    "last_runbook": {
+      "description": "Người dung có license 365 nhưng mailbox ở on-prem",
+      "keyword": "remote mailbox, hòm mail 365",
+      "service": "Exchange",
+      "title": "enable remote mailbox",
+      "score": 0.5360974266188828,
+      "distance": 0.4639025733811172
+    },
+    "tried_runbooks": [
+      "reset MFA",
+      "enable remote mailbox"
+    ],
+    "last_result_status": "retry_returned",
+    "semantic_cache": [
+      {
+        "semantic_query": "đăng nhập mail lỗi",
+        "runbook_title": "reset MFA",
+        "service": "Active Directory"
+      },
+      {
+        "semantic_query": "đăng nhập mail lỗi",
+        "runbook_title": "enable remote mailbox",
+        "service": "Exchange"
+      }
+    ],
+    "last_action": "retry",
+    "resolved_service": "Exchange"
+  },
+  "338cadb4-a9f1-4782-a6da-de35a0eb0d0e": {
+    "mode": "clarifying",
+    "original_query": "lỗi lòi mắt",
+    "clarify_turns": 3,
+    "pending_slot": "error_message",
+    "slots": {
+      "issue_type": null,
+      "service": "Exchange",
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "lỗi lòi mắt"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn đang thao tác trên hệ thống hoặc dịch vụ nào? Ví dụ: AD, Exchange, Windows?"
+      },
+      {
+        "role": "user",
+        "text": "Exchange"
+      },
+      {
+        "role": "assistant",
+        "text": "Chúng tôi cần thêm chút thông tin để tìm đúng runbook cho bạn. Bạn vui lòng mô tả yêu cầu/vấn đề có chứa các từ khóa liên quan.\n\n                Ví dụ:\n                - Lỗi mailbox --> 1 số từ khóa : không đăng nhập được/lỗi gửi mail/dung lượng mailbox...\n                - Lỗi đăng nhập --> 1 số từ khóa : đăng nhập máy tính/đăng nhập ứng dụng A,B/MFA...\n                Từ khóa càng gần yêu cầu/vấn đề của bạn thì kết quả tìm kiếm sẽ càng chính xác."
+      },
+      {
+        "role": "user",
+        "text": "đăng nhập được 2 mailbox"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn có nhận được thông báo lỗi hoặc mã lỗi nào không? Nếu có, bạn hãy nhập lên đây để tôi có thể tìm kiếm chính xác hơn."
+      }
+    ],
+    "semantic_query": "lỗi lòi mắt",
+    "last_runbook": null,
+    "tried_runbooks": [],
+    "last_result_status": null,
+    "semantic_cache": [],
+    "last_action": "ask_more",
+    "resolved_service": "Exchange"
   }
 }

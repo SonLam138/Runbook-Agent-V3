@@ -8,11 +8,12 @@ from pathlib import Path
 from app.service_resolver import resolve_service
 from app.llm import call_llm
 from app.session_store import get_session, update_session, reset_session
-from app.tool import retrieve_candidates_meta, search_RB_topk
-
+#from app.tool import retrieve_candidates_meta, search_RB_topk
+from app.vector_store import ChromaStore
 from app.load_model import embedding_model as CACHE_MODEL
 from app.load_knowledge import get_clarify_knowledge, get_decision_knowledge
-
+from app.vector_store import ChromaStore
+from app.load_chroma import load_chroma
 from app.issue_type_resolver import resolve_issue_type
 
 
@@ -55,11 +56,44 @@ NEGATIVE_HINTS = [
     "unable"
 ]
 
-# INIT VECTOR STORE
-vector_store = FaissStore(
-    search_func=search_RB_topk,
-    retrieve_func=retrieve_candidates_meta
-)
+
+with open("data/runbook_data.json", "r", encoding="utf-8") as f:
+    RUNBOOK_DATA = json.load(f)
+
+# build index lookup nhanh
+RUNBOOK_INDEX = {
+    rb["title"]: rb
+    for rb in RUNBOOK_DATA
+}
+
+
+chroma_collection = load_chroma()
+vector_store = ChromaStore(collection=chroma_collection)
+
+
+
+print("✅ VECTOR STORE BACKEND:", type(vector_store).__name__)
+print("✅ CHROMA COLLECTION LOADED:", chroma_collection is not None)
+
+# =====================================================
+# ENRICH RUNBOOK FROM JSON
+# =====================================================
+def enrich_runbook_from_json(rb):
+    """
+    Nhận rb từ Chroma (metadata),
+    trả lại full runbook từ JSON
+    """
+
+    title = rb.get("title")
+
+    full_rb = RUNBOOK_INDEX.get(title)
+
+    if not full_rb:
+        print(f"⚠️ Không tìm thấy runbook trong JSON: {title}")
+        return rb  # fallback
+
+    return full_rb
+
 
 
 # =====================================================
@@ -553,19 +587,45 @@ def is_candidate_confident(full_candidates, min_score=MIN_CANDIDATE_CONFIDENCE):
     return top_score >= min_score
 
 
-def detect_strong_match_by_score(full_candidates, threshold=STRONG_MATCH_THRESHOLD):
+def detect_strong_match_by_score(full_candidates):
     """
-    If top-1 FAISS score is strong enough -> search directly without LLM decision
+    Strong match decision for semantic retrieval.
+
+    Contract:
+    - full_candidates đã được sort score giảm dần.
+    - mỗi candidate có field "score".
+    - return: (match: bool, idx: int | None)
+
+    Logic:
+    - Không chỉ dùng hard threshold.
+    - Kết hợp best_score + margin giữa top1 và top2.
     """
+
     if not full_candidates:
         return False, None
 
-    top = full_candidates[0]
-    score = top.get("score", 0)
+    best_score = full_candidates[0].get("score", 0.0)
 
-    print(f"🔎 TOP SCORE: {score:.4f}")
+    # Nếu chỉ có 1 candidate, dùng ngưỡng an toàn cao hơn.
+    if len(full_candidates) == 1:
+        if best_score >= 0.60:
+            return True, 0
+        return False, None
 
-    if score >= threshold:
+    second_score = full_candidates[1].get("score", 0.0)
+    margin = best_score - second_score
+
+    print(
+        f"🧠 STRONG MATCH CHECK: "
+        f"best={best_score:.4f}, second={second_score:.4f}, margin={margin:.4f}"
+    )
+
+    # Case 1: match rõ
+    if best_score >= 0.60 and margin >= 0.03:
+        return True, 0
+
+    # Case 2: borderline nhưng top1 cách top2 đủ xa
+    if best_score >= 0.55 and margin >= 0.05:
         return True, 0
 
     return False, None
@@ -804,7 +864,7 @@ def run_agent(session_id, user_input):
                 match, idx = detect_strong_match_by_score(full_candidates)
 
                 if match:
-                    rb = full_candidates[idx]
+                    rb = enrich_runbook_from_json(full_candidates[idx])
 
                     remember_success(state, query, rb)
                     state["mode"] = "idle"
@@ -900,7 +960,7 @@ def run_agent(session_id, user_input):
             match, idx = detect_strong_match_by_score(full_candidates)
 
             if match:
-                rb = full_candidates[idx]
+                rb = enrich_runbook_from_json(full_candidates[idx])
 
                 remember_success(state, query, rb)
                 state["mode"] = "idle"
@@ -988,7 +1048,7 @@ def run_agent(session_id, user_input):
     match, idx = detect_strong_match_by_score(full_candidates)
 
     if match:
-        rb = full_candidates[idx]
+        rb = enrich_runbook_from_json(full_candidates[idx])
 
         remember_success(state, effective_query, rb)
         state["mode"] = "idle"
@@ -1004,7 +1064,7 @@ def run_agent(session_id, user_input):
     match, idx = detect_strong_match_by_score(full_candidates)
 
     if match:
-        rb = full_candidates[idx]
+        rb = enrich_runbook_from_json(full_candidates[idx])
 
         remember_success(state, effective_query, rb)
         state["mode"] = "idle"

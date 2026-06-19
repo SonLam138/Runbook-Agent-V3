@@ -34,27 +34,80 @@ def search_RB(query, result_threshold=RESULT_THRESHOLD):
 def retrieve_candidates_meta(query, state, topk=3):
     """
     Candidate retrieval cho decision layer:
-    - search bằng FAISS
-    - nhưng chỉ return metadata cho LLM decide
-    - vẫn giữ full_candidates để khi LLM chọn xong thì return luôn
+    - dùng ChromaDB
+    - return full_candidates + meta_candidates (giữ nguyên contract cũ)
     """
-    exclude_titles = state.get("tried_runbooks", [])
 
-    full_candidates = search_RB_topk(
-        query=query,
-        exclude_titles=exclude_titles,
-        topk=topk
+    exclude_titles = state.get("tried_runbooks", [])
+"""
+#sửa khi thay faiss bằng ChromaDB
+    # ✅ CHROMA QUERY
+    results = chroma_collection.query(
+        query_texts=[query],
+        n_results=topk
     )
 
+    docs = results.get("documents", [[]])[0]
+    metadatas = results.get("metadatas", [[]])[0]
+    distances = results.get("distances", [[]])[0]
+
+    full_candidates = []
     meta_candidates = []
-    for i, rb in enumerate(full_candidates, start=1):
+
+    for i in range(len(docs)):
+        distance = distances[i]
+        score = 1 - distance   # ✅ bắt buộc
+
+        meta = metadatas[i]
+
+        title = meta.get("title", "")
+
+        # ✅ exclude những cái đã thử
+        if title in exclude_titles:
+            continue
+
+        rb = {
+            "title": title,
+            "service": meta.get("service", ""),
+            "keyword": meta.get("keyword", ""),
+            "description": meta.get("description", ""),
+            "steps": meta.get("steps", ""),
+            "score": score
+        }
+
+        full_candidates.append(rb)
+
         meta_candidates.append({
-            "idx": i,
-            "title": rb.get("title", ""),
-            "service": rb.get("service", ""),
-            "keyword": rb.get("keyword", ""),
-            "description": rb.get("description", ""),
-            "score": rb.get("score", 0.0)
+            "idx": len(full_candidates),
+            "title": title,
+            "service": rb["service"],
+            "keyword": rb["keyword"],
+            "description": rb["description"],
+            "score": score
         })
 
+    # ✅ SORT
+    full_candidates = sorted(full_candidates, key=lambda x: x["score"], reverse=True)
+    meta_candidates = sorted(meta_candidates, key=lambda x: x["score"], reverse=True)
+
     return full_candidates, meta_candidates
+"""
+def strong_match(full_candidates):
+    if not full_candidates:
+        return False
+
+    best_score = full_candidates[0]["score"]
+
+    if len(full_candidates) == 1:
+        return best_score >= 0.60
+
+    second_score = full_candidates[1]["score"]
+    margin = best_score - second_score
+
+    if best_score >= 0.60 and margin >= 0.03:
+        return True
+
+    if best_score >= 0.55 and margin >= 0.05:
+        return True
+
+    return False
