@@ -2748,5 +2748,134 @@
     "semantic_cache": [],
     "last_action": "ask_more",
     "resolved_service": "Exchange"
+  },
+  "f3bd5f67-ee23-4af0-b077-59e7e2ab6cfc": {
+    "mode": "idle",
+    "original_query": "lỗi lòi mắt",
+    "clarify_turns": 3,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": "Reset MFA",
+      "service": "Active Directory",
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "lỗi lòi mắt"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn đang thao tác trên hệ thống hoặc dịch vụ nào? Ví dụ: AD, Exchange, Windows?"
+      },
+      {
+        "role": "user",
+        "text": "Active Directory"
+      },
+      {
+        "role": "assistant",
+        "text": "Chúng tôi cần thêm chút thông tin để tìm đúng runbook cho bạn. Bạn vui lòng mô tả yêu cầu/vấn đề có chứa các từ khóa liên quan.\n\n                Ví dụ:\n                - Lỗi mailbox --> 1 số từ khóa : không đăng nhập được/lỗi gửi mail/dung lượng mailbox...\n                - Lỗi đăng nhập --> 1 số từ khóa : đăng nhập máy tính/đăng nhập ứng dụng A,B/MFA...\n                Từ khóa càng gần yêu cầu/vấn đề của bạn thì kết quả tìm kiếm sẽ càng chính xác."
+      },
+      {
+        "role": "user",
+        "text": "Đổi điện thoại"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: reset MFA\n🖥 Dịch vụ: Active Directory\n\n🔹 Điều kiện thực hiện:\n- Tài khoản enabled\n- Tài khoản không bị khóa\n\n🔹 Các bước thực hiện:\n1. Truy cập Entra, tìm tài khoản user\n2. Trong properties chọn Muilti Authenticator\n3. Chọn reset MFA\n\n🔹 Kiểm tra sau thực hiện:\n- (không có)"
+      },
+      {
+        "role": "user",
+        "text": "vẫn lỗi"
+      },
+      {
+        "role": "assistant",
+        "text": "⚠️ Tôi sẽ thử runbook khác phù hợp hơn:\n\nBạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: reset password\n🖥 Dịch vụ: Active Directory\n\n🔹 Điều kiện thực hiện:\n- (không có)\n\n🔹 Các bước thực hiện:\n(không có)\n\n🔹 Kiểm tra sau thực hiện:\n- (không có)"
+      }
+    ],
+    "semantic_query": "Active Directory Reset MFA",
+    "last_runbook": {
+      "description": "người dung quên mật khẩu hoặc hết hạn mật khẩu mà không đổi",
+      "keyword": "Quên mật khẩu, đặt lại mật khẩu",
+      "service": "Active Directory",
+      "title": "reset password",
+      "score": 0.570193599981171,
+      "distance": 0.42980640001882897
+    },
+    "tried_runbooks": [
+      "reset MFA",
+      "reset password"
+    ],
+    "last_result_status": "retry_returned",
+    "semantic_cache": [
+      {
+        "semantic_query": "Active Directory Reset MFA",
+        "runbook_title": "reset MFA",
+        "service": "Active Directory"
+      },
+      {
+        "semantic_query": "Active Directory Reset MFA",
+        "runbook_title": "reset password",
+        "service": "Active Directory"
+      }
+    ],
+    "last_action": "retry",
+    "resolved_service": "Active Directory"
+  },
+  "4daadcfa-fb1f-49bc-94e5-c8c2a12f6f60": {
+    "mode": "idle",
+    "original_query": "",
+    "clarify_turns": 0,
+    "pending_slot": null,
+    "slots": {
+      "issue_type": null,
+      "service": null,
+      "error_message": null
+    },
+    "history": [
+      {
+        "role": "user",
+        "text": "lại lỗi rồi"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n📘 Tiêu đề: reset MFA\n🖥 Dịch vụ: Active Directory\n\n🔹 Điều kiện thực hiện:\n- Tài khoản enabled\n- Tài khoản không bị khóa\n\n🔹 Các bước thực hiện:\n1. Truy cập Entra, tìm tài khoản user\n2. Trong properties chọn Muilti Authenticator\n3. Chọn reset MFA\n\n🔹 Kiểm tra sau thực hiện:\n- (không có)"
+      }
+    ],
+    "semantic_query": "lại lỗi rồi",
+    "last_runbook": {
+      "title": "reset MFA",
+      "service": "Active Directory",
+      "keyword": "Lỗi MFA, reset MFA",
+      "description": "Người dùng bị lỗi đăng nhập, đã qua bước nhập mật khẩu nhưng không gửi thông báo MFA qua điện thoại",
+      "intents": [
+        "Lỗi MFA",
+        "reset MFA",
+        "người dùng bị lỗi đăng nhập"
+      ],
+      "precheck": [
+        "Tài khoản enabled",
+        "Tài khoản không bị khóa"
+      ],
+      "steps": [
+        "Truy cập Entra, tìm tài khoản user",
+        "Trong properties chọn Muilti Authenticator",
+        "Chọn reset MFA"
+      ],
+      "postcheck": [],
+      "source_file": "D:\\Runbook\\RB_Reset MFA.docx"
+    },
+    "tried_runbooks": [
+      "reset MFA"
+    ],
+    "last_result_status": "returned",
+    "semantic_cache": [
+      {
+        "semantic_query": "lại lỗi rồi",
+        "runbook_title": "reset MFA",
+        "service": "Active Directory"
+      }
+    ],
+    "last_action": "search"
   }
 }

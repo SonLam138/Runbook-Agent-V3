@@ -4,3 +4,4 @@
 	venv/
 	sessions.json
 	data/
+	chroma_db/

@@ -911,6 +911,14 @@ def run_agent(session_id, user_input):
 
             # Lấy thông tin lỗi user vừa nhập
             new_error_msg = user_input.strip()
+            old_error_msg = state["slots"].get("error_message")
+
+            if old_error_msg:
+                combined_error_msg = f"{old_error_msg} {new_error_msg}".strip()
+            else:
+                combined_error_msg = new_error_msg
+
+            state["slots"]["error_message"] = combined_error_msg
             # 🔥 BACKFILL ISSUE_TYPE từ error_message nếu chưa có
             service = state["slots"].get("service") or state.get("resolved_service")
 
@@ -924,14 +932,7 @@ def run_agent(session_id, user_input):
 
             # Nếu trước đó đã có error_message thì cộng dồn thêm,
             # vì user có thể bổ sung thông tin qua nhiều lượt clarify.
-            old_error_msg = state["slots"].get("error_message")
 
-            if old_error_msg:
-                combined_error_msg = f"{old_error_msg} {new_error_msg}".strip()
-            else:
-                combined_error_msg = new_error_msg
-
-            state["slots"]["error_message"] = combined_error_msg
 
             # Build query từ đủ 3 slot:
             # service + issue_type + error_message
