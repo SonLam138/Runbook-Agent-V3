@@ -19,7 +19,7 @@
     "postcheck": [
       "Đăng nhập exchange online"
     ],
-    "source_file": "D:\\Runbook\\RB_enable remote mailbox.docx"
+    "source_file": "D:\\runbook\\RB_enable remote mailbox.docx"
   },
   {
     "title": "reset MFA",
@@ -41,19 +41,19 @@
       "Chọn reset MFA"
     ],
     "postcheck": [],
-    "source_file": "D:\\Runbook\\RB_Reset MFA.docx"
+    "source_file": "D:\\runbook\\RB_Reset MFA.docx"
   },
   {
     "title": "reset password",
     "service": "Active Directory",
-    "keyword": "Quên mật khẩu, đặt lại mật khẩu",
-    "description": "người dung quên mật khẩu hoặc hết hạn mật khẩu mà không đổi",
+    "keyword": "Quên mật khẩu, đặt lại mật khẩu, forgot password, mật khẩu mới",
+    "description": "người dùng quên mật khẩu hoặc hết hạn mật khẩu mà không đổi, muốn đổi mật khẩu mới",
     "intents": [
       "Quên mật khẩu",
       "đặt lại mật khẩu",
-      "người dung quên mật khẩu",
-      "hết hạn mật khẩu mà không đổi",
-      "mật khẩu hết hạn"
+      "forgot password",
+      "mật khẩu mới",
+      "người dùng quên mật khẩu"
     ],
     "precheck": [
       "Tài khoản enabled",
@@ -67,7 +67,7 @@
     "postcheck": [
       "Truy cập Microsoft login hoặc exchange online. Nhập mật khẩu mới"
     ],
-    "source_file": "D:\\Runbook\\RB_Reset password.docx"
+    "source_file": "D:\\runbook\\RB_Reset password.docx"
   },
   {
     "title": "Tạo tài khoản mới",
@@ -90,6 +90,6 @@
     "postcheck": [
       "Đăng nhập máy tính bằng tài khoản mới"
     ],
-    "source_file": "D:\\Runbook\\RB_Tạo tài khoản mới.docx"
+    "source_file": "D:\\runbook\\RB_Tạo tài khoản mới.docx"
   }
 ]

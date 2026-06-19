@@ -12,8 +12,8 @@ from app.session_store import get_session, update_session, reset_session
 from app.vector_store import ChromaStore
 from app.load_model import embedding_model as CACHE_MODEL
 from app.load_knowledge import get_clarify_knowledge, get_decision_knowledge
-from app.vector_store import ChromaStore
-from app.load_chroma import load_chroma
+#from app.vector_store import ChromaStore
+#from app.load_chroma import load_chroma
 from app.issue_type_resolver import resolve_issue_type
 
 
@@ -67,13 +67,13 @@ RUNBOOK_INDEX = {
 }
 
 
-chroma_collection = load_chroma()
-vector_store = ChromaStore(collection=chroma_collection)
+#chroma_collection = load_chroma()
+#vector_store = ChromaStore(collection=chroma_collection)
 
 
 
-print("✅ VECTOR STORE BACKEND:", type(vector_store).__name__)
-print("✅ CHROMA COLLECTION LOADED:", chroma_collection is not None)
+#print("✅ VECTOR STORE BACKEND:", type(vector_store).__name__)
+#print("✅ CHROMA COLLECTION LOADED:", chroma_collection is not None)
 
 # =====================================================
 # ENRICH RUNBOOK FROM JSON
@@ -275,7 +275,9 @@ def format_runbook(rb, prefix=None):
 
     blocks.append(f"""
 Bạn vui lòng thử làm theo hướng dẫn sau:
+
 📘 Tiêu đề: {rb.get('title','')}
+
 🖥 Dịch vụ: {rb.get('service','')}
 
 🔹 Điều kiện thực hiện:
@@ -699,7 +701,7 @@ Trả JSON:
 # =====================================================
 # FAILURE RETRY
 # =====================================================
-def handle_retry(session_id, state):
+def handle_retry(session_id, state, vector_store):
     """
     Khi user phản hồi runbook trước chưa đúng:
     - dùng lại semantic_query gần nhất
@@ -755,7 +757,7 @@ def handle_retry(session_id, state):
 # MAIN
 # =====================================================
 
-def run_agent(session_id, user_input):
+def run_agent(session_id, user_input, vector_store):
     state = get_session(session_id)
     ensure_state(state)
 
@@ -1001,8 +1003,8 @@ def run_agent(session_id, user_input):
     # Từ đây trở xuống chỉ chạy khi state["mode"] != "clarifying"
 
     # 2.1) failure handling
-    if is_failure(user_input, state):
-        return handle_retry(session_id, state)
+    if is_failure(user_input, state, ):
+        return handle_retry(session_id, state, vector_store)
 
     # 2.2) semantic cache
     cached = check_semantic_cache(user_input)

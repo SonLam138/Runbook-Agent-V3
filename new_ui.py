@@ -1,12 +1,22 @@
 import streamlit as st
 import uuid
 
+from app.load_chroma import load_chroma
+from app.vector_store import ChromaStore
+
 from app.agent import run_agent, save_feedback
 from app.session_store import reset_session
 
 st.set_page_config(layout="wide")
 st.title("🤖 IT Runbook Agent")
 
+
+@st.cache_resource
+def get_vector_store():
+    chroma_collection = load_chroma()
+    return ChromaStore(collection=chroma_collection)
+
+VECTOR_STORE = get_vector_store()
 # ====================
 # INIT
 # ====================
@@ -113,7 +123,7 @@ if st.button("📨 Gửi") and user_input.strip():
     messages.append({"role": "user", "text": user_input})
 
     with st.spinner("🤖 Agent đang tìm kiếm runbook..."):
-        answer = run_agent(SESSION_ID, user_input)
+        answer = run_agent(SESSION_ID, user_input, VECTOR_STORE)
 
     # detect nếu là runbook (simple heuristic)
     answer = answer or ""

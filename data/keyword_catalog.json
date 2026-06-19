@@ -1,71 +1,75 @@
-{
-  "exchange": [
-    {
-      "keyword": "remote mailbox",
-      "patterns": ["Không nhận được mail từ 1 số người",
-       "không nhận được mail từ exchange",
-       "không nhận mail",
-       "đăng nhập được 2 mailbox"],
-      "synonyms": ["mail 365","license 365"],
-      "description": "Người dùng có license 365 nhưng mailbox ở on-prem/exchange. Có thể đăng nhập được cả 2 mailbox cùng lúc. Và khi đăng nhập ở mailbox này sẽ không thấy email ở mailbox còn lại, nghĩ là không nhận được email."
-    },
-    {
-      "keyword": "mail_send_fail",
-      "patterns": [
-        "không gửi mail",
-        "không send được mail",
-        "mail không đi",
-        "send mail fail"
-      ],
-      "synonyms": [
-        "email send error",
-        "mail sending issue"
-      ],
-      "description": "Không gửi được email"
-    }
-  ],
-
-  "Active Directory": [
-    {
-      "keyword": "Reset MFA",
-      "patterns": [
-        "Nhập mật khẩu xong nhưng không nhận được thông báo MFA",
-        "Không bật thông báo MFA trên điện thoại",
-        "Không bật MFA",
-        "Không hiện MFA",
-        "Mất điện thoại",
-        "Đổi điện thoại"
-      ],
-      "synonyms": [
-        "Đăng ký lại MFA",
-        "Rest xác thực Entra"
-      ],
-      "description": "Người dùng thay đổi điện thoại khác, hoặc mất điện thoại cũ, khi dùng điện thoại mới thì không nhận được thông báo MFA. Hoặc người dùng không bật thông báo MFA trên điện thoại."
-    },
-    {
-     "keyword": "quên mật khẩu",
-      "patterns": [
-        "sai mật khẩu",
-        "sai password",
-        "incorrect password"
-      ],
-      "synonyms": [
-        "Đặt lại mật khẩu",
-        "Reset password"
-      ],
-      "description":  "Người dùng đăng nhập máy tính hoặc Entra bị lỗi thông báo incorrect password, hoặc quên mật khẩu, hoặc hết hạn mật khẩu mà không đổi."
-    },
-    {
-      "keyword": "Tạo tài khoản mới",
-      "patterns": [
-        "Nhân viên mới",
-        "Mới vào làm việc"
-      ],
-      "synonyms": [
-        "Create new account",
-        "Create new user"
-      ],
-      "description":  "Tạo tài khoản mới cho nhân viên mới hoặc dịch vụ mới."
-    }
-  ]
-}
+[
+  {
+    "title": "enable remote mailbox",
+    "service": "Exchange",
+    "keyword": "remote mailbox, hòm mail 365",
+    "patterns": [
+      "Hòm thư cần phải có dành cho 365",
+      "Chỉ hỗ trợ mailbox 365",
+      "Mailbox hiện tại ở on-prem, cần chuyển sang 365"
+    ],
+    "synonyms": [
+      "Hòm thư đã bị khóa",
+      "Chỉ hỗ trợ mailbox đang sử dụng 365",
+      "Mailbox ở on-prem, cần chuyển sang Exchange Online"
+    ],
+    "source_hash": "b5f41535ce8025fd1143707730d457e98ae5c6baff5c745d21520916d772d807"
+  },
+  {
+    "title": "reset MFA",
+    "service": "Active Directory",
+    "keyword": "Lỗi MFA, reset MFA",
+    "patterns": [
+      "Lỗi khi nhận thông báo MFA trên điện thoại",
+      "Tài khoản Active Directory bị lỗi trong giai đoạn xác thực MFA",
+      "Có vấn đề với quá trình reset MFA cho tài khoản Active Directory",
+      "Tài khoản của tôi không nhận thông báo MFA được",
+      "Xảy ra lỗi trong quá trình reset mã xác thực cho tài khoản Active Directory"
+    ],
+    "synonyms": [
+      "Lỗi MFA",
+      "reset Multifactor Authentication",
+      "không nhận thông báo MFA"
+    ],
+    "source_hash": "a1511960dc4c17038277961f1e3c64caf585a6a3b3bf623cc784a798f5e6335d"
+  },
+  {
+    "title": "reset password",
+    "service": "Active Directory",
+    "keyword": "Quên mật khẩu, đặt lại mật khẩu, forgot password, mật khẩu mới",
+    "patterns": [
+      "Quên mật khẩu Active Directory",
+      "Mật khẩu của tài khoản quên",
+      "Thay đổi mật khẩu Active Directory",
+      "Hết hạn mật khẩu Active Directory",
+      "Tạo mật khẩu mới cho tài khoản trong Active Directory"
+    ],
+    "synonyms": [
+      "reset password AD",
+      "forgot password in Active Directory",
+      "change password on Active Directory",
+      "expired password Active Directory",
+      "new password for account in Active Directory"
+    ],
+    "source_hash": "94673db7cddffef0f22d3a7c47d3c595a9786fd59308dcafb5fdd50ec0174d81"
+  },
+  {
+    "title": "Tạo tài khoản mới",
+    "service": "Active Directory",
+    "keyword": "tạo tài khoản, create user",
+    "patterns": [
+      "Tạo tài khoản mới trên Active Directory",
+      "Thêm mới user trong domain",
+      "Tạo tài khoản mới domain",
+      "Lập tài khoản mới Active Directory",
+      "Sử dụng ADMD để tạo tài khoản mới"
+    ],
+    "synonyms": [
+      "Thêm user",
+      "Create account",
+      "Tạo tài khoản mới AD",
+      "Lập tài khoản Active Directory"
+    ],
+    "source_hash": "6b8a9d463f41e1ebef0b374361a95498bdbb767fe81314ecc66e5b925f8fb3de"
+  }
+]
