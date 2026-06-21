@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 from copy import deepcopy
+from app.semantic_cache import rebuild_runtime_semantic_cache_from_sessions
 
 # =====================================================
 # CONFIG
@@ -45,6 +46,7 @@ DEFAULT_STATE = {
     "last_action": None
 }
 
+
 # =====================================================
 # LOAD / SAVE
 # =====================================================
@@ -54,7 +56,13 @@ def load_sessions():
 
     try:
         with open(SESSION_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
+            sessions = json.load(f)
+
+        # 🔥 NEW: rebuild semantic cache runtime
+        rebuild_runtime_semantic_cache_from_sessions(sessions)
+
+        return sessions
+
     except Exception as e:
         print("⚠️ load_sessions error:", e)
         return {}

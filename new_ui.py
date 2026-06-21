@@ -4,7 +4,8 @@ import uuid
 from app.load_chroma import load_chroma
 from app.vector_store import ChromaStore
 
-from app.agent import run_agent, save_feedback
+from app.agent import run_agent
+from app.semantic_cache import save_feedback
 from app.session_store import reset_session
 
 st.set_page_config(layout="wide")

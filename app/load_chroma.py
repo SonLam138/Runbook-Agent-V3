@@ -60,19 +60,25 @@ def build_metadata(rb):
         "description": rb.get("description", "")
     }
 
-from chromadb.utils import embedding_functions
-
 def load_chroma(collection_name="runbooks", db_path="./chroma_db"):
-
-    embedding_func = embedding_functions.SentenceTransformerEmbeddingFunction(
-        model_name="BAAI/bge-m3"
-    )
-
+    """
+    Dùng embedding_model đã load sẵn từ app.load_model
+    để tránh load model 2 lần
+    """
+    # Tạo custom embedding function dùng model đã load
+    class PreLoadedEmbeddingFunction:
+        def __call__(self, input):
+            # Chroma expects parameter named 'input', not 'texts'
+            return embedding_model.encode(input, normalize_embeddings=True).tolist()
+        
+        def __repr__(self):
+            return "PreLoadedEmbeddingFunction"
+    
     client = chromadb.PersistentClient(path=db_path)
 
     collection = client.get_or_create_collection(
         name=collection_name,
-        embedding_function=embedding_func
+        embedding_function=PreLoadedEmbeddingFunction()
     )
 
     return collection
