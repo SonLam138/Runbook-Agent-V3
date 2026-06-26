@@ -1,0 +1,1454 @@
+{
+  "0.01-T24": {
+    "service_name": "T24",
+    "description": "Dịch vụ quản lý các giao dịch nghiệp vụ Ngân hàng lõi",
+    "technical_services": [
+      "T24",
+      "0.01-T24",
+      "core banking"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "0.02-Smartvista": {
+    "service_name": "Smartvista",
+    "description": "Dịch vụ quản lý các giao dịch nghiệp vụ Core Thẻ",
+    "technical_services": [
+      "Smartvista",
+      "0.02-Smartvista",
+      "core thẻ"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "0.03-FCC": {
+    "service_name": "FCC",
+    "description": "Dịch vụ quản lý các giao dịch nghiệp vụ Ngân hàng lõi",
+    "technical_services": [
+      "FCC",
+      "0.03-FCC"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "0.04-MicroBank": {
+    "service_name": "MicroBank",
+    "description": "Dịch vụ quản lý các giao dịch nghiệp vụ Ngân hàng lõi",
+    "technical_services": [
+      "MicroBank",
+      "0.04-MicroBank"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.03-SMS Banking": {
+    "service_name": "SMS Banking",
+    "description": "Dịch vụ SMS Banking",
+    "technical_services": [
+      "SMS Banking",
+      "1.03-SMS Banking",
+      "sms"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.04-Website Public": {
+    "service_name": "Website Public",
+    "description": "Dịch vụ Website Public",
+    "technical_services": [
+      "Website Public",
+      "1.04-Website Public"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.05-PVTax": {
+    "service_name": "PVTax",
+    "description": "Dịch vụ nộp ngân sách nhà nước",
+    "technical_services": [
+      "PVTax",
+      "1.05-PVTax"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.06-Ecommerce": {
+    "service_name": "Ecommerce",
+    "description": "Dịch vụ thanh toán trực tuyến PV- Ecommerce",
+    "technical_services": [
+      "Ecommerce",
+      "1.06-Ecommerce"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.07-Ví điện tử": {
+    "service_name": "Ví điện tử",
+    "description": "Dịch vụ thanh toán điện tử qua MOMO, MOCA, ECPAY, SAMSUNGPAY",
+    "technical_services": [
+      "Ví điện tử",
+      "1.07-Ví điện tử"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.08-Smart Form": {
+    "service_name": "Smart Form",
+    "description": "Dịch vụ ngân hàng một cửa",
+    "technical_services": [
+      "Smart Form",
+      "1.08-Smart Form"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.09-Fee": {
+    "service_name": "Fee",
+    "description": "Dịch vụ quản lý phí tập trung",
+    "technical_services": [
+      "Fee",
+      "1.09-Fee"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.10-3DSercure": {
+    "service_name": "3DSercure",
+    "description": "Dịch vụ xác thực giao dịch Master Card",
+    "technical_services": [
+      "3DSercure",
+      "1.10-3DSercure",
+      "3ds",
+      "3d secure",
+      "master card"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.11-QRMerchant": {
+    "service_name": "QRMerchant",
+    "description": "Dịch vụ QR code",
+    "technical_services": [
+      "QRMerchant",
+      "1.11-QRMerchant"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.13-Hóa đơn điện tử": {
+    "service_name": "Hóa đơn điện tử",
+    "description": "Dịch vụ hóa đơn điện tử",
+    "technical_services": [
+      "Hóa đơn điện tử",
+      "1.13-Hóa đơn điện tử"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.16-Mobile Sale": {
+    "service_name": "Mobile Sale",
+    "description": "Mobile Sale",
+    "technical_services": [
+      "Mobile Sale",
+      "1.16-Mobile Sale"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.17-Dịch vụ chấp nhận thanh toán bằng VietQR (Napas)": {
+    "service_name": "Dịch vụ chấp nhận thanh toán bằng VietQR (Napas)",
+    "description": "AgenBanking",
+    "technical_services": [
+      "Dịch vụ chấp nhận thanh toán bằng VietQR (Napas)",
+      "1.17-Dịch vụ chấp nhận thanh toán bằng VietQR (Napas)",
+      "Napas"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.18-Dịch vụ chi hộ An Sinh Xã Hội": {
+    "service_name": "Dịch vụ chi hộ An Sinh Xã Hội",
+    "description": "AgenBanking",
+    "technical_services": [
+      "Dịch vụ chi hộ An Sinh Xã Hội",
+      "1.18-Dịch vụ chi hộ An Sinh Xã Hội"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.19-Dịch vụ liên kết tài khoản An Sinh Xã Hội qua ứng dụng VNeID": {
+    "service_name": "Dịch vụ liên kết tài khoản An Sinh Xã Hội qua ứng dụng VNeID",
+    "description": "AgenBanking",
+    "technical_services": [
+      "Dịch vụ liên kết tài khoản An Sinh Xã Hội qua ứng dụng VNeID",
+      "1.19-Dịch vụ liên kết tài khoản An Sinh Xã Hội qua ứng dụng VNeID"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.20-Dịch vụ thu hộ dịch vụ điện, học phí trên IB/MB/Quầy": {
+    "service_name": "Dịch vụ thu hộ dịch vụ điện, học phí trên IB/MB/Quầy",
+    "description": "AgenBanking",
+    "technical_services": [
+      "Dịch vụ thu hộ dịch vụ điện, học phí trên IB/MB/Quầy",
+      "1.20-Dịch vụ thu hộ dịch vụ điện, học phí trên IB/MB/Quầy",
+      "Dịch vụ thu hộ dịch vụ điện, học phí trên IB",
+      "MB",
+      "Quầy",
+      "Dịch vụ thu hộ dịch vụ điện",
+      "học phí trên IB/MB/Quầy"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.22-PVConnect": {
+    "service_name": "PVConnect",
+    "description": "Dịch vụ dành cho khách hàng cá nhân",
+    "technical_services": [
+      "PVConnect",
+      "1.22-PVConnect"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.23-PVConnectBiz": {
+    "service_name": "PVConnectBiz",
+    "description": "Dịch vụ IB/MB dành cho khách hàng doanh nghiệp",
+    "technical_services": [
+      "PVConnectBiz",
+      "1.23-PVConnectBiz"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.24-Open Banking": {
+    "service_name": "Open Banking",
+    "description": "Dịch vụ liên quan đến đối tác",
+    "technical_services": [
+      "Open Banking",
+      "1.24-Open Banking"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "1.25-Tax-Backend": {
+    "service_name": "Tax-Backend",
+    "description": "Tích hợp dịch vụ công quốc gia - Phân hệ Thuế cá nhân",
+    "technical_services": [
+      "Tax-Backend",
+      "1.25-Tax-Backend"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "2.01-Hệ thống Báo cáo quản trị hợp nhất (Baocaoquantri)": {
+    "service_name": "Hệ thống Báo cáo quản trị hợp nhất (Baocaoquantri)",
+    "description": "Dịch vụ khai thác các số liệu, các loại báo cáo phục vụ công tác quản trị điều hành và kinh doanh từ hệ thống core",
+    "technical_services": [
+      "Hệ thống Báo cáo quản trị hợp nhất (Baocaoquantri)",
+      "2.01-Hệ thống Báo cáo quản trị hợp nhất (Baocaoquantri)",
+      "Baocaoquantri"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "2.02-Hệ thống Báo cáo tuân thủ": {
+    "service_name": "Hệ thống Báo cáo tuân thủ",
+    "description": "Dịch vụ phần mềm cung cấp các báo cáo theo yêu cầu của NHNN",
+    "technical_services": [
+      "Hệ thống Báo cáo tuân thủ",
+      "2.02-Hệ thống Báo cáo tuân thủ"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "2.03-Hệ thống báo cáo FCC": {
+    "service_name": "Hệ thống báo cáo FCC",
+    "description": "Dịch vụ hỗ trợ các báo cung cấp nguồn dữ liệu FCC",
+    "technical_services": [
+      "Hệ thống báo cáo FCC",
+      "2.03-Hệ thống báo cáo FCC",
+      "fcc"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "2.04-Hệ thống Báo cáo hợp nhất FCC&MRB": {
+    "service_name": "Hệ thống Báo cáo hợp nhất FCC&MRB",
+    "description": "Dịch vụ khai thác các số liệu, các loại báo cáo từ hệ thống FCC & MRB",
+    "technical_services": [
+      "Hệ thống Báo cáo hợp nhất FCC&MRB",
+      "2.04-Hệ thống Báo cáo hợp nhất FCC&MRB",
+      "Hệ thống Báo cáo hợp nhất FCC",
+      "MRB",
+      "fcc"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "2.05-RM Assistant Bot": {
+    "service_name": "RM Assistant Bot",
+    "description": "Hệ thống giải đáp câu hỏi về các sản phẩm, dịch vụ của PVcomBank",
+    "technical_services": [
+      "RM Assistant Bot",
+      "2.05-RM Assistant Bot"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "2.06-Next Best Action": {
+    "service_name": "Next Best Action",
+    "description": "Dịch vụ đề xuất hành động tốt nhất tiếp theo với khách hàng",
+    "technical_services": [
+      "Next Best Action",
+      "2.06-Next Best Action"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "2.07-ETL dữ liệu": {
+    "service_name": "ETL dữ liệu",
+    "description": "Các dịch vụ tích hợp dữ liệu",
+    "technical_services": [
+      "ETL dữ liệu",
+      "2.07-ETL dữ liệu"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "2.08-BI Dashboard": {
+    "service_name": "BI Dashboard",
+    "description": "Dịch vụ trực quan hóa dữ liệu bằng Dashboard",
+    "technical_services": [
+      "BI Dashboard",
+      "2.08-BI Dashboard"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "2.09-BI Tool Upload": {
+    "service_name": "BI Tool Upload",
+    "description": "Dịch vụ Upload dữ liệu DWH",
+    "technical_services": [
+      "BI Tool Upload",
+      "2.09-BI Tool Upload"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "2.10-Cloud Dataware House - Domain Datamart": {
+    "service_name": "Cloud Dataware House - Domain Datamart",
+    "description": "Dịch vụ Kho dữ liệu dùng chung toàn hàng",
+    "technical_services": [
+      "Cloud Dataware House - Domain Datamart",
+      "2.10-Cloud Dataware House - Domain Datamart"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "2.11-Data Governance (Open metadata)": {
+    "service_name": "Data Governance (Open metadata)",
+    "description": "Dịch vụ Quản trị dữ liệu - Kho dữ liệu dùng chung toàn hàng",
+    "technical_services": [
+      "Data Governance (Open metadata)",
+      "2.11-Data Governance (Open metadata)",
+      "Open metadata"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "3.01-CITAD": {
+    "service_name": "CITAD",
+    "description": "Dịch vụ quản lý thanh toán liên hàng do NHNN cung cấp",
+    "technical_services": [
+      "CITAD",
+      "3.01-CITAD"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "3.02-SWIFT": {
+    "service_name": "SWIFT",
+    "description": "Dịch vụ quản lý điện thanh toán quốc tế",
+    "technical_services": [
+      "SWIFT",
+      "3.02-SWIFT"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "3.03-VCB Money": {
+    "service_name": "VCB Money",
+    "description": "Dịch vụ kết nối dịch vụ thanh toán với Vietcombank",
+    "technical_services": [
+      "VCB Money",
+      "3.03-VCB Money"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "3.04-Quản lý tài khoản ứng dụng": {
+    "service_name": "Quản lý tài khoản ứng dụng",
+    "description": "Dịch vụ quản lý tài khoản ứng dụng",
+    "technical_services": [
+      "Quản lý tài khoản ứng dụng",
+      "3.04-Quản lý tài khoản ứng dụng",
+      "ActiveDirectory",
+      "AD",
+      "ADManagerPlus",
+      "EntraID"
+    ],
+    "mapping_status": "baseline_plus_manual_patch",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "3.05-ERP": {
+    "service_name": "ERP",
+    "description": "Quản lý mua sắm, kế toán phải trả, kế toán phải thu, tài sản cố định, kế toán tổng hợp",
+    "technical_services": [
+      "ERP",
+      "3.05-ERP",
+      "po",
+      "ap",
+      "ar",
+      "fa",
+      "gl"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "3.06-Filezilla": {
+    "service_name": "Filezilla",
+    "description": "Dịch vụ upload và download file từ máy trạm lên máy chủ",
+    "technical_services": [
+      "Filezilla",
+      "3.06-Filezilla",
+      "ftp",
+      "sftp"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "3.07-CIAM": {
+    "service_name": "CIAM",
+    "description": "Hệ thống quản trị định danh và truy cập cho khách hàng",
+    "technical_services": [
+      "CIAM",
+      "3.07-CIAM",
+      "identity",
+      "access management"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "3.08-Chuyển tiền nhanh Napas247 (IBFT)": {
+    "service_name": "Chuyển tiền nhanh Napas247 (IBFT)",
+    "description": "Dịch vụ chuyển tiền nhanh Napas247 IBFT",
+    "technical_services": [
+      "Chuyển tiền nhanh Napas247 (IBFT)",
+      "3.08-Chuyển tiền nhanh Napas247 (IBFT)",
+      "IBFT"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.01-Quản lý chương trình khuyến mãi": {
+    "service_name": "Quản lý chương trình khuyến mãi",
+    "description": "Dịch vụ thực hiện quay số trúng thưởng và quản lý khuyến mãi",
+    "technical_services": [
+      "Quản lý chương trình khuyến mãi",
+      "4.01-Quản lý chương trình khuyến mãi"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.02-Định giá tài sản bảo đảm": {
+    "service_name": "Định giá tài sản bảo đảm",
+    "description": "Dịch vụ định giá tài sản đảm bảo PVcomBank",
+    "technical_services": [
+      "Định giá tài sản bảo đảm",
+      "4.02-Định giá tài sản bảo đảm"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.03-Quản lý TSĐB Kho Quỹ": {
+    "service_name": "Quản lý TSĐB Kho Quỹ",
+    "description": "Công cụ quản lý xuất nhập kho TSĐB",
+    "technical_services": [
+      "Quản lý TSĐB Kho Quỹ",
+      "4.03-Quản lý TSĐB Kho Quỹ"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.04-Xếp hạng tín dụng nội bộ": {
+    "service_name": "Xếp hạng tín dụng nội bộ",
+    "description": "Dịch vụ quản lý xếp hạng tín dụng nội bộ",
+    "technical_services": [
+      "Xếp hạng tín dụng nội bộ",
+      "4.04-Xếp hạng tín dụng nội bộ"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.06-Website tỷ giá nội bộ": {
+    "service_name": "Website tỷ giá nội bộ",
+    "description": "Dịch vụ hiển thị thông tin tỷ giá và lãi suất PVcomBank",
+    "technical_services": [
+      "Website tỷ giá nội bộ",
+      "4.06-Website tỷ giá nội bộ"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.07-Website quản lý chứng chỉ tiền gửi liên kết trái phiếu": {
+    "service_name": "Website quản lý chứng chỉ tiền gửi liên kết trái phiếu",
+    "description": "Dịch vụ Website quản lý chứng chỉ tiền gửi liên kết trái phiếu",
+    "technical_services": [
+      "Website quản lý chứng chỉ tiền gửi liên kết trái phiếu",
+      "4.07-Website quản lý chứng chỉ tiền gửi liên kết trái phiếu"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.08-Website quản lý dòng tiền bất động sản": {
+    "service_name": "Website quản lý dòng tiền bất động sản",
+    "description": "Dịch vụ Website quản lý dòng tiền bất động sản",
+    "technical_services": [
+      "Website quản lý dòng tiền bất động sản",
+      "4.08-Website quản lý dòng tiền bất động sản"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.09-Quản lý dịch vụ thẻ-CRM+A538": {
+    "service_name": "Quản lý dịch vụ thẻ-CRM+A538",
+    "description": "Hệ thống quản lý thông tin thẻ",
+    "technical_services": [
+      "Quản lý dịch vụ thẻ-CRM+A538",
+      "4.09-Quản lý dịch vụ thẻ-CRM+A538",
+      "Quản lý dịch vụ thẻ-CRM",
+      "A538"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.10-Giám sát rủi ro Thẻ": {
+    "service_name": "Giám sát rủi ro Thẻ",
+    "description": "Công cụ quản lý giao dịch và cảnh báo rủi ro giao dịch thẻ",
+    "technical_services": [
+      "Giám sát rủi ro Thẻ",
+      "4.10-Giám sát rủi ro Thẻ"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.11-Hệ thống phát hành (EMV, Máy dập thẻ, máy in PIN, HSM, VCCS)": {
+    "service_name": "Hệ thống phát hành (EMV, Máy dập thẻ, máy in PIN, HSM, VCCS)",
+    "description": "Công cụ phát hành và in pin cho thẻ",
+    "technical_services": [
+      "Hệ thống phát hành (EMV, Máy dập thẻ, máy in PIN, HSM, VCCS)",
+      "4.11-Hệ thống phát hành (EMV, Máy dập thẻ, máy in PIN, HSM, VCCS)",
+      "EMV, Máy dập thẻ, máy in PIN, HSM, VCCS",
+      "Hệ thống phát hành (EMV",
+      "Máy dập thẻ",
+      "máy in PIN",
+      "HSM",
+      "VCCS)"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.12-ServiceDesk": {
+    "service_name": "ServiceDesk",
+    "description": "Dịch vụ hỗ trợ quản lý SLA, xử lý yêu cầu",
+    "technical_services": [
+      "ServiceDesk",
+      "4.12-ServiceDesk",
+      "service desk",
+      "itsm",
+      "ticket"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.13-Hệ thống Viettel post": {
+    "service_name": "Hệ thống Viettel post",
+    "description": "Hệ thống Viettel post",
+    "technical_services": [
+      "Hệ thống Viettel post",
+      "4.13-Hệ thống Viettel post"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.14-Pvone - Loyalty": {
+    "service_name": "Pvone - Loyalty",
+    "description": "Pvone - Loyalty",
+    "technical_services": [
+      "Pvone - Loyalty",
+      "4.14-Pvone - Loyalty"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.15-Hệ thống quản lý văn bản PVcomBank": {
+    "service_name": "Hệ thống quản lý văn bản PVcomBank",
+    "description": "Dịch vụ quản lý văn bản PVcomBank",
+    "technical_services": [
+      "Hệ thống quản lý văn bản PVcomBank",
+      "4.15-Hệ thống quản lý văn bản PVcomBank"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.17-Website nội bộ": {
+    "service_name": "Website nội bộ",
+    "description": "Dịch vụ website nội bộ PVcomBank",
+    "technical_services": [
+      "Website nội bộ",
+      "4.17-Website nội bộ"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.18-Hệ thống Duyệt lãi suất": {
+    "service_name": "Hệ thống Duyệt lãi suất",
+    "description": "Hệ thống phê duyệt lãi suất ngoại lệ",
+    "technical_services": [
+      "Hệ thống Duyệt lãi suất",
+      "4.18-Hệ thống Duyệt lãi suất"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.19-Hệ thống Workplace": {
+    "service_name": "Hệ thống Workplace",
+    "description": "Hệ thống Quy trình quản lý dự án - Workplace PVcomBank",
+    "technical_services": [
+      "Hệ thống Workplace",
+      "4.19-Hệ thống Workplace"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.20-Loan submission": {
+    "service_name": "Loan submission",
+    "description": "Hệ thống phê duyệt khoản vay",
+    "technical_services": [
+      "Loan submission",
+      "4.20-Loan submission"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.21-Hệ thống Dynamic Upload": {
+    "service_name": "Hệ thống Dynamic Upload",
+    "description": "Hệ thống Dynamic Upload",
+    "technical_services": [
+      "Hệ thống Dynamic Upload",
+      "4.21-Hệ thống Dynamic Upload"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.22-Hệ thống CIC H2H": {
+    "service_name": "Hệ thống CIC H2H",
+    "description": "Hệ thống CIC H2H",
+    "technical_services": [
+      "Hệ thống CIC H2H",
+      "4.22-Hệ thống CIC H2H"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.23-Phê duyệt tín dụng": {
+    "service_name": "Phê duyệt tín dụng",
+    "description": "Dịch vụ phê duyệt tín dụng",
+    "technical_services": [
+      "Phê duyệt tín dụng",
+      "4.23-Phê duyệt tín dụng"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.24-Xếp hạng tín dụng nội bộ 2.0": {
+    "service_name": "Xếp hạng tín dụng nội bộ 2.0",
+    "description": "Dịch vụ quản lý xếp hạng tín dụng nội bộ",
+    "technical_services": [
+      "Xếp hạng tín dụng nội bộ 2.0",
+      "4.24-Xếp hạng tín dụng nội bộ 2.0"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.25-Cảnh báo nợ sớm": {
+    "service_name": "Cảnh báo nợ sớm",
+    "description": "Ứng dụng đưa ra mức độ rủi ro tín dụng",
+    "technical_services": [
+      "Cảnh báo nợ sớm",
+      "4.25-Cảnh báo nợ sớm"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.26-Thu hồi nợ (COLLECTION)": {
+    "service_name": "Thu hồi nợ (COLLECTION)",
+    "description": "Ứng dụng thu hồi nợ collection",
+    "technical_services": [
+      "Thu hồi nợ (COLLECTION)",
+      "4.26-Thu hồi nợ (COLLECTION)",
+      "COLLECTION"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.27-Quản trị vốn con người - HCM": {
+    "service_name": "Quản trị vốn con người - HCM",
+    "description": "SAP HCM, quản trị nguồn nhân lực, tích hợp dữ liệu HCM",
+    "technical_services": [
+      "Quản trị vốn con người - HCM",
+      "4.27-Quản trị vốn con người - HCM"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.28-Định giá tài sản bảo đảm 2.0": {
+    "service_name": "Định giá tài sản bảo đảm 2.0",
+    "description": "Dịch vụ định giá tài sản đảm bảo PVcomBank",
+    "technical_services": [
+      "Định giá tài sản bảo đảm 2.0",
+      "4.28-Định giá tài sản bảo đảm 2.0"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.29-Quét lọc danh sách AML": {
+    "service_name": "Quét lọc danh sách AML",
+    "description": "Ứng dụng quét lọc danh sách AML",
+    "technical_services": [
+      "Quét lọc danh sách AML",
+      "4.29-Quét lọc danh sách AML"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.30-Hệ thống quản lý tài sản và hạn mức - CLIMS": {
+    "service_name": "Hệ thống quản lý tài sản và hạn mức - CLIMS",
+    "description": "Dịch vụ quản lý tài sản và hạn mức CLIMS",
+    "technical_services": [
+      "Hệ thống quản lý tài sản và hạn mức - CLIMS",
+      "4.30-Hệ thống quản lý tài sản và hạn mức - CLIMS"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.31-Đối soát tập trung": {
+    "service_name": "Đối soát tập trung",
+    "description": "Hệ thống đối soát, tra soát và giao dịch thanh toán",
+    "technical_services": [
+      "Đối soát tập trung",
+      "4.31-Đối soát tập trung"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.32-Thu thập thông tin trực tuyến (IRS)": {
+    "service_name": "Thu thập thông tin trực tuyến (IRS)",
+    "description": "Hệ thống thu thập dữ liệu giữa NHNN và PVcomBank",
+    "technical_services": [
+      "Thu thập thông tin trực tuyến (IRS)",
+      "4.32-Thu thập thông tin trực tuyến (IRS)",
+      "IRS"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.33-Hệ thống quản lý văn bản IDOC": {
+    "service_name": "Hệ thống quản lý văn bản IDOC",
+    "description": "Số hóa quy trình xử lý, lưu trữ, tìm kiếm và theo dõi văn bản",
+    "technical_services": [
+      "Hệ thống quản lý văn bản IDOC",
+      "4.33-Hệ thống quản lý văn bản IDOC"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.34-PricingTool-KHCN": {
+    "service_name": "PricingTool-KHCN",
+    "description": "Hệ thống pricing tool khách hàng cá nhân",
+    "technical_services": [
+      "PricingTool-KHCN",
+      "4.34-PricingTool-KHCN"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.35-Dashboard 360": {
+    "service_name": "Dashboard 360",
+    "description": "Kênh truy vấn thông tin khách hàng 360",
+    "technical_services": [
+      "Dashboard 360",
+      "4.35-Dashboard 360"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.36-MyPVcombank": {
+    "service_name": "MyPVcombank",
+    "description": "Cổng dịch vụ nội bộ trên App Mobile cho CBNV",
+    "technical_services": [
+      "MyPVcombank",
+      "4.36-MyPVcombank"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.37-PricingTool-KHDN": {
+    "service_name": "PricingTool-KHDN",
+    "description": "Hệ thống phê duyệt lãi suất, phí ngoại lệ cho KHDN",
+    "technical_services": [
+      "PricingTool-KHDN",
+      "4.37-PricingTool-KHDN"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.38-Số hóa quy trình tín dụng (LPD)": {
+    "service_name": "Số hóa quy trình tín dụng (LPD)",
+    "description": "Hệ thống số hóa quy trình tín dụng",
+    "technical_services": [
+      "Số hóa quy trình tín dụng (LPD)",
+      "4.38-Số hóa quy trình tín dụng (LPD)",
+      "LPD"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.39-Quản trị hồ sơ tín dụng (CPM)": {
+    "service_name": "Quản trị hồ sơ tín dụng (CPM)",
+    "description": "Hệ thống quản trị hồ sơ tín dụng",
+    "technical_services": [
+      "Quản trị hồ sơ tín dụng (CPM)",
+      "4.39-Quản trị hồ sơ tín dụng (CPM)",
+      "CPM"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.40-Training Notification": {
+    "service_name": "Training Notification",
+    "description": "Hệ thống quản lý khóa học",
+    "technical_services": [
+      "Training Notification",
+      "4.40-Training Notification"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.41-Khảo Sát": {
+    "service_name": "Khảo Sát",
+    "description": "Cổng dịch vụ khai báo chương trình khảo sát",
+    "technical_services": [
+      "Khảo Sát",
+      "4.41-Khảo Sát"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.42-Hệ thống Quản trị rủi ro": {
+    "service_name": "Hệ thống Quản trị rủi ro",
+    "description": "Hệ thống lưu trữ rủi ro, kế hoạch khắc phục rủi ro",
+    "technical_services": [
+      "Hệ thống Quản trị rủi ro",
+      "4.42-Hệ thống Quản trị rủi ro"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "4.43-Hệ thống CMS": {
+    "service_name": "Hệ thống CMS",
+    "description": "Hệ thống Quản lý tài liệu dự án CMS",
+    "technical_services": [
+      "Hệ thống CMS",
+      "4.43-Hệ thống CMS"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "5.01-FTP": {
+    "service_name": "FTP",
+    "description": "Hệ thống quản lý giá vốn nội bộ và phân bổ chi phí",
+    "technical_services": [
+      "FTP",
+      "5.01-FTP"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "6.01-Thư điện tử": {
+    "service_name": "Thư điện tử",
+    "description": "Dịch vụ hỗ trợ sử dụng, xử lý sự cố hộp thư điện tử nội bộ",
+    "technical_services": [
+      "Thư điện tử",
+      "6.01-Thư điện tử",
+      "email",
+      "mail",
+      "outlook",
+      "exchange",
+      "active directory",
+      "Exchange 2016",
+      "Microsoft Exchange",
+      "Mail Exchange",
+      "ActiveDirectory",
+      "AD",
+      "ADManagerPlus",
+      "EntraID"
+    ],
+    "mapping_status": "baseline_plus_manual_patch",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "6.02-Camera giám sát": {
+    "service_name": "Camera giám sát",
+    "description": "Dịch vụ quản trị Camera giám sát",
+    "technical_services": [
+      "Camera giám sát",
+      "6.02-Camera giám sát"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "6.03-File Server": {
+    "service_name": "File Server",
+    "description": "Dịch vụ lưu trữ chia sẻ file qua mạng nội bộ",
+    "technical_services": [
+      "File Server",
+      "6.03-File Server",
+      "shared folder",
+      "network drive"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "6.04-Chat Lync": {
+    "service_name": "Chat Lync",
+    "description": "Phần mềm chat nội bộ",
+    "technical_services": [
+      "Chat Lync",
+      "6.04-Chat Lync",
+      "Lync Server 2013"
+    ],
+    "mapping_status": "baseline_plus_manual_patch",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "6.05-Máy tính cá nhân": {
+    "service_name": "Máy tính cá nhân",
+    "description": "Dịch vụ hỗ trợ máy tính cá nhân",
+    "technical_services": [
+      "Máy tính cá nhân",
+      "6.05-Máy tính cá nhân"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "6.06-In ấn": {
+    "service_name": "In ấn",
+    "description": "Dịch vụ hỗ trợ máy in",
+    "technical_services": [
+      "In ấn",
+      "6.06-In ấn"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "6.07-Scan": {
+    "service_name": "Scan",
+    "description": "Dịch vụ hỗ trợ máy scan",
+    "technical_services": [
+      "Scan",
+      "6.07-Scan"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "6.08-Truy cập Internet": {
+    "service_name": "Truy cập Internet",
+    "description": "Mở/đóng truy cập internet theo chính sách",
+    "technical_services": [
+      "Truy cập Internet",
+      "6.08-Truy cập Internet"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "6.09-Kiểm soát nội quy lao động bằng vân tay": {
+    "service_name": "Kiểm soát nội quy lao động bằng vân tay",
+    "description": "Dịch vụ hỗ trợ kiểm soát nội quy lao động bằng vân tay",
+    "technical_services": [
+      "Kiểm soát nội quy lao động bằng vân tay",
+      "6.09-Kiểm soát nội quy lao động bằng vân tay"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "6.10-Màn hình LCD hiển thị tỷ giá nội bộ": {
+    "service_name": "Màn hình LCD hiển thị tỷ giá nội bộ",
+    "description": "Dịch vụ hỗ trợ hiển thị tỷ giá tại điểm giao dịch",
+    "technical_services": [
+      "Màn hình LCD hiển thị tỷ giá nội bộ",
+      "6.10-Màn hình LCD hiển thị tỷ giá nội bộ"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "6.11-Ipphone": {
+    "service_name": "Ipphone",
+    "description": "Dịch vụ điện thoại cố định sử dụng công nghệ IP",
+    "technical_services": [
+      "Ipphone",
+      "6.11-Ipphone",
+      "ip phone",
+      "voip",
+      "điện thoại ip"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "6.12-Hội nghị truyền hình": {
+    "service_name": "Hội nghị truyền hình",
+    "description": "Dịch vụ hỗ trợ tổ chức họp qua hệ thống hội nghị truyền hình",
+    "technical_services": [
+      "Hội nghị truyền hình",
+      "6.12-Hội nghị truyền hình",
+      "hội nghị",
+      "video conference",
+      "meeting system",
+      "Lync Server 2013",
+      "OnePV"
+    ],
+    "mapping_status": "baseline_plus_manual_patch",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "6.13-Microsoft Team / Office 365": {
+    "service_name": "Microsoft Team / Office 365",
+    "description": "MS Team, MS Office 365, MS Sharepoint, MS OneDrive",
+    "technical_services": [
+      "Microsoft Team / Office 365",
+      "6.13-Microsoft Team / Office 365",
+      "Microsoft Team",
+      "Office 365",
+      "microsoft teams",
+      "ms team",
+      "m365",
+      "sharepoint",
+      "onedrive",
+      "Microsoft Exchange",
+      "Exchange 2016",
+      "Mail Exchange",
+      "EntraID"
+    ],
+    "mapping_status": "baseline_plus_manual_patch",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "6.14-Quản lý hạ tầng AWS": {
+    "service_name": "Quản lý hạ tầng AWS",
+    "description": "Cung cấp các dịch vụ trên AWS",
+    "technical_services": [
+      "Quản lý hạ tầng AWS",
+      "6.14-Quản lý hạ tầng AWS",
+      "aws",
+      "aws cloud",
+      "cloud"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "6.15-Quản lý hạ tầng nền tảng K8S, OCP, EKS, ECS, ArgoCD": {
+    "service_name": "Quản lý hạ tầng nền tảng K8S, OCP, EKS, ECS, ArgoCD",
+    "description": "Cung cấp hạ tầng trên K8S, OCP",
+    "technical_services": [
+      "Quản lý hạ tầng nền tảng K8S, OCP, EKS, ECS, ArgoCD",
+      "6.15-Quản lý hạ tầng nền tảng K8S, OCP, EKS, ECS, ArgoCD",
+      "Quản lý hạ tầng nền tảng K8S",
+      "OCP",
+      "EKS",
+      "ECS",
+      "ArgoCD",
+      "k8s",
+      "kubernetes"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "6.16-Thiết bị di động": {
+    "service_name": "Thiết bị di động",
+    "description": "Dịch vụ hỗ trợ thiết bị di động được cấp",
+    "technical_services": [
+      "Thiết bị di động",
+      "6.16-Thiết bị di động"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "7.01-Giám sát, phân tích và điều tra sự cố ATTT": {
+    "service_name": "Giám sát, phân tích và điều tra sự cố ATTT",
+    "description": "Quản lý SIEM, log, giám sát, điều tra sự cố, mã độc",
+    "technical_services": [
+      "Giám sát, phân tích và điều tra sự cố ATTT",
+      "7.01-Giám sát, phân tích và điều tra sự cố ATTT",
+      "Giám sát",
+      "phân tích và điều tra sự cố ATTT",
+      "security",
+      "an toàn thông tin",
+      "attt"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "7.02-Đánh giá, rà soát, báo cáo ATTT": {
+    "service_name": "Đánh giá, rà soát, báo cáo ATTT",
+    "description": "Đánh giá, rà soát, báo cáo an toàn thông tin",
+    "technical_services": [
+      "Đánh giá, rà soát, báo cáo ATTT",
+      "7.02-Đánh giá, rà soát, báo cáo ATTT",
+      "Đánh giá",
+      "rà soát",
+      "báo cáo ATTT",
+      "security",
+      "an toàn thông tin",
+      "attt"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "7.03-Kiểm thử Bảo mật": {
+    "service_name": "Kiểm thử Bảo mật",
+    "description": "Kiểm thử bảo mật, dò quét điểm yếu, lỗ hổng",
+    "technical_services": [
+      "Kiểm thử Bảo mật",
+      "7.03-Kiểm thử Bảo mật"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "7.04-Đào tạo, khuyến cáo ATTT": {
+    "service_name": "Đào tạo, khuyến cáo ATTT",
+    "description": "Truyền thông sự kiện An toàn thông tin",
+    "technical_services": [
+      "Đào tạo, khuyến cáo ATTT",
+      "7.04-Đào tạo, khuyến cáo ATTT",
+      "Đào tạo",
+      "khuyến cáo ATTT",
+      "security",
+      "an toàn thông tin",
+      "attt"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "7.05-Đánh giá, kiểm soát luồng kết nối đảm bảo ATTT": {
+    "service_name": "Đánh giá, kiểm soát luồng kết nối đảm bảo ATTT",
+    "description": "Đánh giá, kiểm soát luồng kết nối ứng dụng và người dùng",
+    "technical_services": [
+      "Đánh giá, kiểm soát luồng kết nối đảm bảo ATTT",
+      "7.05-Đánh giá, kiểm soát luồng kết nối đảm bảo ATTT",
+      "Đánh giá",
+      "kiểm soát luồng kết nối đảm bảo ATTT",
+      "security",
+      "an toàn thông tin",
+      "attt"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "7.06-Đánh giá, phê duyệt chính sách áp dụng trên hệ thống thông tin": {
+    "service_name": "Đánh giá, phê duyệt chính sách áp dụng trên hệ thống thông tin",
+    "description": "Đánh giá, phê duyệt chính sách hệ thống thông tin",
+    "technical_services": [
+      "Đánh giá, phê duyệt chính sách áp dụng trên hệ thống thông tin",
+      "7.06-Đánh giá, phê duyệt chính sách áp dụng trên hệ thống thông tin",
+      "Đánh giá",
+      "phê duyệt chính sách áp dụng trên hệ thống thông tin"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "7.07-Quy trình chính sách": {
+    "service_name": "Quy trình chính sách",
+    "description": "Quy trình chính sách",
+    "technical_services": [
+      "Quy trình chính sách",
+      "7.07-Quy trình chính sách"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "7.08-Đánh giá, kiểm soát tuân thủ ATTT": {
+    "service_name": "Đánh giá, kiểm soát tuân thủ ATTT",
+    "description": "Đánh giá, kiểm soát tuân thủ ATTT",
+    "technical_services": [
+      "Đánh giá, kiểm soát tuân thủ ATTT",
+      "7.08-Đánh giá, kiểm soát tuân thủ ATTT",
+      "Đánh giá",
+      "kiểm soát tuân thủ ATTT",
+      "security",
+      "an toàn thông tin",
+      "attt"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "7.09-Tư vấn đánh giá ATTT": {
+    "service_name": "Tư vấn đánh giá ATTT",
+    "description": "Tư vấn đánh giá ATTT",
+    "technical_services": [
+      "Tư vấn đánh giá ATTT",
+      "7.09-Tư vấn đánh giá ATTT",
+      "security",
+      "an toàn thông tin",
+      "attt"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "7.10-Cập nhật, phân tích lỗ hổng": {
+    "service_name": "Cập nhật, phân tích lỗ hổng",
+    "description": "Cập nhật, phân tích lỗ hổng",
+    "technical_services": [
+      "Cập nhật, phân tích lỗ hổng",
+      "7.10-Cập nhật, phân tích lỗ hổng",
+      "Cập nhật",
+      "phân tích lỗ hổng"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "7.11-Nghiên cứu An toàn thông tin": {
+    "service_name": "Nghiên cứu An toàn thông tin",
+    "description": "Nghiên cứu An toàn thông tin",
+    "technical_services": [
+      "Nghiên cứu An toàn thông tin",
+      "7.11-Nghiên cứu An toàn thông tin"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "7.12-Dịch vụ trên nền tảng đám mây (aws cloud)": {
+    "service_name": "Dịch vụ trên nền tảng đám mây (aws cloud)",
+    "description": "Dịch vụ quản lý quyền truy cập tài nguyên trên AWS cloud",
+    "technical_services": [
+      "Dịch vụ trên nền tảng đám mây (aws cloud)",
+      "7.12-Dịch vụ trên nền tảng đám mây (aws cloud)",
+      "aws cloud",
+      "aws",
+      "cloud"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "8.01-Hạ tầng IT tại Đơn vị": {
+    "service_name": "Hạ tầng IT tại Đơn vị",
+    "description": "Dịch vụ quản trị hạ tầng CNTT tại đơn vị",
+    "technical_services": [
+      "Hạ tầng IT tại Đơn vị",
+      "8.01-Hạ tầng IT tại Đơn vị"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "8.02-Hạ tầng IT tại Hội sở": {
+    "service_name": "Hạ tầng IT tại Hội sở",
+    "description": "Dịch vụ quản trị, giám sát và vận hành trung tâm dữ liệu",
+    "technical_services": [
+      "Hạ tầng IT tại Hội sở",
+      "8.02-Hạ tầng IT tại Hội sở",
+      "8.02 Hạ tầng tại hội sở",
+      "DHCP",
+      "IIS",
+      "Windows Server, SQL"
+    ],
+    "mapping_status": "baseline_plus_manual_patch",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "9.01-Văn bản ngoài K.CNTT": {
+    "service_name": "Văn bản ngoài K.CNTT",
+    "description": "Dịch vụ văn bản ngoài K.CNTT",
+    "technical_services": [
+      "Văn bản ngoài K.CNTT",
+      "9.01-Văn bản ngoài K.CNTT"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "98.01-Văn bản nội bộ K.CNTT": {
+    "service_name": "Văn bản nội bộ K.CNTT",
+    "description": "Dịch vụ văn bản nội bộ K.CNTT",
+    "technical_services": [
+      "Văn bản nội bộ K.CNTT",
+      "98.01-Văn bản nội bộ K.CNTT"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "98.02-Service Catalog": {
+    "service_name": "Service Catalog",
+    "description": "Dịch vụ Service Catalog",
+    "technical_services": [
+      "Service Catalog",
+      "98.02-Service Catalog"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "99.01-Database": {
+    "service_name": "Database",
+    "description": "Database",
+    "technical_services": [
+      "Database",
+      "99.01-Database",
+      "db",
+      "oracle",
+      "sql server",
+      "Windows Server, SQL",
+      "SQL"
+    ],
+    "mapping_status": "baseline_plus_manual_patch",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "99.02-Máy chủ (K.CNTT)": {
+    "service_name": "Máy chủ (K.CNTT)",
+    "description": "Máy chủ",
+    "technical_services": [
+      "Máy chủ (K.CNTT)",
+      "99.02-Máy chủ (K.CNTT)",
+      "K.CNTT",
+      "server",
+      "windows server",
+      "linux server",
+      "IIS",
+      "DHCP",
+      "Windows Server, SQL"
+    ],
+    "mapping_status": "baseline_plus_manual_patch",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "99.03-Monitor + Trực (K.CNTT)": {
+    "service_name": "Monitor + Trực (K.CNTT)",
+    "description": "Monitor, trực vận hành",
+    "technical_services": [
+      "Monitor + Trực (K.CNTT)",
+      "99.03-Monitor + Trực (K.CNTT)",
+      "K.CNTT",
+      "Monitor",
+      "Trực (K.CNTT)"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "99.04-Network (K.CNTT)": {
+    "service_name": "Network (K.CNTT)",
+    "description": "Network",
+    "technical_services": [
+      "Network (K.CNTT)",
+      "99.04-Network (K.CNTT)",
+      "K.CNTT",
+      "network",
+      "lan",
+      "wan",
+      "switch",
+      "router",
+      "DHCP",
+      "8.02 Hạ tầng tại hội sở"
+    ],
+    "mapping_status": "baseline_plus_manual_patch",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "99.05-Security (K.CNTT)": {
+    "service_name": "Security (K.CNTT)",
+    "description": "Security",
+    "technical_services": [
+      "Security (K.CNTT)",
+      "99.05-Security (K.CNTT)",
+      "K.CNTT",
+      "security",
+      "an toàn thông tin",
+      "attt"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "99.06-Quản lý tài khoản đặc quyền (K.CNTT)": {
+    "service_name": "Quản lý tài khoản đặc quyền (K.CNTT)",
+    "description": "CyberArk, quản lý phân quyền đặc quyền",
+    "technical_services": [
+      "Quản lý tài khoản đặc quyền (K.CNTT)",
+      "99.06-Quản lý tài khoản đặc quyền (K.CNTT)",
+      "K.CNTT"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "99.07-Quản lý Khóa mã, Chứng thư số": {
+    "service_name": "Quản lý Khóa mã, Chứng thư số",
+    "description": "Quản lý khóa mã, chứng thư số",
+    "technical_services": [
+      "Quản lý Khóa mã, Chứng thư số",
+      "99.07-Quản lý Khóa mã, Chứng thư số",
+      "Quản lý Khóa mã",
+      "Chứng thư số"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "99.08-Kiểm soát tuân thủ truy cập mạng NAC": {
+    "service_name": "Kiểm soát tuân thủ truy cập mạng NAC",
+    "description": "NAC, kiểm soát tuân thủ truy cập mạng",
+    "technical_services": [
+      "Kiểm soát tuân thủ truy cập mạng NAC",
+      "99.08-Kiểm soát tuân thủ truy cập mạng NAC"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "99.09-Quản lý hệ thống antispam": {
+    "service_name": "Quản lý hệ thống antispam",
+    "description": "Antispam",
+    "technical_services": [
+      "Quản lý hệ thống antispam",
+      "99.09-Quản lý hệ thống antispam"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "99.10-Quản lý phân quyền hệ thống Swift": {
+    "service_name": "Quản lý phân quyền hệ thống Swift",
+    "description": "Quản lý phân quyền Swift",
+    "technical_services": [
+      "Quản lý phân quyền hệ thống Swift",
+      "99.10-Quản lý phân quyền hệ thống Swift",
+      "swift"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "99.11-Quản lý hệ thống Anti DDoS": {
+    "service_name": "Quản lý hệ thống Anti DDoS",
+    "description": "Anti DDoS",
+    "technical_services": [
+      "Quản lý hệ thống Anti DDoS",
+      "99.11-Quản lý hệ thống Anti DDoS"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  },
+  "99.12-Dịch vụ khác": {
+    "service_name": "Dịch vụ khác",
+    "description": "Dịch vụ khác",
+    "technical_services": [
+      "Dịch vụ khác",
+      "99.12-Dịch vụ khác"
+    ],
+    "mapping_status": "baseline_auto_generated",
+    "note": "technical_services is a seed list. Refine it when actual runbook service values are known."
+  }
+}

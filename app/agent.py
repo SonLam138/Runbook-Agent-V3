@@ -6,7 +6,8 @@ import faiss
 #from app.vector_store import FaissStore
 from sentence_transformers import SentenceTransformer
 from pathlib import Path
-from app.service_resolver import resolve_service
+#from app.service_resolver import resolve_service
+from app.service_resolver_v2 import resolve_service_v2
 from app.llm import call_llm
 from app.session_store import get_session, update_session, reset_session
 #from app.tool import retrieve_candidates_meta, search_RB_topk
@@ -258,82 +259,97 @@ def build_clarify_knowledge_context(state, service=None, issue_type=None, error_
     return "\n".join(context_lines)
 
 # ============================================================
-# NORMALIZE SERVICE RESOLVE RESULT
+# NORMALIZE SERVICE RESOLVE_V2 RESULT
 # ============================================================
 def normalize_service_result(result):
     """
-    Chuẩn hóa output từ resolve_service/extract_service về format thống nhất.
+    Chuẩn hóa output từ service resolver.
 
-    Return:
-        {
-            "service": str | None,
-            "confidence": float | None,
-            "is_strong": bool
-        }
+    Với resolver_v2, result đã có:
+    - service
+    - confidence
+    - source
+    - is_strong
+    - status
+    - reason
+    - candidates
+
+    Agent chỉ normalize, KHÔNG tự quyết confidence nữa.
     """
-
-    service = None
-    confidence = None
 
     if result is None:
         return {
             "service": None,
             "confidence": None,
+            "source": "none",
             "is_strong": False,
+            "status": "unresolved",
+            "reason": "resolver_returned_none",
+            "candidates": [],
         }
 
-    # Case 1: resolve_service trả string
+    # Case legacy: resolver trả string
     if isinstance(result, str):
         service = result.strip()
-        confidence = 1.0 if service else None
-
-    # Case 2: resolve_service trả tuple/list: (service, confidence)
-    elif isinstance(result, (tuple, list)):
-        if len(result) >= 1:
-            service = result[0]
-        if len(result) >= 2:
-            confidence = result[1]
-
-    # Case 3: resolve_service trả dict
-    elif isinstance(result, dict):
-        service = (
-            result.get("service")
-            or result.get("resolved_service")
-            or result.get("value")
-        )
-        confidence = (
-            result.get("confidence")
-            or result.get("score")
-            or result.get("service_confidence")
-        )
-
-    if isinstance(service, str):
-        service = service.strip()
-
-    if not service:
         return {
-            "service": None,
-            "confidence": confidence,
-            "is_strong": False,
+            "service": service if service else None,
+            "confidence": 1.0 if service else None,
+            "source": "legacy_string",
+            "is_strong": bool(service),
+            "status": "resolved" if service else "unresolved",
+            "reason": "legacy_string_result",
+            "candidates": [],
         }
 
-    # Nếu chưa có confidence nhưng đã match deterministic thì coi là strong
-    if confidence is None:
-        confidence = 1.0
+    # Case legacy: tuple/list
+    if isinstance(result, (tuple, list)):
+        service = result[0] if len(result) >= 1 else None
+        confidence = result[1] if len(result) >= 2 else None
 
-    try:
-        confidence_float = float(confidence)
-    except Exception:
-        confidence_float = None
+        try:
+            confidence = float(confidence) if confidence is not None else None
+        except Exception:
+            confidence = None
 
-    is_strong = confidence_float is None or confidence_float >= 0.75
+        return {
+            "service": service.strip() if isinstance(service, str) and service.strip() else None,
+            "confidence": confidence,
+            "source": "legacy_tuple",
+            "is_strong": confidence is not None and confidence >= 0.75,
+            "status": "resolved" if service else "unresolved",
+            "reason": "legacy_tuple_result",
+            "candidates": [],
+        }
+
+    # Case resolver_v2 dict
+    if isinstance(result, dict):
+        service = result.get("service")
+        confidence = result.get("confidence")
+
+        try:
+            confidence = float(confidence) if confidence is not None else None
+        except Exception:
+            confidence = None
+
+        return {
+            "service": service.strip() if isinstance(service, str) and service.strip() else None,
+            "confidence": confidence,
+            "source": result.get("source", "unknown"),
+            "is_strong": bool(result.get("is_strong", False)),
+            "status": result.get("status", "unresolved"),
+            "reason": result.get("reason", ""),
+            "candidates": result.get("candidates", []),
+        }
 
     return {
-        "service": service,
-        "confidence": confidence_float,
-        "is_strong": is_strong,
+        "service": None,
+        "confidence": None,
+        "source": "unknown",
+        "is_strong": False,
+        "status": "unresolved",
+        "reason": "unsupported_result_type",
+        "candidates": [],
     }
-
 # =====================================================
 # OUTPUT FORMAT
 # =====================================================
@@ -955,91 +971,104 @@ def run_agent(session_id, user_input, vector_store):
         # SERVICE CONFIRM
         # =====================================================
         if pending_slot == "service":
+
             resolved = state.get("resolved_service")
             user_text = normalize(user_input)
+
             log_service_clarify_input(
                 session_id=session_id,
                 state=state,
                 user_input=user_input
             )
-            confirmed_service = None
 
-            # Case 1: user xác nhận service hiện tại là đúng
+            # =====================
+            # Case 1: user confirm
+            # =====================
             if "đúng" in user_text or "phải" in user_text or "ok" in user_text:
                 if resolved:
-                    confirmed_service = resolved
+                    service_value = resolved
+
                     log_service_clarify_extract(
                         session_id=session_id,
                         state=state,
                         user_input=user_input,
-                        extracted_service=resolved,
+                        extracted_service=service_value,
                         confidence=1.0,
                         result="success",
                         reason="user_confirm_existing_service"
                     )
 
-            # Case 2: user nói service khác → resolve lại service từ câu trả lời
+                    # ✅ update state
+                    state["slots"]["service"] = service_value
+                    state["resolved_service"] = service_value
+
+                    next_slot = "issue_type"
+                    state["pending_slot"] = next_slot
+
+                    msg = f"Bạn đang gặp lỗi gì trên {service_value}?"
+
+                    start_clarify(state, user_input, next_slot)
+
+                    return reply(session_id, state, msg)
+
+            # =====================
+            # Case 2: resolve mới
+            # =====================
             else:
-                new_service_info = resolve_service(user_input, state)
+                new_service_info = resolve_service_v2(
+                    user_input,
+                    state=state,
+                    use_llm=True
+                )
+
+                new_service_norm = normalize_service_result(new_service_info)
+
                 log_service_clarify_extract(
                     session_id=session_id,
                     state=state,
                     user_input=user_input,
-                    extracted_service=new_service_info.get("service") if new_service_info else None,
-                    confidence=new_service_info.get("score") if new_service_info else None,
-                    result="success" if new_service_info and new_service_info.get("service") else "fail",
-                    reason="user_provided_new_service"
+                    extracted_service=new_service_norm.get("service"),
+                    confidence=new_service_norm.get("confidence"),
+                    result=(
+                        "success"
+                        if new_service_norm.get("status") == "resolved"
+                        and new_service_norm.get("service")
+                        and new_service_norm.get("is_strong")
+                        else "fail"
+                    ),
+                    reason=f"user_provided_new_service:{new_service_norm.get('reason')}"
                 )
 
-                if new_service_info:
-                    confirmed_service = new_service_info.get("service")
+                # ✅ CASE SUCCESS
+                if (
+                    new_service_norm.get("status") == "resolved"
+                    and new_service_norm.get("is_strong")
+                    and new_service_norm.get("service")
+                ):
+                    service_value = new_service_norm["service"]
 
-                    if confirmed_service:
-                        print(f"🔁 SERVICE UPDATED → {confirmed_service}")
+                    state["slots"]["service"] = service_value
+                    state["resolved_service"] = service_value
+                    state["service_confidence"] = new_service_norm.get("confidence")
+                    state["service_source"] = new_service_norm.get("source")
 
-            # Nếu xác định được service thì update state
-            if confirmed_service:
-                old_service = state["slots"].get("service")
+                    next_slot = "issue_type"
+                    state["pending_slot"] = next_slot
 
-                state["slots"]["service"] = confirmed_service
-                log_service_clarify_update(
-                    session_id=session_id,
-                    state=state,
-                    old_service=old_service,
-                    new_service=confirmed_service,
-                    next_slot="issue_type",
-                    reason="service_confirmed_or_updated"
-                )
-                state["resolved_service"] = confirmed_service
+                    msg = f"Bạn đang gặp lỗi gì trên {service_value}?"
 
-                next_slot = "issue_type"
+                    start_clarify(state, user_input, next_slot)
 
-                service = state.get("resolved_service") or state["slots"].get("service")
+                    return reply(session_id, state, msg)
 
-                msg = f"""Chúng tôi cần thêm chút thông tin để tìm đúng runbook cho bạn. Bạn vui lòng mô tả yêu cầu/vấn đề có chứa các từ khóa liên quan.
+                # ✅ CASE FAIL (QUAN TRỌNG)
+                else:
+                    msg = "Mình chưa xác định rõ bạn đang nói đến dịch vụ nào. Bạn vui lòng nói rõ hơn (ví dụ: AD, Exchange, VPN...)"
 
-                Ví dụ:
-                - Lỗi mailbox --> 1 số từ khóa : không đăng nhập được/lỗi gửi mail/dung lượng mailbox...
-                - Lỗi đăng nhập --> 1 số từ khóa : đăng nhập máy tính/đăng nhập ứng dụng A,B/MFA...
-                Từ khóa càng gần yêu cầu/vấn đề của bạn thì kết quả tìm kiếm sẽ càng chính xác."""
+                    start_clarify(state, user_input, "service")
 
-                start_clarify(state, user_input, next_slot)
+                    return reply(session_id, state, msg)
 
-                return reply(session_id, state, msg)
-
-            # Nếu vẫn chưa xác nhận được service → hỏi lại service
-            msg = generate_clarify_message_fallback("service", user_input)
-
-            start_clarify(state, user_input, "service")
-
-            log_service_clarify_retry(
-                session_id=session_id,
-                state=state,
-                user_input=user_input,
-                reason="cannot_confirm_service"
-            )
-
-            return reply(session_id, state, msg)
 
         # =====================================================
         # ISSUE TYPE RESOLUTION
@@ -1418,37 +1447,80 @@ def run_agent(session_id, user_input, vector_store):
         }
     )
     
-    # 2.3) resolve service early
-    service_info = resolve_service(user_input, state)
-    
-    # ✅ ADD LOG: service_resolve_attempt
-    log_service_resolve_attempt(
-        session_id=session_id,
-        state=state,
-        user_input=user_input,
-        resolved_service=service_info.get("service") if service_info else None,
-        confidence=service_info.get("score") if service_info else None,
-        result="success" if service_info and service_info.get("is_strong") else "fail",
-        reason="idle_flow_service_resolution"
-    )
+# ============================================================
+# EARLY SERVICE RESOLUTION - V2
+# ============================================================
 
-    if service_info:
-        state["resolved_service"] = service_info["service"]
-        
-        if service_info.get("is_strong"):
-            state["slots"]["service"] = service_info["service"]
+    service_resolution = None
+    normalized_service = None
 
-        print(
-            f"🧭 RESOLVED SERVICE: {service_info['service']} "
-            f"(score={service_info['score']:.3f}, source={service_info['source']}, "
-            f"strong={service_info['is_strong']})"
+    # Chỉ resolve service nếu state chưa có resolved_service.
+    # Tránh ghi đè context đã rõ trong clarify/session trước đó.
+    if not state.get("resolved_service"):
+        service_resolution = resolve_service_v2(
+            user_input,
+            state=state,
+            use_llm=True
         )
 
-        # QUAN TRỌNG:
-        # Không fill state["slots"]["service"] ở đây nữa.
-        # resolved_service chỉ là guess.
-        # slots["service"] chỉ được fill sau khi user confirm.
-        #
+        normalized_service = normalize_service_result(service_resolution)
+
+        # Lưu raw result để logging/debug/training
+        state["last_service_resolution"] = service_resolution
+
+        # Nếu resolver quyết định strong thì mới ghi vào state
+        if (
+            normalized_service["status"] == "resolved"
+            and normalized_service["is_strong"]
+            and normalized_service["service"]
+        ):
+            state["resolved_service"] = normalized_service["service"]
+            state["service_confidence"] = normalized_service["confidence"]
+            state["service_source"] = normalized_service["source"]
+
+            # Nếu anh đang dùng decision_trace trong state
+            state.setdefault("decision_trace", []).append({
+                "action": "resolve_service",
+                "reason": normalized_service["reason"],
+                "service": normalized_service["service"],
+                "confidence": normalized_service["confidence"],
+                "source": normalized_service["source"],
+                "flow_context": "initial_service_resolve",
+            })
+
+        else:
+            # Không set resolved_service nếu ambiguous/unresolved.
+            # Để flow search-first tiếp tục xử lý bằng query gốc.
+            state.setdefault("decision_trace", []).append({
+                "action": "service_not_resolved",
+                "reason": normalized_service["reason"],
+                "status": normalized_service["status"],
+                "confidence": normalized_service["confidence"],
+                "source": normalized_service["source"],
+                "flow_context": "initial_service_resolve",
+                "candidates": normalized_service.get("candidates", [])[:5],
+            })
+
+    else:
+        # Đã có resolved_service trong state từ trước.
+        normalized_service = {
+            "service": state.get("resolved_service"),
+            "confidence": state.get("service_confidence"),
+            "source": state.get("service_source", "state"),
+            "is_strong": True,
+            "status": "resolved",
+            "reason": "service_already_in_state",
+            "candidates": [],
+        }
+
+        state.setdefault("decision_trace", []).append({
+            "action": "reuse_resolved_service",
+            "reason": "service_already_in_state",
+            "service": state.get("resolved_service"),
+            "confidence": state.get("service_confidence"),
+            "source": state.get("service_source", "state"),
+            "flow_context": "initial_service_resolve",
+        })
 
     # 2.4) first search
     effective_query = user_input
@@ -1602,7 +1674,7 @@ def run_agent(session_id, user_input, vector_store):
     }
 )
 
-    if not service_info or not service_info["is_strong"]:
+    if not normalized_service or not normalized_service["is_strong"]:
  
         start_clarify(state, user_input, "service")
         log_service_clarify_start(
@@ -1625,7 +1697,7 @@ def run_agent(session_id, user_input, vector_store):
         return reply(
             session_id,
             state,
-            f"Bạn đang gặp vấn đề gì trên {service_info['service']}?"
+            f"Bạn đang gặp vấn đề gì trên {normalized_service['service']}?"
         )
 
 

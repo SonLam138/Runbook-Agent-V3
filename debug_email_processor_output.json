@@ -1,0 +1,31 @@
+{
+  "subject": "Test image",
+  "body_text": "Test image. Extract text in image here\n[cid:c1cd05c3-b06f-4a88-a00e-2ced9fad3e3a]",
+  "ocr_text": "Webhook Trigger (from HR system/API)\nAutomation A\n- Create User\n- Add Group\n- Send Email (PowerShell)\nEmail Sent to Admin\nAdmin Replies: \"APPROVE jdoe\"\nPowerShell Script (Polling Email)\n+ Call REST API\nAutomation B\n- Assign M365 License\nUser Fully Provisioned",
+  "email_text": "Subject: Test image\n\nBody:\nTest image. Extract text in image here\n[cid:c1cd05c3-b06f-4a88-a00e-2ced9fad3e3a]\n\nOCR_Text_From_Inline_Image:\nWebhook Trigger (from HR system/API)\nAutomation A\n- Create User\n- Add Group\n- Send Email (PowerShell)\nEmail Sent to Admin\nAdmin Replies: \"APPROVE jdoe\"\nPowerShell Script (Polling Email)\n+ Call REST API\nAutomation B\n- Assign M365 License\nUser Fully Provisioned",
+  "diagnostics": {
+    "input_mode": "eml",
+    "has_text_plain": true,
+    "has_text_html": true,
+    "inline_images_found": 10,
+    "ocr": {
+      "enabled": true,
+      "images_received": 10,
+      "images_ocr_attempted": 1,
+      "images_skipped_small": 9,
+      "images_skipped_low_signal": 0,
+      "ocr_errors": [],
+      "ocr_text_items": [
+        {
+          "image_index": 9,
+          "source": "mime_inline_image",
+          "content_type": "image/png",
+          "width": 409,
+          "height": 683,
+          "useful": true,
+          "text_preview": "Webhook Trigger (from HR system/API)\nAutomation A\n- Create User\n- Add Group\n- Send Email (PowerShell)\nEmail Sent to Admin\nAdmin Replies: \"APPROVE jdoe\"\nPowerShell Script (Polling Email)\n+ Call REST API\nAutomation B\n- Assign M365 License\nUser Fully Provisioned"
+        }
+      ]
+    }
+  }
+}

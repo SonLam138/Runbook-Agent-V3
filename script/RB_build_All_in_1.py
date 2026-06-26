@@ -9,7 +9,8 @@ from docx import Document
 # =====================================================
 # CONFIG
 # =====================================================
-DATA_DIR = Path("data")
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
 
 # Folder chứa file runbook DOCX thật
 RUNBOOK_DIR = Path(r"D:/runbook")
@@ -17,6 +18,7 @@ RUNBOOK_DIR = Path(r"D:/runbook")
 # Output hiện tại của hệ thống
 RUNBOOK_JSON = DATA_DIR / "runbook_data.json"
 KEYWORD_CATALOG_JSON = DATA_DIR / "keyword_catalog.json"
+KNOWLEDGE_CATALOG_JSON = DATA_DIR / "knowledge_catalog.json"
 
 # Ollama HTTP API
 OLLAMA_URL = "http://localhost:11434/api/generate"
@@ -42,6 +44,55 @@ def normalize(text):
 def normalize_lower(text):
     return normalize(text).lower()
 
+def normalize_keyword_list(raw_keyword):
+    """
+    Chuẩn hóa keyword từ source runbook thành list.
+
+    Mục tiêu:
+    - Source DOCX có thể là string: "Lỗi MFA, reset MFA"
+    - Hoặc sau này có thể là list: ["Lỗi MFA", "reset MFA"]
+    - Runtime issue_resolver cần list sạch.
+    - Không làm mất field keyword string legacy.
+    """
+
+    if not raw_keyword:
+        return []
+
+    # Case 1: đã là list
+    if isinstance(raw_keyword, list):
+        raw_items = raw_keyword
+
+    # Case 2: là string từ DOCX/pipeline hiện tại
+    elif isinstance(raw_keyword, str):
+        # Chỉ split các separator an toàn.
+        # KHÔNG split dấu "/" vì có keyword kiểu "gửi/nhận tin nhắn".
+        raw_items = re.split(r"[,;\n]+", raw_keyword)
+
+    # Case 3: kiểu khác thì ép về string để không crash pipeline
+    else:
+        raw_items = [str(raw_keyword)]
+
+    keywords = []
+    seen = set()
+
+    for item in raw_items:
+        k = normalize(item)
+
+        # bỏ bullet nếu có từ Word
+        k = re.sub(r"^[-•\u2022]\s*", "", k)
+        k = re.sub(r"^\d+[\.\)]\s*", "", k)
+        k = normalize(k)
+
+        if not k:
+            continue
+
+        key = normalize_lower(k)
+
+        if key not in seen:
+            seen.add(key)
+            keywords.append(k)
+
+    return keywords
 
 def save_json(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -49,6 +100,145 @@ def save_json(path, data):
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
+def build_service_name_to_id_map(knowledge_catalog):
+    """
+    Build mapping:
+    service_name (normalize) → service_id
+    """
+
+    mapping = {}
+
+    for s in knowledge_catalog:
+        name = normalize_lower(s.get("service_name", ""))
+        service_id = s.get("service_id")
+
+        if name and service_id:
+            mapping[name] = service_id
+
+    return mapping
+
+def split_camel_case(text):
+    """
+    ActiveDirectory -> Active Directory
+    EntraID -> Entra ID
+    """
+
+    if not text:
+        return ""
+
+    text = re.sub(r"(?<=[a-zà-ỹ])(?=[A-Z])", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+
+    return text
+
+
+def generate_service_aliases(service):
+    """
+    Sinh aliases deterministic từ technical service.
+    Không dùng LLM.
+    Không phụ thuộc business service catalog.
+    """
+
+    service = normalize(service)
+
+    if not service:
+        return []
+
+    candidates = []
+
+    # raw
+    candidates.append(service)
+
+    # lowercase-readable
+    candidates.append(service.lower())
+
+    # camel case split
+    split_name = split_camel_case(service)
+    if split_name and split_name != service:
+        candidates.append(split_name)
+        candidates.append(split_name.lower())
+
+    service_lower = service.lower()
+
+    # domain-specific lightweight aliases
+    if service_lower in ["ad", "activedirectory", "active directory"]:
+        candidates.extend([
+            "AD",
+            "Active Directory",
+            "Domain",
+            "Domain Login",
+            "Domain Account"
+        ])
+
+    if "exchange" in service_lower:
+        candidates.extend([
+            "Exchange",
+            "Microsoft Exchange",
+            "Mail Exchange",
+            "Mailbox",
+            "Outlook",
+            "OWA",
+            "Email"
+        ])
+
+    if "entra" in service_lower:
+        candidates.extend([
+            "Entra ID",
+            "Azure AD",
+            "AAD",
+            "SSO"
+        ])
+
+    if "lync" in service_lower:
+        candidates.extend([
+            "Lync",
+            "Lync Server",
+            "Skype for Business"
+        ])
+
+    if "iis" == service_lower or "iis" in service_lower:
+        candidates.extend([
+            "IIS",
+            "Web Server",
+            "URL Rewrite"
+        ])
+
+    if "dhcp" in service_lower:
+        candidates.extend([
+            "DHCP",
+            "DHCP Server",
+            "IP cấp phát"
+        ])
+
+    if "sql" in service_lower:
+        candidates.extend([
+            "SQL",
+            "SQL Server",
+            "Database"
+        ])
+
+    if "windows server" in service_lower:
+        candidates.extend([
+            "Windows Server",
+            "Server"
+        ])
+
+    # dedupe giữ thứ tự
+    output = []
+    seen = set()
+
+    for c in candidates:
+        c = normalize(c)
+        key = normalize_lower(c)
+
+        if not key:
+            continue
+
+        if key not in seen:
+            seen.add(key)
+            output.append(c)
+
+    return output
 
 # =====================================================
 # DETECT SECTION
@@ -203,6 +393,8 @@ def parse_docx(file_path: Path):
         or info_map.get("keywords")
         or ""
     )
+    keyword_list = normalize_keyword_list(keyword)
+    keyword_text = ", ".join(keyword_list)
 
     description = (
         info_map.get("kịch bản sử dụng")
@@ -235,12 +427,13 @@ def parse_docx(file_path: Path):
     steps = parse_steps(sections["steps"])
     postcheck = [normalize(x) for x in sections["postcheck"] if normalize(x)]
 
-    intents = generate_intents(keyword, description, max_intents=5)
+    intents = generate_intents(keyword_text, description, max_intents=5)
 
     rb = {
         "title": normalize(title),
         "service": normalize(service),
         "keyword": normalize(keyword),
+        "keyword_list": keyword_list,
         "description": normalize(description),
         "intents": intents,
         "precheck": precheck,
@@ -288,6 +481,390 @@ def build_all_runbooks():
             print(f"❌ Parse failed: {f.name} -> {repr(e)}")
 
     return runbooks
+
+# =====================================================
+# JSON EXTRACTOR
+# =====================================================
+def extract_json_from_text(text):
+    """
+    Ollama đôi khi trả kèm text thừa.
+    Hàm này cố gắng lấy JSON object đầu tiên.
+    """
+
+    if not text:
+        return {}
+
+    text = text.strip()
+    text = text.replace("```json", "").replace("```", "").strip()
+
+    try:
+        return json.loads(text)
+    except Exception:
+        pass
+
+    match = re.search(r"\{.*\}", text, re.DOTALL)
+
+    if not match:
+        return {}
+
+    json_text = match.group(0)
+
+    try:
+        return json.loads(json_text)
+    except Exception:
+        return {}
+    
+# =====================================================
+# BUILD KNOWLEDGE CATALOG FOR V4
+# =====================================================
+
+def dedupe_text_list(items):
+    """
+    Dedupe list text, giữ thứ tự.
+    """
+
+    output = []
+    seen = set()
+
+    for item in items:
+        text = normalize(item)
+        key = normalize_lower(text)
+
+        if not key:
+            continue
+
+        if key not in seen:
+            seen.add(key)
+            output.append(text)
+
+    return output
+
+
+def group_runbooks_by_service(runbooks):
+    """
+    Group runbooks theo technical service gốc từ runbook_data.
+
+    Lưu ý:
+    - Đây là service kỹ thuật do người viết runbook điền.
+    - Không dùng business service catalog.
+    - Không dùng service_mapping của V4_nhỏ.
+    """
+
+    grouped = {}
+
+    for rb in runbooks:
+        service = normalize(rb.get("service", ""))
+
+        if not service:
+            continue
+
+        service_key = normalize_lower(service)
+
+        if service_key not in grouped:
+            grouped[service_key] = {
+                "service": service,
+                "runbooks": []
+            }
+
+        grouped[service_key]["runbooks"].append(rb)
+
+    return grouped
+
+
+def collect_service_keywords_from_runbooks(service_runbooks):
+    """
+    Collect keywords deterministic cho một technical service.
+
+    Nguồn deterministic:
+    - keyword_list
+    - keyword string
+    - intents
+    - title
+
+    Không dùng LLM để sinh keyword chính.
+    """
+
+    keywords = []
+
+    for rb in service_runbooks:
+        # 1. keyword_list là nguồn tốt nhất nếu đã có
+        keyword_list = rb.get("keyword_list") or []
+
+        for kw in keyword_list:
+            keywords.append(kw)
+
+        # 2. fallback keyword string
+        keyword = rb.get("keyword", "")
+
+        if keyword:
+            # normalize_keyword_list đã được bạn thêm trước đó.
+            # Nếu file chưa có hàm này thì cần bổ sung ở UTILS.
+            keywords.extend(normalize_keyword_list(keyword))
+
+        # 3. intents deterministic từ pipeline
+        intents = rb.get("intents", []) or []
+
+        for intent in intents:
+            keywords.append(intent)
+
+        # 4. title cũng là signal hữu ích cho service resolver
+        title = rb.get("title", "")
+
+        if title:
+            keywords.append(title)
+
+    return dedupe_text_list(keywords)
+
+
+def build_service_runbook_samples(service_runbooks, max_items=10):
+    """
+    Tạo sample compact để đưa vào prompt LLM.
+    Tránh đưa quá nhiều steps/precheck làm prompt dài.
+    """
+
+    samples = []
+
+    for rb in service_runbooks[:max_items]:
+        samples.append({
+            "title": rb.get("title", ""),
+            "service": rb.get("service", ""),
+            "keyword": rb.get("keyword", ""),
+            "keyword_list": rb.get("keyword_list", []),
+            "description": rb.get("description", ""),
+            "intents": rb.get("intents", [])
+        })
+
+    return samples
+
+
+def build_knowledge_catalog_prompt(service, keywords, service_runbooks):
+    """
+    Prompt LLM sinh aliases + description cho technical service.
+
+    LLM KHÔNG được:
+    - sửa service
+    - sinh service mới
+    - sinh keyword chính thay deterministic keywords
+
+    LLM CHỈ được:
+    - sinh aliases/cách gọi khác cho service
+    - sinh description ngắn dựa trên runbook samples
+    """
+
+    samples = build_service_runbook_samples(service_runbooks, max_items=3)
+
+    return f"""
+Bạn là chuyên gia IT Support trong môi trường ngân hàng.
+
+NHIỆM VỤ:
+Tạo aliases và description cho một TECHNICAL SERVICE dựa trên dữ liệu runbook đã có.
+
+QUY TẮC BẮT BUỘC:
+- KHÔNG được sửa service gốc.
+- KHÔNG được tạo service mới.
+- KHÔNG được sinh keyword chính mới.
+- aliases chỉ là các cách gọi khác, tên viết tắt, tên phổ biến của service gốc.
+- aliases phải liên quan trực tiếp tới dữ liệu runbook được cung cấp.
+- description phải ngắn gọn, mô tả service này hỗ trợ nhóm vấn đề gì.
+- Chỉ trả về JSON hợp lệ.
+- Không giải thích.
+- Không markdown.
+- Không dùng ```json.
+
+SERVICE GỐC:
+{service}
+
+KEYWORDS DETERMINISTIC:
+{json.dumps(keywords[:15], ensure_ascii=False, indent=2)}
+
+RUNBOOK SAMPLES:
+{json.dumps(samples, ensure_ascii=False, indent=2)}
+
+FORMAT BẮT BUỘC:
+{{
+  "aliases": ["...", "..."],
+  "description": "..."
+}}
+"""
+
+
+def normalize_knowledge_catalog_llm_output(data):
+    """
+    Chuẩn hóa output LLM cho knowledge catalog.
+    """
+
+    if not isinstance(data, dict):
+        data = {}
+
+    aliases = data.get("aliases") or []
+    description = data.get("description") or ""
+
+    if isinstance(aliases, str):
+        aliases = [aliases]
+
+    aliases = dedupe_text_list(aliases)
+
+    return {
+        "aliases": aliases[:10],
+        "description": normalize(description)
+    }
+
+
+def fallback_knowledge_catalog_item(service, keywords):
+    """
+    Fallback khi LLM lỗi hoặc trả output rỗng.
+    Không hard-code domain.
+    """
+
+    aliases = dedupe_text_list([service])
+
+    if keywords:
+        description = (
+            f"Dịch vụ {service}, liên quan đến: "
+            + ", ".join(keywords[:8])
+            + "."
+        )
+    else:
+        description = f"Dịch vụ {service}."
+
+    return {
+        "aliases": aliases,
+        "description": description
+    }
+
+
+def extract_aliases_description_llm(service, keywords, service_runbooks):
+    """
+    Gọi Ollama để sinh aliases + description cho technical service.
+    """
+
+    prompt = build_knowledge_catalog_prompt(
+        service=service,
+        keywords=keywords,
+        service_runbooks=service_runbooks
+    )
+
+    try:
+        payload = {
+            "model": OLLAMA_MODEL,
+            "prompt": prompt,
+            "stream": False
+        }
+
+        response = requests.post(
+            OLLAMA_URL,
+            json=payload,
+            timeout=120
+        )
+
+        if response.status_code != 200:
+            print(
+                f"❌ KNOWLEDGE LLM HTTP ERROR: {response.status_code} | "
+                f"service={service}"
+            )
+            return fallback_knowledge_catalog_item(service, keywords)
+
+        result = response.json()
+        text = result.get("response", "")
+
+        data = extract_json_from_text(text)
+        normalized = normalize_knowledge_catalog_llm_output(data)
+
+        # Nếu LLM trả rỗng thì fallback
+        if not normalized.get("aliases") and not normalized.get("description"):
+            return fallback_knowledge_catalog_item(service, keywords)
+
+        # Luôn thêm service gốc vào aliases để resolver có exact signal
+        aliases = dedupe_text_list([service] + normalized.get("aliases", []))
+
+        description = normalized.get("description") or fallback_knowledge_catalog_item(
+            service,
+            keywords
+        )["description"]
+
+        return {
+            "aliases": aliases,
+            "description": description
+        }
+
+    except Exception as e:
+        print(
+            f"❌ KNOWLEDGE LLM ERROR: service={service} | "
+            f"{repr(e)}"
+        )
+        return fallback_knowledge_catalog_item(service, keywords)
+
+
+def build_knowledge_catalog_v4(runbooks):
+    """
+    Build knowledge_catalog.json cho V4.
+
+    Source:
+    - runbooks đã parse từ DOCX / runbook_data
+
+    Output schema:
+    [
+      {
+        "service": "...",
+        "aliases": [...],
+        "keywords": [...],
+        "description": "..."
+      }
+    ]
+
+    Design:
+    - service lấy chính xác từ runbook_data
+    - keywords lấy deterministic từ runbook_data
+    - aliases + description do LLM sinh có kiểm soát
+    - KHÔNG dùng business service catalog
+    - KHÔNG dùng service_mapping của V4_nhỏ
+    """
+
+    grouped = group_runbooks_by_service(runbooks)
+
+    catalog = []
+
+    for _, group in grouped.items():
+        service = group["service"]
+        service_runbooks = group["runbooks"]
+
+        print(f"🤖 Build V4 knowledge catalog: {service}")
+
+        keywords = collect_service_keywords_from_runbooks(service_runbooks)
+
+        llm_result = extract_aliases_description_llm(
+            service=service,
+            keywords=keywords,
+            service_runbooks=service_runbooks
+        )
+
+        item = {
+            "service": service,
+            "aliases": llm_result.get("aliases", []),
+            "keywords": keywords,
+            "description": llm_result.get("description", "")
+        }
+
+        catalog.append(item)
+
+        print(
+            f"✅ Knowledge item generated | "
+            f"service={service} | "
+            f"aliases={len(item['aliases'])} | "
+            f"keywords={len(item['keywords'])}"
+        )
+
+    catalog = sorted(
+        catalog,
+        key=lambda x: normalize_lower(x.get("service", ""))
+    )
+
+    print(f"\n📘 V4 KNOWLEDGE CATALOG BUILD SUMMARY")
+    print(f"📘 Total services: {len(catalog)}")
+
+    return catalog
+
+
 
 
 # =====================================================
@@ -365,37 +942,7 @@ Postcheck:
 """
 
 
-# =====================================================
-# JSON EXTRACTOR
-# =====================================================
-def extract_json_from_text(text):
-    """
-    Ollama đôi khi trả kèm text thừa.
-    Hàm này cố gắng lấy JSON object đầu tiên.
-    """
 
-    if not text:
-        return {}
-
-    text = text.strip()
-    text = text.replace("```json", "").replace("```", "").strip()
-
-    try:
-        return json.loads(text)
-    except Exception:
-        pass
-
-    match = re.search(r"\{.*\}", text, re.DOTALL)
-
-    if not match:
-        return {}
-
-    json_text = match.group(0)
-
-    try:
-        return json.loads(json_text)
-    except Exception:
-        return {}
 
 
 def normalize_patterns_synonyms(data):
@@ -586,6 +1133,7 @@ def load_existing_keyword_catalog():
                 "title": title,
                 "service": service,
                 "keyword": keyword,
+                "keyword_list": item.get("keyword_list") or normalize_keyword_list(keyword),
                 "patterns": item.get("patterns", []) or [],
                 "synonyms": item.get("synonyms", []) or [],
                 "source_hash": item.get("source_hash", "")
@@ -604,7 +1152,8 @@ def load_existing_keyword_catalog():
 # =====================================================
 # BUILD KEYWORD CATALOG WITH CACHE
 # =====================================================
-def build_keyword_catalog(runbooks):
+def build_keyword_catalog(runbooks, service_mapping):
+
     """
     Build keyword_catalog.json.
 
@@ -636,7 +1185,9 @@ def build_keyword_catalog(runbooks):
         title = rb.get("title", "")
         service = rb.get("service", "")
         keyword = rb.get("keyword", "")
-
+        keyword_list = rb.get("keyword_list") or []
+        service_name_norm = normalize_lower(service)
+        service_id = service_mapping.get(service_name_norm)
         print(f"🤖 Build catalog: {title}")
 
         # Keyword là dữ liệu gốc từ runbook.
@@ -647,7 +1198,9 @@ def build_keyword_catalog(runbooks):
             catalog.append({
                 "title": title,
                 "service": service,
+                "service_id": service_id,
                 "keyword": keyword,
+                "keyword_list": keyword_list,
                 "patterns": [],
                 "synonyms": [],
                 "source_hash": calculate_source_hash(rb)
@@ -677,7 +1230,9 @@ def build_keyword_catalog(runbooks):
                 catalog.append({
                     "title": title,
                     "service": service,
+                    "service_id": service_id,
                     "keyword": keyword,
+                    "keyword_list": keyword_list,
                     "patterns": cached_patterns,
                     "synonyms": cached_synonyms,
                     "source_hash": current_hash
@@ -699,7 +1254,9 @@ def build_keyword_catalog(runbooks):
                 catalog.append({
                     "title": title,
                     "service": service,
+                    "service_id": service_id,
                     "keyword": keyword,
+                    "keyword_list": keyword_list,
                     "patterns": cached_patterns,
                     "synonyms": cached_synonyms,
                     "source_hash": current_hash
@@ -728,7 +1285,9 @@ def build_keyword_catalog(runbooks):
         item = {
             "title": title,
             "service": service,
+            "service_id": service_id,
             "keyword": keyword,
+            "keyword_list": keyword_list,
             "patterns": llm_result.get("patterns", []),
             "synonyms": llm_result.get("synonyms", []),
             "source_hash": current_hash
@@ -759,26 +1318,39 @@ def main():
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
+    # =====================================================
+    # 1. BUILD RUNBOOK DATA
+    # =====================================================
     runbooks = build_all_runbooks()
 
     if not runbooks:
         print("❌ Không tìm thấy file DOCX hợp lệ.")
         return
 
-    # 1) Save source of truth
     save_json(RUNBOOK_JSON, runbooks)
     print(f"✅ Saved runbook data → {RUNBOOK_JSON}")
 
-    # 2) Build derived knowledge for issue_resolver
-    keyword_catalog = build_keyword_catalog(runbooks)
+    # =====================================================
+    # 2. BUILD KNOWLEDGE CATALOG (V4 - TECHNICAL)
+    # =====================================================
+    knowledge_catalog_v4 = build_knowledge_catalog_v4(runbooks)
 
-    # 3) Save derived catalog
+    save_json(KNOWLEDGE_CATALOG_JSON, knowledge_catalog_v4)
+    print(f"✅ Saved V4 knowledge catalog → {KNOWLEDGE_CATALOG_JSON}")
+
+    # =====================================================
+    # 3. BUILD KEYWORD CATALOG (V4 - TECHNICAL)
+    # =====================================================
+    keyword_catalog = build_keyword_catalog(runbooks, service_mapping=None)
+    # ⚠️ nếu build_keyword_catalog của bạn KHÔNG cần service_mapping thì bỏ param này
+
     save_json(KEYWORD_CATALOG_JSON, keyword_catalog)
     print(f"✅ Saved keyword catalog → {KEYWORD_CATALOG_JSON}")
 
     print("\n🎉 BUILD PIPELINE DONE")
     print(f"📘 Total runbooks      : {len(runbooks)}")
     print(f"📂 Runbook data        : {RUNBOOK_JSON}")
+    print(f"📂 Knowledge catalog   : {KNOWLEDGE_CATALOG_JSON}")
     print(f"📂 Keyword catalog     : {KEYWORD_CATALOG_JSON}")
 
 

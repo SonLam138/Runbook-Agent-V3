@@ -1,5 +1,5 @@
 {
-  "2876d1c9-6c20-462f-85fb-88a801967b34": {
+  "a5a69a6f-cc72-4649-8fc9-bdd3ac4d7eda": {
     "mode": "idle",
     "original_query": "",
     "clarify_turns": 0,
@@ -9,44 +9,344 @@
       "service": null,
       "error_message": null
     },
-    "history": [],
-    "semantic_query": "",
-    "last_runbook": null,
-    "tried_runbooks": [],
-    "last_result_status": null,
-    "semantic_cache": [],
-    "last_action": null
+    "history": [
+      {
+        "role": "user",
+        "text": "cập nhật Desktop toàn hàng"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n\n📘 Tiêu đề: RB_Cập nhật Desktop và ScreenSaver toàn hàng\n\n🖥 Dịch vụ: ActiveDirectory\n\n🔹 Điều kiện thực hiện:\n- Chỉ thực hiện trên GPO nhất định. Có yêu cầu và phê duyệt từ ban Marcom qua kênh SVD. Yêu cầu file ảnh nền dung lượng bé, định dạng .JPG, file màn hình chờ dung lượng nhỏ, định dạng .scr\n\n🔹 Các bước thực hiện:\n1. Bước 1 : Download file cần thiết, scan virus. Sau đó upload lên thư mục : \\\\10.160.198.26\\scr. Đặt tên file Desktop là DTddMM, file màn hình chờ là screenddMM (trong đó dd : ngày, MM : tháng )\n2. Bước 2 : Truy cập công cụ quản lý Group Policy, chọn Policy : Desktop_Screen_MM_YYYY\n3. Bước 3a : Nếu là Desktop : duyệt đến cấu hình : User Configuration --> Administrative Templates --> Desktop --> Desktop : policy Desktop Wallpaper --> Wallpaper Name : đường dẫn tới file ở Bước 1\n4. Bước 3b : Nếu là ScreenSaver : duyệt đến cấu hình : User Configuration --> Administrative Templates --> Control Panel --> Personalization : policy Enable screen saver --> Screen saver executable name : đường dẫn tới file ở Bước 1\n\n🔹 Kiểm tra sau thực hiện:\n- Restart máy trạm và thấy màn hình nền mới"
+      },
+      {
+        "role": "user",
+        "text": "tôi gặp lỗi về exchange"
+      },
+      {
+        "role": "assistant",
+        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n\n📘 Tiêu đề: RB_Certificate Name Mismatch\n\n🖥 Dịch vụ: Microsoft Exchange\n\n🔹 Điều kiện thực hiện:\n- Domain và Email không khớp với nhau và chưa được cấu hình đúng hoặc bản ghi DNS cấu hình sai\n\n🔹 Các bước thực hiện:\n1. Bước 1: Cấu hình lại các URL trên Exchange bằng Exchange Management Shell:\n2. $Server = \" Tên máy chủ Exchange\"\n3. $HTTPS_FQDN = \"mail.company.com\"\n4. Get-ClientAccessService -Identity $Server | Set-ClientAccessService -AutoDiscoverServiceInternalUri \"https://$HTTP_FQDN/AutoDiscover/AutoDiscover.xml\"\n5. Get-WebServiceVirtualDirectory - Server $Server | Set-WebServiceVirtualDirectory -InternalUrl \"https://$HTTPS_FQDN/EWS/Exchange.asmx\" -ExternalUrl \"https://$HTTPS_FQDN/EWS/Exchange.asmx\"\n6. Get-OwaVirtualDirectory -Server $Server | Set-OwaVirtualDirectory -InternalUrl \"https://$HTTPS_FQDN/owa\" -ExternalUrl \"https://$HTTPS_FQDN/owa\"\n7. Get-EcpVirtualDirectory -Server $Server | Set-EcpVirtualDirectory -InternalUrl \"https://$HTTPS_FQDN/ecp\" -ExternalUrl \"https://$HTTPS_FQDN/ecp\"\n8. Get-ActiveSyncVirtualDirectory -Server $Server | Set-ActiveSyncVirtualDirectory -InternalUrl \"https://$HTTPS_FQDN/Microsoft-Server-ActiveSync\" -ExternalUrl \"https://$HTTPS_FQDN/Microsoft-Server-ActiveSync\"\n9. Get-MapiVirtualDirectory -Server $Server | Set-MapiVirtualDirectory -InternalUrl \"https://$HTTPS_FQDN/mapi\" -ExternalUrl \"https://$HTTPS_FQDN/mapi\"\n10. Bước 2: Cấu hình DNS:\n11. Cấu hình A Record mail.company.com trỏ về IP DAG hoặc IP Loadbalancing\n12. Cấu hình A Record hoặc CNAME cho autodiscover.company.com trỏ về IP DAG hoặc IP Loadbalancing\n13. Bước 3: Restart IIS service\n\n🔹 Kiểm tra sau thực hiện:\n- User sử dụng Outlook không còn xuất hiện lỗi báo: \"The name on the security certificate is invalid or does not match the name of the site\""
+      }
+    ],
+    "semantic_query": "tôi gặp lỗi về exchange",
+    "last_runbook": {
+      "title": "RB_Certificate Name Mismatch",
+      "service": "Microsoft Exchange",
+      "keyword": "TestName mismatch External Domain, service URL Exchange, AutoDiscover",
+      "keyword_list": [
+        "TestName mismatch External Domain",
+        "service URL Exchange",
+        "AutoDiscover"
+      ],
+      "description": "Trong quá trình triển khai AD và Exchange, không phải lúc nào domain và địa chỉ email cũng được tạo trùng với nhau vì nhiều mục đích, khi đó dẫn đến tình huống user khi sử dụng Outlook sẽ báo lỗi: \"The name on the security certificate is invalid or does not match the name of the site\"",
+      "intents": [
+        "TestName mismatch External Domain",
+        "service URL Exchange",
+        "AutoDiscover",
+        "trong quá trình triển khai ad",
+        "không phải lúc nào domain"
+      ],
+      "precheck": [
+        "Domain và Email không khớp với nhau và chưa được cấu hình đúng hoặc bản ghi DNS cấu hình sai"
+      ],
+      "steps": [
+        "Bước 1: Cấu hình lại các URL trên Exchange bằng Exchange Management Shell:",
+        "$Server = \" Tên máy chủ Exchange\"",
+        "$HTTPS_FQDN = \"mail.company.com\"",
+        "Get-ClientAccessService -Identity $Server | Set-ClientAccessService -AutoDiscoverServiceInternalUri \"https://$HTTP_FQDN/AutoDiscover/AutoDiscover.xml\"",
+        "Get-WebServiceVirtualDirectory - Server $Server | Set-WebServiceVirtualDirectory -InternalUrl \"https://$HTTPS_FQDN/EWS/Exchange.asmx\" -ExternalUrl \"https://$HTTPS_FQDN/EWS/Exchange.asmx\"",
+        "Get-OwaVirtualDirectory -Server $Server | Set-OwaVirtualDirectory -InternalUrl \"https://$HTTPS_FQDN/owa\" -ExternalUrl \"https://$HTTPS_FQDN/owa\"",
+        "Get-EcpVirtualDirectory -Server $Server | Set-EcpVirtualDirectory -InternalUrl \"https://$HTTPS_FQDN/ecp\" -ExternalUrl \"https://$HTTPS_FQDN/ecp\"",
+        "Get-ActiveSyncVirtualDirectory -Server $Server | Set-ActiveSyncVirtualDirectory -InternalUrl \"https://$HTTPS_FQDN/Microsoft-Server-ActiveSync\" -ExternalUrl \"https://$HTTPS_FQDN/Microsoft-Server-ActiveSync\"",
+        "Get-MapiVirtualDirectory -Server $Server | Set-MapiVirtualDirectory -InternalUrl \"https://$HTTPS_FQDN/mapi\" -ExternalUrl \"https://$HTTPS_FQDN/mapi\"",
+        "Bước 2: Cấu hình DNS:",
+        "Cấu hình A Record mail.company.com trỏ về IP DAG hoặc IP Loadbalancing",
+        "Cấu hình A Record hoặc CNAME cho autodiscover.company.com trỏ về IP DAG hoặc IP Loadbalancing",
+        "Bước 3: Restart IIS service"
+      ],
+      "postcheck": [
+        "User sử dụng Outlook không còn xuất hiện lỗi báo: \"The name on the security certificate is invalid or does not match the name of the site\""
+      ],
+      "source_file": "D:\\runbook\\RB_Certificate Name Mismatch.docx"
+    },
+    "tried_runbooks": [
+      "RB_Cập nhật Desktop và ScreenSaver toàn hàng",
+      "RB_Certificate Name Mismatch"
+    ],
+    "last_result_status": "returned",
+    "semantic_cache": [
+      {
+        "semantic_query": "cập nhật Desktop toàn hàng",
+        "runbook_title": "RB_Cập nhật Desktop và ScreenSaver toàn hàng",
+        "service": "ActiveDirectory"
+      },
+      {
+        "semantic_query": "tôi gặp lỗi về exchange",
+        "runbook_title": "RB_Certificate Name Mismatch",
+        "service": "Microsoft Exchange"
+      }
+    ],
+    "last_action": "search",
+    "last_service_resolution": {
+      "service": "Mail Exchange",
+      "confidence": 1.0,
+      "score": 1.0,
+      "source": "hybrid",
+      "is_strong": true,
+      "status": "resolved",
+      "candidates": [
+        {
+          "service": "Mail Exchange",
+          "score": 1.0,
+          "source": "hybrid",
+          "rule_score": 0.92,
+          "semantic_score": 0.5926,
+          "matched_terms": [
+            "Exchange",
+            "Mail Exchange"
+          ]
+        },
+        {
+          "service": "Exchange",
+          "score": 0.9,
+          "source": "hybrid",
+          "rule_score": 0.82,
+          "semantic_score": 0.5625,
+          "matched_terms": [
+            "Exchange",
+            "migrate lỗi )"
+          ]
+        },
+        {
+          "service": "Exchange 2016",
+          "score": 0.75,
+          "source": "hybrid",
+          "rule_score": 0.67,
+          "semantic_score": 0.5566,
+          "matched_terms": [
+            "Exchange 2016"
+          ]
+        },
+        {
+          "service": "Microsoft Exchange",
+          "score": 0.75,
+          "source": "hybrid",
+          "rule_score": 0.67,
+          "semantic_score": 0.6047,
+          "matched_terms": [
+            "Microsoft Exchange"
+          ]
+        }
+      ],
+      "reason": "hybrid_strong_match",
+      "trace": [
+        {
+          "stage": "service_resolve_start",
+          "query": "tôi gặp lỗi về exchange",
+          "normalized_query": "tôi gặp lỗi về exchange"
+        },
+        {
+          "stage": "rule_match_done",
+          "count": 4,
+          "candidates": [
+            {
+              "service": "Mail Exchange",
+              "score": 0.92,
+              "source": "rule",
+              "matched_terms": [
+                "Exchange",
+                "Mail Exchange"
+              ]
+            },
+            {
+              "service": "Exchange",
+              "score": 0.82,
+              "source": "rule",
+              "matched_terms": [
+                "Exchange",
+                "migrate lỗi )"
+              ]
+            },
+            {
+              "service": "Exchange 2016",
+              "score": 0.67,
+              "source": "rule",
+              "matched_terms": [
+                "Exchange 2016"
+              ]
+            },
+            {
+              "service": "Microsoft Exchange",
+              "score": 0.67,
+              "source": "rule",
+              "matched_terms": [
+                "Microsoft Exchange"
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "semantic_match_done",
+          "count": 4,
+          "candidates": [
+            {
+              "service": "Microsoft Exchange",
+              "score": 0.6047,
+              "source": "semantic",
+              "matched_terms": []
+            },
+            {
+              "service": "Mail Exchange",
+              "score": 0.5926,
+              "source": "semantic",
+              "matched_terms": []
+            },
+            {
+              "service": "Exchange",
+              "score": 0.5625,
+              "source": "semantic",
+              "matched_terms": []
+            },
+            {
+              "service": "Exchange 2016",
+              "score": 0.5566,
+              "source": "semantic",
+              "matched_terms": []
+            }
+          ]
+        },
+        {
+          "stage": "candidates_merged",
+          "count": 4,
+          "candidates": [
+            {
+              "service": "Mail Exchange",
+              "score": 1.0,
+              "source": "hybrid",
+              "rule_score": 0.92,
+              "semantic_score": 0.5926,
+              "matched_terms": [
+                "Exchange",
+                "Mail Exchange"
+              ]
+            },
+            {
+              "service": "Exchange",
+              "score": 0.9,
+              "source": "hybrid",
+              "rule_score": 0.82,
+              "semantic_score": 0.5625,
+              "matched_terms": [
+                "Exchange",
+                "migrate lỗi )"
+              ]
+            },
+            {
+              "service": "Exchange 2016",
+              "score": 0.75,
+              "source": "hybrid",
+              "rule_score": 0.67,
+              "semantic_score": 0.5566,
+              "matched_terms": [
+                "Exchange 2016"
+              ]
+            },
+            {
+              "service": "Microsoft Exchange",
+              "score": 0.75,
+              "source": "hybrid",
+              "rule_score": 0.67,
+              "semantic_score": 0.6047,
+              "matched_terms": [
+                "Microsoft Exchange"
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "decision_input",
+          "top_service": "Mail Exchange",
+          "top_score": 1.0,
+          "second_service": "Exchange",
+          "second_score": 0.9,
+          "margin": 0.1,
+          "top_source": "hybrid"
+        },
+        {
+          "stage": "deterministic_decision_done",
+          "status": "resolved",
+          "service": "Mail Exchange",
+          "confidence": 1.0,
+          "source": "hybrid",
+          "reason": "hybrid_strong_match"
+        }
+      ]
+    },
+    "decision_trace": [
+      {
+        "action": "service_not_resolved",
+        "reason": "top_candidates_too_close",
+        "status": "ambiguous",
+        "confidence": 0.77,
+        "source": "rule",
+        "flow_context": "initial_service_resolve",
+        "candidates": [
+          {
+            "service": "AD",
+            "score": 0.77,
+            "source": "rule",
+            "rule_score": 0.77,
+            "semantic_score": 0.0,
+            "matched_terms": [
+              "Slideshow Desktop"
+            ]
+          },
+          {
+            "service": "ActiveDirectory",
+            "score": 0.75,
+            "source": "hybrid",
+            "rule_score": 0.67,
+            "semantic_score": 0.6554,
+            "matched_terms": [
+              "Desktop Update"
+            ]
+          }
+        ]
+      },
+      {
+        "action": "resolve_service",
+        "reason": "hybrid_strong_match",
+        "service": "Mail Exchange",
+        "confidence": 1.0,
+        "source": "hybrid",
+        "flow_context": "initial_service_resolve"
+      }
+    ],
+    "resolved_service": "Mail Exchange",
+    "service_confidence": 1.0,
+    "service_source": "hybrid"
   },
-  "8b3130f0-5ac4-465b-8516-2b8ace1e513d": {
-    "mode": "idle",
-    "original_query": "Tiếp tục lỗi rồi V4",
-    "clarify_turns": 4,
-    "pending_slot": null,
+  "b7da1ca4-535e-4a4f-bbd2-fa10deeb0ee6": {
+    "mode": "clarifying",
+    "original_query": "tài khoản đăng nhập không được",
+    "clarify_turns": 3,
+    "pending_slot": "error_message",
     "slots": {
-      "issue_type": "remote mailbox, hòm mail 365",
-      "service": "Exchange",
-      "error_message": "Mailbox hiện tại ở on-prem, cần chuyển sang 365"
+      "issue_type": null,
+      "service": null,
+      "error_message": "incorrect password tạo tài khoản mới"
     },
     "history": [
       {
         "role": "user",
-        "text": "Tiếp tục lỗi rồi V4"
+        "text": "có lỗi với Active Directory"
       },
       {
         "role": "assistant",
-        "text": "Bạn đang gặp vấn đề với dịch vụ nào?"
+        "text": "Bạn đang gặp vấn đề gì trên Active Directory?"
       },
       {
         "role": "user",
-        "text": "Exchange"
-      },
-      {
-        "role": "assistant",
-        "text": "Chúng tôi cần thêm chút thông tin để tìm đúng runbook cho bạn. Bạn vui lòng mô tả yêu cầu/vấn đề có chứa các từ khóa liên quan.\n\n                Ví dụ:\n                - Lỗi mailbox --> 1 số từ khóa : không đăng nhập được/lỗi gửi mail/dung lượng mailbox...\n                - Lỗi đăng nhập --> 1 số từ khóa : đăng nhập máy tính/đăng nhập ứng dụng A,B/MFA...\n                Từ khóa càng gần yêu cầu/vấn đề của bạn thì kết quả tìm kiếm sẽ càng chính xác."
-      },
-      {
-        "role": "user",
-        "text": "mailbox 365"
+        "text": "tài khoản đăng nhập không được"
       },
       {
         "role": "assistant",
@@ -54,48 +354,176 @@
       },
       {
         "role": "user",
-        "text": "Mailbox hiện tại ở on-prem, cần chuyển sang 365"
+        "text": "incorrect password"
       },
       {
         "role": "assistant",
-        "text": "Bạn vui lòng thử làm theo hướng dẫn sau:\n\n📘 Tiêu đề: enable remote mailbox\n\n🖥 Dịch vụ: Exchange\n\n🔹 Điều kiện thực hiện:\n- User phải có license 365\n\n🔹 Các bước thực hiện:\n1. Truy cập máy chủ exchange server\n2. Mở powershell thực hiện lệnh disabled mailbox\n3. Mở powershell thực hiện lệnh enable-remotemailbox\n\n🔹 Kiểm tra sau thực hiện:\n- Đăng nhập exchange online"
-      }
-    ],
-    "semantic_query": "Exchange remote mailbox, hòm mail 365 Mailbox hiện tại ở on-prem, cần chuyển sang 365",
-    "last_runbook": {
-      "title": "enable remote mailbox",
-      "service": "Exchange",
-      "keyword": "remote mailbox, hòm mail 365",
-      "description": "Người dung có license 365 nhưng mailbox ở on-prem",
-      "intents": [
-        "remote mailbox",
-        "hòm mail 365"
-      ],
-      "precheck": [
-        "User phải có license 365"
-      ],
-      "steps": [
-        "Truy cập máy chủ exchange server",
-        "Mở powershell thực hiện lệnh disabled mailbox",
-        "Mở powershell thực hiện lệnh enable-remotemailbox"
-      ],
-      "postcheck": [
-        "Đăng nhập exchange online"
-      ],
-      "source_file": "D:\\runbook\\RB_enable remote mailbox.docx"
-    },
-    "tried_runbooks": [
-      "enable remote mailbox"
-    ],
-    "last_result_status": "returned",
-    "semantic_cache": [
+        "text": "Với Active Directory, lỗi xảy ra ở thao tác hoặc chức năng nào, ví dụ đăng nhập, phân quyền, kết nối, gửi/nhận, dung lượng hoặc đồng bộ?"
+      },
       {
-        "semantic_query": "Exchange remote mailbox, hòm mail 365 Mailbox hiện tại ở on-prem, cần chuyển sang 365",
-        "runbook_title": "enable remote mailbox",
-        "service": "Exchange"
+        "role": "user",
+        "text": "tạo tài khoản mới"
+      },
+      {
+        "role": "assistant",
+        "text": "Với Active Directory, lỗi xảy ra ở thao tác hoặc chức năng nào, ví dụ đăng nhập, phân quyền, kết nối, gửi/nhận, dung lượng hoặc đồng bộ?"
       }
     ],
-    "last_action": "search",
-    "resolved_service": "Exchange"
+    "semantic_query": "Active Directory incorrect password tạo tài khoản mới",
+    "last_runbook": null,
+    "tried_runbooks": [],
+    "last_result_status": null,
+    "semantic_cache": [],
+    "last_action": "ask_more",
+    "last_service_resolution": {
+      "service": "Active Directory",
+      "confidence": 0.9,
+      "score": 0.9,
+      "source": "hybrid",
+      "is_strong": true,
+      "status": "resolved",
+      "candidates": [
+        {
+          "service": "Active Directory",
+          "score": 0.9,
+          "source": "hybrid",
+          "rule_score": 0.82,
+          "semantic_score": 0.6069,
+          "matched_terms": [
+            "Active Directory"
+          ]
+        },
+        {
+          "service": "Exchange",
+          "score": 0.77,
+          "source": "rule",
+          "rule_score": 0.77,
+          "semantic_score": 0.0,
+          "matched_terms": [
+            "migrate lỗi )"
+          ]
+        },
+        {
+          "service": "ActiveDirectory",
+          "score": 0.5518,
+          "source": "semantic",
+          "rule_score": 0.0,
+          "semantic_score": 0.5518,
+          "matched_terms": []
+        }
+      ],
+      "reason": "hybrid_strong_match",
+      "trace": [
+        {
+          "stage": "service_resolve_start",
+          "query": "có lỗi với Active Directory",
+          "normalized_query": "có lỗi với active directory"
+        },
+        {
+          "stage": "rule_match_done",
+          "count": 2,
+          "candidates": [
+            {
+              "service": "Active Directory",
+              "score": 0.82,
+              "source": "rule",
+              "matched_terms": [
+                "Active Directory"
+              ]
+            },
+            {
+              "service": "Exchange",
+              "score": 0.77,
+              "source": "rule",
+              "matched_terms": [
+                "migrate lỗi )"
+              ]
+            }
+          ]
+        },
+        {
+          "stage": "semantic_match_done",
+          "count": 2,
+          "candidates": [
+            {
+              "service": "Active Directory",
+              "score": 0.6069,
+              "source": "semantic",
+              "matched_terms": []
+            },
+            {
+              "service": "ActiveDirectory",
+              "score": 0.5518,
+              "source": "semantic",
+              "matched_terms": []
+            }
+          ]
+        },
+        {
+          "stage": "candidates_merged",
+          "count": 3,
+          "candidates": [
+            {
+              "service": "Active Directory",
+              "score": 0.9,
+              "source": "hybrid",
+              "rule_score": 0.82,
+              "semantic_score": 0.6069,
+              "matched_terms": [
+                "Active Directory"
+              ]
+            },
+            {
+              "service": "Exchange",
+              "score": 0.77,
+              "source": "rule",
+              "rule_score": 0.77,
+              "semantic_score": 0.0,
+              "matched_terms": [
+                "migrate lỗi )"
+              ]
+            },
+            {
+              "service": "ActiveDirectory",
+              "score": 0.5518,
+              "source": "semantic",
+              "rule_score": 0.0,
+              "semantic_score": 0.5518,
+              "matched_terms": []
+            }
+          ]
+        },
+        {
+          "stage": "decision_input",
+          "top_service": "Active Directory",
+          "top_score": 0.9,
+          "second_service": "Exchange",
+          "second_score": 0.77,
+          "margin": 0.13,
+          "top_source": "hybrid"
+        },
+        {
+          "stage": "deterministic_decision_done",
+          "status": "resolved",
+          "service": "Active Directory",
+          "confidence": 0.9,
+          "source": "hybrid",
+          "reason": "hybrid_strong_match"
+        }
+      ]
+    },
+    "resolved_service": "Active Directory",
+    "service_confidence": 0.9,
+    "service_source": "hybrid",
+    "decision_trace": [
+      {
+        "action": "resolve_service",
+        "reason": "hybrid_strong_match",
+        "service": "Active Directory",
+        "confidence": 0.9,
+        "source": "hybrid",
+        "flow_context": "initial_service_resolve"
+      }
+    ]
   }
 }

@@ -1,0 +1,308 @@
+{
+  "version": "1.0",
+  "services": [
+    {
+      "service_id": "0.01-T24",
+      "service_name": "0.01-T24",
+      "description": "Dịch vụ quản lý các giao dịch nghiệp vụ Ngân hàng lõi",
+      "aliases": [
+        "Quản lý giao dịch ngân hàng lõi",
+        "QLGD NH lõi"
+      ],
+      "symptoms": [
+        "Truy cập T24",
+        "Giao dịch bị hủy hoặc đưa ra trạng thái lỗi",
+        "Lỗi khi thực hiện giao dịch",
+        "Kết quả trả về lỗi hoặc không chính xác"
+      ],
+      "common_keywords": [
+        "giao dịch",
+        "lỗi giao dịch",
+        "ngân hàng lõi",
+        "quản lý giao dịch"
+      ]
+    },
+    {
+      "service_id": "0.02-SMARTVISTA",
+      "service_name": "0.02-Smartvista",
+      "description": "Dịch vụ quản lý các giao dịch nghiệp vụ Core Thẻ",
+      "aliases": [
+        "Giao dịch Core Thẻ trên Smartvista",
+        "Quản lý giao dịch Smartvista"
+      ],
+      "symptoms": [
+        "Giao dịch nghiệp vụ Core Thẻ chưa được xử lý đúng trên Smartvista",
+        "Lỗi khi xử lý giao dịch Core Thẻ trên Smartvista",
+        "Không thể tạo/sửa/xóa giao dịch trên hệ thống Smartvista",
+        "Hệ thống Smartvista bị lỗi khi quản lý giao dịch nghiệp vụ Core Thẻ"
+      ],
+      "common_keywords": [
+        "Core Thẻ",
+        "Smartvista",
+        "không thể tạo/sửa/xóa",
+        "giao dịch nghiệp vụ",
+        "lỗi xử lý"
+      ]
+    },
+    {
+      "service_id": "1.07-VÍ_ĐIỆN_TỬ",
+      "service_name": "1.07-Ví điện tử",
+      "description": "Dịch vụ thanh toán điện tử qua MOMO, MOCA, ECPAY, SAMSUNGPAY",
+      "aliases": [
+        "Dịch vụ thanh toán điện tử",
+        "1.07-Ví điện từ MOMO",
+        "1.07-Ví điện từ MOCA",
+        "1.07-Ví điện từ SAMSUNGPAY",
+        "1.07-Ví điện từ ECPAY"
+      ],
+      "symptoms": [
+        "Lỗi khi thanh toán điện qua MOCA",
+        "Không thể thanh toán điện qua SAMSUNGPAY",
+        "Không thể thanh toán điện qua MOMO",
+        "Thanh toán điện bằng ECPAY lỗi"
+      ],
+      "common_keywords": [
+        "ECPAY",
+        "MOCA",
+        "MOMO",
+        "SAMSUNGPAY",
+        "thanh toán điện từ"
+      ]
+    },
+    {
+      "service_id": "1.08-SMART_FORM",
+      "service_name": "1.08-Smart Form",
+      "description": "Dịch vụ ngân hàng một cửa",
+      "aliases": [
+        "dich-vu-ngan-hang-mot-cua",
+        "dich-vu-108-smart-form"
+      ],
+      "symptoms": [
+        "Không thể truy cập ứng dụng Smart Form của ngân hàng 1.08",
+        "Trang web ngân hàng 1.08 không hoạt động đúng theo dự kiến",
+        "Lỗi khi mở ứng dụng Smart Form của ngân hàng 1.08"
+      ],
+      "common_keywords": [
+        "truy cập ứng dụng lỗi",
+        "ứng dụng Smart Form",
+        "lỗi trang web ngân hàng",
+        "ngân hàng 1.08"
+      ]
+    },
+    {
+      "service_id": "3.05-ERP",
+      "service_name": "3.05-ERP",
+      "description": "6.Tập hợp hợp chứng từ và phân bổ chi phí (Dành cho các đầu mối thanh toán tại các đơn vị)",
+      "aliases": [
+        "Thống kê chung tùy và phân bổ chi phí (Đơn vị thanh toán)",
+        "Tập hợp hóa đơn và chi phí (Thanh toán đơn vị)",
+        "3.05 ERP"
+      ],
+      "symptoms": [
+        "Lỗi khi quay lại màn hình chứng từ",
+        "Hệ thống chấm dứt hoạt động trong quá trình tập hợp hóa đơn và chi phí",
+        "Không thể tạo hoá đơn mới",
+        "Phân bổ chi phí không được cập nhật"
+      ],
+      "common_keywords": [
+        "Phân bổ chi phí",
+        "Chứng từ",
+        "Thanh toán đơn vị",
+        "Tạo hoá đơn mới",
+        "ERP"
+      ]
+    },
+    {
+      "service_id": "4.27-QUẢN_TRỊ_VỐN_CON_NGƯỜI_-_HCM",
+      "service_name": "4.27-Quản trị vốn con người - HCM",
+      "description": "Các yêu cầu liên quan đến hệ thống quản trị vốn con người (SAP HCM):",
+      "aliases": [
+        "Hệ thống SAP HCM",
+        "Quản lý tài sản nhân dân"
+      ],
+      "symptoms": [
+        "Yêu cầu xác thực không được chấp nhận",
+        "Trang quản lý vốn con người bị chặn, giật hoặc lỗi trong quá trình sử dụng",
+        "Làm ảnh hưởng tới quy trình quản lý vốn con người (SAP HCM)",
+        "Không có trang quản trị vốn con người (SAP HCM) hoặc trang bị lỗi",
+        "Lỗi xuất hiện khi tạo hoặc sửa bản ghi"
+      ],
+      "common_keywords": [
+        "Xác thực",
+        "Quản lý tài sản nhân dân",
+        "SAP HCM",
+        "Tạo bản ghi",
+        "Sửa bản ghi",
+        "Yêu cầu",
+        "Lỗi",
+        "Quy trình quản lý vốn con người"
+      ]
+    },
+    {
+      "service_id": "6.11-IPPHONE",
+      "service_name": "6.11-Ipphone",
+      "description": "Dịch vụ điện thoại cố định sử dụng công nghệ IP",
+      "aliases": [
+        "6.11-IPPhone",
+        "dich-vu-di-en-thoai-co-dihinh-sua-dung-cong-nghe-ip"
+      ],
+      "symptoms": [
+        "Diện thoại IP không cho phép gọi/nhận được cuộc gọi",
+        "Không thể kết nối đến server IPPhone",
+        "IPPhone bị lỗi sau các hoạt động nhập mã PIN hoặc cài đặt tài khoản mới"
+      ],
+      "common_keywords": [
+        "IPPhone",
+        "lỗi gọi/nhận cuộc gọi",
+        "không kết nối",
+        "cài đặt tài khoản",
+        "mã PIN",
+        "diện thoại"
+      ]
+    },
+    {
+      "service_id": "6.12-HỘI_NGHỊ_TRUYỀN_HÌNH",
+      "service_name": "6.12-Hội nghị truyền hình",
+      "description": "Dịch vụ hỗ trợ tổ chức họp qua hệ thống hội nghị truyền hình",
+      "aliases": [
+        "6-12 Hội nghị truyền hình",
+        "Hội nghị trực tuyến",
+        "Dịch vụ hội nghị truyền hình"
+      ],
+      "symptoms": [
+        "Hội nghị bị lỗi khi có nhiều người liên tục đăng nhập",
+        "Hộp thư mails trong hội nghị không được gửi được",
+        "Không thể kết nối vào hội nghị"
+      ],
+      "common_keywords": [
+        "kết nối",
+        "6-12 Hội nghị",
+        "hội nghị truyền hình",
+        "liên tục đăng nhập",
+        "truyền hình",
+        "gửi mail",
+        "hệ thống hội nghị"
+      ]
+    },
+    {
+      "service_id": "6.13-Microsoft Team / Office 365",
+      "service_name": "6.13-Microsoft Team / Office 365",
+      "description": "+ MS Office 365",
+      "aliases": [
+        "MS Teams",
+        "Office365"
+      ],
+      "symptoms": [
+        "Lỗi kết nối trong Office 365",
+        "Trang web Office 365 hiện thông báo lỗi",
+        "Không thể gửi/nhận tin nhắn trong Microsoft Teams",
+        "Email chưa đến hộp thư của tôi",
+        "Không thể truy cập vào Microsoft Teams",
+        "MS Teams đóng lại tự động"
+      ],
+      "common_keywords": [
+        "email chưa đến",
+        "Office 365",
+        "đóng lại tự động",
+        "thông báo lỗi",
+        "lỗi kết nối",
+        "không gửi/nhận tin nhắn",
+        "không thể truy cập",
+        "Microsoft Teams"
+      ]
+    },
+    {
+      "service_id": "6.13-Microsoft Team / Office 365",
+      "service_name": "6.13-Microsoft Team / Office 365",
+      "description": "+ MS Sharepoint",
+      "aliases": [
+        "SharePoint",
+        "Office365"
+      ],
+      "symptoms": [
+        "Lỗi khi mở file trên SharePoint",
+        "SharePoint chạy lento hoặc bị gián đoạn",
+        "Không thể truy cập SharePoint",
+        "Trang web SharePoint không load được"
+      ],
+      "common_keywords": [
+        "Load không thành công",
+        "không truy cập",
+        "lỗi mở file",
+        "gián đoạn",
+        "chạy lento"
+      ]
+    },
+    {
+      "service_id": "6.13-Microsoft Team / Office 365",
+      "service_name": "6.13-Microsoft Team / Office 365",
+      "description": "+ MS OneDrice",
+      "aliases": [
+        "Office 365",
+        "6.13-Microsoft Teams",
+        "MS OneDrive"
+      ],
+      "symptoms": [
+        "Không thể mở tệp trên OneDrive",
+        "Lỗi khi dùng Microsoft Team",
+        "File trên OneDrive không cập nhật được",
+        "Tính năng sync OneDrive bị lỗi"
+      ],
+      "common_keywords": [
+        "Office 365",
+        "OneDrive",
+        "không hoạt động",
+        "Microsoft Team",
+        "khó mở file",
+        "lỗi sync"
+      ]
+    },
+    {
+      "service_id": "6.14-QUẢN_LÝ_HẠ_TẦNG_AWS",
+      "service_name": "6.14-Quản lý hạ tầng AWS",
+      "description": "Cung cáp các dịch vụ trên AWS",
+      "aliases": [
+        "QLH AWS",
+        "Quản lý AWS infrastructure",
+        "Dịch vụ quản trị hạ tầng AWS"
+      ],
+      "symptoms": [
+        "Các dịch vụ trên AWS bị lỗi",
+        "Không thể kết nối tới AWS Services",
+        "Có thông báo lỗi trên AWS Management Console",
+        "Không thể sử dụng các dịch vụ trên AWS",
+        "Làm đột phá hệ thống trên AWS"
+      ],
+      "common_keywords": [
+        "Không thể sử dụng",
+        "Dịch vụ",
+        "AWS",
+        "Quản lý hạ tầng",
+        "Lỗi",
+        "Trọng báo"
+      ]
+    },
+    {
+      "service_id": "6.15-QUẢN_LÝ_HẠ_TẦNG_NỀN_TẢNG_K8S,_OCP,_EKS,_ECS,_ARGOCD",
+      "service_name": "6.15-Quản lý hạ tầng nền tảng K8S, OCP, EKS, ECS, ArgoCD",
+      "description": "Cung cấp hạ tầng trên K8S, OCP",
+      "aliases": [
+        "quản lý hạ tầng K8S",
+        "hệ thống quản lý nền tảng K8S"
+      ],
+      "symptoms": [
+        "Làm việc với phần mềm quản lý hạ tầng OCP, EKS, ECS, ArgoCD bị lỗi",
+        "Không thể truy cập vào phần mềm quản lý hạ tầng K8S",
+        "Phần mềm quản lý hạ tầng K8S bị lỗi khi gởi yêu cầu"
+      ],
+      "common_keywords": [
+        "hệ thống quản lý hạ tầng",
+        "K8S",
+        "OCP",
+        "EKS",
+        "ECS",
+        "ArgoCD"
+      ]
+    }
+  ]
+}

@@ -1,95 +1,880 @@
 [
   {
-    "title": "enable remote mailbox",
-    "service": "Exchange",
-    "keyword": "remote mailbox, hòm mail 365",
-    "description": "Người dung có license 365 nhưng mailbox ở on-prem",
+    "title": "Tìm file record meeting trong Teams",
+    "service": "Microsoft Teams",
+    "keyword": "Teams, meeting, record",
+    "keyword_list": [
+      "Teams",
+      "meeting",
+      "record"
+    ],
+    "description": "Khi user cần tìm file record meeting",
     "intents": [
-      "remote mailbox",
-      "hòm mail 365"
+      "Teams",
+      "meeting",
+      "record",
+      "khi user cần tìm file record meeting"
     ],
     "precheck": [
-      "User phải có license 365"
+      "File meeting lưu trữ trong 30 ngày trong onedrive.",
+      "Chỉ Organizer( người tạo meeting mới lưu trữ được record)"
     ],
-    "steps": [
-      "Truy cập máy chủ exchange server",
-      "Mở powershell thực hiện lệnh disabled mailbox",
-      "Mở powershell thực hiện lệnh enable-remotemailbox"
-    ],
+    "steps": [],
     "postcheck": [
-      "Đăng nhập exchange online"
+      "Sau khi thực hiện sẽ có bản ghi trong Resource"
     ],
-    "source_file": "D:\\runbook\\RB_enable remote mailbox.docx"
+    "source_file": "D:\\runbook\\KB_Hướng dẫn tìm file record meeting trong Teams.docx"
   },
   {
-    "title": "reset MFA",
-    "service": "Active Directory",
-    "keyword": "Lỗi MFA, reset MFA",
-    "description": "Người dùng bị lỗi đăng nhập, đã qua bước nhập mật khẩu nhưng không gửi thông báo MFA qua điện thoại",
+    "title": "RB_Apply Retention Policy cho mailbox Exchange 2016",
+    "service": "Exchange 2016",
+    "keyword": "Retention Policy, Mailbox đầy dung lượng, xóa hoặc archive mailbox định kỳ",
+    "keyword_list": [
+      "Retention Policy",
+      "Mailbox đầy dung lượng",
+      "xóa hoặc archive mailbox định kỳ"
+    ],
+    "description": "Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị đầy dung lượng. Nếu là archive thì phải enable archive online.",
     "intents": [
-      "Lỗi MFA",
-      "reset MFA",
-      "người dùng bị lỗi đăng nhập"
+      "Retention Policy",
+      "Mailbox đầy dung lượng",
+      "xóa hoặc archive mailbox định kỳ",
+      "nếu là archive thì phải enable archive online"
+    ],
+    "precheck": [],
+    "steps": [
+      "Bước 1 : Đăng nhập ECP, đi tới Compliance management --> Retention policy/tags"
+    ],
+    "postcheck": [
+      "Bước 2 : Apply Retention Policy cho mailbox",
+      "ECP : Recipients --> chọn user --> Mailbox features --> Retention Policy : chọn policy cần áp",
+      "Powershell : Set-Mailbox Username -RetentionPolicy \"retention policy name\""
+    ],
+    "source_file": "D:\\runbook\\RB_Apply Retention Policy cho mailbox Exchange 2016.docx"
+  },
+  {
+    "title": "Create VLAN trên FI UCS",
+    "service": "8.02 Hạ tầng tại hội sở",
+    "keyword": "Testcheckname, address, global address",
+    "keyword_list": [
+      "Testcheckname",
+      "address",
+      "global address"
+    ],
+    "description": "Người dùng khác không thể tìm kiếm địa chỉ gửi mail, không tìm kiếm được teams của tài khoản đang bị Hide Global Address.",
+    "intents": [
+      "Testcheckname",
+      "address",
+      "global address"
     ],
     "precheck": [
-      "Tài khoản enabled",
-      "Tài khoản không bị khóa"
+      "Người thực hiện cần có quyền thay đổi attribute của account trên AD."
     ],
     "steps": [
-      "Truy cập Entra, tìm tài khoản user",
-      "Trong properties chọn Muilti Authenticator",
-      "Chọn reset MFA"
+      "Export các user bị Hide Global Address.",
+      "Trên ADMP, chọn Export - ->Exchange Report  Users Hidden from Exchange Address Lists.",
+      "Phần chọn các OU, chọn các OU: User, Hoi so chinh, Chi nhanh. Lưu ý: Trong các OU trên, bỏ chọn OU Nghi che do.",
+      "Chọn Generate để report các user. Nhấn Export As, chọn định dạng file xuất là csv.",
+      "Tạo file csv các user bị Hide Address: \\HideAddress-2505.csv",
+      "sAMAccountName",
+      "nguyenabc",
+      "Chạy script",
+      "Import-Module ActiveDirectory",
+      "# duong dan file CSV hardcode",
+      "$duongdan_csv = \"C:\\UserHideAddress\\HideAddress-2505.csv\"",
+      "# kiem tra file",
+      "if (!(Test-Path $duongdan_csv)) {",
+      "Write-Host \"Loi: khong tim thay file CSV\"",
+      "exit",
+      "}",
+      "# doc file CSV",
+      "$ds_user = Import-Csv $duongdan_csv",
+      "foreach ($u in $ds_user) {",
+      "$sam = $u.SamAccountName",
+      "if (-not $sam) {",
+      "Write-Host \"Bo qua dong loi\"",
+      "continue",
+      "}",
+      "try {",
+      "# set unhide truc tiep",
+      "Set-ADUser -Identity $sam -Replace @{",
+      "msExchHideFromAddressLists = $false",
+      "}",
+      "Write-Host \"Da unhide: $sam\"",
+      "}",
+      "catch {",
+      "Write-Host \"Loi voi user: $sam\"",
+      "}",
+      "}",
+      "Write-Host \"Hoan tat\""
+    ],
+    "postcheck": [
+      "Sau khoảng 24h, các tài khoản người dùng có thể check name, và tìm kiếm trên teams."
+    ],
+    "source_file": "D:\\runbook\\RB_Bỏ chọn Hide Global Address của user.docx"
+  },
+  {
+    "title": "RB_Certificate Name Mismatch",
+    "service": "Microsoft Exchange",
+    "keyword": "TestName mismatch External Domain, service URL Exchange, AutoDiscover",
+    "keyword_list": [
+      "TestName mismatch External Domain",
+      "service URL Exchange",
+      "AutoDiscover"
+    ],
+    "description": "Trong quá trình triển khai AD và Exchange, không phải lúc nào domain và địa chỉ email cũng được tạo trùng với nhau vì nhiều mục đích, khi đó dẫn đến tình huống user khi sử dụng Outlook sẽ báo lỗi: \"The name on the security certificate is invalid or does not match the name of the site\"",
+    "intents": [
+      "TestName mismatch External Domain",
+      "service URL Exchange",
+      "AutoDiscover",
+      "trong quá trình triển khai ad",
+      "không phải lúc nào domain"
+    ],
+    "precheck": [
+      "Domain và Email không khớp với nhau và chưa được cấu hình đúng hoặc bản ghi DNS cấu hình sai"
+    ],
+    "steps": [
+      "Bước 1: Cấu hình lại các URL trên Exchange bằng Exchange Management Shell:",
+      "$Server = \" Tên máy chủ Exchange\"",
+      "$HTTPS_FQDN = \"mail.company.com\"",
+      "Get-ClientAccessService -Identity $Server | Set-ClientAccessService -AutoDiscoverServiceInternalUri \"https://$HTTP_FQDN/AutoDiscover/AutoDiscover.xml\"",
+      "Get-WebServiceVirtualDirectory - Server $Server | Set-WebServiceVirtualDirectory -InternalUrl \"https://$HTTPS_FQDN/EWS/Exchange.asmx\" -ExternalUrl \"https://$HTTPS_FQDN/EWS/Exchange.asmx\"",
+      "Get-OwaVirtualDirectory -Server $Server | Set-OwaVirtualDirectory -InternalUrl \"https://$HTTPS_FQDN/owa\" -ExternalUrl \"https://$HTTPS_FQDN/owa\"",
+      "Get-EcpVirtualDirectory -Server $Server | Set-EcpVirtualDirectory -InternalUrl \"https://$HTTPS_FQDN/ecp\" -ExternalUrl \"https://$HTTPS_FQDN/ecp\"",
+      "Get-ActiveSyncVirtualDirectory -Server $Server | Set-ActiveSyncVirtualDirectory -InternalUrl \"https://$HTTPS_FQDN/Microsoft-Server-ActiveSync\" -ExternalUrl \"https://$HTTPS_FQDN/Microsoft-Server-ActiveSync\"",
+      "Get-MapiVirtualDirectory -Server $Server | Set-MapiVirtualDirectory -InternalUrl \"https://$HTTPS_FQDN/mapi\" -ExternalUrl \"https://$HTTPS_FQDN/mapi\"",
+      "Bước 2: Cấu hình DNS:",
+      "Cấu hình A Record mail.company.com trỏ về IP DAG hoặc IP Loadbalancing",
+      "Cấu hình A Record hoặc CNAME cho autodiscover.company.com trỏ về IP DAG hoặc IP Loadbalancing",
+      "Bước 3: Restart IIS service"
+    ],
+    "postcheck": [
+      "User sử dụng Outlook không còn xuất hiện lỗi báo: \"The name on the security certificate is invalid or does not match the name of the site\""
+    ],
+    "source_file": "D:\\runbook\\RB_Certificate Name Mismatch.docx"
+  },
+  {
+    "title": "RB_Check phân quyền được phép gửi mail vào toàn bộ group",
+    "service": "8.02 Hạ tầng tại hội sở",
+    "keyword": "",
+    "keyword_list": [],
+    "description": "",
+    "intents": [],
+    "precheck": [
+      "Người dùng thực hiện có quyền quản trị exchange."
+    ],
+    "steps": [
+      "Truy cập vào Exchange Shell với quyền admin.",
+      "Chạy script",
+      "# Xuat danh sach tat ca Distribution Group va Security Group",
+      "# Kem danh sach user va group duoc phep gui mail vao group do",
+      "$results = @()",
+      "# Lay tat ca cac group co mail",
+      "$allGroups = Get-DistributionGroup -ResultSize Unlimited",
+      "foreach ($group in $allGroups) {",
+      "# Dung DistinguishedName de lay chi tiet group (fix loi Deserialized object)",
+      "$details = Get-DistributionGroup -Identity $group.DistinguishedName",
+      "# Lay danh sach user va group duoc phep gui",
+      "$users = $details.AcceptMessagesOnlyFrom",
+      "$dlMembers = $details.AcceptMessagesOnlyFromDLMembers",
+      "$allowedSenders = @()",
+      "if ($users -or $dlMembers) {",
+      "if ($users) {",
+      "$allowedSenders += ($users | ForEach-Object { $_.Name })",
+      "}",
+      "if ($dlMembers) {",
+      "$allowedSenders += ($dlMembers | ForEach-Object { $_.Name + \" (group)\" })",
+      "}",
+      "}",
+      "else {",
+      "$allowedSenders = \"Tat ca nguoi gui trong to chuc (mac dinh)\"",
+      "}",
+      "$results += [PSCustomObject]@{",
+      "GroupName = $group.DisplayName",
+      "GroupEmail = $group.PrimarySmtpAddress",
+      "GroupType = $group.GroupType",
+      "AllowedSenders = ($allowedSenders -join ', ')",
+      "}",
+      "}",
+      "# Xuat ra file CSV",
+      "$path = \"E:\\setup\\Group_Allowed_Senders26052026.csv\"",
+      "$results | Export-Csv -Path $path -NoTypeInformation -Encoding UTF8",
+      "Write-Host \"Da xuat file: $path\""
+    ],
+    "postcheck": [
+      "Người viết : khiemdv@pvcombank.com.vn",
+      "Keyword : Testpermision send email",
+      "Mục đích sử dụng"
+    ],
+    "source_file": "D:\\runbook\\RB_Check phân quyền được phép gửi mail vào toàn bộ group.docx"
+  },
+  {
+    "title": "Cấu hình redirect http to https bằng urlrewrite",
+    "service": "IIS",
+    "keyword": "TestURL Rewrite, redirect https",
+    "keyword_list": [
+      "TestURL Rewrite",
+      "redirect https"
+    ],
+    "description": "khi website được cài certificate, việc truy cập website sẽ chuyển sang port 443, nếu không nhập https://website.com thì sẽ không thể truy cập được",
+    "intents": [
+      "TestURL Rewrite",
+      "redirect https",
+      "khi website được cài certificate",
+      "nếu không nhập https://website",
+      "com thì sẽ không thể truy cập được"
+    ],
+    "precheck": [
+      "Tài khoản cần có quyền quản trị Admin IIS"
+    ],
+    "steps": [
+      "Bước 1: Tải url rewrite và tiến hành cài đặt",
+      "Bước 2: Mở IIS Manager và chọn website cần cấu hình redirect",
+      "- Chọn Url Rewrite",
+      "- Chọn Add Rule(s)",
+      "- Chọn Blank Rule",
+      "- OK",
+      "Bước 3: Đặt tên tùy ý cho Rule",
+      "Trong Match URL:",
+      "- Chọn Matches the Pattern trong Requested URL",
+      "- Chọn Regular Expressions trong thẻ Using",
+      "- Điền (.*) trong thẻ Pattern",
+      "- Tích chọn Ignore case",
+      "Bước 4: Trong thẻ Conditions, chọn Match all bên dưới Logical Grouping và chọn Add",
+      "Trong hộp thoại mới mở ra",
+      "- Điền {HTTPS} trong condition input",
+      "- Chọn Matches the Pattern",
+      "- Điền ^OFF$ trong Pattern",
+      "- OK",
+      "Bước 5: Trong mục Action",
+      "- Chọn Redirect bên dưới action type",
+      "- Điền https://{HTTP_HOST}{REQUEST_URL}",
+      "- Bỏ check Append query string",
+      "- Redirect type chọn Permanent (301)",
+      "Bước 6: Apply"
+    ],
+    "postcheck": [
+      "Client truy cập website bằng website.com thành công mà không cần nhập https://website.com"
+    ],
+    "source_file": "D:\\runbook\\RB_Cấu hình redirect http to https bằng urlrewrite.docx"
+  },
+  {
+    "title": "RB_Cập nhật Desktop và ScreenSaver toàn hàng",
+    "service": "ActiveDirectory",
+    "keyword": "TestDesktop, ScreenSaver, màn hình chờ, màn hình nền",
+    "keyword_list": [
+      "TestDesktop",
+      "ScreenSaver",
+      "màn hình chờ",
+      "màn hình nền"
+    ],
+    "description": "Khi nhận yêu cầu thay đổi màn hình nền Desktop hoặc màn hình chờ theo các chương trình truyền thông",
+    "intents": [
+      "TestDesktop",
+      "ScreenSaver",
+      "màn hình chờ",
+      "màn hình nền"
+    ],
+    "precheck": [
+      "Chỉ thực hiện trên GPO nhất định. Có yêu cầu và phê duyệt từ ban Marcom qua kênh SVD. Yêu cầu file ảnh nền dung lượng bé, định dạng .JPG, file màn hình chờ dung lượng nhỏ, định dạng .scr"
+    ],
+    "steps": [
+      "Bước 1 : Download file cần thiết, scan virus. Sau đó upload lên thư mục : \\\\10.160.198.26\\scr. Đặt tên file Desktop là DTddMM, file màn hình chờ là screenddMM (trong đó dd : ngày, MM : tháng )",
+      "Bước 2 : Truy cập công cụ quản lý Group Policy, chọn Policy : Desktop_Screen_MM_YYYY",
+      "Bước 3a : Nếu là Desktop : duyệt đến cấu hình : User Configuration --> Administrative Templates --> Desktop --> Desktop : policy Desktop Wallpaper --> Wallpaper Name : đường dẫn tới file ở Bước 1",
+      "Bước 3b : Nếu là ScreenSaver : duyệt đến cấu hình : User Configuration --> Administrative Templates --> Control Panel --> Personalization : policy Enable screen saver --> Screen saver executable name : đường dẫn tới file ở Bước 1"
+    ],
+    "postcheck": [
+      "Restart máy trạm và thấy màn hình nền mới"
+    ],
+    "source_file": "D:\\runbook\\RB_Cập nhật Desktop và ScreenSaver toàn hàng.docx"
+  },
+  {
+    "title": "Xóa Mailbox Database",
+    "service": "Exchange 2016",
+    "keyword": "Delete, Mailbox Database, khoảng trắng",
+    "keyword_list": [
+      "Delete",
+      "Mailbox Database",
+      "khoảng trắng"
+    ],
+    "description": "Các Mailbox Database sau một thời gian sử dụng, có nhiều tài khoản email đã bị vô hiệu hóa, tuy nhiên dung lượng ổ cứng dành cho những email này vẫn còn, tạo ra các khoảng trắng, chiếm dụng tài nguyên ổ cứng. Mặc dù Microsoft có hỗ trợ việc ghi đè dữ liệu lên các khoảng trắng này, nhưng trong trường hợp cần thu hồi tài nguyên nhanh chóng, ta có thể migrate toàn bộ mailbox sang Mailbox Database khác và xóa bỏ Database cũ để thu hồi tài nguyên.",
+    "intents": [
+      "Delete",
+      "Mailbox Database",
+      "khoảng trắng",
+      "tạo ra các khoảng trắng",
+      "chiếm dụng tài nguyên ổ cứng"
+    ],
+    "precheck": [
+      "Tài khoản thực hiện cần được cấp quyền Orgazination Management",
+      "Di chuyển Mailbox: Đảm bảo không còn User Mailbox, Archiver Mailbox hoặc Arbitration Mailbox nào còn tồn tại trên Database.",
+      "Bản sao Database: Nếu database nằm trong một cụm DAG, cần phải xóa tất cả các bản sao (Passive Copies) trước khi xóa database gốc.",
+      "Backup: Đảm bảo đã có bản backup nếu cần thiết phải khôi phục dữ liệu trong tương lai.",
+      "Cách 1: Sử dụng Exchange Admin Center (EAC)",
+      "Bước 1: Remove tất cả các bản sao",
+      "Truy cập vào EAC",
+      "Điều hướng đến Servers > Database",
+      "Chọn Database muốn remove các bản sao",
+      "Trong ngăn chi tiết bên phải (Detail Pane), danh sách các Database Copied sẽ được hiển thị ở đây",
+      "Chọn từng bản sao (Passive Copies) và nhấn nút Remove",
+      "Xác nhận Yes trong cửa sổ cảnh báo.",
+      "Bước 2: Dismount Database",
+      "Sau khi đã Remove hoàn toàn các bản sao, nhấp vào biểu tượng … (More) và chọn Dismount. Xác nhận Yes khi được hỏi",
+      "Bước 3: Xóa Database",
+      "Sau khi trạng thái chuyển sang Dismount, chọn database đó và nhấn vào biểu tượng thùng rác (Delete).",
+      "Một thông báo sẽ hiện ra cảnh báo rằng tệp cơ sở dữ liệu vật lý (.edb) sẽ không bị xóa tự động. Nhấn yes.",
+      "Cách 2: Sử dụng Exchange Management Shell",
+      "Bước 1: Sử dụng cú pháp sau để xóa bản sao trên một server cụ thể",
+      "Remove-MailboxDatabaseCopy -Identity \"EX16-MNam04\\DC-EXC2016-01\" -Confirm:$false"
+    ],
+    "steps": [],
+    "postcheck": [
+      "Get-MailboxDatabase “EX16-MNam04” | Select Object -ExpandProperty Database Copies",
+      "Sử dụng lệnh sau để đảm bảo database đã trống:",
+      "Get-Mailbox -Database “EX16-MNam04”",
+      "Get-Mailbox -Database “EX16-MNam04” – Arbitration",
+      "Get-Mailbox -Database “EX16-MNam04” - Archive",
+      "Bước 3: Dismount Database",
+      "Sử dụng lệnh sau để dismount database",
+      "Dismount -Database -Identity “EX16-MNam04” -Confirm:&false",
+      "Bước 4: Xóa Database",
+      "Sử dụng lệnh sau để xóa database",
+      "Remove -MailboxDatabase -Identity “EX16-MNam04”"
+    ],
+    "source_file": "D:\\runbook\\RB_Delete Mailbox.docx"
+  },
+  {
+    "title": "Enable Mailbox Group qua ADMP",
+    "service": "Exchange",
+    "keyword": "Enable Group Mailbox",
+    "keyword_list": [
+      "Enable Group Mailbox"
+    ],
+    "description": "Các security group khi tạo mới không có email, sau khi sử dụng phát sinh nhu cầu gửi email vào các group này",
+    "intents": [
+      "Enable Group Mailbox"
+    ],
+    "precheck": [
+      "Tài khoản AD được phân quyền operator trở lên trên ADMP và group cần enable mailbox phải ở dạng Universal"
+    ],
+    "steps": [
+      "Bước 1: Chuẩn bị file csv bao gồm trường sAMAccountName, mail, mailNickname, ProxyAddresses",
+      "Bước 2: Đăng nhập vào ADMP Chọn: Management > Group Management > Modify Groups > Import CSV > OK",
+      "Bước 3: Sau khi danh sách group hiện lên > Tick Check All > Update in AD"
     ],
     "postcheck": [],
-    "source_file": "D:\\runbook\\RB_Reset MFA.docx"
+    "source_file": "D:\\runbook\\RB_Enable Mailbox Group qua ADMP.docx"
   },
   {
-    "title": "reset password",
-    "service": "Active Directory",
-    "keyword": "Quên mật khẩu, đặt lại mật khẩu, forgot password, mật khẩu mới",
-    "description": "người dùng quên mật khẩu hoặc hết hạn mật khẩu mà không đổi, muốn đổi mật khẩu mới",
+    "title": "RB_Enable Remote Mailbox (Exchange Online)",
+    "service": "Exchange",
+    "keyword": "TestExchange, Remote mailbox, two mailbox",
+    "keyword_list": [
+      "TestExchange",
+      "Remote mailbox",
+      "two mailbox"
+    ],
+    "description": "Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại thành 01 mailbox duy nhất trên Exchange Onlie",
     "intents": [
-      "Quên mật khẩu",
-      "đặt lại mật khẩu",
-      "forgot password",
-      "mật khẩu mới",
-      "người dùng quên mật khẩu"
+      "TestExchange",
+      "Remote mailbox",
+      "two mailbox",
+      "migrate lỗi )"
     ],
     "precheck": [
-      "Tài khoản enabled",
-      "Tài khoản không bị khóa"
+      "Phải được cấp license 365 có app Exchange Online. Mailbox On-prem phải được archive trước khi thực hiện để đảm bảo không mất dữ liệu"
     ],
     "steps": [
-      "Truy cập ADSS theo link : https://adss.pvcb.vn",
-      "Chọn nút Quên mật khẩu",
-      "Nhập code MFA và đặt lại mật khẩu mới"
+      "Bước 1 : Archive (backup) mailbox đang sử dụng (On-prem) của User",
+      "Bước 2 : Mở Exchange Powershell, disable mailbox tài khoản :",
+      "Disable-Mailbox -Identity \"Name hoặc domain\\username\"",
+      "Bước 3 : Chạy lệnh để enable remote mailbox :",
+      "Enable-RemoteMailbox user@pvcb.vn -RemoteRoutingAddress \"user@pvcombankcomvn.mail.onmicrosoft.com\""
     ],
     "postcheck": [
-      "Truy cập Microsoft login hoặc exchange online. Nhập mật khẩu mới"
+      "Chạy lệnh : Get-RemoteMailbox -idetity username . Nếu trả về kết quả có nghĩa là mailbox đã được enable remote"
     ],
-    "source_file": "D:\\runbook\\RB_Reset password.docx"
+    "source_file": "D:\\runbook\\RB_Enable Remote Mailbox (Exchange Online).docx"
   },
   {
-    "title": "Tạo tài khoản mới",
-    "service": "Active Directory",
-    "keyword": "tạo tài khoản, create user",
-    "description": "tạo tài khoản domain mới",
+    "title": "Lync Server 2013 - Gia hạn Certificate",
+    "service": "Lync Server 2013",
+    "keyword": "Lync server, Certificate, gia hạn",
+    "keyword_list": [
+      "Lync server",
+      "Certificate",
+      "gia hạn"
+    ],
+    "description": "Certificate hết hạn gây dừng service Lync",
     "intents": [
-      "tạo tài khoản",
-      "create user",
-      "tạo tài khoản domain mới"
+      "Lync server",
+      "Certificate",
+      "gia hạn",
+      "certificate hết hạn gây dừng service lync"
     ],
     "precheck": [
-      "Phiếu đề nghị tạo tài khoản"
+      "Lync Admin - Tạo change thực hiện"
     ],
     "steps": [
-      "Truy cập ADMD",
-      "Chọn menu User Management",
-      "Chọn template P_create_user"
+      "Bước 1 : Truy cập Lycn Server, mở chạy Deployment Wizard. Chọn Step 3 : Request, Install or Assign Certificates",
+      "Bước 2 : Tạo giao diện Certificate Wizard chọn nút Request --> Next",
+      "Bước 3 :"
+    ],
+    "postcheck": [],
+    "source_file": "D:\\runbook\\RB_Gia hạn Certificate Lycn Server 2013.docx"
+  },
+  {
+    "title": "Hướng dẫn move computer vào đúng OU qua ADMP",
+    "service": "AD",
+    "keyword": "TestMove Computer",
+    "keyword_list": [
+      "TestMove Computer"
+    ],
+    "description": "Trên hệ thống AD có từng OU của các phòng, ban. Cần move đúng computers của các phòng, ban này vào đúng OU của phòng, ban đó",
+    "intents": [
+      "TestMove Computer",
+      "cần move đúng computers của các phòng",
+      "ban này vào đúng ou của phòng",
+      "ban đó"
+    ],
+    "precheck": [
+      "Tài khoản thực hiện cần có quyền move computers"
+    ],
+    "steps": [
+      "Bước 1: Chuẩn bị file csv với trường Name",
+      "Bước 2: Đăng nhập ADMP bằng tài khoản đã được cấp quyền qua link: https://admp.pvcombank.com.vn:8443",
+      "Bước 3: Chọn Management > chọn Computer Management > Chọn Move Computers",
+      "Bước 4: Trong thẻ Select Container, chọn OU muốn di chuyển computers vào",
+      "Bước 5: Import file csv đã chuẩn bị ở Bước 1 và chọn Go",
+      "Bước 6: Tick Check All và Chọn Apply"
+    ],
+    "postcheck": [],
+    "source_file": "D:\\runbook\\RB_Hướng dẫn move computer vào đúng OU qua ADMP.docx"
+  },
+  {
+    "title": "Tạo thêm room đặt phòng cho ứng dụng OnePV",
+    "service": "OnePV",
+    "keyword": "Room, đặt phòng, đặt xe, Onepv",
+    "keyword_list": [
+      "Room",
+      "đặt phòng",
+      "đặt xe",
+      "Onepv"
+    ],
+    "description": "Khi có yêu cầu tạo thêm room phục vụ tính năng đặt xe hoặc đặt phòng họp trên ứng dụng OnePV",
+    "intents": [
+      "Room",
+      "đặt phòng",
+      "đặt xe",
+      "Onepv",
+      "đặt phòng họp trên ứng dụng onepv"
+    ],
+    "precheck": [
+      "Phân quyền: Exchange Online Admin"
+    ],
+    "steps": [
+      ": Truy cập Exchange Online Admin portal: https://admin.cloud.microsoft/ => Chọn Recipient => Chọn Resource => Chọn Add a room resource"
     ],
     "postcheck": [
-      "Đăng nhập máy tính bằng tài khoản mới"
+      "Sau khi thực hiện sẽ có bản ghi trong Resource"
     ],
-    "source_file": "D:\\runbook\\RB_Tạo tài khoản mới.docx"
+    "source_file": "D:\\runbook\\RB_Hướng dẫn tạo thêm Room đặt cho OnePV.docx"
+  },
+  {
+    "title": "Lỗi tạo tài khoản Lync và Mailbox qua ADMP",
+    "service": "ADManagerPlus",
+    "keyword": "ADMP, lỗi tài khoản Lync, ConstraintViolationNoLeadingOrTrailingWhitespace",
+    "keyword_list": [
+      "ADMP",
+      "lỗi tài khoản Lync",
+      "ConstraintViolationNoLeadingOrTrailingWhitespace"
+    ],
+    "description": "Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mailbox. Thông báo lỗi : “Successfully created the user., but following errors occurred.Error while enabling Lync services for the user - System.Management.Automation.RemoteException: ConstraintViolationNoLeadingOrTrailingWhitespaceSystem.Management.Automation.RemoteException: ConstraintViolationNoLeadingOrTrailingWhitespace Some error occurred when creating Remote mailbox, The property \"DisplayName\" with value \"Nguyen Minh Truong (K.KHCN-TGG) \" is invalid. The value can't contain leading or trailing whitespace”",
+    "intents": [
+      "ADMP",
+      "lỗi tài khoản Lync",
+      "ConstraintViolationNoLeadingOrTrailingWhitespace",
+      "thông báo lỗi : “successfully created the user",
+      "but following errors occurred"
+    ],
+    "precheck": [
+      "Tài khoản Domain đã tạo thành công. Được phân quyền Admin Lync và Exchange hoặc phần role trong ADMP"
+    ],
+    "steps": [],
+    "postcheck": [
+      "Bước 2 : Enable tài khoản Lync. Có thể active qua ADMP hoặc Lync web admin",
+      "Bước 2.1: ADMP : Chọn tab Management, chọn mục User Management Enable/Disable Skype(Lync) Users",
+      "Bước 2.2 : Web : Truy cập link : https://lyncpool1.pvcb.vn/cscp. Đăng nhập tài khoản quản trị Lync. Chọn mục Users Enable users add user cần active chọn :",
+      "+ Assign users to a pool : LYNCpool1.pvcb.vn",
+      "+ SIP URI : chọn use format : <SAMAccountName>@pvcb.vn",
+      "+ Ấn nút Enable",
+      "Bước 3 : Enable Mailbox qua ADMP : User Management Create/Archive User Mailbox Chọn :",
+      "Mail Alias Name : SAMAccount",
+      "Exchange Server : chọn DAG : DAG-PVCB",
+      "Mailbox Store : Chọn DB theo quy định",
+      "Tích dấu Create User Mailbox",
+      "Find the users : nhập username cần tạo mailbox",
+      "Ấn Search sau đó tích chọn user và ấn Apply",
+      "Người dùng có thể truy cập Lync và Mailbox qua ứng dụng hoặc webmail"
+    ],
+    "source_file": "D:\\runbook\\RB_Lỗi tạo tài khoản Lync và Mailbox qua ADMP.docx"
+  },
+  {
+    "title": "Nâng cấp ADC lên PDC",
+    "service": "Active Directory",
+    "keyword": "PDC, ADC, FSMO",
+    "keyword_list": [
+      "PDC",
+      "ADC",
+      "FSMO"
+    ],
+    "description": "Trong quá trình vận hành Domain Controller, không may máy chủ PDC bị lỗi không thể khôi phục được dẫn đến rủi ro khi xác thực tài khoản dựa hoàn toàn vào các ADC còn lại. Khi các ADC này cũng lỗi thì không thể xác thực tài khoản AD được nữa.",
+    "intents": [
+      "PDC",
+      "ADC",
+      "FSMO",
+      "trong quá trình vận hành domain controller"
+    ],
+    "precheck": [
+      "Chỉ thực hiện khi máy chủ PDC bị lỗi không thể khôi phục hoặc nâng cấp Domain Controller lên phiên bản Windows cao hơn mà không cần migrate."
+    ],
+    "steps": [
+      "Bước 1: Trên ADC run CMD ở quyền admin và nhập ntdsutil rồi enter",
+      "Bước 2: Nhập roles rồi enter",
+      "Bước 3: Nhập connections rồi enter",
+      "Bước 4: Nhập connect to server ADC.hcm.com rồi enter",
+      "Bước 5: Nhập Quit rồi enter",
+      "Bước 6: Nhập seize schema master rồi enter. Khi có bản thông báo hiện lên chọn Yes",
+      "Bước 7: Nhập seize naming master rồi enter. Khi có bản thông báo hiện lên chọn Yes",
+      "Bước 8: Nhập seize RID master rồi enter. Khi có bản thông báo hiện lên chọn Yes",
+      "Bước 9: Nhập seize PDC rồi enter. Khi có bản thông báo hiện lên chọn Yes",
+      "Bước 10: Nhập seize infrastructure master rồi enter. Khi có bản thông báo hiện lên chọn Yes",
+      "B11: Nhập Quit -> Quit",
+      "Bạn có thể kiếm chứng bằng cách truy cập vào Active Directory User and Computers, click phải vào hcm.com và chọn Operations Masters và xem RID, PID, Infrastructure đều đang là ADC.hcm.com (lúc đầu là PDC.hcm.com)"
+    ],
+    "postcheck": [],
+    "source_file": "D:\\runbook\\RB_Nâng cấp ADC lên PDC.docx"
+  },
+  {
+    "title": "Slideshow Desktop & Screen Saver qua GPO",
+    "service": "AD",
+    "keyword": "Slideshow Desktop, Screen Saver, GPO",
+    "keyword_list": [
+      "Slideshow Desktop",
+      "Screen Saver",
+      "GPO"
+    ],
+    "description": "Trước đây, hệ thống sử dụng Group Policy (GPO) để đẩy trực tiếp file .scr (screen saver) từ server về máy client mỗi lần người dùng đăng nhập. Cách làm này đảm bảo cập nhật nội dung nhanh, tuy nhiên có một số hạn chế:",
+    "intents": [
+      "Slideshow Desktop",
+      "Screen Saver",
+      "GPO",
+      "trước đây",
+      "tuy nhiên có một số hạn chế:"
+    ],
+    "precheck": [
+      "Tài khoản thực hiện cần được cấp quyền GPMC"
+    ],
+    "steps": [
+      "Slideshow Desktop GPO",
+      "Bước 1: Tạo GPO mới",
+      "Mở Group Policy Management",
+      "Chuột phải vào OU chứa máy client",
+      "Chọn Create a GPO in this domain, and Link it here",
+      "Đặt tên: GPO_Wallpaper_SlideshowDesktop_Local",
+      "Bước 2: Tạo thư mục trên Client",
+      "Chuột phải GPO → Edit",
+      "Vào: Computer Configuration > Preferences > Windows Settings > Folder",
+      "Chuột phải → New → Folder",
+      "Cấu hình:",
+      "Action: Replace",
+      "Path: C:\\Slideshow Desktop",
+      "Bước 3: Copy file từ Server về Client",
+      "Vào: File > chuột phải > New > File",
+      "Copy file background",
+      "Action: Replace",
+      "Source file: \\\\FileServer\\Slideshow Desktop\\anh1.bmp",
+      "Destination file: C: \\ Slideshow Desktop \\anh1.bmp",
+      "Screen Saver GPO",
+      "Bước 1: Tạo GPO mới",
+      "Mở Group Policy Management",
+      "Chuột phải vào OU chứa máy client",
+      "Chọn Create a GPO in this domain, and Link it here",
+      "Đặt tên: GPO_Wallpaper_Screensaver_Local",
+      "Bước 2: Tạo thư mục trên Client",
+      "Chuột phải GPO → Edit",
+      "Vào: Computer Configuration > Preferences > Windows Settings > Folder",
+      "Chuột phải → New → Folder",
+      "Cấu hình:",
+      "Action: Replace",
+      "Path: C:\\Screen Saver",
+      "Bước 3: Copy file từ Server về Client",
+      "Vào: File > chuột phải > New > File",
+      "Copy file background",
+      "Action: Replace",
+      "Source file: \\\\FileServer\\Screen Saver\\anh1.png",
+      "Destination file: C: \\ Screen Saver \\anh1.png"
+    ],
+    "postcheck": [],
+    "source_file": "D:\\runbook\\RB_Policy Slideshow desktop & screen saver.docx"
+  },
+  {
+    "title": "RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.",
+    "service": "Microsoft Exchange",
+    "keyword": "SMTPSendFailedException, 421 4.4.2 Message submission rate",
+    "keyword_list": [
+      "SMTPSendFailedException",
+      "421 4.4.2 Message submission rate"
+    ],
+    "description": "Sau khi cài đặt dịch vụ thư điện tử Micosoft Exchange, khi gửi mail bằng app, nếu số lượng mail gửi vượt quá cấu hình mặc định của Exchange, các email này sẽ bị chặn lại. Cần phải cấu hình lại Receiver Connector để có thể gửi nhận được email phù hợp với nhu cầu sử dụng.",
+    "intents": [
+      "SMTPSendFailedException",
+      "421 4.4.2 Message submission rate",
+      "khi gửi mail bằng app",
+      "các email này sẽ bị chặn lại"
+    ],
+    "precheck": [
+      "Tài khoản thực hiện cần được cấp quyền Orgazination Management"
+    ],
+    "steps": [
+      "Bước 1:Trên server Exchange, mở Exchange Management Shell:",
+      "Get-ReceiveConnector | select Name, MessageRateLimit, MaxInboundConnection, MaxInboundConnectionPerSource",
+      "Nếu thấy:",
+      "MessageRateLimit thấp (ví dụ 5, 10)",
+      "MaxInboundConnectionPerSource thấp",
+      "👉 chắc chắn bị lỗi.",
+      "Bước 2: Tăng giới hạn SMTP cho application",
+      "Khuyến nghị AN TOÀN (dùng cho app server)",
+      "Set-ReceiveConnector \"Default Frontend EXCHANGE\" `",
+      "-MessageRateLimit 100 `",
+      "-MaxInboundConnection 1000 `",
+      "-MaxInboundConnectionPerSource 50",
+      "Giải thích:",
+      "MessageRateLimit 100 → 100 mail / phút / connection",
+      "MaxInboundConnectionPerSource 50 → app được mở 50 connection",
+      "Đổi \"Default Frontend EXCHANGE\" đúng tên connector của bạn.",
+      "Bước 3: Giới hạn theo mailbox gửi mail",
+      "Exchange còn chặn theo mailbox, không chỉ connector.",
+      "Get-Mailbox your_mail@company.com | fl RecipientLimits",
+      "Nếu thấp (ví dụ 10):",
+      "Set-Mailbox your_mail@ company.com -RecipientLimits 500",
+      "Cho phép gửi tối đa 500 người nhận / ngày.",
+      "Bước 4: Nếu dùng Exchange Online (M365)",
+      "Không chỉnh trực tiếp được connector, BẮT BUỘC:",
+      "Giảm tốc độ gửi từ app",
+      "Hoặc dùng service mail riêng (SES, SendGrid)",
+      "Microsoft giới hạn ~30 mail/phút / mailbox."
+    ],
+    "postcheck": [],
+    "source_file": "D:\\runbook\\RB_SMTPSendFailedException 421 4.4.2 Message submission rate for this client has exceeded the configured limit.docx"
+  },
+  {
+    "title": "RB_Thay đổi thông tin tài khoản Domain qua ADMP",
+    "service": "ADManagerPlus",
+    "keyword": "",
+    "keyword_list": [],
+    "description": "",
+    "intents": [],
+    "precheck": [
+      "Được phân role trong ADMP"
+    ],
+    "steps": [
+      "Bước 1 : Login máy chủ Jump của phòng. Đăng nhập qua web https://admp.pvcombank.com.vn với tài khoản domain",
+      "Bước 2 : Chọn tab Management, chọn mục User Management Modify Single User",
+      "Bước 3 : Tại giao diện Modify Single User : Chọn Template là : PVCB_Thuoc tinh co ban."
+    ],
+    "postcheck": [],
+    "source_file": "D:\\runbook\\RB_Thay đổi thông tin tài khoản Domain qua ADMP.docx"
+  },
+  {
+    "title": "Thu hồi tài khoản Domain qua ADMP",
+    "service": "ADManagerPlus",
+    "keyword": "Thu hồi tài khoản, nghỉ việc, ADMP",
+    "keyword_list": [
+      "Thu hồi tài khoản",
+      "nghỉ việc",
+      "ADMP"
+    ],
+    "description": "Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy định của PVcomBank",
+    "intents": [
+      "Thu hồi tài khoản",
+      "nghỉ việc",
+      "ADMP",
+      "khi cán bộ nhân viên nghỉ việc"
+    ],
+    "precheck": [
+      "Được phân role trong ADMP"
+    ],
+    "steps": [
+      "Bước 1 : Login máy chủ Jump của phòng. Đăng nhập qua web https://admp.pvcombank.com.vn với tài khoản domain",
+      "Bước 2 : Chọn tab Management, chọn mục User Management Modify Single User",
+      "Bước 3 : Tại giao diện Modify Single User : Chọn Template là : PVCB_DisableUsers.",
+      "Các cấu hình đã được thiết lập sẵn theo Template : Disabled account, move to OU disable, remove all group, reset password to random…",
+      "Tab Exchange : chọn Remove Mail nếu mailbox là Exchange On-prem. Không thì giữ nguyên"
+    ],
+    "postcheck": [],
+    "source_file": "D:\\runbook\\RB_Thu hồi tài khoản Domain qua ADMP.docx"
+  },
+  {
+    "title": "RB_Tạo Entra OIDC Applications cho SSO",
+    "service": "EntraID",
+    "keyword": "TestEntra Application, SSO, OIDC",
+    "keyword_list": [
+      "TestEntra Application",
+      "SSO",
+      "OIDC"
+    ],
+    "description": "Sử dụng khi các hệ thống khác muốn login bằng tài khoản và sử dung MFA của EntraID",
+    "intents": [
+      "TestEntra Application",
+      "SSO",
+      "OIDC",
+      "sử dung mfa của entraid"
+    ],
+    "precheck": [
+      "Quyền Application Admins, điền phiếu đăng ký tạo Entra Apps và gửi yêu cầu qua kênh SVD"
+    ],
+    "steps": [
+      "Bước 1 : Đăng nhập Micorosoft Entra admin center, chọn mục App registration",
+      "Bước 2 : click dấu + New registration để tạo app mới"
+    ],
+    "postcheck": [
+      "Khi đăng nhập backend App sẽ chuyển hướng tới giao diện đăng nhập qua Entra App mới tạo. Dùng tài khoản Entra + MFA để login"
+    ],
+    "source_file": "D:\\runbook\\RB_Tạo Entra OIDC Applications cho SSO.docx"
+  },
+  {
+    "title": "Tạo tài khoản Domain qua ADMP",
+    "service": "ADManagerPlus",
+    "keyword": "Tạo tài khoản, ADMP",
+    "keyword_list": [
+      "Tạo tài khoản",
+      "ADMP"
+    ],
+    "description": "Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và Lync 2013",
+    "intents": [
+      "Tạo tài khoản",
+      "ADMP",
+      "tài khoản có tích hợp cả mailbox",
+      "lync 2013"
+    ],
+    "precheck": [
+      "Được phân role trong ADMP"
+    ],
+    "steps": [
+      "Bước 1 : Login máy chủ Jump của phòng. Đăng nhập qua web https://admp.pvcombank.com.vn với tài khoản domain",
+      "Bước 2 : Chọn tab Management, chọn mục User Management Create Single User",
+      "Bước 3 : Tại giao diện Create Single User : Chọn Template là : PVCB_Create_Users. Sau đó"
+    ],
+    "postcheck": [
+      "Hiện thông báo tạo tài khoản thành công. Search được user mới tạo"
+    ],
+    "source_file": "D:\\runbook\\RB_Tạo tài khoản Domain qua ADMP.docx"
+  },
+  {
+    "title": "Upgrade DHCP server 2012 to DHCP server 2022 or 2025",
+    "service": "DHCP",
+    "keyword": "TestDHCP, Upgrade DHCP",
+    "keyword_list": [
+      "TestDHCP",
+      "Upgrade DHCP"
+    ],
+    "description": "Máy chủ DHCP chạy Failover sử dụng phiên bản Windows cũ đã end support, cần nâng cấp lên phiên bản mới nhất để đảm bảo bảo mật mà không làm downtime dịch vụ DHCP và giữ nguyên IP của các máy chủ DHCP như cũ sau khi nâng cấp",
+    "intents": [
+      "TestDHCP",
+      "Upgrade DHCP"
+    ],
+    "precheck": [
+      "Tài khoản thực hiện có quyền admin"
+    ],
+    "steps": [
+      "Bước 1: Backup cấu hình DHCP",
+      "Bước 2: Cài đặt Service DHCP trên máy chủ mới",
+      "Bước 3: Trên máy chủ DHCP cũ, cấu hình Failover với máy chủ DHCP mới cài",
+      "Bước 4: Trên máy chủ DHCP mới, chuột phải IPv4 > Chọn Properties > Trong thẻ Failover, delete máy chủ Partner để xóa dữ liệu của máy chủ partner đi.",
+      "Bước 5: Disable Card mạng của máy chủ Partner",
+      "Bước 6: Đặt IP máy chủ DHCP mới là IP của máy chủ Partner cũ đã Disable card mạng",
+      "Bước 7: Trong mục DHCP, chuột phải chọn Authoriy/Unauthority Manage..... > Xóa máy chủ Partner cũ và thêm máy chủ Partner mới bằng IP",
+      "Bước 8: Chuột phải IPv4 > Chọn Configure Failover, Chọn máy chủ Partner mới > Đặt Secret key > OK"
+    ],
+    "postcheck": [],
+    "source_file": "D:\\runbook\\RB_Upgrade DHCP server 2012 to 2022 or 2025.docx"
+  },
+  {
+    "title": "Xóa file mail.queue",
+    "service": "Mail Exchange",
+    "keyword": "Exchange, mail.queue",
+    "keyword_list": [
+      "Exchange",
+      "mail.queue"
+    ],
+    "description": "Khi hàng đợi thư bị kẹt hoặc lỗi hoặc file Queue.mail tăng dung lượng lớn, gây đầy ổ cứng",
+    "intents": [
+      "Exchange",
+      "mail.queue",
+      "khi hàng đợi thư bị kẹt",
+      "file queue",
+      "mail tăng dung lượng lớn"
+    ],
+    "precheck": [
+      "Cần quyền Exchange Admin. Tạo change thực hiện"
+    ],
+    "steps": [],
+    "postcheck": [
+      "Bước 2 : Mở cửa sổ Services, sau đó tạm dừng service : Microsoft Exchange Transport. Lưu ý là Pause, KHÔNG Stop",
+      "Bước 3 : Chạy lại lệnh \"Get-Queue\" và đảm bảo tất cả \"pending messages\" trở về 0",
+      "Bước 4 : Sau khi không còn mail nào pending thì mới thực hiện Stop service Microsoft Exchange Transport",
+      "Bước 5 : Di chuyển toàn bộ file mail.queue và các file khác cùng thư mục sang một thư mục mới.",
+      "Bước 6 : Start service Microsoft Exchange Transport",
+      "Service Transport phải start được và phải thấy có file mail.queue mới được tạo tự động"
+    ],
+    "source_file": "D:\\runbook\\RB_Xóa file mail.queue.docx"
+  },
+  {
+    "title": "Xóa Mailbox Database",
+    "service": "Exchange 2016",
+    "keyword": "Delete, Mailbox Database, khoảng trắng",
+    "keyword_list": [
+      "Delete",
+      "Mailbox Database",
+      "khoảng trắng"
+    ],
+    "description": "Các Mailbox Database sau một thời gian sử dụng, có nhiều tài khoản email đã bị vô hiệu hóa, tuy nhiên dung lượng ổ cứng dành cho những email này vẫn còn tạo ra các khoảng trắng, chiếm dụng tài nguyên ổ cứng, mặc dù Microsoft có hỗ trợ việc ghi đè dữ liệu lên các khoảng trắng này nhưng trong trường hợp cần thu hồi tài nguyên nhanh chóng, ta có thể migrate toàn bộ mailbox sang Mailbox Database khác và xóa bỏ Database đó để thu hồi tài nguyên",
+    "intents": [
+      "Delete",
+      "Mailbox Database",
+      "khoảng trắng",
+      "chiếm dụng tài nguyên ổ cứng"
+    ],
+    "precheck": [
+      "Tài khoản thực hiện cần được cấp quyền Orgazination Management"
+    ],
+    "steps": [
+      "Bước 1: Tạo Mailbox Database mới và các bản Copies của nó",
+      "Bước 2: Move các mailbox trong Mailbox Database cần xóa sang Mailbox Database khác",
+      "Bước 3: Xóa Mailbox Database và các bản Copies trên cấu hình ECP",
+      "Bước 4: Xóa ổ đĩa vật lý trên các máy chủ Exchange"
+    ],
+    "postcheck": [],
+    "source_file": "D:\\runbook\\RB_Xóa Mailbox Database.docx"
+  },
+  {
+    "title": "RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER",
+    "service": "Windows Server, SQL",
+    "keyword": "Testrun bat file",
+    "keyword_list": [
+      "Testrun bat file"
+    ],
+    "description": "User chạy file bat healtcheck bị lỗi access deny",
+    "intents": [
+      "Testrun bat file"
+    ],
+    "precheck": [],
+    "steps": [
+      "Bước 1: Đọc và phân tích file bat, cách thức file bat gọi hàm sql theo kiểu xác thực nào."
+    ],
+    "postcheck": [],
+    "source_file": "D:\\runbook\\RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER.docx"
   }
 ]

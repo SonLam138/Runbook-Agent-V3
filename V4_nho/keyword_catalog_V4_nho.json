@@ -1,0 +1,1638 @@
+{
+  "version": "1.0",
+  "entries": [
+    {
+      "title": "Tìm file record meeting trong Teams",
+      "service": "Microsoft Teams",
+      "service_id": "6.13-Microsoft Team / Office 365",
+      "service_name": "Microsoft Team / Office 365",
+      "technical_services": [
+        "Microsoft Team / Office 365",
+        "6.13-Microsoft Team / Office 365",
+        "Microsoft Team",
+        "Office 365",
+        "microsoft teams",
+        "ms team",
+        "m365",
+        "sharepoint",
+        "onedrive",
+        "Microsoft Exchange",
+        "Exchange 2016",
+        "Mail Exchange",
+        "EntraID"
+      ],
+      "keyword": "Teams, meeting, record",
+      "keyword_list": [
+        "Teams",
+        "meeting",
+        "record"
+      ],
+      "intents": [
+        "Khi user cần tìm file record meeting"
+      ],
+      "patterns": [
+        "Teams",
+        "meeting",
+        "record",
+        "khi user cần tìm file record meeting"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\KB_Hướng dẫn tìm file record meeting trong Teams.docx",
+      "source_hash": "16b05e7913460321051fcdfdf11e584051db8b073056dee81f58126135f7d5af"
+    },
+    {
+      "title": "RB_Apply Retention Policy cho mailbox Exchange 2016",
+      "service": "Exchange 2016",
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "technical_services": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook",
+        "exchange",
+        "active directory",
+        "Exchange 2016",
+        "Microsoft Exchange",
+        "Mail Exchange",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "Retention Policy, Mailbox đầy dung lượng, xóa hoặc archive mailbox định kỳ",
+      "keyword_list": [
+        "Retention Policy",
+        "Mailbox đầy dung lượng",
+        "xóa hoặc archive mailbox định kỳ"
+      ],
+      "intents": [
+        "Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị đầy dung lượng. Nếu là archive thì phải enable archive online."
+      ],
+      "patterns": [
+        "Retention Policy",
+        "Mailbox đầy dung lượng",
+        "xóa hoặc archive mailbox định kỳ",
+        "nếu là archive thì phải enable archive online"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Apply Retention Policy cho mailbox Exchange 2016.docx",
+      "source_hash": "e335b904d8ea0b9e1b44a2ef51fc2c0822c65d18c72806246c96c80dbea32262"
+    },
+    {
+      "title": "RB_Apply Retention Policy cho mailbox Exchange 2016",
+      "service": "Exchange 2016",
+      "service_id": "6.13-Microsoft Team / Office 365",
+      "service_name": "Microsoft Team / Office 365",
+      "technical_services": [
+        "Microsoft Team / Office 365",
+        "6.13-Microsoft Team / Office 365",
+        "Microsoft Team",
+        "Office 365",
+        "microsoft teams",
+        "ms team",
+        "m365",
+        "sharepoint",
+        "onedrive",
+        "Microsoft Exchange",
+        "Exchange 2016",
+        "Mail Exchange",
+        "EntraID"
+      ],
+      "keyword": "Retention Policy, Mailbox đầy dung lượng, xóa hoặc archive mailbox định kỳ",
+      "keyword_list": [
+        "Retention Policy",
+        "Mailbox đầy dung lượng",
+        "xóa hoặc archive mailbox định kỳ"
+      ],
+      "intents": [
+        "Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị đầy dung lượng. Nếu là archive thì phải enable archive online."
+      ],
+      "patterns": [
+        "Retention Policy",
+        "Mailbox đầy dung lượng",
+        "xóa hoặc archive mailbox định kỳ",
+        "nếu là archive thì phải enable archive online"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Apply Retention Policy cho mailbox Exchange 2016.docx",
+      "source_hash": "ebb1415f0c284b144bcb9d910ccf3d6ccf2d3b1f0cbc4d2418a65319dac3e8fc"
+    },
+    {
+      "title": "Create VLAN trên FI UCS",
+      "service": "8.02 Hạ tầng tại hội sở",
+      "service_id": "8.02-Hạ tầng IT tại Hội sở",
+      "service_name": "Hạ tầng IT tại Hội sở",
+      "technical_services": [
+        "Hạ tầng IT tại Hội sở",
+        "8.02-Hạ tầng IT tại Hội sở",
+        "8.02 Hạ tầng tại hội sở",
+        "DHCP",
+        "IIS",
+        "Windows Server, SQL"
+      ],
+      "keyword": "Testcheckname, address, global address",
+      "keyword_list": [
+        "Testcheckname",
+        "address",
+        "global address"
+      ],
+      "intents": [
+        "Người dùng khác không thể tìm kiếm địa chỉ gửi mail, không tìm kiếm được teams của tài khoản đang bị Hide Global Address."
+      ],
+      "patterns": [
+        "Testcheckname",
+        "address",
+        "global address"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Bỏ chọn Hide Global Address của user.docx",
+      "source_hash": "37619d21d3d26cc40df881f69ad9423a84dc3827442d719c246ede4c612fd76d"
+    },
+    {
+      "title": "Create VLAN trên FI UCS",
+      "service": "8.02 Hạ tầng tại hội sở",
+      "service_id": "99.04-Network (K.CNTT)",
+      "service_name": "Network (K.CNTT)",
+      "technical_services": [
+        "Network (K.CNTT)",
+        "99.04-Network (K.CNTT)",
+        "K.CNTT",
+        "network",
+        "lan",
+        "wan",
+        "switch",
+        "router",
+        "DHCP",
+        "8.02 Hạ tầng tại hội sở"
+      ],
+      "keyword": "Testcheckname, address, global address",
+      "keyword_list": [
+        "Testcheckname",
+        "address",
+        "global address"
+      ],
+      "intents": [
+        "Người dùng khác không thể tìm kiếm địa chỉ gửi mail, không tìm kiếm được teams của tài khoản đang bị Hide Global Address."
+      ],
+      "patterns": [
+        "Testcheckname",
+        "address",
+        "global address"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Bỏ chọn Hide Global Address của user.docx",
+      "source_hash": "89d6730305b52a863fbbbd0b229daa8d4497305878c2271b44a1ecec0287522b"
+    },
+    {
+      "title": "RB_Certificate Name Mismatch",
+      "service": "Microsoft Exchange",
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "technical_services": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook",
+        "exchange",
+        "active directory",
+        "Exchange 2016",
+        "Microsoft Exchange",
+        "Mail Exchange",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "TestName mismatch External Domain, service URL Exchange, AutoDiscover",
+      "keyword_list": [
+        "TestName mismatch External Domain",
+        "service URL Exchange",
+        "AutoDiscover"
+      ],
+      "intents": [
+        "Trong quá trình triển khai AD và Exchange, không phải lúc nào domain và địa chỉ email cũng được tạo trùng với nhau vì nhiều mục đích, khi đó dẫn đến tình huống user khi sử dụng Outlook sẽ báo lỗi: \"The name on the security certificate is invalid or does not match the name of the site\""
+      ],
+      "patterns": [
+        "TestName mismatch External Domain",
+        "service URL Exchange",
+        "AutoDiscover",
+        "trong quá trình triển khai ad",
+        "không phải lúc nào domain"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Certificate Name Mismatch.docx",
+      "source_hash": "e23db1f3789084446fe4ae2fed1ea3560263b9ec8f7d242d0c9bdf2fa9adf802"
+    },
+    {
+      "title": "RB_Certificate Name Mismatch",
+      "service": "Microsoft Exchange",
+      "service_id": "6.13-Microsoft Team / Office 365",
+      "service_name": "Microsoft Team / Office 365",
+      "technical_services": [
+        "Microsoft Team / Office 365",
+        "6.13-Microsoft Team / Office 365",
+        "Microsoft Team",
+        "Office 365",
+        "microsoft teams",
+        "ms team",
+        "m365",
+        "sharepoint",
+        "onedrive",
+        "Microsoft Exchange",
+        "Exchange 2016",
+        "Mail Exchange",
+        "EntraID"
+      ],
+      "keyword": "TestName mismatch External Domain, service URL Exchange, AutoDiscover",
+      "keyword_list": [
+        "TestName mismatch External Domain",
+        "service URL Exchange",
+        "AutoDiscover"
+      ],
+      "intents": [
+        "Trong quá trình triển khai AD và Exchange, không phải lúc nào domain và địa chỉ email cũng được tạo trùng với nhau vì nhiều mục đích, khi đó dẫn đến tình huống user khi sử dụng Outlook sẽ báo lỗi: \"The name on the security certificate is invalid or does not match the name of the site\""
+      ],
+      "patterns": [
+        "TestName mismatch External Domain",
+        "service URL Exchange",
+        "AutoDiscover",
+        "trong quá trình triển khai ad",
+        "không phải lúc nào domain"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Certificate Name Mismatch.docx",
+      "source_hash": "2f4f6c3f21951bccb86bdbdd5c067554448cfabf4dc8ab4a2253839f15edde1e"
+    },
+    {
+      "title": "Cấu hình redirect http to https bằng urlrewrite",
+      "service": "IIS",
+      "service_id": "8.02-Hạ tầng IT tại Hội sở",
+      "service_name": "Hạ tầng IT tại Hội sở",
+      "technical_services": [
+        "Hạ tầng IT tại Hội sở",
+        "8.02-Hạ tầng IT tại Hội sở",
+        "8.02 Hạ tầng tại hội sở",
+        "DHCP",
+        "IIS",
+        "Windows Server, SQL"
+      ],
+      "keyword": "TestURL Rewrite, redirect https",
+      "keyword_list": [
+        "TestURL Rewrite",
+        "redirect https"
+      ],
+      "intents": [
+        "khi website được cài certificate, việc truy cập website sẽ chuyển sang port 443, nếu không nhập https://website.com thì sẽ không thể truy cập được"
+      ],
+      "patterns": [
+        "TestURL Rewrite",
+        "redirect https",
+        "khi website được cài certificate",
+        "nếu không nhập https://website",
+        "com thì sẽ không thể truy cập được"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Cấu hình redirect http to https bằng urlrewrite.docx",
+      "source_hash": "b48a9fff2073a52f24b310d1f5d555505de9b257d00c349c7afd531df108bd57"
+    },
+    {
+      "title": "Cấu hình redirect http to https bằng urlrewrite",
+      "service": "IIS",
+      "service_id": "99.02-Máy chủ (K.CNTT)",
+      "service_name": "Máy chủ (K.CNTT)",
+      "technical_services": [
+        "Máy chủ (K.CNTT)",
+        "99.02-Máy chủ (K.CNTT)",
+        "K.CNTT",
+        "server",
+        "windows server",
+        "linux server",
+        "IIS",
+        "DHCP",
+        "Windows Server, SQL"
+      ],
+      "keyword": "TestURL Rewrite, redirect https",
+      "keyword_list": [
+        "TestURL Rewrite",
+        "redirect https"
+      ],
+      "intents": [
+        "khi website được cài certificate, việc truy cập website sẽ chuyển sang port 443, nếu không nhập https://website.com thì sẽ không thể truy cập được"
+      ],
+      "patterns": [
+        "TestURL Rewrite",
+        "redirect https",
+        "khi website được cài certificate",
+        "nếu không nhập https://website",
+        "com thì sẽ không thể truy cập được"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Cấu hình redirect http to https bằng urlrewrite.docx",
+      "source_hash": "a7ffb4abe09c8d95d5bd762524282f06526ff3e973afc358bb977735c8a069c8"
+    },
+    {
+      "title": "RB_Cập nhật Desktop và ScreenSaver toàn hàng",
+      "service": "ActiveDirectory",
+      "service_id": "3.04-Quản lý tài khoản ứng dụng",
+      "service_name": "Quản lý tài khoản ứng dụng",
+      "technical_services": [
+        "Quản lý tài khoản ứng dụng",
+        "3.04-Quản lý tài khoản ứng dụng",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "TestDesktop, ScreenSaver, màn hình chờ, màn hình nền",
+      "keyword_list": [
+        "TestDesktop",
+        "ScreenSaver",
+        "màn hình chờ",
+        "màn hình nền"
+      ],
+      "intents": [
+        "Khi nhận yêu cầu thay đổi màn hình nền Desktop hoặc màn hình chờ theo các chương trình truyền thông"
+      ],
+      "patterns": [
+        "TestDesktop",
+        "ScreenSaver",
+        "màn hình chờ",
+        "màn hình nền"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Cập nhật Desktop và ScreenSaver toàn hàng.docx",
+      "source_hash": "accfe91663936e6a81c03c9459d70fc69942499c68acaed0be8a67476537de79"
+    },
+    {
+      "title": "RB_Cập nhật Desktop và ScreenSaver toàn hàng",
+      "service": "ActiveDirectory",
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "technical_services": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook",
+        "exchange",
+        "active directory",
+        "Exchange 2016",
+        "Microsoft Exchange",
+        "Mail Exchange",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "TestDesktop, ScreenSaver, màn hình chờ, màn hình nền",
+      "keyword_list": [
+        "TestDesktop",
+        "ScreenSaver",
+        "màn hình chờ",
+        "màn hình nền"
+      ],
+      "intents": [
+        "Khi nhận yêu cầu thay đổi màn hình nền Desktop hoặc màn hình chờ theo các chương trình truyền thông"
+      ],
+      "patterns": [
+        "TestDesktop",
+        "ScreenSaver",
+        "màn hình chờ",
+        "màn hình nền"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Cập nhật Desktop và ScreenSaver toàn hàng.docx",
+      "source_hash": "2ca85645122542016295f113aa7bed8f5d1d99019d62b85aef4a986fee7b2a6b"
+    },
+    {
+      "title": "Xóa Mailbox Database",
+      "service": "Exchange 2016",
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "technical_services": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook",
+        "exchange",
+        "active directory",
+        "Exchange 2016",
+        "Microsoft Exchange",
+        "Mail Exchange",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "Delete, Mailbox Database, khoảng trắng",
+      "keyword_list": [
+        "Delete",
+        "Mailbox Database",
+        "khoảng trắng"
+      ],
+      "intents": [
+        "Các Mailbox Database sau một thời gian sử dụng, có nhiều tài khoản email đã bị vô hiệu hóa, tuy nhiên dung lượng ổ cứng dành cho những email này vẫn còn, tạo ra các khoảng trắng, chiếm dụng tài nguyên ổ cứng. Mặc dù Microsoft có hỗ trợ việc ghi đè dữ liệu lên các khoảng trắng này, nhưng trong trường hợp cần thu hồi tài nguyên nhanh chóng, ta có thể migrate toàn bộ mailbox sang Mailbox Database khác và xóa bỏ Database cũ để thu hồi tài nguyên."
+      ],
+      "patterns": [
+        "Delete",
+        "Mailbox Database",
+        "khoảng trắng",
+        "tạo ra các khoảng trắng",
+        "chiếm dụng tài nguyên ổ cứng"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Delete Mailbox.docx",
+      "source_hash": "574496854594953f95214d2881ad183e15eec358cf7ded98acbd74703117db49"
+    },
+    {
+      "title": "Xóa Mailbox Database",
+      "service": "Exchange 2016",
+      "service_id": "6.13-Microsoft Team / Office 365",
+      "service_name": "Microsoft Team / Office 365",
+      "technical_services": [
+        "Microsoft Team / Office 365",
+        "6.13-Microsoft Team / Office 365",
+        "Microsoft Team",
+        "Office 365",
+        "microsoft teams",
+        "ms team",
+        "m365",
+        "sharepoint",
+        "onedrive",
+        "Microsoft Exchange",
+        "Exchange 2016",
+        "Mail Exchange",
+        "EntraID"
+      ],
+      "keyword": "Delete, Mailbox Database, khoảng trắng",
+      "keyword_list": [
+        "Delete",
+        "Mailbox Database",
+        "khoảng trắng"
+      ],
+      "intents": [
+        "Các Mailbox Database sau một thời gian sử dụng, có nhiều tài khoản email đã bị vô hiệu hóa, tuy nhiên dung lượng ổ cứng dành cho những email này vẫn còn, tạo ra các khoảng trắng, chiếm dụng tài nguyên ổ cứng. Mặc dù Microsoft có hỗ trợ việc ghi đè dữ liệu lên các khoảng trắng này, nhưng trong trường hợp cần thu hồi tài nguyên nhanh chóng, ta có thể migrate toàn bộ mailbox sang Mailbox Database khác và xóa bỏ Database cũ để thu hồi tài nguyên."
+      ],
+      "patterns": [
+        "Delete",
+        "Mailbox Database",
+        "khoảng trắng",
+        "tạo ra các khoảng trắng",
+        "chiếm dụng tài nguyên ổ cứng"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Delete Mailbox.docx",
+      "source_hash": "92082ca8faa4195713550433adf408387b2633a01636e56c4c91265bcbc3932c"
+    },
+    {
+      "title": "Enable Mailbox Group qua ADMP",
+      "service": "Exchange",
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "technical_services": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook",
+        "exchange",
+        "active directory",
+        "Exchange 2016",
+        "Microsoft Exchange",
+        "Mail Exchange",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "Enable Group Mailbox",
+      "keyword_list": [
+        "Enable Group Mailbox"
+      ],
+      "intents": [
+        "Các security group khi tạo mới không có email, sau khi sử dụng phát sinh nhu cầu gửi email vào các group này"
+      ],
+      "patterns": [
+        "Enable Group Mailbox"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Enable Mailbox Group qua ADMP.docx",
+      "source_hash": "c56e1d87f5d16eef7390fd1a3f4fc0c32753e2073e6f98e2f0f5f4f4b623686d"
+    },
+    {
+      "title": "RB_Enable Remote Mailbox (Exchange Online)",
+      "service": "Exchange",
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "technical_services": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook",
+        "exchange",
+        "active directory",
+        "Exchange 2016",
+        "Microsoft Exchange",
+        "Mail Exchange",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "TestExchange, Remote mailbox, two mailbox",
+      "keyword_list": [
+        "TestExchange",
+        "Remote mailbox",
+        "two mailbox"
+      ],
+      "intents": [
+        "Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại thành 01 mailbox duy nhất trên Exchange Onlie"
+      ],
+      "patterns": [
+        "TestExchange",
+        "Remote mailbox",
+        "two mailbox",
+        "migrate lỗi )"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Enable Remote Mailbox (Exchange Online).docx",
+      "source_hash": "c8c3a764bbfa4889c70b22bac639a6db5bf357eee37e13015a5edfd78a72eb76"
+    },
+    {
+      "title": "Lync Server 2013 - Gia hạn Certificate",
+      "service": "Lync Server 2013",
+      "service_id": "6.04-Chat Lync",
+      "service_name": "Chat Lync",
+      "technical_services": [
+        "Chat Lync",
+        "6.04-Chat Lync",
+        "Lync Server 2013"
+      ],
+      "keyword": "Lync server, Certificate, gia hạn",
+      "keyword_list": [
+        "Lync server",
+        "Certificate",
+        "gia hạn"
+      ],
+      "intents": [
+        "Certificate hết hạn gây dừng service Lync"
+      ],
+      "patterns": [
+        "Lync server",
+        "Certificate",
+        "gia hạn",
+        "certificate hết hạn gây dừng service lync"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Gia hạn Certificate Lycn Server 2013.docx",
+      "source_hash": "edc46c59b0603d02da5f5c4151ff781fc48b7d88a421ffdc832efe4b6b098c8e"
+    },
+    {
+      "title": "Lync Server 2013 - Gia hạn Certificate",
+      "service": "Lync Server 2013",
+      "service_id": "6.12-Hội nghị truyền hình",
+      "service_name": "Hội nghị truyền hình",
+      "technical_services": [
+        "Hội nghị truyền hình",
+        "6.12-Hội nghị truyền hình",
+        "hội nghị",
+        "video conference",
+        "meeting system",
+        "Lync Server 2013",
+        "OnePV"
+      ],
+      "keyword": "Lync server, Certificate, gia hạn",
+      "keyword_list": [
+        "Lync server",
+        "Certificate",
+        "gia hạn"
+      ],
+      "intents": [
+        "Certificate hết hạn gây dừng service Lync"
+      ],
+      "patterns": [
+        "Lync server",
+        "Certificate",
+        "gia hạn",
+        "certificate hết hạn gây dừng service lync"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Gia hạn Certificate Lycn Server 2013.docx",
+      "source_hash": "cea1da31a2e4d7906cfea41e67980266d0a4e3423f824fbaade4a5b653d1b634"
+    },
+    {
+      "title": "Hướng dẫn move computer vào đúng OU qua ADMP",
+      "service": "AD",
+      "service_id": "3.04-Quản lý tài khoản ứng dụng",
+      "service_name": "Quản lý tài khoản ứng dụng",
+      "technical_services": [
+        "Quản lý tài khoản ứng dụng",
+        "3.04-Quản lý tài khoản ứng dụng",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "TestMove Computer",
+      "keyword_list": [
+        "TestMove Computer"
+      ],
+      "intents": [
+        "Trên hệ thống AD có từng OU của các phòng, ban. Cần move đúng computers của các phòng, ban này vào đúng OU của phòng, ban đó"
+      ],
+      "patterns": [
+        "TestMove Computer",
+        "cần move đúng computers của các phòng",
+        "ban này vào đúng ou của phòng",
+        "ban đó"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Hướng dẫn move computer vào đúng OU qua ADMP.docx",
+      "source_hash": "c9c929d8f588e982eaf49a08ab1383b17e72003ef86d2c61549944e2ae30aed4"
+    },
+    {
+      "title": "Hướng dẫn move computer vào đúng OU qua ADMP",
+      "service": "AD",
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "technical_services": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook",
+        "exchange",
+        "active directory",
+        "Exchange 2016",
+        "Microsoft Exchange",
+        "Mail Exchange",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "TestMove Computer",
+      "keyword_list": [
+        "TestMove Computer"
+      ],
+      "intents": [
+        "Trên hệ thống AD có từng OU của các phòng, ban. Cần move đúng computers của các phòng, ban này vào đúng OU của phòng, ban đó"
+      ],
+      "patterns": [
+        "TestMove Computer",
+        "cần move đúng computers của các phòng",
+        "ban này vào đúng ou của phòng",
+        "ban đó"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Hướng dẫn move computer vào đúng OU qua ADMP.docx",
+      "source_hash": "a8625ccc10ca8f409eaec32181e1d7dab01c572ea852abb9a264ccc8e181ca3c"
+    },
+    {
+      "title": "Tạo thêm room đặt phòng cho ứng dụng OnePV",
+      "service": "OnePV",
+      "service_id": "6.12-Hội nghị truyền hình",
+      "service_name": "Hội nghị truyền hình",
+      "technical_services": [
+        "Hội nghị truyền hình",
+        "6.12-Hội nghị truyền hình",
+        "hội nghị",
+        "video conference",
+        "meeting system",
+        "Lync Server 2013",
+        "OnePV"
+      ],
+      "keyword": "Room, đặt phòng, đặt xe, Onepv",
+      "keyword_list": [
+        "Room",
+        "đặt phòng",
+        "đặt xe",
+        "Onepv"
+      ],
+      "intents": [
+        "Khi có yêu cầu tạo thêm room phục vụ tính năng đặt xe hoặc đặt phòng họp trên ứng dụng OnePV"
+      ],
+      "patterns": [
+        "Room",
+        "đặt phòng",
+        "đặt xe",
+        "Onepv",
+        "đặt phòng họp trên ứng dụng onepv"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Hướng dẫn tạo thêm Room đặt cho OnePV.docx",
+      "source_hash": "86ca97203e046eb8ed89f628cb42a03c583cf10e0ce2d3c4f594a7bd4d24e82f"
+    },
+    {
+      "title": "Lỗi tạo tài khoản Lync và Mailbox qua ADMP",
+      "service": "ADManagerPlus",
+      "service_id": "3.04-Quản lý tài khoản ứng dụng",
+      "service_name": "Quản lý tài khoản ứng dụng",
+      "technical_services": [
+        "Quản lý tài khoản ứng dụng",
+        "3.04-Quản lý tài khoản ứng dụng",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "ADMP, lỗi tài khoản Lync, ConstraintViolationNoLeadingOrTrailingWhitespace",
+      "keyword_list": [
+        "ADMP",
+        "lỗi tài khoản Lync",
+        "ConstraintViolationNoLeadingOrTrailingWhitespace"
+      ],
+      "intents": [
+        "Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mailbox. Thông báo lỗi : “Successfully created the user., but following errors occurred.Error while enabling Lync services for the user - System.Management.Automation.RemoteException: ConstraintViolationNoLeadingOrTrailingWhitespaceSystem.Management.Automation.RemoteException: ConstraintViolationNoLeadingOrTrailingWhitespace Some error occurred when creating Remote mailbox, The property \"DisplayName\" with value \"Nguyen Minh Truong (K.KHCN-TGG) \" is invalid. The value can't contain leading or trailing whitespace”"
+      ],
+      "patterns": [
+        "ADMP",
+        "lỗi tài khoản Lync",
+        "ConstraintViolationNoLeadingOrTrailingWhitespace",
+        "thông báo lỗi : “successfully created the user",
+        "but following errors occurred"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Lỗi tạo tài khoản Lync và Mailbox qua ADMP.docx",
+      "source_hash": "4338c9d73a7ca21695a05ffc16efe105c9d72a231099cca4731ad6fa32826405"
+    },
+    {
+      "title": "Lỗi tạo tài khoản Lync và Mailbox qua ADMP",
+      "service": "ADManagerPlus",
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "technical_services": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook",
+        "exchange",
+        "active directory",
+        "Exchange 2016",
+        "Microsoft Exchange",
+        "Mail Exchange",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "ADMP, lỗi tài khoản Lync, ConstraintViolationNoLeadingOrTrailingWhitespace",
+      "keyword_list": [
+        "ADMP",
+        "lỗi tài khoản Lync",
+        "ConstraintViolationNoLeadingOrTrailingWhitespace"
+      ],
+      "intents": [
+        "Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mailbox. Thông báo lỗi : “Successfully created the user., but following errors occurred.Error while enabling Lync services for the user - System.Management.Automation.RemoteException: ConstraintViolationNoLeadingOrTrailingWhitespaceSystem.Management.Automation.RemoteException: ConstraintViolationNoLeadingOrTrailingWhitespace Some error occurred when creating Remote mailbox, The property \"DisplayName\" with value \"Nguyen Minh Truong (K.KHCN-TGG) \" is invalid. The value can't contain leading or trailing whitespace”"
+      ],
+      "patterns": [
+        "ADMP",
+        "lỗi tài khoản Lync",
+        "ConstraintViolationNoLeadingOrTrailingWhitespace",
+        "thông báo lỗi : “successfully created the user",
+        "but following errors occurred"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Lỗi tạo tài khoản Lync và Mailbox qua ADMP.docx",
+      "source_hash": "8266b231aae7962760ddc2b38a94a79f8cc5917e917ead7e7b0cff8d9da64b30"
+    },
+    {
+      "title": "Nâng cấp ADC lên PDC",
+      "service": "Active Directory",
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "technical_services": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook",
+        "exchange",
+        "active directory",
+        "Exchange 2016",
+        "Microsoft Exchange",
+        "Mail Exchange",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "PDC, ADC, FSMO",
+      "keyword_list": [
+        "PDC",
+        "ADC",
+        "FSMO"
+      ],
+      "intents": [
+        "Trong quá trình vận hành Domain Controller, không may máy chủ PDC bị lỗi không thể khôi phục được dẫn đến rủi ro khi xác thực tài khoản dựa hoàn toàn vào các ADC còn lại. Khi các ADC này cũng lỗi thì không thể xác thực tài khoản AD được nữa."
+      ],
+      "patterns": [
+        "PDC",
+        "ADC",
+        "FSMO",
+        "trong quá trình vận hành domain controller"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Nâng cấp ADC lên PDC.docx",
+      "source_hash": "527feef6b303f38cb8329d435d91d12a29fc6a26151b4a9eb00576af1f02bc8e"
+    },
+    {
+      "title": "Slideshow Desktop & Screen Saver qua GPO",
+      "service": "AD",
+      "service_id": "3.04-Quản lý tài khoản ứng dụng",
+      "service_name": "Quản lý tài khoản ứng dụng",
+      "technical_services": [
+        "Quản lý tài khoản ứng dụng",
+        "3.04-Quản lý tài khoản ứng dụng",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "Slideshow Desktop, Screen Saver, GPO",
+      "keyword_list": [
+        "Slideshow Desktop",
+        "Screen Saver",
+        "GPO"
+      ],
+      "intents": [
+        "Trước đây, hệ thống sử dụng Group Policy (GPO) để đẩy trực tiếp file .scr (screen saver) từ server về máy client mỗi lần người dùng đăng nhập. Cách làm này đảm bảo cập nhật nội dung nhanh, tuy nhiên có một số hạn chế:"
+      ],
+      "patterns": [
+        "Slideshow Desktop",
+        "Screen Saver",
+        "GPO",
+        "trước đây",
+        "tuy nhiên có một số hạn chế:"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Policy Slideshow desktop & screen saver.docx",
+      "source_hash": "355b2ba13c0543073ac9335eab8133d15844ab2fa5494a3d78c4d46ce6fe208e"
+    },
+    {
+      "title": "Slideshow Desktop & Screen Saver qua GPO",
+      "service": "AD",
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "technical_services": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook",
+        "exchange",
+        "active directory",
+        "Exchange 2016",
+        "Microsoft Exchange",
+        "Mail Exchange",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "Slideshow Desktop, Screen Saver, GPO",
+      "keyword_list": [
+        "Slideshow Desktop",
+        "Screen Saver",
+        "GPO"
+      ],
+      "intents": [
+        "Trước đây, hệ thống sử dụng Group Policy (GPO) để đẩy trực tiếp file .scr (screen saver) từ server về máy client mỗi lần người dùng đăng nhập. Cách làm này đảm bảo cập nhật nội dung nhanh, tuy nhiên có một số hạn chế:"
+      ],
+      "patterns": [
+        "Slideshow Desktop",
+        "Screen Saver",
+        "GPO",
+        "trước đây",
+        "tuy nhiên có một số hạn chế:"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Policy Slideshow desktop & screen saver.docx",
+      "source_hash": "0d97216ec3a58d7e45e85747366b3e12209e6d8c508a139c5df9b624ebf4d814"
+    },
+    {
+      "title": "RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.",
+      "service": "Microsoft Exchange",
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "technical_services": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook",
+        "exchange",
+        "active directory",
+        "Exchange 2016",
+        "Microsoft Exchange",
+        "Mail Exchange",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "SMTPSendFailedException, 421 4.4.2 Message submission rate",
+      "keyword_list": [
+        "SMTPSendFailedException",
+        "421 4.4.2 Message submission rate"
+      ],
+      "intents": [
+        "Sau khi cài đặt dịch vụ thư điện tử Micosoft Exchange, khi gửi mail bằng app, nếu số lượng mail gửi vượt quá cấu hình mặc định của Exchange, các email này sẽ bị chặn lại. Cần phải cấu hình lại Receiver Connector để có thể gửi nhận được email phù hợp với nhu cầu sử dụng."
+      ],
+      "patterns": [
+        "SMTPSendFailedException",
+        "421 4.4.2 Message submission rate",
+        "khi gửi mail bằng app",
+        "các email này sẽ bị chặn lại"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_SMTPSendFailedException 421 4.4.2 Message submission rate for this client has exceeded the configured limit.docx",
+      "source_hash": "4d79844abe87c0fdf30696d863575e81734170ae648802a8e6b167f7e78c45bd"
+    },
+    {
+      "title": "RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.",
+      "service": "Microsoft Exchange",
+      "service_id": "6.13-Microsoft Team / Office 365",
+      "service_name": "Microsoft Team / Office 365",
+      "technical_services": [
+        "Microsoft Team / Office 365",
+        "6.13-Microsoft Team / Office 365",
+        "Microsoft Team",
+        "Office 365",
+        "microsoft teams",
+        "ms team",
+        "m365",
+        "sharepoint",
+        "onedrive",
+        "Microsoft Exchange",
+        "Exchange 2016",
+        "Mail Exchange",
+        "EntraID"
+      ],
+      "keyword": "SMTPSendFailedException, 421 4.4.2 Message submission rate",
+      "keyword_list": [
+        "SMTPSendFailedException",
+        "421 4.4.2 Message submission rate"
+      ],
+      "intents": [
+        "Sau khi cài đặt dịch vụ thư điện tử Micosoft Exchange, khi gửi mail bằng app, nếu số lượng mail gửi vượt quá cấu hình mặc định của Exchange, các email này sẽ bị chặn lại. Cần phải cấu hình lại Receiver Connector để có thể gửi nhận được email phù hợp với nhu cầu sử dụng."
+      ],
+      "patterns": [
+        "SMTPSendFailedException",
+        "421 4.4.2 Message submission rate",
+        "khi gửi mail bằng app",
+        "các email này sẽ bị chặn lại"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_SMTPSendFailedException 421 4.4.2 Message submission rate for this client has exceeded the configured limit.docx",
+      "source_hash": "e77244a88397ed3bfd9bf5a6017443638f868df947ad766f5d9c4bd42dbf5931"
+    },
+    {
+      "title": "Thu hồi tài khoản Domain qua ADMP",
+      "service": "ADManagerPlus",
+      "service_id": "3.04-Quản lý tài khoản ứng dụng",
+      "service_name": "Quản lý tài khoản ứng dụng",
+      "technical_services": [
+        "Quản lý tài khoản ứng dụng",
+        "3.04-Quản lý tài khoản ứng dụng",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "Thu hồi tài khoản, nghỉ việc, ADMP",
+      "keyword_list": [
+        "Thu hồi tài khoản",
+        "nghỉ việc",
+        "ADMP"
+      ],
+      "intents": [
+        "Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy định của PVcomBank"
+      ],
+      "patterns": [
+        "Thu hồi tài khoản",
+        "nghỉ việc",
+        "ADMP",
+        "khi cán bộ nhân viên nghỉ việc"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Thu hồi tài khoản Domain qua ADMP.docx",
+      "source_hash": "72e64369fa8257bc684dfb8ef159c839bdb8c9b1b1f0de63b2f0f9da9abce6f3"
+    },
+    {
+      "title": "Thu hồi tài khoản Domain qua ADMP",
+      "service": "ADManagerPlus",
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "technical_services": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook",
+        "exchange",
+        "active directory",
+        "Exchange 2016",
+        "Microsoft Exchange",
+        "Mail Exchange",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "Thu hồi tài khoản, nghỉ việc, ADMP",
+      "keyword_list": [
+        "Thu hồi tài khoản",
+        "nghỉ việc",
+        "ADMP"
+      ],
+      "intents": [
+        "Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy định của PVcomBank"
+      ],
+      "patterns": [
+        "Thu hồi tài khoản",
+        "nghỉ việc",
+        "ADMP",
+        "khi cán bộ nhân viên nghỉ việc"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Thu hồi tài khoản Domain qua ADMP.docx",
+      "source_hash": "b1936b3edd383da65a9ebc103d7ccbd2da597c8328941546c1a9ccbc5f2899d8"
+    },
+    {
+      "title": "RB_Tạo Entra OIDC Applications cho SSO",
+      "service": "EntraID",
+      "service_id": "3.04-Quản lý tài khoản ứng dụng",
+      "service_name": "Quản lý tài khoản ứng dụng",
+      "technical_services": [
+        "Quản lý tài khoản ứng dụng",
+        "3.04-Quản lý tài khoản ứng dụng",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "TestEntra Application, SSO, OIDC",
+      "keyword_list": [
+        "TestEntra Application",
+        "SSO",
+        "OIDC"
+      ],
+      "intents": [
+        "Sử dụng khi các hệ thống khác muốn login bằng tài khoản và sử dung MFA của EntraID"
+      ],
+      "patterns": [
+        "TestEntra Application",
+        "SSO",
+        "OIDC",
+        "sử dung mfa của entraid"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Tạo Entra OIDC Applications cho SSO.docx",
+      "source_hash": "80cd41c6191a0a1a423de0e0ccb661fe8d47b2697df12144b635e6fde2868605"
+    },
+    {
+      "title": "RB_Tạo Entra OIDC Applications cho SSO",
+      "service": "EntraID",
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "technical_services": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook",
+        "exchange",
+        "active directory",
+        "Exchange 2016",
+        "Microsoft Exchange",
+        "Mail Exchange",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "TestEntra Application, SSO, OIDC",
+      "keyword_list": [
+        "TestEntra Application",
+        "SSO",
+        "OIDC"
+      ],
+      "intents": [
+        "Sử dụng khi các hệ thống khác muốn login bằng tài khoản và sử dung MFA của EntraID"
+      ],
+      "patterns": [
+        "TestEntra Application",
+        "SSO",
+        "OIDC",
+        "sử dung mfa của entraid"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Tạo Entra OIDC Applications cho SSO.docx",
+      "source_hash": "5277fd26023b7ded36e59b436f790a43c77b91469f7fc4dcb9991c0948cd7b74"
+    },
+    {
+      "title": "RB_Tạo Entra OIDC Applications cho SSO",
+      "service": "EntraID",
+      "service_id": "6.13-Microsoft Team / Office 365",
+      "service_name": "Microsoft Team / Office 365",
+      "technical_services": [
+        "Microsoft Team / Office 365",
+        "6.13-Microsoft Team / Office 365",
+        "Microsoft Team",
+        "Office 365",
+        "microsoft teams",
+        "ms team",
+        "m365",
+        "sharepoint",
+        "onedrive",
+        "Microsoft Exchange",
+        "Exchange 2016",
+        "Mail Exchange",
+        "EntraID"
+      ],
+      "keyword": "TestEntra Application, SSO, OIDC",
+      "keyword_list": [
+        "TestEntra Application",
+        "SSO",
+        "OIDC"
+      ],
+      "intents": [
+        "Sử dụng khi các hệ thống khác muốn login bằng tài khoản và sử dung MFA của EntraID"
+      ],
+      "patterns": [
+        "TestEntra Application",
+        "SSO",
+        "OIDC",
+        "sử dung mfa của entraid"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Tạo Entra OIDC Applications cho SSO.docx",
+      "source_hash": "eb260b172bff273bd5ad48c654f5bc4f3b062399754b6f0b84d2a22cb1789cef"
+    },
+    {
+      "title": "Tạo tài khoản Domain qua ADMP",
+      "service": "ADManagerPlus",
+      "service_id": "3.04-Quản lý tài khoản ứng dụng",
+      "service_name": "Quản lý tài khoản ứng dụng",
+      "technical_services": [
+        "Quản lý tài khoản ứng dụng",
+        "3.04-Quản lý tài khoản ứng dụng",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "Tạo tài khoản, ADMP",
+      "keyword_list": [
+        "Tạo tài khoản",
+        "ADMP"
+      ],
+      "intents": [
+        "Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và Lync 2013"
+      ],
+      "patterns": [
+        "Tạo tài khoản",
+        "ADMP",
+        "tài khoản có tích hợp cả mailbox",
+        "lync 2013"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Tạo tài khoản Domain qua ADMP.docx",
+      "source_hash": "5bb678188a738e52489495035c2bb8e04bb327a9960feeaaf0e12d43a432d411"
+    },
+    {
+      "title": "Tạo tài khoản Domain qua ADMP",
+      "service": "ADManagerPlus",
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "technical_services": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook",
+        "exchange",
+        "active directory",
+        "Exchange 2016",
+        "Microsoft Exchange",
+        "Mail Exchange",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "Tạo tài khoản, ADMP",
+      "keyword_list": [
+        "Tạo tài khoản",
+        "ADMP"
+      ],
+      "intents": [
+        "Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và Lync 2013"
+      ],
+      "patterns": [
+        "Tạo tài khoản",
+        "ADMP",
+        "tài khoản có tích hợp cả mailbox",
+        "lync 2013"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Tạo tài khoản Domain qua ADMP.docx",
+      "source_hash": "b7a9fdb8b5cb509e5c305423c778322174a810ffd1ab9acbb2598a075d7b8022"
+    },
+    {
+      "title": "Upgrade DHCP server 2012 to DHCP server 2022 or 2025",
+      "service": "DHCP",
+      "service_id": "8.02-Hạ tầng IT tại Hội sở",
+      "service_name": "Hạ tầng IT tại Hội sở",
+      "technical_services": [
+        "Hạ tầng IT tại Hội sở",
+        "8.02-Hạ tầng IT tại Hội sở",
+        "8.02 Hạ tầng tại hội sở",
+        "DHCP",
+        "IIS",
+        "Windows Server, SQL"
+      ],
+      "keyword": "TestDHCP, Upgrade DHCP",
+      "keyword_list": [
+        "TestDHCP",
+        "Upgrade DHCP"
+      ],
+      "intents": [
+        "Máy chủ DHCP chạy Failover sử dụng phiên bản Windows cũ đã end support, cần nâng cấp lên phiên bản mới nhất để đảm bảo bảo mật mà không làm downtime dịch vụ DHCP và giữ nguyên IP của các máy chủ DHCP như cũ sau khi nâng cấp"
+      ],
+      "patterns": [
+        "TestDHCP",
+        "Upgrade DHCP"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Upgrade DHCP server 2012 to 2022 or 2025.docx",
+      "source_hash": "f027cc04cea178946971054ff5b0f47f4cfa41ff95acf26e3727c5a6df2e4d60"
+    },
+    {
+      "title": "Upgrade DHCP server 2012 to DHCP server 2022 or 2025",
+      "service": "DHCP",
+      "service_id": "99.02-Máy chủ (K.CNTT)",
+      "service_name": "Máy chủ (K.CNTT)",
+      "technical_services": [
+        "Máy chủ (K.CNTT)",
+        "99.02-Máy chủ (K.CNTT)",
+        "K.CNTT",
+        "server",
+        "windows server",
+        "linux server",
+        "IIS",
+        "DHCP",
+        "Windows Server, SQL"
+      ],
+      "keyword": "TestDHCP, Upgrade DHCP",
+      "keyword_list": [
+        "TestDHCP",
+        "Upgrade DHCP"
+      ],
+      "intents": [
+        "Máy chủ DHCP chạy Failover sử dụng phiên bản Windows cũ đã end support, cần nâng cấp lên phiên bản mới nhất để đảm bảo bảo mật mà không làm downtime dịch vụ DHCP và giữ nguyên IP của các máy chủ DHCP như cũ sau khi nâng cấp"
+      ],
+      "patterns": [
+        "TestDHCP",
+        "Upgrade DHCP"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Upgrade DHCP server 2012 to 2022 or 2025.docx",
+      "source_hash": "51b08373f631f31e9571d6a6f7b7a667a3bc6708b05fe02b632df86a2e6e32ed"
+    },
+    {
+      "title": "Upgrade DHCP server 2012 to DHCP server 2022 or 2025",
+      "service": "DHCP",
+      "service_id": "99.04-Network (K.CNTT)",
+      "service_name": "Network (K.CNTT)",
+      "technical_services": [
+        "Network (K.CNTT)",
+        "99.04-Network (K.CNTT)",
+        "K.CNTT",
+        "network",
+        "lan",
+        "wan",
+        "switch",
+        "router",
+        "DHCP",
+        "8.02 Hạ tầng tại hội sở"
+      ],
+      "keyword": "TestDHCP, Upgrade DHCP",
+      "keyword_list": [
+        "TestDHCP",
+        "Upgrade DHCP"
+      ],
+      "intents": [
+        "Máy chủ DHCP chạy Failover sử dụng phiên bản Windows cũ đã end support, cần nâng cấp lên phiên bản mới nhất để đảm bảo bảo mật mà không làm downtime dịch vụ DHCP và giữ nguyên IP của các máy chủ DHCP như cũ sau khi nâng cấp"
+      ],
+      "patterns": [
+        "TestDHCP",
+        "Upgrade DHCP"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Upgrade DHCP server 2012 to 2022 or 2025.docx",
+      "source_hash": "6e7d5d9ce53b92b343a78e73885a6d2a651003ed4a43f1d118a93d7a8e0544f1"
+    },
+    {
+      "title": "Xóa file mail.queue",
+      "service": "Mail Exchange",
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "technical_services": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook",
+        "exchange",
+        "active directory",
+        "Exchange 2016",
+        "Microsoft Exchange",
+        "Mail Exchange",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "Exchange, mail.queue",
+      "keyword_list": [
+        "Exchange",
+        "mail.queue"
+      ],
+      "intents": [
+        "Khi hàng đợi thư bị kẹt hoặc lỗi hoặc file Queue.mail tăng dung lượng lớn, gây đầy ổ cứng"
+      ],
+      "patterns": [
+        "Exchange",
+        "mail.queue",
+        "khi hàng đợi thư bị kẹt",
+        "file queue",
+        "mail tăng dung lượng lớn"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Xóa file mail.queue.docx",
+      "source_hash": "50c7e5b2bd65783b8684e828cdeff9a41e08fb675657fb2e89914bf7fdc508a4"
+    },
+    {
+      "title": "Xóa file mail.queue",
+      "service": "Mail Exchange",
+      "service_id": "6.13-Microsoft Team / Office 365",
+      "service_name": "Microsoft Team / Office 365",
+      "technical_services": [
+        "Microsoft Team / Office 365",
+        "6.13-Microsoft Team / Office 365",
+        "Microsoft Team",
+        "Office 365",
+        "microsoft teams",
+        "ms team",
+        "m365",
+        "sharepoint",
+        "onedrive",
+        "Microsoft Exchange",
+        "Exchange 2016",
+        "Mail Exchange",
+        "EntraID"
+      ],
+      "keyword": "Exchange, mail.queue",
+      "keyword_list": [
+        "Exchange",
+        "mail.queue"
+      ],
+      "intents": [
+        "Khi hàng đợi thư bị kẹt hoặc lỗi hoặc file Queue.mail tăng dung lượng lớn, gây đầy ổ cứng"
+      ],
+      "patterns": [
+        "Exchange",
+        "mail.queue",
+        "khi hàng đợi thư bị kẹt",
+        "file queue",
+        "mail tăng dung lượng lớn"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Xóa file mail.queue.docx",
+      "source_hash": "47159a980c84f7b3deb8dcda27e2a26c5a893f552a7968d5d9806e493ec8a3b7"
+    },
+    {
+      "title": "Xóa Mailbox Database",
+      "service": "Exchange 2016",
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "technical_services": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook",
+        "exchange",
+        "active directory",
+        "Exchange 2016",
+        "Microsoft Exchange",
+        "Mail Exchange",
+        "ActiveDirectory",
+        "AD",
+        "ADManagerPlus",
+        "EntraID"
+      ],
+      "keyword": "Delete, Mailbox Database, khoảng trắng",
+      "keyword_list": [
+        "Delete",
+        "Mailbox Database",
+        "khoảng trắng"
+      ],
+      "intents": [
+        "Các Mailbox Database sau một thời gian sử dụng, có nhiều tài khoản email đã bị vô hiệu hóa, tuy nhiên dung lượng ổ cứng dành cho những email này vẫn còn tạo ra các khoảng trắng, chiếm dụng tài nguyên ổ cứng, mặc dù Microsoft có hỗ trợ việc ghi đè dữ liệu lên các khoảng trắng này nhưng trong trường hợp cần thu hồi tài nguyên nhanh chóng, ta có thể migrate toàn bộ mailbox sang Mailbox Database khác và xóa bỏ Database đó để thu hồi tài nguyên"
+      ],
+      "patterns": [
+        "Delete",
+        "Mailbox Database",
+        "khoảng trắng",
+        "chiếm dụng tài nguyên ổ cứng"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Xóa Mailbox Database.docx",
+      "source_hash": "52d7614bccb5b927adeddd4cb65d24794b683b5cbb988614ab72ca45da92349c"
+    },
+    {
+      "title": "Xóa Mailbox Database",
+      "service": "Exchange 2016",
+      "service_id": "6.13-Microsoft Team / Office 365",
+      "service_name": "Microsoft Team / Office 365",
+      "technical_services": [
+        "Microsoft Team / Office 365",
+        "6.13-Microsoft Team / Office 365",
+        "Microsoft Team",
+        "Office 365",
+        "microsoft teams",
+        "ms team",
+        "m365",
+        "sharepoint",
+        "onedrive",
+        "Microsoft Exchange",
+        "Exchange 2016",
+        "Mail Exchange",
+        "EntraID"
+      ],
+      "keyword": "Delete, Mailbox Database, khoảng trắng",
+      "keyword_list": [
+        "Delete",
+        "Mailbox Database",
+        "khoảng trắng"
+      ],
+      "intents": [
+        "Các Mailbox Database sau một thời gian sử dụng, có nhiều tài khoản email đã bị vô hiệu hóa, tuy nhiên dung lượng ổ cứng dành cho những email này vẫn còn tạo ra các khoảng trắng, chiếm dụng tài nguyên ổ cứng, mặc dù Microsoft có hỗ trợ việc ghi đè dữ liệu lên các khoảng trắng này nhưng trong trường hợp cần thu hồi tài nguyên nhanh chóng, ta có thể migrate toàn bộ mailbox sang Mailbox Database khác và xóa bỏ Database đó để thu hồi tài nguyên"
+      ],
+      "patterns": [
+        "Delete",
+        "Mailbox Database",
+        "khoảng trắng",
+        "chiếm dụng tài nguyên ổ cứng"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_Xóa Mailbox Database.docx",
+      "source_hash": "6595bbe4184f96c5b68119c694aae20d4ec5e77998ddc33e7a2ffdfed62b9206"
+    },
+    {
+      "title": "RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER",
+      "service": "Windows Server, SQL",
+      "service_id": "8.02-Hạ tầng IT tại Hội sở",
+      "service_name": "Hạ tầng IT tại Hội sở",
+      "technical_services": [
+        "Hạ tầng IT tại Hội sở",
+        "8.02-Hạ tầng IT tại Hội sở",
+        "8.02 Hạ tầng tại hội sở",
+        "DHCP",
+        "IIS",
+        "Windows Server, SQL"
+      ],
+      "keyword": "Testrun bat file",
+      "keyword_list": [
+        "Testrun bat file"
+      ],
+      "intents": [
+        "User chạy file bat healtcheck bị lỗi access deny"
+      ],
+      "patterns": [
+        "Testrun bat file"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER.docx",
+      "source_hash": "42133bd496e7edf129a456c9a1faf56a8727262d48f4ace3438e4e17e3c14cc8"
+    },
+    {
+      "title": "RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER",
+      "service": "Windows Server, SQL",
+      "service_id": "99.01-Database",
+      "service_name": "Database",
+      "technical_services": [
+        "Database",
+        "99.01-Database",
+        "db",
+        "oracle",
+        "sql server",
+        "Windows Server, SQL",
+        "SQL"
+      ],
+      "keyword": "Testrun bat file",
+      "keyword_list": [
+        "Testrun bat file"
+      ],
+      "intents": [
+        "User chạy file bat healtcheck bị lỗi access deny"
+      ],
+      "patterns": [
+        "Testrun bat file"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER.docx",
+      "source_hash": "41f1904a80adb9d307cfa515619630461f60e3428d4304f5ecf397e91b6a04b2"
+    },
+    {
+      "title": "RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER",
+      "service": "Windows Server, SQL",
+      "service_id": "99.02-Máy chủ (K.CNTT)",
+      "service_name": "Máy chủ (K.CNTT)",
+      "technical_services": [
+        "Máy chủ (K.CNTT)",
+        "99.02-Máy chủ (K.CNTT)",
+        "K.CNTT",
+        "server",
+        "windows server",
+        "linux server",
+        "IIS",
+        "DHCP",
+        "Windows Server, SQL"
+      ],
+      "keyword": "Testrun bat file",
+      "keyword_list": [
+        "Testrun bat file"
+      ],
+      "intents": [
+        "User chạy file bat healtcheck bị lỗi access deny"
+      ],
+      "patterns": [
+        "Testrun bat file"
+      ],
+      "synonyms": [],
+      "priority": 1.0,
+      "source_file": "D:\\runbook\\RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER.docx",
+      "source_hash": "b2ead9274787b60938428d4108ab221db16e6da5b6575b5fe30948cef8e1768f"
+    }
+  ],
+  "build_report": {
+    "total_runbooks": 25,
+    "mapped_entries": 44,
+    "unmatched_runbooks": 0,
+    "empty_signal_runbooks": 4,
+    "multi_mapping_runbooks": 20
+  }
+}

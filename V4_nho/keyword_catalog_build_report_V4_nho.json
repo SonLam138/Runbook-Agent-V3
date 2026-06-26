@@ -1,0 +1,216 @@
+{
+  "total_runbooks": 25,
+  "mapped_entries": 44,
+  "unmatched_runbooks": [],
+  "empty_signal_runbooks": [
+    {
+      "title": "RB_Check phân quyền được phép gửi mail vào toàn bộ group",
+      "service": "8.02 Hạ tầng tại hội sở",
+      "service_id": "8.02-Hạ tầng IT tại Hội sở",
+      "reason": "no_keyword_intent_pattern_synonym"
+    },
+    {
+      "title": "RB_Check phân quyền được phép gửi mail vào toàn bộ group",
+      "service": "8.02 Hạ tầng tại hội sở",
+      "service_id": "99.04-Network (K.CNTT)",
+      "reason": "no_keyword_intent_pattern_synonym"
+    },
+    {
+      "title": "RB_Thay đổi thông tin tài khoản Domain qua ADMP",
+      "service": "ADManagerPlus",
+      "service_id": "3.04-Quản lý tài khoản ứng dụng",
+      "reason": "no_keyword_intent_pattern_synonym"
+    },
+    {
+      "title": "RB_Thay đổi thông tin tài khoản Domain qua ADMP",
+      "service": "ADManagerPlus",
+      "service_id": "6.01-Thư điện tử",
+      "reason": "no_keyword_intent_pattern_synonym"
+    }
+  ],
+  "multi_mapping_runbooks": [
+    {
+      "title": "RB_Apply Retention Policy cho mailbox Exchange 2016",
+      "service": "Exchange 2016",
+      "matched_service_ids": [
+        "6.01-Thư điện tử",
+        "6.13-Microsoft Team / Office 365"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "Create VLAN trên FI UCS",
+      "service": "8.02 Hạ tầng tại hội sở",
+      "matched_service_ids": [
+        "8.02-Hạ tầng IT tại Hội sở",
+        "99.04-Network (K.CNTT)"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "RB_Certificate Name Mismatch",
+      "service": "Microsoft Exchange",
+      "matched_service_ids": [
+        "6.01-Thư điện tử",
+        "6.13-Microsoft Team / Office 365"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "RB_Check phân quyền được phép gửi mail vào toàn bộ group",
+      "service": "8.02 Hạ tầng tại hội sở",
+      "matched_service_ids": [
+        "8.02-Hạ tầng IT tại Hội sở",
+        "99.04-Network (K.CNTT)"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "Cấu hình redirect http to https bằng urlrewrite",
+      "service": "IIS",
+      "matched_service_ids": [
+        "8.02-Hạ tầng IT tại Hội sở",
+        "99.02-Máy chủ (K.CNTT)"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "RB_Cập nhật Desktop và ScreenSaver toàn hàng",
+      "service": "ActiveDirectory",
+      "matched_service_ids": [
+        "3.04-Quản lý tài khoản ứng dụng",
+        "6.01-Thư điện tử"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "Xóa Mailbox Database",
+      "service": "Exchange 2016",
+      "matched_service_ids": [
+        "6.01-Thư điện tử",
+        "6.13-Microsoft Team / Office 365"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "Lync Server 2013 - Gia hạn Certificate",
+      "service": "Lync Server 2013",
+      "matched_service_ids": [
+        "6.04-Chat Lync",
+        "6.12-Hội nghị truyền hình"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "Hướng dẫn move computer vào đúng OU qua ADMP",
+      "service": "AD",
+      "matched_service_ids": [
+        "3.04-Quản lý tài khoản ứng dụng",
+        "6.01-Thư điện tử"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "Lỗi tạo tài khoản Lync và Mailbox qua ADMP",
+      "service": "ADManagerPlus",
+      "matched_service_ids": [
+        "3.04-Quản lý tài khoản ứng dụng",
+        "6.01-Thư điện tử"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "Slideshow Desktop & Screen Saver qua GPO",
+      "service": "AD",
+      "matched_service_ids": [
+        "3.04-Quản lý tài khoản ứng dụng",
+        "6.01-Thư điện tử"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.",
+      "service": "Microsoft Exchange",
+      "matched_service_ids": [
+        "6.01-Thư điện tử",
+        "6.13-Microsoft Team / Office 365"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "RB_Thay đổi thông tin tài khoản Domain qua ADMP",
+      "service": "ADManagerPlus",
+      "matched_service_ids": [
+        "3.04-Quản lý tài khoản ứng dụng",
+        "6.01-Thư điện tử"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "Thu hồi tài khoản Domain qua ADMP",
+      "service": "ADManagerPlus",
+      "matched_service_ids": [
+        "3.04-Quản lý tài khoản ứng dụng",
+        "6.01-Thư điện tử"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "RB_Tạo Entra OIDC Applications cho SSO",
+      "service": "EntraID",
+      "matched_service_ids": [
+        "3.04-Quản lý tài khoản ứng dụng",
+        "6.01-Thư điện tử",
+        "6.13-Microsoft Team / Office 365"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "Tạo tài khoản Domain qua ADMP",
+      "service": "ADManagerPlus",
+      "matched_service_ids": [
+        "3.04-Quản lý tài khoản ứng dụng",
+        "6.01-Thư điện tử"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "Upgrade DHCP server 2012 to DHCP server 2022 or 2025",
+      "service": "DHCP",
+      "matched_service_ids": [
+        "8.02-Hạ tầng IT tại Hội sở",
+        "99.02-Máy chủ (K.CNTT)",
+        "99.04-Network (K.CNTT)"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "Xóa file mail.queue",
+      "service": "Mail Exchange",
+      "matched_service_ids": [
+        "6.01-Thư điện tử",
+        "6.13-Microsoft Team / Office 365"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "Xóa Mailbox Database",
+      "service": "Exchange 2016",
+      "matched_service_ids": [
+        "6.01-Thư điện tử",
+        "6.13-Microsoft Team / Office 365"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    },
+    {
+      "title": "RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER",
+      "service": "Windows Server, SQL",
+      "matched_service_ids": [
+        "8.02-Hạ tầng IT tại Hội sở",
+        "99.01-Database",
+        "99.02-Máy chủ (K.CNTT)"
+      ],
+      "reason": "runbook_service_matched_multiple_business_services"
+    }
+  ]
+}

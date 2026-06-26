@@ -1,75 +1,509 @@
 [
   {
-    "title": "enable remote mailbox",
+    "title": "Tìm file record meeting trong Teams",
+    "service": "Microsoft Teams",
+    "keyword": "Teams, meeting, record",
+    "keyword_list": [
+      "Teams",
+      "meeting",
+      "record"
+    ],
+    "patterns": [
+      "Tìm file lịch và kết quả họp trên OneDrive",
+      "Xem video họp lưu trữ trên OneDrive",
+      "Chia sẻ video họp lưu trữ trên OneDrive",
+      "Không tìm thấy file record họp trong Onedrive"
+    ],
+    "synonyms": [
+      "File lịch họp",
+      "Video kết quả họp",
+      "Record họp",
+      "OneDrive"
+    ],
+    "source_hash": "a48cd2c4b90f949fbf7845ae2bdd2394b0d1e7a254b0bcd78fa6ab19626bd7bf"
+  },
+  {
+    "title": "RB_Apply Retention Policy cho mailbox Exchange 2016",
+    "service": "Exchange 2016",
+    "keyword": "Retention Policy, Mailbox đầy dung lượng, xóa hoặc archive mailbox định kỳ",
+    "keyword_list": [
+      "Retention Policy",
+      "Mailbox đầy dung lượng",
+      "xóa hoặc archive mailbox định kỳ"
+    ],
+    "patterns": [
+      "Tự động xóa hoặc archive email theo thời gian quy định",
+      "Hỗ trợ cho mailbox bị đầy dung lượng",
+      "Cần định kỳ xóa/archive mailbox do dung lượng lớn",
+      "Người dùng muốn tự động xóa hoặc archive email sau một thời gian định kỳ",
+      "Enable archive online cho mailbox"
+    ],
+    "synonyms": [
+      "Apply Retention Policy",
+      "Retention policy management",
+      "Mailbox cleanup",
+      "Auto delete/archive email",
+      "Archive enable"
+    ],
+    "source_hash": "be04acde52429eca8994f5c32593dbb19776cae5ffa7348a12fdb1634ae6883c"
+  },
+  {
+    "title": "Create VLAN trên FI UCS",
+    "service": "8.02 Hạ tầng tại hội sở",
+    "keyword": "Testcheckname, address, global address",
+    "keyword_list": [
+      "Testcheckname",
+      "address",
+      "global address"
+    ],
+    "patterns": [
+      "Tạo địa chỉ mới cho user ABC",
+      "Chỉnh sửa địa chỉ của user ABC",
+      "Sửa thuộc tính ẩn địa chỉ của user ABC",
+      "Không tìm thấy địa chỉ cho user ABC",
+      "Cập nhật địa chỉ cho user đang bị ẩn"
+    ],
+    "synonyms": [
+      "Testcheckname",
+      "address",
+      "global address"
+    ],
+    "source_hash": "e70fccc7ded406a26db737deb1fa60908a7dda8b3ca4f64ca595211d27bc39ec"
+  },
+  {
+    "title": "RB_Certificate Name Mismatch",
+    "service": "Microsoft Exchange",
+    "keyword": "TestName mismatch External Domain, service URL Exchange, AutoDiscover",
+    "keyword_list": [
+      "TestName mismatch External Domain",
+      "service URL Exchange",
+      "AutoDiscover"
+    ],
+    "patterns": [],
+    "synonyms": [],
+    "source_hash": "da6d45379c818a5f06b5c5078c797a1d61057c3f76b84ba818f93d6c3031170c"
+  },
+  {
+    "title": "RB_Check phân quyền được phép gửi mail vào toàn bộ group",
+    "service": "8.02 Hạ tầng tại hội sở",
+    "keyword": "",
+    "keyword_list": [],
+    "patterns": [],
+    "synonyms": [],
+    "source_hash": "b9f6eab39064f79dc17f17e2640412194aad04dd1049aa127c5ced9553d191fd"
+  },
+  {
+    "title": "Cấu hình redirect http to https bằng urlrewrite",
+    "service": "IIS",
+    "keyword": "TestURL Rewrite, redirect https",
+    "keyword_list": [
+      "TestURL Rewrite",
+      "redirect https"
+    ],
+    "patterns": [
+      "Cấu hình chuyển http sang https cho website",
+      "Kiểm tra truy cập website bằng http và https",
+      "Có thể truy cập website không cần nhập https",
+      "Chuyển tới port 443 khi website có certificate"
+    ],
+    "synonyms": [
+      "redirect từ http sang https",
+      "cấu hình chuyển truy cập từ http sang https"
+    ],
+    "source_hash": "0a9cfdc10bf2cc9c9fe7e198dd1200e956c6c128bafa9a7f44c9d89b466647d1"
+  },
+  {
+    "title": "RB_Cập nhật Desktop và ScreenSaver toàn hàng",
+    "service": "ActiveDirectory",
+    "keyword": "TestDesktop, ScreenSaver, màn hình chờ, màn hình nền",
+    "keyword_list": [
+      "TestDesktop",
+      "ScreenSaver",
+      "màn hình chờ",
+      "màn hình nền"
+    ],
+    "patterns": [
+      "Cập nhật màn hình chờ/Desktop",
+      "Thay đổi màn hình nền cho máy trạm",
+      "Tải và cài đặt màn hình nền/ScreenSaver",
+      "Gỡ bỏ màn hình chờ cũ/Cập nhật màn hình nền mới"
+    ],
+    "synonyms": [
+      "Thay đổi background màn hình",
+      "Tải và ứng dụng ảnh nền mới",
+      "Screensaver cũ bị lỗi/Đổi screensaver"
+    ],
+    "source_hash": "b38ca99586c91706ed0e1fa7ce6ce5205662f438ccaaabf333a43a1e7cc49e42"
+  },
+  {
+    "title": "Xóa Mailbox Database",
+    "service": "Exchange 2016",
+    "keyword": "Delete, Mailbox Database, khoảng trắng",
+    "keyword_list": [
+      "Delete",
+      "Mailbox Database",
+      "khoảng trắng"
+    ],
+    "patterns": [],
+    "synonyms": [],
+    "source_hash": "342719ddc3ea291392d328c3a76bb59a5dadef18a815a784e5c392fea326b195"
+  },
+  {
+    "title": "Enable Mailbox Group qua ADMP",
     "service": "Exchange",
-    "keyword": "remote mailbox, hòm mail 365",
+    "keyword": "Enable Group Mailbox",
+    "keyword_list": [
+      "Enable Group Mailbox"
+    ],
     "patterns": [
-      "Hòm thư cần phải có dành cho 365",
-      "Chỉ hỗ trợ mailbox 365",
-      "Mailbox hiện tại ở on-prem, cần chuyển sang 365"
+      "Enable mailbox cho nhóm trong ADMP",
+      "Chỉnh sửa email cho security group trên ADMP",
+      "Tạo email cho các group mới tạo trong ADMP"
     ],
     "synonyms": [
-      "Hòm thư đã bị khóa",
-      "Chỉ hỗ trợ mailbox đang sử dụng 365",
-      "Mailbox ở on-prem, cần chuyển sang Exchange Online"
+      "Enable Group Mailbox",
+      "Enable mail for security group",
+      "Add email to security group"
     ],
-    "source_hash": "b5f41535ce8025fd1143707730d457e98ae5c6baff5c745d21520916d772d807"
+    "source_hash": "abe847b49c1a8d9c662c2411e929fc55380d2c716b1e12f27830aa99a90dc46d"
   },
   {
-    "title": "reset MFA",
-    "service": "Active Directory",
-    "keyword": "Lỗi MFA, reset MFA",
+    "title": "RB_Enable Remote Mailbox (Exchange Online)",
+    "service": "Exchange",
+    "keyword": "TestExchange, Remote mailbox, two mailbox",
+    "keyword_list": [
+      "TestExchange",
+      "Remote mailbox",
+      "two mailbox"
+    ],
     "patterns": [
-      "Lỗi khi nhận thông báo MFA trên điện thoại",
-      "Tài khoản Active Directory bị lỗi trong giai đoạn xác thực MFA",
-      "Có vấn đề với quá trình reset MFA cho tài khoản Active Directory",
-      "Tài khoản của tôi không nhận thông báo MFA được",
-      "Xảy ra lỗi trong quá trình reset mã xác thực cho tài khoản Active Directory"
+      "Tài khoản email của tôi lỗi hoặc chưa migrate, hãy gộp lại thành một mailbox trên Exchange Online",
+      "Mailbox của tôi lỗi hoặc chưa migrate và muốn được enable remote trên Exchange Online",
+      "Tôi có 2 mailbox và muốn gộp thành 1 mailbox duy nhất trên Exchange Online",
+      "Mailbox của tôi lỗi hoặc chưa migrate, hãy enable remote trên Exchange Online"
     ],
     "synonyms": [
-      "Lỗi MFA",
-      "reset Multifactor Authentication",
-      "không nhận thông báo MFA"
+      "TestExchange",
+      "Remote mailbox",
+      "two mailbox"
     ],
-    "source_hash": "a1511960dc4c17038277961f1e3c64caf585a6a3b3bf623cc784a798f5e6335d"
+    "source_hash": "bae049d31299d07ed26a858340adf6205393cbb19cdd732cd986fae06a6d3278"
   },
   {
-    "title": "reset password",
-    "service": "Active Directory",
-    "keyword": "Quên mật khẩu, đặt lại mật khẩu, forgot password, mật khẩu mới",
+    "title": "Lync Server 2013 - Gia hạn Certificate",
+    "service": "Lync Server 2013",
+    "keyword": "Lync server, Certificate, gia hạn",
+    "keyword_list": [
+      "Lync server",
+      "Certificate",
+      "gia hạn"
+    ],
     "patterns": [
-      "Quên mật khẩu Active Directory",
-      "Mật khẩu của tài khoản quên",
-      "Thay đổi mật khẩu Active Directory",
-      "Hết hạn mật khẩu Active Directory",
-      "Tạo mật khẩu mới cho tài khoản trong Active Directory"
+      "Gia hạn certificate cho Lync Server",
+      "Không thể kết nối với Lync Server do certificate hết hạn",
+      "Yêu cầu gia hạn certificate cho Lync",
+      "Cần xem lại trạng thái của certificate cho Lync"
     ],
     "synonyms": [
-      "reset password AD",
-      "forgot password in Active Directory",
-      "change password on Active Directory",
-      "expired password Active Directory",
-      "new password for account in Active Directory"
+      "Lync Server Certificate",
+      "Certificate Lync Server",
+      "Gia han Certificate Lync Server",
+      "Certify Lync Server"
     ],
-    "source_hash": "94673db7cddffef0f22d3a7c47d3c595a9786fd59308dcafb5fdd50ec0174d81"
+    "source_hash": "5c92825ce8f601e1478fb560cf65f8d906a8c6a5c7462bd54c67e8a9d7a41bba"
   },
   {
-    "title": "Tạo tài khoản mới",
-    "service": "Active Directory",
-    "keyword": "tạo tài khoản, create user",
+    "title": "Hướng dẫn move computer vào đúng OU qua ADMP",
+    "service": "AD",
+    "keyword": "TestMove Computer",
+    "keyword_list": [
+      "TestMove Computer"
+    ],
     "patterns": [
-      "Tạo tài khoản mới trên Active Directory",
-      "Thêm mới user trong domain",
-      "Tạo tài khoản mới domain",
-      "Lập tài khoản mới Active Directory",
-      "Sử dụng ADMD để tạo tài khoản mới"
+      "Chuyển computer vào OU phòng này qua ADMP",
+      "Move computer vào OU của ban này bằng ADMP",
+      "Điều chỉnh vi tri của computer trong OU qua ADMP",
+      "Cần chuyển đổi vị trí của computer trong phòng/ban bằng ADMP"
     ],
     "synonyms": [
-      "Thêm user",
-      "Create account",
-      "Tạo tài khoản mới AD",
-      "Lập tài khoản Active Directory"
+      "TestMove Computer",
+      "quyền move computers",
+      "ADMP link",
+      "management",
+      "Computer Management"
     ],
-    "source_hash": "6b8a9d463f41e1ebef0b374361a95498bdbb767fe81314ecc66e5b925f8fb3de"
+    "source_hash": "89c24debd10ad7bc80485b63310c24af7292a24d27ff1b392afcffbc8a1854e8"
+  },
+  {
+    "title": "Tạo thêm room đặt phòng cho ứng dụng OnePV",
+    "service": "OnePV",
+    "keyword": "Room, đặt phòng, đặt xe, Onepv",
+    "keyword_list": [
+      "Room",
+      "đặt phòng",
+      "đặt xe",
+      "Onepv"
+    ],
+    "patterns": [
+      "Tạo mới phòng hội thảo trên ứng dụng OnePV",
+      "Thêm mới room cho đặt phòng trên ứng dụng OnePV",
+      "Cài đặt phòng họp mới trên ứng dụng OnePV"
+    ],
+    "synonyms": [
+      "Create meeting room on OnePV",
+      "Add new conference room to OnePV",
+      "Set up a new room for booking on OnePV"
+    ],
+    "source_hash": "ad8f70ddfa32774e8e9cbd939cf97025728a9bd9f86b4ae70cb4a217e2a3d429"
+  },
+  {
+    "title": "Lỗi tạo tài khoản Lync và Mailbox qua ADMP",
+    "service": "ADManagerPlus",
+    "keyword": "ADMP, lỗi tài khoản Lync, ConstraintViolationNoLeadingOrTrailingWhitespace",
+    "keyword_list": [
+      "ADMP",
+      "lỗi tài khoản Lync",
+      "ConstraintViolationNoLeadingOrTrailingWhitespace"
+    ],
+    "patterns": [
+      "Tạo tài khoản Domain Lync mặt hàng ADMP gặp lỗi",
+      "Tạo tài khoản Lync bị lỗi ConstraintViolationNoLeadingOrTrailingWhitespace",
+      "Không thể tạo Mailbox cho tài khoản Domain mặt hàng ADMP"
+    ],
+    "synonyms": [
+      "Tạo tài khoản quyền Lync bị lỗi",
+      "Lỗi tạo mailbox cho tài khoản Domain",
+      "Tạo tài khoản Lync trong ADMP mặt hàng lỗi"
+    ],
+    "source_hash": "94a588c79ebcbe007efe51c805e4f327afece5ad424bc32b8fa7559fa1068028"
+  },
+  {
+    "title": "Nâng cấp ADC lên PDC",
+    "service": "Active Directory",
+    "keyword": "PDC, ADC, FSMO",
+    "keyword_list": [
+      "PDC",
+      "ADC",
+      "FSMO"
+    ],
+    "patterns": [
+      "Cần nâng cấp máy chủ PDC lên",
+      "Máy chủ PDC không hoạt động, cần tăng cứu",
+      "ADCS bị lỗi, cần thay đổi PDC",
+      "Tăng cứu máy chủ PDC trong DC Active Directory",
+      "Phải thay đổi FSMO PDC"
+    ],
+    "synonyms": [
+      "seize PDC",
+      "chuyển giao PDC",
+      "upgrade PDC",
+      "thay đổi quyền lợi PDC"
+    ],
+    "source_hash": "8ad564e3ac44a75a48f3ad55feaa4acebd327c7a1511e273a3a740fa3ef62914"
+  },
+  {
+    "title": "Slideshow Desktop & Screen Saver qua GPO",
+    "service": "AD",
+    "keyword": "Slideshow Desktop, Screen Saver, GPO",
+    "keyword_list": [
+      "Slideshow Desktop",
+      "Screen Saver",
+      "GPO"
+    ],
+    "patterns": [
+      "Cập nhật quản lý điều hướng màn hình",
+      "GPO để cập nhật file .scr",
+      "Truyền tệp .bmp từ server sang máy client qua GPO",
+      "Thay đổi ảnh nền trên máy client bằng GPO",
+      "Cấu hình màn hình chờ với file .scr"
+    ],
+    "synonyms": [
+      "GPO_Wallpaper_SlideshowDesktop_Local",
+      "GPO_Wallpaper_Screensaver_Local"
+    ],
+    "source_hash": "61485dba9f04d1be89ebf52867bef6cd1ba172a29f48e142099d8b7400d5ce02"
+  },
+  {
+    "title": "RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.",
+    "service": "Microsoft Exchange",
+    "keyword": "SMTPSendFailedException, 421 4.4.2 Message submission rate",
+    "keyword_list": [
+      "SMTPSendFailedException",
+      "421 4.4.2 Message submission rate"
+    ],
+    "patterns": [
+      "Hệ thống Exchange bị chặn mail khi quá số lượng",
+      "Mail không gửi được do quota exceed",
+      "Khả năng gửi mail của hệ thống quá giới hạn",
+      "Đổi quyền cho connector để tăng số lượng gửi mail"
+    ],
+    "synonyms": [
+      "SMTPSendFailedException",
+      "421 4.4.2 Message submission rate exceeded",
+      "Mail submission rate của client vượt quá",
+      "Khả năng gửi mail quá quyền"
+    ],
+    "source_hash": "fd3bddf6699134fa82864478406190371d357dcd9fe406a6fe3df891e6a44e49"
+  },
+  {
+    "title": "RB_Thay đổi thông tin tài khoản Domain qua ADMP",
+    "service": "ADManagerPlus",
+    "keyword": "",
+    "keyword_list": [],
+    "patterns": [],
+    "synonyms": [],
+    "source_hash": "b7ccc40194116a9210d4c98e68f767a13ada29d4ddb7c72a817a0c01b2bf6c8c"
+  },
+  {
+    "title": "Thu hồi tài khoản Domain qua ADMP",
+    "service": "ADManagerPlus",
+    "keyword": "Thu hồi tài khoản, nghỉ việc, ADMP",
+    "keyword_list": [
+      "Thu hồi tài khoản",
+      "nghỉ việc",
+      "ADMP"
+    ],
+    "patterns": [
+      "Thu hồi tài khoản Domain qua ADMP",
+      "Khởi tạo tài khoản người việc nghỉ việc bằng cách thu hồi trên ADMP",
+      "Cần tạm dừng tài khoản Domain cho một công ty việc",
+      "Tạm dừng hoạt động tài khoản Domain vì người sử dụng đang nghỉ phép"
+    ],
+    "synonyms": [
+      "Thu hồi quyền truy cập",
+      "Disable account",
+      "Tắt hoạt động tài khoản",
+      "Không cho phép truy cập"
+    ],
+    "source_hash": "83584a99408563e317b891140bc7ea3db3789249f9a019930e1bb9b0c5c81c4e"
+  },
+  {
+    "title": "RB_Tạo Entra OIDC Applications cho SSO",
+    "service": "EntraID",
+    "keyword": "TestEntra Application, SSO, OIDC",
+    "keyword_list": [
+      "TestEntra Application",
+      "SSO",
+      "OIDC"
+    ],
+    "patterns": [
+      "Tạo ứng dụng SSO qua EntraID",
+      "Thêm Entra ID OIDC Application",
+      "Thực hiện đăng ký mới Entra App",
+      "Tạo app mới sử dung MFA của EntraID"
+    ],
+    "synonyms": [
+      "Entra OIDC ứng dụng SSO",
+      "Đăng ký ứng dụng qua EntraID",
+      "Thêm ứng dụng mới cho EntraID",
+      "Tạo app mới sử dung authentication bằng MFA của EntraID"
+    ],
+    "source_hash": "6c4713304eeba9c1fa2ed76a593acd842eb5f2b1058a247249cb393b3f1f127f"
+  },
+  {
+    "title": "Tạo tài khoản Domain qua ADMP",
+    "service": "ADManagerPlus",
+    "keyword": "Tạo tài khoản, ADMP",
+    "keyword_list": [
+      "Tạo tài khoản",
+      "ADMP"
+    ],
+    "patterns": [
+      "Tạo tài khoản mới trên ADMP",
+      "Thêm user qua ADMP",
+      "Thực hiện việc tạo user có mailbox và Lync 2013",
+      "Đăng ký một tài khoản mới bằng công cụ ADMP"
+    ],
+    "synonyms": [
+      "Create new account on ADMP",
+      "Add user via ADMP",
+      "Perform task of creating new user with mailbox and Lync 2013",
+      "Register a new account using ADMP tool"
+    ],
+    "source_hash": "508a4309cd367bcf2b23c4af25bb818d6c88d7683c068aaa1c27e6a193893e65"
+  },
+  {
+    "title": "Upgrade DHCP server 2012 to DHCP server 2022 or 2025",
+    "service": "DHCP",
+    "keyword": "TestDHCP, Upgrade DHCP",
+    "keyword_list": [
+      "TestDHCP",
+      "Upgrade DHCP"
+    ],
+    "patterns": [
+      "Cập nhật máy chủ DHCP",
+      "Tăng phiên bản DHCP",
+      "Upgrade DHCP server",
+      "Nâng cấp DHCP cho máy chủ Failover",
+      "Nâng cấp máy chủ DHCP để kiềm chế bảo mật"
+    ],
+    "synonyms": [
+      "TestDHCP",
+      "Upgrade_Server_DHCP"
+    ],
+    "source_hash": "e15974c6b2c5a45aee7fbc2a9eef1a0968ba712fab785e59111be6e54fc32bd3"
+  },
+  {
+    "title": "Xóa file mail.queue",
+    "service": "Mail Exchange",
+    "keyword": "Exchange, mail.queue",
+    "keyword_list": [
+      "Exchange",
+      "mail.queue"
+    ],
+    "patterns": [
+      "Hàng đợi thư bị kẹt",
+      "Lỗi trong file mail.queue",
+      "Mail tăng dung lượng lớn",
+      "Thực hiện xóa file mail.queue",
+      "Xóa hàng đợi thư bằng cách dừng và khởi động service Exchange"
+    ],
+    "synonyms": [
+      "Queue mail stuck",
+      "Lỗi trong file queue.mail",
+      "Mail có dung lượng lớn tăng",
+      "Thực hiện xóa hàng đợi thư bằng cách ngừng và khởi động dịch vụ Exchange",
+      "Khôi động Microsoft Exchange Transport"
+    ],
+    "source_hash": "5786fc6ef62e406ac338f0add2ecbd2c007488f599b441a404f6f09ebd5cb657"
+  },
+  {
+    "title": "Xóa Mailbox Database",
+    "service": "Exchange 2016",
+    "keyword": "Delete, Mailbox Database, khoảng trắng",
+    "keyword_list": [
+      "Delete",
+      "Mailbox Database",
+      "khoảng trắng"
+    ],
+    "patterns": [
+      "Xóa database mailbox",
+      "Loại bỏ database mailbox",
+      "Tắt database mailbox",
+      "Thu hồi ổ đĩa cho database mailbox"
+    ],
+    "synonyms": [
+      "Delete Mailbox Database",
+      "Remove Mailbox Database",
+      "Disable Mailbox Database",
+      "Recover storage for Mailbox Database"
+    ],
+    "source_hash": "01dba26e042f8df5b17cd5867ea56ecae68927eacff93ec36a4debbdc578624b"
+  },
+  {
+    "title": "RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER",
+    "service": "Windows Server, SQL",
+    "keyword": "Testrun bat file",
+    "keyword_list": [
+      "Testrun bat file"
+    ],
+    "patterns": [
+      "Người dùng có yêu cầu phân quyền chạy file bat Healthcheck cho hệ thống SQL Server và gặp lỗi access deny."
+    ],
+    "synonyms": [
+      "Run file batch Healtcheck SQL Server",
+      "Phân quyền cho file bat Healthcheck"
+    ],
+    "source_hash": "dde64a903f3041ab6a37b3b8c51897956f0638a29ff883cafe509f8dc1d7a4cd"
   }
 ]

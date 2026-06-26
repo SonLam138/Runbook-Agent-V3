@@ -1,0 +1,1968 @@
+{
+  "summary": {
+    "total_business_services": 129,
+    "mapped_business_services": 9,
+    "unmapped_business_services": 120,
+    "total_runbook_technical_services": 16,
+    "covered_runbook_technical_services": 16,
+    "uncovered_runbook_technical_services": 0
+  },
+  "mapped_services": [
+    {
+      "service_id": "3.04-Quản lý tài khoản ứng dụng",
+      "service_name": "Quản lý tài khoản ứng dụng",
+      "has_match": true,
+      "matched_count": 4,
+      "missing_count": 2,
+      "matched": [
+        {
+          "mapping_value": "ActiveDirectory",
+          "matched_runbook_service": "ActiveDirectory",
+          "runbook_count": 1,
+          "sample_titles": [
+            "RB_Cập nhật Desktop và ScreenSaver toàn hàng"
+          ]
+        },
+        {
+          "mapping_value": "AD",
+          "matched_runbook_service": "AD",
+          "runbook_count": 2,
+          "sample_titles": [
+            "Hướng dẫn move computer vào đúng OU qua ADMP",
+            "Slideshow Desktop & Screen Saver qua GPO"
+          ]
+        },
+        {
+          "mapping_value": "ADManagerPlus",
+          "matched_runbook_service": "ADManagerPlus",
+          "runbook_count": 4,
+          "sample_titles": [
+            "Lỗi tạo tài khoản Lync và Mailbox qua ADMP",
+            "RB_Thay đổi thông tin tài khoản Domain qua ADMP",
+            "Thu hồi tài khoản Domain qua ADMP",
+            "Tạo tài khoản Domain qua ADMP"
+          ]
+        },
+        {
+          "mapping_value": "EntraID",
+          "matched_runbook_service": "EntraID",
+          "runbook_count": 1,
+          "sample_titles": [
+            "RB_Tạo Entra OIDC Applications cho SSO"
+          ]
+        }
+      ],
+      "missing": [
+        "Quản lý tài khoản ứng dụng",
+        "3.04-Quản lý tài khoản ứng dụng"
+      ]
+    },
+    {
+      "service_id": "6.01-Thư điện tử",
+      "service_name": "Thư điện tử",
+      "has_match": true,
+      "matched_count": 9,
+      "missing_count": 5,
+      "matched": [
+        {
+          "mapping_value": "exchange",
+          "matched_runbook_service": "Exchange",
+          "runbook_count": 2,
+          "sample_titles": [
+            "Enable Mailbox Group qua ADMP",
+            "RB_Enable Remote Mailbox (Exchange Online)"
+          ]
+        },
+        {
+          "mapping_value": "active directory",
+          "matched_runbook_service": "Active Directory",
+          "runbook_count": 1,
+          "sample_titles": [
+            "Nâng cấp ADC lên PDC"
+          ]
+        },
+        {
+          "mapping_value": "Exchange 2016",
+          "matched_runbook_service": "Exchange 2016",
+          "runbook_count": 3,
+          "sample_titles": [
+            "RB_Apply Retention Policy cho mailbox Exchange 2016",
+            "Xóa Mailbox Database",
+            "Xóa Mailbox Database"
+          ]
+        },
+        {
+          "mapping_value": "Microsoft Exchange",
+          "matched_runbook_service": "Microsoft Exchange",
+          "runbook_count": 2,
+          "sample_titles": [
+            "RB_Certificate Name Mismatch",
+            "RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit."
+          ]
+        },
+        {
+          "mapping_value": "Mail Exchange",
+          "matched_runbook_service": "Mail Exchange",
+          "runbook_count": 1,
+          "sample_titles": [
+            "Xóa file mail.queue"
+          ]
+        },
+        {
+          "mapping_value": "ActiveDirectory",
+          "matched_runbook_service": "ActiveDirectory",
+          "runbook_count": 1,
+          "sample_titles": [
+            "RB_Cập nhật Desktop và ScreenSaver toàn hàng"
+          ]
+        },
+        {
+          "mapping_value": "AD",
+          "matched_runbook_service": "AD",
+          "runbook_count": 2,
+          "sample_titles": [
+            "Hướng dẫn move computer vào đúng OU qua ADMP",
+            "Slideshow Desktop & Screen Saver qua GPO"
+          ]
+        },
+        {
+          "mapping_value": "ADManagerPlus",
+          "matched_runbook_service": "ADManagerPlus",
+          "runbook_count": 4,
+          "sample_titles": [
+            "Lỗi tạo tài khoản Lync và Mailbox qua ADMP",
+            "RB_Thay đổi thông tin tài khoản Domain qua ADMP",
+            "Thu hồi tài khoản Domain qua ADMP",
+            "Tạo tài khoản Domain qua ADMP"
+          ]
+        },
+        {
+          "mapping_value": "EntraID",
+          "matched_runbook_service": "EntraID",
+          "runbook_count": 1,
+          "sample_titles": [
+            "RB_Tạo Entra OIDC Applications cho SSO"
+          ]
+        }
+      ],
+      "missing": [
+        "Thư điện tử",
+        "6.01-Thư điện tử",
+        "email",
+        "mail",
+        "outlook"
+      ]
+    },
+    {
+      "service_id": "6.04-Chat Lync",
+      "service_name": "Chat Lync",
+      "has_match": true,
+      "matched_count": 1,
+      "missing_count": 2,
+      "matched": [
+        {
+          "mapping_value": "Lync Server 2013",
+          "matched_runbook_service": "Lync Server 2013",
+          "runbook_count": 1,
+          "sample_titles": [
+            "Lync Server 2013 - Gia hạn Certificate"
+          ]
+        }
+      ],
+      "missing": [
+        "Chat Lync",
+        "6.04-Chat Lync"
+      ]
+    },
+    {
+      "service_id": "6.12-Hội nghị truyền hình",
+      "service_name": "Hội nghị truyền hình",
+      "has_match": true,
+      "matched_count": 2,
+      "missing_count": 5,
+      "matched": [
+        {
+          "mapping_value": "Lync Server 2013",
+          "matched_runbook_service": "Lync Server 2013",
+          "runbook_count": 1,
+          "sample_titles": [
+            "Lync Server 2013 - Gia hạn Certificate"
+          ]
+        },
+        {
+          "mapping_value": "OnePV",
+          "matched_runbook_service": "OnePV",
+          "runbook_count": 1,
+          "sample_titles": [
+            "Tạo thêm room đặt phòng cho ứng dụng OnePV"
+          ]
+        }
+      ],
+      "missing": [
+        "Hội nghị truyền hình",
+        "6.12-Hội nghị truyền hình",
+        "hội nghị",
+        "video conference",
+        "meeting system"
+      ]
+    },
+    {
+      "service_id": "6.13-Microsoft Team / Office 365",
+      "service_name": "Microsoft Team / Office 365",
+      "has_match": true,
+      "matched_count": 5,
+      "missing_count": 8,
+      "matched": [
+        {
+          "mapping_value": "microsoft teams",
+          "matched_runbook_service": "Microsoft Teams",
+          "runbook_count": 1,
+          "sample_titles": [
+            "Tìm file record meeting trong Teams"
+          ]
+        },
+        {
+          "mapping_value": "Microsoft Exchange",
+          "matched_runbook_service": "Microsoft Exchange",
+          "runbook_count": 2,
+          "sample_titles": [
+            "RB_Certificate Name Mismatch",
+            "RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit."
+          ]
+        },
+        {
+          "mapping_value": "Exchange 2016",
+          "matched_runbook_service": "Exchange 2016",
+          "runbook_count": 3,
+          "sample_titles": [
+            "RB_Apply Retention Policy cho mailbox Exchange 2016",
+            "Xóa Mailbox Database",
+            "Xóa Mailbox Database"
+          ]
+        },
+        {
+          "mapping_value": "Mail Exchange",
+          "matched_runbook_service": "Mail Exchange",
+          "runbook_count": 1,
+          "sample_titles": [
+            "Xóa file mail.queue"
+          ]
+        },
+        {
+          "mapping_value": "EntraID",
+          "matched_runbook_service": "EntraID",
+          "runbook_count": 1,
+          "sample_titles": [
+            "RB_Tạo Entra OIDC Applications cho SSO"
+          ]
+        }
+      ],
+      "missing": [
+        "Microsoft Team / Office 365",
+        "6.13-Microsoft Team / Office 365",
+        "Microsoft Team",
+        "Office 365",
+        "ms team",
+        "m365",
+        "sharepoint",
+        "onedrive"
+      ]
+    },
+    {
+      "service_id": "8.02-Hạ tầng IT tại Hội sở",
+      "service_name": "Hạ tầng IT tại Hội sở",
+      "has_match": true,
+      "matched_count": 4,
+      "missing_count": 2,
+      "matched": [
+        {
+          "mapping_value": "8.02 Hạ tầng tại hội sở",
+          "matched_runbook_service": "8.02 Hạ tầng tại hội sở",
+          "runbook_count": 2,
+          "sample_titles": [
+            "Create VLAN trên FI UCS",
+            "RB_Check phân quyền được phép gửi mail vào toàn bộ group"
+          ]
+        },
+        {
+          "mapping_value": "DHCP",
+          "matched_runbook_service": "DHCP",
+          "runbook_count": 1,
+          "sample_titles": [
+            "Upgrade DHCP server 2012 to DHCP server 2022 or 2025"
+          ]
+        },
+        {
+          "mapping_value": "IIS",
+          "matched_runbook_service": "IIS",
+          "runbook_count": 1,
+          "sample_titles": [
+            "Cấu hình redirect http to https bằng urlrewrite"
+          ]
+        },
+        {
+          "mapping_value": "Windows Server, SQL",
+          "matched_runbook_service": "Windows Server, SQL",
+          "runbook_count": 1,
+          "sample_titles": [
+            "RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER"
+          ]
+        }
+      ],
+      "missing": [
+        "Hạ tầng IT tại Hội sở",
+        "8.02-Hạ tầng IT tại Hội sở"
+      ]
+    },
+    {
+      "service_id": "99.01-Database",
+      "service_name": "Database",
+      "has_match": true,
+      "matched_count": 1,
+      "missing_count": 6,
+      "matched": [
+        {
+          "mapping_value": "Windows Server, SQL",
+          "matched_runbook_service": "Windows Server, SQL",
+          "runbook_count": 1,
+          "sample_titles": [
+            "RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER"
+          ]
+        }
+      ],
+      "missing": [
+        "Database",
+        "99.01-Database",
+        "db",
+        "oracle",
+        "sql server",
+        "SQL"
+      ]
+    },
+    {
+      "service_id": "99.02-Máy chủ (K.CNTT)",
+      "service_name": "Máy chủ (K.CNTT)",
+      "has_match": true,
+      "matched_count": 3,
+      "missing_count": 6,
+      "matched": [
+        {
+          "mapping_value": "IIS",
+          "matched_runbook_service": "IIS",
+          "runbook_count": 1,
+          "sample_titles": [
+            "Cấu hình redirect http to https bằng urlrewrite"
+          ]
+        },
+        {
+          "mapping_value": "DHCP",
+          "matched_runbook_service": "DHCP",
+          "runbook_count": 1,
+          "sample_titles": [
+            "Upgrade DHCP server 2012 to DHCP server 2022 or 2025"
+          ]
+        },
+        {
+          "mapping_value": "Windows Server, SQL",
+          "matched_runbook_service": "Windows Server, SQL",
+          "runbook_count": 1,
+          "sample_titles": [
+            "RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER"
+          ]
+        }
+      ],
+      "missing": [
+        "Máy chủ (K.CNTT)",
+        "99.02-Máy chủ (K.CNTT)",
+        "K.CNTT",
+        "server",
+        "windows server",
+        "linux server"
+      ]
+    },
+    {
+      "service_id": "99.04-Network (K.CNTT)",
+      "service_name": "Network (K.CNTT)",
+      "has_match": true,
+      "matched_count": 2,
+      "missing_count": 8,
+      "matched": [
+        {
+          "mapping_value": "DHCP",
+          "matched_runbook_service": "DHCP",
+          "runbook_count": 1,
+          "sample_titles": [
+            "Upgrade DHCP server 2012 to DHCP server 2022 or 2025"
+          ]
+        },
+        {
+          "mapping_value": "8.02 Hạ tầng tại hội sở",
+          "matched_runbook_service": "8.02 Hạ tầng tại hội sở",
+          "runbook_count": 2,
+          "sample_titles": [
+            "Create VLAN trên FI UCS",
+            "RB_Check phân quyền được phép gửi mail vào toàn bộ group"
+          ]
+        }
+      ],
+      "missing": [
+        "Network (K.CNTT)",
+        "99.04-Network (K.CNTT)",
+        "K.CNTT",
+        "network",
+        "lan",
+        "wan",
+        "switch",
+        "router"
+      ]
+    }
+  ],
+  "unmapped_services": [
+    {
+      "service_id": "0.01-T24",
+      "service_name": "T24",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 3,
+      "matched": [],
+      "missing": [
+        "T24",
+        "0.01-T24",
+        "core banking"
+      ]
+    },
+    {
+      "service_id": "0.02-Smartvista",
+      "service_name": "Smartvista",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 3,
+      "matched": [],
+      "missing": [
+        "Smartvista",
+        "0.02-Smartvista",
+        "core thẻ"
+      ]
+    },
+    {
+      "service_id": "0.03-FCC",
+      "service_name": "FCC",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "FCC",
+        "0.03-FCC"
+      ]
+    },
+    {
+      "service_id": "0.04-MicroBank",
+      "service_name": "MicroBank",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "MicroBank",
+        "0.04-MicroBank"
+      ]
+    },
+    {
+      "service_id": "1.03-SMS Banking",
+      "service_name": "SMS Banking",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 3,
+      "matched": [],
+      "missing": [
+        "SMS Banking",
+        "1.03-SMS Banking",
+        "sms"
+      ]
+    },
+    {
+      "service_id": "1.04-Website Public",
+      "service_name": "Website Public",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Website Public",
+        "1.04-Website Public"
+      ]
+    },
+    {
+      "service_id": "1.05-PVTax",
+      "service_name": "PVTax",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "PVTax",
+        "1.05-PVTax"
+      ]
+    },
+    {
+      "service_id": "1.06-Ecommerce",
+      "service_name": "Ecommerce",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Ecommerce",
+        "1.06-Ecommerce"
+      ]
+    },
+    {
+      "service_id": "1.07-Ví điện tử",
+      "service_name": "Ví điện tử",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Ví điện tử",
+        "1.07-Ví điện tử"
+      ]
+    },
+    {
+      "service_id": "1.08-Smart Form",
+      "service_name": "Smart Form",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Smart Form",
+        "1.08-Smart Form"
+      ]
+    },
+    {
+      "service_id": "1.09-Fee",
+      "service_name": "Fee",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Fee",
+        "1.09-Fee"
+      ]
+    },
+    {
+      "service_id": "1.10-3DSercure",
+      "service_name": "3DSercure",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 5,
+      "matched": [],
+      "missing": [
+        "3DSercure",
+        "1.10-3DSercure",
+        "3ds",
+        "3d secure",
+        "master card"
+      ]
+    },
+    {
+      "service_id": "1.11-QRMerchant",
+      "service_name": "QRMerchant",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "QRMerchant",
+        "1.11-QRMerchant"
+      ]
+    },
+    {
+      "service_id": "1.13-Hóa đơn điện tử",
+      "service_name": "Hóa đơn điện tử",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Hóa đơn điện tử",
+        "1.13-Hóa đơn điện tử"
+      ]
+    },
+    {
+      "service_id": "1.16-Mobile Sale",
+      "service_name": "Mobile Sale",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Mobile Sale",
+        "1.16-Mobile Sale"
+      ]
+    },
+    {
+      "service_id": "1.17-Dịch vụ chấp nhận thanh toán bằng VietQR (Napas)",
+      "service_name": "Dịch vụ chấp nhận thanh toán bằng VietQR (Napas)",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 3,
+      "matched": [],
+      "missing": [
+        "Dịch vụ chấp nhận thanh toán bằng VietQR (Napas)",
+        "1.17-Dịch vụ chấp nhận thanh toán bằng VietQR (Napas)",
+        "Napas"
+      ]
+    },
+    {
+      "service_id": "1.18-Dịch vụ chi hộ An Sinh Xã Hội",
+      "service_name": "Dịch vụ chi hộ An Sinh Xã Hội",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Dịch vụ chi hộ An Sinh Xã Hội",
+        "1.18-Dịch vụ chi hộ An Sinh Xã Hội"
+      ]
+    },
+    {
+      "service_id": "1.19-Dịch vụ liên kết tài khoản An Sinh Xã Hội qua ứng dụng VNeID",
+      "service_name": "Dịch vụ liên kết tài khoản An Sinh Xã Hội qua ứng dụng VNeID",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Dịch vụ liên kết tài khoản An Sinh Xã Hội qua ứng dụng VNeID",
+        "1.19-Dịch vụ liên kết tài khoản An Sinh Xã Hội qua ứng dụng VNeID"
+      ]
+    },
+    {
+      "service_id": "1.20-Dịch vụ thu hộ dịch vụ điện, học phí trên IB/MB/Quầy",
+      "service_name": "Dịch vụ thu hộ dịch vụ điện, học phí trên IB/MB/Quầy",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 7,
+      "matched": [],
+      "missing": [
+        "Dịch vụ thu hộ dịch vụ điện, học phí trên IB/MB/Quầy",
+        "1.20-Dịch vụ thu hộ dịch vụ điện, học phí trên IB/MB/Quầy",
+        "Dịch vụ thu hộ dịch vụ điện, học phí trên IB",
+        "MB",
+        "Quầy",
+        "Dịch vụ thu hộ dịch vụ điện",
+        "học phí trên IB/MB/Quầy"
+      ]
+    },
+    {
+      "service_id": "1.22-PVConnect",
+      "service_name": "PVConnect",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "PVConnect",
+        "1.22-PVConnect"
+      ]
+    },
+    {
+      "service_id": "1.23-PVConnectBiz",
+      "service_name": "PVConnectBiz",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "PVConnectBiz",
+        "1.23-PVConnectBiz"
+      ]
+    },
+    {
+      "service_id": "1.24-Open Banking",
+      "service_name": "Open Banking",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Open Banking",
+        "1.24-Open Banking"
+      ]
+    },
+    {
+      "service_id": "1.25-Tax-Backend",
+      "service_name": "Tax-Backend",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Tax-Backend",
+        "1.25-Tax-Backend"
+      ]
+    },
+    {
+      "service_id": "2.01-Hệ thống Báo cáo quản trị hợp nhất (Baocaoquantri)",
+      "service_name": "Hệ thống Báo cáo quản trị hợp nhất (Baocaoquantri)",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 3,
+      "matched": [],
+      "missing": [
+        "Hệ thống Báo cáo quản trị hợp nhất (Baocaoquantri)",
+        "2.01-Hệ thống Báo cáo quản trị hợp nhất (Baocaoquantri)",
+        "Baocaoquantri"
+      ]
+    },
+    {
+      "service_id": "2.02-Hệ thống Báo cáo tuân thủ",
+      "service_name": "Hệ thống Báo cáo tuân thủ",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Hệ thống Báo cáo tuân thủ",
+        "2.02-Hệ thống Báo cáo tuân thủ"
+      ]
+    },
+    {
+      "service_id": "2.03-Hệ thống báo cáo FCC",
+      "service_name": "Hệ thống báo cáo FCC",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 3,
+      "matched": [],
+      "missing": [
+        "Hệ thống báo cáo FCC",
+        "2.03-Hệ thống báo cáo FCC",
+        "fcc"
+      ]
+    },
+    {
+      "service_id": "2.04-Hệ thống Báo cáo hợp nhất FCC&MRB",
+      "service_name": "Hệ thống Báo cáo hợp nhất FCC&MRB",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 5,
+      "matched": [],
+      "missing": [
+        "Hệ thống Báo cáo hợp nhất FCC&MRB",
+        "2.04-Hệ thống Báo cáo hợp nhất FCC&MRB",
+        "Hệ thống Báo cáo hợp nhất FCC",
+        "MRB",
+        "fcc"
+      ]
+    },
+    {
+      "service_id": "2.05-RM Assistant Bot",
+      "service_name": "RM Assistant Bot",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "RM Assistant Bot",
+        "2.05-RM Assistant Bot"
+      ]
+    },
+    {
+      "service_id": "2.06-Next Best Action",
+      "service_name": "Next Best Action",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Next Best Action",
+        "2.06-Next Best Action"
+      ]
+    },
+    {
+      "service_id": "2.07-ETL dữ liệu",
+      "service_name": "ETL dữ liệu",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "ETL dữ liệu",
+        "2.07-ETL dữ liệu"
+      ]
+    },
+    {
+      "service_id": "2.08-BI Dashboard",
+      "service_name": "BI Dashboard",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "BI Dashboard",
+        "2.08-BI Dashboard"
+      ]
+    },
+    {
+      "service_id": "2.09-BI Tool Upload",
+      "service_name": "BI Tool Upload",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "BI Tool Upload",
+        "2.09-BI Tool Upload"
+      ]
+    },
+    {
+      "service_id": "2.10-Cloud Dataware House - Domain Datamart",
+      "service_name": "Cloud Dataware House - Domain Datamart",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Cloud Dataware House - Domain Datamart",
+        "2.10-Cloud Dataware House - Domain Datamart"
+      ]
+    },
+    {
+      "service_id": "2.11-Data Governance (Open metadata)",
+      "service_name": "Data Governance (Open metadata)",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 3,
+      "matched": [],
+      "missing": [
+        "Data Governance (Open metadata)",
+        "2.11-Data Governance (Open metadata)",
+        "Open metadata"
+      ]
+    },
+    {
+      "service_id": "3.01-CITAD",
+      "service_name": "CITAD",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "CITAD",
+        "3.01-CITAD"
+      ]
+    },
+    {
+      "service_id": "3.02-SWIFT",
+      "service_name": "SWIFT",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "SWIFT",
+        "3.02-SWIFT"
+      ]
+    },
+    {
+      "service_id": "3.03-VCB Money",
+      "service_name": "VCB Money",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "VCB Money",
+        "3.03-VCB Money"
+      ]
+    },
+    {
+      "service_id": "3.05-ERP",
+      "service_name": "ERP",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 7,
+      "matched": [],
+      "missing": [
+        "ERP",
+        "3.05-ERP",
+        "po",
+        "ap",
+        "ar",
+        "fa",
+        "gl"
+      ]
+    },
+    {
+      "service_id": "3.06-Filezilla",
+      "service_name": "Filezilla",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 4,
+      "matched": [],
+      "missing": [
+        "Filezilla",
+        "3.06-Filezilla",
+        "ftp",
+        "sftp"
+      ]
+    },
+    {
+      "service_id": "3.07-CIAM",
+      "service_name": "CIAM",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 4,
+      "matched": [],
+      "missing": [
+        "CIAM",
+        "3.07-CIAM",
+        "identity",
+        "access management"
+      ]
+    },
+    {
+      "service_id": "3.08-Chuyển tiền nhanh Napas247 (IBFT)",
+      "service_name": "Chuyển tiền nhanh Napas247 (IBFT)",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 3,
+      "matched": [],
+      "missing": [
+        "Chuyển tiền nhanh Napas247 (IBFT)",
+        "3.08-Chuyển tiền nhanh Napas247 (IBFT)",
+        "IBFT"
+      ]
+    },
+    {
+      "service_id": "4.01-Quản lý chương trình khuyến mãi",
+      "service_name": "Quản lý chương trình khuyến mãi",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Quản lý chương trình khuyến mãi",
+        "4.01-Quản lý chương trình khuyến mãi"
+      ]
+    },
+    {
+      "service_id": "4.02-Định giá tài sản bảo đảm",
+      "service_name": "Định giá tài sản bảo đảm",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Định giá tài sản bảo đảm",
+        "4.02-Định giá tài sản bảo đảm"
+      ]
+    },
+    {
+      "service_id": "4.03-Quản lý TSĐB Kho Quỹ",
+      "service_name": "Quản lý TSĐB Kho Quỹ",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Quản lý TSĐB Kho Quỹ",
+        "4.03-Quản lý TSĐB Kho Quỹ"
+      ]
+    },
+    {
+      "service_id": "4.04-Xếp hạng tín dụng nội bộ",
+      "service_name": "Xếp hạng tín dụng nội bộ",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Xếp hạng tín dụng nội bộ",
+        "4.04-Xếp hạng tín dụng nội bộ"
+      ]
+    },
+    {
+      "service_id": "4.06-Website tỷ giá nội bộ",
+      "service_name": "Website tỷ giá nội bộ",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Website tỷ giá nội bộ",
+        "4.06-Website tỷ giá nội bộ"
+      ]
+    },
+    {
+      "service_id": "4.07-Website quản lý chứng chỉ tiền gửi liên kết trái phiếu",
+      "service_name": "Website quản lý chứng chỉ tiền gửi liên kết trái phiếu",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Website quản lý chứng chỉ tiền gửi liên kết trái phiếu",
+        "4.07-Website quản lý chứng chỉ tiền gửi liên kết trái phiếu"
+      ]
+    },
+    {
+      "service_id": "4.08-Website quản lý dòng tiền bất động sản",
+      "service_name": "Website quản lý dòng tiền bất động sản",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Website quản lý dòng tiền bất động sản",
+        "4.08-Website quản lý dòng tiền bất động sản"
+      ]
+    },
+    {
+      "service_id": "4.09-Quản lý dịch vụ thẻ-CRM+A538",
+      "service_name": "Quản lý dịch vụ thẻ-CRM+A538",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 4,
+      "matched": [],
+      "missing": [
+        "Quản lý dịch vụ thẻ-CRM+A538",
+        "4.09-Quản lý dịch vụ thẻ-CRM+A538",
+        "Quản lý dịch vụ thẻ-CRM",
+        "A538"
+      ]
+    },
+    {
+      "service_id": "4.10-Giám sát rủi ro Thẻ",
+      "service_name": "Giám sát rủi ro Thẻ",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Giám sát rủi ro Thẻ",
+        "4.10-Giám sát rủi ro Thẻ"
+      ]
+    },
+    {
+      "service_id": "4.11-Hệ thống phát hành (EMV, Máy dập thẻ, máy in PIN, HSM, VCCS)",
+      "service_name": "Hệ thống phát hành (EMV, Máy dập thẻ, máy in PIN, HSM, VCCS)",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 8,
+      "matched": [],
+      "missing": [
+        "Hệ thống phát hành (EMV, Máy dập thẻ, máy in PIN, HSM, VCCS)",
+        "4.11-Hệ thống phát hành (EMV, Máy dập thẻ, máy in PIN, HSM, VCCS)",
+        "EMV, Máy dập thẻ, máy in PIN, HSM, VCCS",
+        "Hệ thống phát hành (EMV",
+        "Máy dập thẻ",
+        "máy in PIN",
+        "HSM",
+        "VCCS)"
+      ]
+    },
+    {
+      "service_id": "4.12-ServiceDesk",
+      "service_name": "ServiceDesk",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 5,
+      "matched": [],
+      "missing": [
+        "ServiceDesk",
+        "4.12-ServiceDesk",
+        "service desk",
+        "itsm",
+        "ticket"
+      ]
+    },
+    {
+      "service_id": "4.13-Hệ thống Viettel post",
+      "service_name": "Hệ thống Viettel post",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Hệ thống Viettel post",
+        "4.13-Hệ thống Viettel post"
+      ]
+    },
+    {
+      "service_id": "4.14-Pvone - Loyalty",
+      "service_name": "Pvone - Loyalty",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Pvone - Loyalty",
+        "4.14-Pvone - Loyalty"
+      ]
+    },
+    {
+      "service_id": "4.15-Hệ thống quản lý văn bản PVcomBank",
+      "service_name": "Hệ thống quản lý văn bản PVcomBank",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Hệ thống quản lý văn bản PVcomBank",
+        "4.15-Hệ thống quản lý văn bản PVcomBank"
+      ]
+    },
+    {
+      "service_id": "4.17-Website nội bộ",
+      "service_name": "Website nội bộ",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Website nội bộ",
+        "4.17-Website nội bộ"
+      ]
+    },
+    {
+      "service_id": "4.18-Hệ thống Duyệt lãi suất",
+      "service_name": "Hệ thống Duyệt lãi suất",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Hệ thống Duyệt lãi suất",
+        "4.18-Hệ thống Duyệt lãi suất"
+      ]
+    },
+    {
+      "service_id": "4.19-Hệ thống Workplace",
+      "service_name": "Hệ thống Workplace",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Hệ thống Workplace",
+        "4.19-Hệ thống Workplace"
+      ]
+    },
+    {
+      "service_id": "4.20-Loan submission",
+      "service_name": "Loan submission",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Loan submission",
+        "4.20-Loan submission"
+      ]
+    },
+    {
+      "service_id": "4.21-Hệ thống Dynamic Upload",
+      "service_name": "Hệ thống Dynamic Upload",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Hệ thống Dynamic Upload",
+        "4.21-Hệ thống Dynamic Upload"
+      ]
+    },
+    {
+      "service_id": "4.22-Hệ thống CIC H2H",
+      "service_name": "Hệ thống CIC H2H",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Hệ thống CIC H2H",
+        "4.22-Hệ thống CIC H2H"
+      ]
+    },
+    {
+      "service_id": "4.23-Phê duyệt tín dụng",
+      "service_name": "Phê duyệt tín dụng",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Phê duyệt tín dụng",
+        "4.23-Phê duyệt tín dụng"
+      ]
+    },
+    {
+      "service_id": "4.24-Xếp hạng tín dụng nội bộ 2.0",
+      "service_name": "Xếp hạng tín dụng nội bộ 2.0",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Xếp hạng tín dụng nội bộ 2.0",
+        "4.24-Xếp hạng tín dụng nội bộ 2.0"
+      ]
+    },
+    {
+      "service_id": "4.25-Cảnh báo nợ sớm",
+      "service_name": "Cảnh báo nợ sớm",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Cảnh báo nợ sớm",
+        "4.25-Cảnh báo nợ sớm"
+      ]
+    },
+    {
+      "service_id": "4.26-Thu hồi nợ (COLLECTION)",
+      "service_name": "Thu hồi nợ (COLLECTION)",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 3,
+      "matched": [],
+      "missing": [
+        "Thu hồi nợ (COLLECTION)",
+        "4.26-Thu hồi nợ (COLLECTION)",
+        "COLLECTION"
+      ]
+    },
+    {
+      "service_id": "4.27-Quản trị vốn con người - HCM",
+      "service_name": "Quản trị vốn con người - HCM",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Quản trị vốn con người - HCM",
+        "4.27-Quản trị vốn con người - HCM"
+      ]
+    },
+    {
+      "service_id": "4.28-Định giá tài sản bảo đảm 2.0",
+      "service_name": "Định giá tài sản bảo đảm 2.0",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Định giá tài sản bảo đảm 2.0",
+        "4.28-Định giá tài sản bảo đảm 2.0"
+      ]
+    },
+    {
+      "service_id": "4.29-Quét lọc danh sách AML",
+      "service_name": "Quét lọc danh sách AML",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Quét lọc danh sách AML",
+        "4.29-Quét lọc danh sách AML"
+      ]
+    },
+    {
+      "service_id": "4.30-Hệ thống quản lý tài sản và hạn mức - CLIMS",
+      "service_name": "Hệ thống quản lý tài sản và hạn mức - CLIMS",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Hệ thống quản lý tài sản và hạn mức - CLIMS",
+        "4.30-Hệ thống quản lý tài sản và hạn mức - CLIMS"
+      ]
+    },
+    {
+      "service_id": "4.31-Đối soát tập trung",
+      "service_name": "Đối soát tập trung",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Đối soát tập trung",
+        "4.31-Đối soát tập trung"
+      ]
+    },
+    {
+      "service_id": "4.32-Thu thập thông tin trực tuyến (IRS)",
+      "service_name": "Thu thập thông tin trực tuyến (IRS)",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 3,
+      "matched": [],
+      "missing": [
+        "Thu thập thông tin trực tuyến (IRS)",
+        "4.32-Thu thập thông tin trực tuyến (IRS)",
+        "IRS"
+      ]
+    },
+    {
+      "service_id": "4.33-Hệ thống quản lý văn bản IDOC",
+      "service_name": "Hệ thống quản lý văn bản IDOC",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Hệ thống quản lý văn bản IDOC",
+        "4.33-Hệ thống quản lý văn bản IDOC"
+      ]
+    },
+    {
+      "service_id": "4.34-PricingTool-KHCN",
+      "service_name": "PricingTool-KHCN",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "PricingTool-KHCN",
+        "4.34-PricingTool-KHCN"
+      ]
+    },
+    {
+      "service_id": "4.35-Dashboard 360",
+      "service_name": "Dashboard 360",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Dashboard 360",
+        "4.35-Dashboard 360"
+      ]
+    },
+    {
+      "service_id": "4.36-MyPVcombank",
+      "service_name": "MyPVcombank",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "MyPVcombank",
+        "4.36-MyPVcombank"
+      ]
+    },
+    {
+      "service_id": "4.37-PricingTool-KHDN",
+      "service_name": "PricingTool-KHDN",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "PricingTool-KHDN",
+        "4.37-PricingTool-KHDN"
+      ]
+    },
+    {
+      "service_id": "4.38-Số hóa quy trình tín dụng (LPD)",
+      "service_name": "Số hóa quy trình tín dụng (LPD)",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 3,
+      "matched": [],
+      "missing": [
+        "Số hóa quy trình tín dụng (LPD)",
+        "4.38-Số hóa quy trình tín dụng (LPD)",
+        "LPD"
+      ]
+    },
+    {
+      "service_id": "4.39-Quản trị hồ sơ tín dụng (CPM)",
+      "service_name": "Quản trị hồ sơ tín dụng (CPM)",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 3,
+      "matched": [],
+      "missing": [
+        "Quản trị hồ sơ tín dụng (CPM)",
+        "4.39-Quản trị hồ sơ tín dụng (CPM)",
+        "CPM"
+      ]
+    },
+    {
+      "service_id": "4.40-Training Notification",
+      "service_name": "Training Notification",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Training Notification",
+        "4.40-Training Notification"
+      ]
+    },
+    {
+      "service_id": "4.41-Khảo Sát",
+      "service_name": "Khảo Sát",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Khảo Sát",
+        "4.41-Khảo Sát"
+      ]
+    },
+    {
+      "service_id": "4.42-Hệ thống Quản trị rủi ro",
+      "service_name": "Hệ thống Quản trị rủi ro",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Hệ thống Quản trị rủi ro",
+        "4.42-Hệ thống Quản trị rủi ro"
+      ]
+    },
+    {
+      "service_id": "4.43-Hệ thống CMS",
+      "service_name": "Hệ thống CMS",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Hệ thống CMS",
+        "4.43-Hệ thống CMS"
+      ]
+    },
+    {
+      "service_id": "5.01-FTP",
+      "service_name": "FTP",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "FTP",
+        "5.01-FTP"
+      ]
+    },
+    {
+      "service_id": "6.02-Camera giám sát",
+      "service_name": "Camera giám sát",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Camera giám sát",
+        "6.02-Camera giám sát"
+      ]
+    },
+    {
+      "service_id": "6.03-File Server",
+      "service_name": "File Server",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 4,
+      "matched": [],
+      "missing": [
+        "File Server",
+        "6.03-File Server",
+        "shared folder",
+        "network drive"
+      ]
+    },
+    {
+      "service_id": "6.05-Máy tính cá nhân",
+      "service_name": "Máy tính cá nhân",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Máy tính cá nhân",
+        "6.05-Máy tính cá nhân"
+      ]
+    },
+    {
+      "service_id": "6.06-In ấn",
+      "service_name": "In ấn",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "In ấn",
+        "6.06-In ấn"
+      ]
+    },
+    {
+      "service_id": "6.07-Scan",
+      "service_name": "Scan",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Scan",
+        "6.07-Scan"
+      ]
+    },
+    {
+      "service_id": "6.08-Truy cập Internet",
+      "service_name": "Truy cập Internet",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Truy cập Internet",
+        "6.08-Truy cập Internet"
+      ]
+    },
+    {
+      "service_id": "6.09-Kiểm soát nội quy lao động bằng vân tay",
+      "service_name": "Kiểm soát nội quy lao động bằng vân tay",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Kiểm soát nội quy lao động bằng vân tay",
+        "6.09-Kiểm soát nội quy lao động bằng vân tay"
+      ]
+    },
+    {
+      "service_id": "6.10-Màn hình LCD hiển thị tỷ giá nội bộ",
+      "service_name": "Màn hình LCD hiển thị tỷ giá nội bộ",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Màn hình LCD hiển thị tỷ giá nội bộ",
+        "6.10-Màn hình LCD hiển thị tỷ giá nội bộ"
+      ]
+    },
+    {
+      "service_id": "6.11-Ipphone",
+      "service_name": "Ipphone",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 5,
+      "matched": [],
+      "missing": [
+        "Ipphone",
+        "6.11-Ipphone",
+        "ip phone",
+        "voip",
+        "điện thoại ip"
+      ]
+    },
+    {
+      "service_id": "6.14-Quản lý hạ tầng AWS",
+      "service_name": "Quản lý hạ tầng AWS",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 5,
+      "matched": [],
+      "missing": [
+        "Quản lý hạ tầng AWS",
+        "6.14-Quản lý hạ tầng AWS",
+        "aws",
+        "aws cloud",
+        "cloud"
+      ]
+    },
+    {
+      "service_id": "6.15-Quản lý hạ tầng nền tảng K8S, OCP, EKS, ECS, ArgoCD",
+      "service_name": "Quản lý hạ tầng nền tảng K8S, OCP, EKS, ECS, ArgoCD",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 9,
+      "matched": [],
+      "missing": [
+        "Quản lý hạ tầng nền tảng K8S, OCP, EKS, ECS, ArgoCD",
+        "6.15-Quản lý hạ tầng nền tảng K8S, OCP, EKS, ECS, ArgoCD",
+        "Quản lý hạ tầng nền tảng K8S",
+        "OCP",
+        "EKS",
+        "ECS",
+        "ArgoCD",
+        "k8s",
+        "kubernetes"
+      ]
+    },
+    {
+      "service_id": "6.16-Thiết bị di động",
+      "service_name": "Thiết bị di động",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Thiết bị di động",
+        "6.16-Thiết bị di động"
+      ]
+    },
+    {
+      "service_id": "7.01-Giám sát, phân tích và điều tra sự cố ATTT",
+      "service_name": "Giám sát, phân tích và điều tra sự cố ATTT",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 7,
+      "matched": [],
+      "missing": [
+        "Giám sát, phân tích và điều tra sự cố ATTT",
+        "7.01-Giám sát, phân tích và điều tra sự cố ATTT",
+        "Giám sát",
+        "phân tích và điều tra sự cố ATTT",
+        "security",
+        "an toàn thông tin",
+        "attt"
+      ]
+    },
+    {
+      "service_id": "7.02-Đánh giá, rà soát, báo cáo ATTT",
+      "service_name": "Đánh giá, rà soát, báo cáo ATTT",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 8,
+      "matched": [],
+      "missing": [
+        "Đánh giá, rà soát, báo cáo ATTT",
+        "7.02-Đánh giá, rà soát, báo cáo ATTT",
+        "Đánh giá",
+        "rà soát",
+        "báo cáo ATTT",
+        "security",
+        "an toàn thông tin",
+        "attt"
+      ]
+    },
+    {
+      "service_id": "7.03-Kiểm thử Bảo mật",
+      "service_name": "Kiểm thử Bảo mật",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Kiểm thử Bảo mật",
+        "7.03-Kiểm thử Bảo mật"
+      ]
+    },
+    {
+      "service_id": "7.04-Đào tạo, khuyến cáo ATTT",
+      "service_name": "Đào tạo, khuyến cáo ATTT",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 7,
+      "matched": [],
+      "missing": [
+        "Đào tạo, khuyến cáo ATTT",
+        "7.04-Đào tạo, khuyến cáo ATTT",
+        "Đào tạo",
+        "khuyến cáo ATTT",
+        "security",
+        "an toàn thông tin",
+        "attt"
+      ]
+    },
+    {
+      "service_id": "7.05-Đánh giá, kiểm soát luồng kết nối đảm bảo ATTT",
+      "service_name": "Đánh giá, kiểm soát luồng kết nối đảm bảo ATTT",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 7,
+      "matched": [],
+      "missing": [
+        "Đánh giá, kiểm soát luồng kết nối đảm bảo ATTT",
+        "7.05-Đánh giá, kiểm soát luồng kết nối đảm bảo ATTT",
+        "Đánh giá",
+        "kiểm soát luồng kết nối đảm bảo ATTT",
+        "security",
+        "an toàn thông tin",
+        "attt"
+      ]
+    },
+    {
+      "service_id": "7.06-Đánh giá, phê duyệt chính sách áp dụng trên hệ thống thông tin",
+      "service_name": "Đánh giá, phê duyệt chính sách áp dụng trên hệ thống thông tin",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 4,
+      "matched": [],
+      "missing": [
+        "Đánh giá, phê duyệt chính sách áp dụng trên hệ thống thông tin",
+        "7.06-Đánh giá, phê duyệt chính sách áp dụng trên hệ thống thông tin",
+        "Đánh giá",
+        "phê duyệt chính sách áp dụng trên hệ thống thông tin"
+      ]
+    },
+    {
+      "service_id": "7.07-Quy trình chính sách",
+      "service_name": "Quy trình chính sách",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Quy trình chính sách",
+        "7.07-Quy trình chính sách"
+      ]
+    },
+    {
+      "service_id": "7.08-Đánh giá, kiểm soát tuân thủ ATTT",
+      "service_name": "Đánh giá, kiểm soát tuân thủ ATTT",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 7,
+      "matched": [],
+      "missing": [
+        "Đánh giá, kiểm soát tuân thủ ATTT",
+        "7.08-Đánh giá, kiểm soát tuân thủ ATTT",
+        "Đánh giá",
+        "kiểm soát tuân thủ ATTT",
+        "security",
+        "an toàn thông tin",
+        "attt"
+      ]
+    },
+    {
+      "service_id": "7.09-Tư vấn đánh giá ATTT",
+      "service_name": "Tư vấn đánh giá ATTT",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 5,
+      "matched": [],
+      "missing": [
+        "Tư vấn đánh giá ATTT",
+        "7.09-Tư vấn đánh giá ATTT",
+        "security",
+        "an toàn thông tin",
+        "attt"
+      ]
+    },
+    {
+      "service_id": "7.10-Cập nhật, phân tích lỗ hổng",
+      "service_name": "Cập nhật, phân tích lỗ hổng",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 4,
+      "matched": [],
+      "missing": [
+        "Cập nhật, phân tích lỗ hổng",
+        "7.10-Cập nhật, phân tích lỗ hổng",
+        "Cập nhật",
+        "phân tích lỗ hổng"
+      ]
+    },
+    {
+      "service_id": "7.11-Nghiên cứu An toàn thông tin",
+      "service_name": "Nghiên cứu An toàn thông tin",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Nghiên cứu An toàn thông tin",
+        "7.11-Nghiên cứu An toàn thông tin"
+      ]
+    },
+    {
+      "service_id": "7.12-Dịch vụ trên nền tảng đám mây (aws cloud)",
+      "service_name": "Dịch vụ trên nền tảng đám mây (aws cloud)",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 5,
+      "matched": [],
+      "missing": [
+        "Dịch vụ trên nền tảng đám mây (aws cloud)",
+        "7.12-Dịch vụ trên nền tảng đám mây (aws cloud)",
+        "aws cloud",
+        "aws",
+        "cloud"
+      ]
+    },
+    {
+      "service_id": "8.01-Hạ tầng IT tại Đơn vị",
+      "service_name": "Hạ tầng IT tại Đơn vị",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Hạ tầng IT tại Đơn vị",
+        "8.01-Hạ tầng IT tại Đơn vị"
+      ]
+    },
+    {
+      "service_id": "9.01-Văn bản ngoài K.CNTT",
+      "service_name": "Văn bản ngoài K.CNTT",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Văn bản ngoài K.CNTT",
+        "9.01-Văn bản ngoài K.CNTT"
+      ]
+    },
+    {
+      "service_id": "98.01-Văn bản nội bộ K.CNTT",
+      "service_name": "Văn bản nội bộ K.CNTT",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Văn bản nội bộ K.CNTT",
+        "98.01-Văn bản nội bộ K.CNTT"
+      ]
+    },
+    {
+      "service_id": "98.02-Service Catalog",
+      "service_name": "Service Catalog",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Service Catalog",
+        "98.02-Service Catalog"
+      ]
+    },
+    {
+      "service_id": "99.03-Monitor + Trực (K.CNTT)",
+      "service_name": "Monitor + Trực (K.CNTT)",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 5,
+      "matched": [],
+      "missing": [
+        "Monitor + Trực (K.CNTT)",
+        "99.03-Monitor + Trực (K.CNTT)",
+        "K.CNTT",
+        "Monitor",
+        "Trực (K.CNTT)"
+      ]
+    },
+    {
+      "service_id": "99.05-Security (K.CNTT)",
+      "service_name": "Security (K.CNTT)",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 6,
+      "matched": [],
+      "missing": [
+        "Security (K.CNTT)",
+        "99.05-Security (K.CNTT)",
+        "K.CNTT",
+        "security",
+        "an toàn thông tin",
+        "attt"
+      ]
+    },
+    {
+      "service_id": "99.06-Quản lý tài khoản đặc quyền (K.CNTT)",
+      "service_name": "Quản lý tài khoản đặc quyền (K.CNTT)",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 3,
+      "matched": [],
+      "missing": [
+        "Quản lý tài khoản đặc quyền (K.CNTT)",
+        "99.06-Quản lý tài khoản đặc quyền (K.CNTT)",
+        "K.CNTT"
+      ]
+    },
+    {
+      "service_id": "99.07-Quản lý Khóa mã, Chứng thư số",
+      "service_name": "Quản lý Khóa mã, Chứng thư số",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 4,
+      "matched": [],
+      "missing": [
+        "Quản lý Khóa mã, Chứng thư số",
+        "99.07-Quản lý Khóa mã, Chứng thư số",
+        "Quản lý Khóa mã",
+        "Chứng thư số"
+      ]
+    },
+    {
+      "service_id": "99.08-Kiểm soát tuân thủ truy cập mạng NAC",
+      "service_name": "Kiểm soát tuân thủ truy cập mạng NAC",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Kiểm soát tuân thủ truy cập mạng NAC",
+        "99.08-Kiểm soát tuân thủ truy cập mạng NAC"
+      ]
+    },
+    {
+      "service_id": "99.09-Quản lý hệ thống antispam",
+      "service_name": "Quản lý hệ thống antispam",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Quản lý hệ thống antispam",
+        "99.09-Quản lý hệ thống antispam"
+      ]
+    },
+    {
+      "service_id": "99.10-Quản lý phân quyền hệ thống Swift",
+      "service_name": "Quản lý phân quyền hệ thống Swift",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 3,
+      "matched": [],
+      "missing": [
+        "Quản lý phân quyền hệ thống Swift",
+        "99.10-Quản lý phân quyền hệ thống Swift",
+        "swift"
+      ]
+    },
+    {
+      "service_id": "99.11-Quản lý hệ thống Anti DDoS",
+      "service_name": "Quản lý hệ thống Anti DDoS",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Quản lý hệ thống Anti DDoS",
+        "99.11-Quản lý hệ thống Anti DDoS"
+      ]
+    },
+    {
+      "service_id": "99.12-Dịch vụ khác",
+      "service_name": "Dịch vụ khác",
+      "has_match": false,
+      "matched_count": 0,
+      "missing_count": 2,
+      "matched": [],
+      "missing": [
+        "Dịch vụ khác",
+        "99.12-Dịch vụ khác"
+      ]
+    }
+  ],
+  "uncovered_runbook_services": []
+}

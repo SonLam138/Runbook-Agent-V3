@@ -1,0 +1,289 @@
+[
+  {
+    "service": "8.02 Hạ tầng tại hội sở",
+    "aliases": [
+      "8.02 Hạ tầng tại hội sở",
+      "Create VLAN on FI UCS",
+      "Check Mail Permissions"
+    ],
+    "keywords": [
+      "Testcheckname",
+      "address",
+      "global address",
+      "Create VLAN trên FI UCS",
+      "RB_Check phân quyền được phép gửi mail vào toàn bộ group"
+    ],
+    "description": "Resolves issues related to creating VLANs on FI UCS and verifying mail permissions for all groups."
+  },
+  {
+    "service": "Active Directory",
+    "aliases": [
+      "Active Directory",
+      "PDC-Upgrade",
+      "AD-Controller-Upgrade"
+    ],
+    "keywords": [
+      "PDC",
+      "ADC",
+      "FSMO",
+      "trong quá trình vận hành domain controller",
+      "Nâng cấp ADC lên PDC"
+    ],
+    "description": "Supports resolution of AD domain controller issues when PDC fails and all ADCs are down, causing inability to authenticate AD accounts."
+  },
+  {
+    "service": "ActiveDirectory",
+    "aliases": [
+      "ActiveDirectory",
+      "Desktop Update",
+      "ScreenSaver Update",
+      "Computer Background",
+      "Wait Screen"
+    ],
+    "keywords": [
+      "TestDesktop",
+      "ScreenSaver",
+      "màn hình chờ",
+      "màn hình nền",
+      "RB_Cập nhật Desktop và ScreenSaver toàn hàng"
+    ],
+    "description": "Provides support for updating desktop background and screen saver across the entire network"
+  },
+  {
+    "service": "AD",
+    "aliases": [
+      "AD"
+    ],
+    "keywords": [
+      "TestMove Computer",
+      "cần move đúng computers của các phòng",
+      "ban này vào đúng ou của phòng",
+      "ban đó",
+      "Hướng dẫn move computer vào đúng OU qua ADMP",
+      "Slideshow Desktop",
+      "Screen Saver",
+      "GPO",
+      "trước đây",
+      "tuy nhiên có một số hạn chế:",
+      "Slideshow Desktop & Screen Saver qua GPO"
+    ],
+    "description": "Dịch vụ AD, liên quan đến: TestMove Computer, cần move đúng computers của các phòng, ban này vào đúng ou của phòng, ban đó, Hướng dẫn move computer vào đúng OU qua ADMP, Slideshow Desktop, Screen Saver, GPO."
+  },
+  {
+    "service": "ADManagerPlus",
+    "aliases": [
+      "ADManagerPlus"
+    ],
+    "keywords": [
+      "ADMP",
+      "lỗi tài khoản Lync",
+      "ConstraintViolationNoLeadingOrTrailingWhitespace",
+      "thông báo lỗi : “successfully created the user",
+      "but following errors occurred",
+      "Lỗi tạo tài khoản Lync và Mailbox qua ADMP",
+      "RB_Thay đổi thông tin tài khoản Domain qua ADMP",
+      "Thu hồi tài khoản",
+      "nghỉ việc",
+      "khi cán bộ nhân viên nghỉ việc",
+      "Thu hồi tài khoản Domain qua ADMP",
+      "Tạo tài khoản",
+      "tài khoản có tích hợp cả mailbox",
+      "lync 2013",
+      "Tạo tài khoản Domain qua ADMP"
+    ],
+    "description": "Dịch vụ ADManagerPlus, liên quan đến: ADMP, lỗi tài khoản Lync, ConstraintViolationNoLeadingOrTrailingWhitespace, thông báo lỗi : “successfully created the user, but following errors occurred, Lỗi tạo tài khoản Lync và Mailbox qua ADMP, RB_Thay đổi thông tin tài khoản Domain qua ADMP, Thu hồi tài khoản."
+  },
+  {
+    "service": "DHCP",
+    "aliases": [
+      "DHCP",
+      "UpgradeDHCP",
+      "NangCapDHCP"
+    ],
+    "keywords": [
+      "TestDHCP",
+      "Upgrade DHCP",
+      "Upgrade DHCP server 2012 to DHCP server 2022 or 2025"
+    ],
+    "description": "Hỗ trợ nâng cấp máy chủ DHCP chạy Failover từ phiên bản cũ sang mới nhất để đảm bảo bảo mật và giữ nguyên IP của các máy chủ."
+  },
+  {
+    "service": "EntraID",
+    "aliases": [
+      "EntraID",
+      "EntraSSO",
+      "TestEntraSSO",
+      "EntraOIDC"
+    ],
+    "keywords": [
+      "TestEntra Application",
+      "SSO",
+      "OIDC",
+      "sử dung mfa của entraid",
+      "RB_Tạo Entra OIDC Applications cho SSO"
+    ],
+    "description": "Used to facilitate Single Sign-On (SSO) and Multi-Factor Authentication (MFA) with EntraID for external systems"
+  },
+  {
+    "service": "Exchange",
+    "aliases": [
+      "Exchange",
+      "Enable Group Mailbox",
+      "Mailbox Group via ADMP",
+      "TestExchange",
+      "Remote Mailbox",
+      "Two Mailboxes",
+      "RB_Enable Remote Mailbox (Exchange Online)"
+    ],
+    "keywords": [
+      "Enable Group Mailbox",
+      "Enable Mailbox Group qua ADMP",
+      "TestExchange",
+      "Remote mailbox",
+      "two mailbox",
+      "migrate lỗi )",
+      "RB_Enable Remote Mailbox (Exchange Online)"
+    ],
+    "description": "Supports enabling mailboxes for security groups without email, resolving issues with duplicate mailboxes, and testing Exchange services."
+  },
+  {
+    "service": "Exchange 2016",
+    "aliases": [
+      "Exchange 2016"
+    ],
+    "keywords": [
+      "Retention Policy",
+      "Mailbox đầy dung lượng",
+      "xóa hoặc archive mailbox định kỳ",
+      "nếu là archive thì phải enable archive online",
+      "RB_Apply Retention Policy cho mailbox Exchange 2016",
+      "Delete",
+      "Mailbox Database",
+      "khoảng trắng",
+      "tạo ra các khoảng trắng",
+      "chiếm dụng tài nguyên ổ cứng",
+      "Xóa Mailbox Database"
+    ],
+    "description": "Dịch vụ Exchange 2016, liên quan đến: Retention Policy, Mailbox đầy dung lượng, xóa hoặc archive mailbox định kỳ, nếu là archive thì phải enable archive online, RB_Apply Retention Policy cho mailbox Exchange 2016, Delete, Mailbox Database, khoảng trắng."
+  },
+  {
+    "service": "IIS",
+    "aliases": [
+      "IIS",
+      "URL Rewrite Test",
+      "HTTP to HTTPS Redirect"
+    ],
+    "keywords": [
+      "TestURL Rewrite",
+      "redirect https",
+      "khi website được cài certificate",
+      "nếu không nhập https://website",
+      "com thì sẽ không thể truy cập được",
+      "Cấu hình redirect http to https bằng urlrewrite"
+    ],
+    "description": "Configure redirect of http to https using URLRewrite for websites with certificates, ensuring secure access when https://website.com is not explicitly entered"
+  },
+  {
+    "service": "Lync Server 2013",
+    "aliases": [
+      "Lync Server 2013",
+      "Lync Server Certificate Renewal",
+      "LS2013_CertExpire"
+    ],
+    "keywords": [
+      "Lync server",
+      "Certificate",
+      "gia hạn",
+      "certificate hết hạn gây dừng service lync",
+      "Lync Server 2013 - Gia hạn Certificate"
+    ],
+    "description": "Support for renewing Lync Server 2013 certificates before they expire and cause service interruption"
+  },
+  {
+    "service": "Mail Exchange",
+    "aliases": [
+      "Mail Exchange",
+      "Mail Queue Cleanup",
+      "Exchange Mail Queue"
+    ],
+    "keywords": [
+      "Exchange",
+      "mail.queue",
+      "khi hàng đợi thư bị kẹt",
+      "file queue",
+      "mail tăng dung lượng lớn",
+      "Xóa file mail.queue"
+    ],
+    "description": "Resolves mail queue issues, such as high volume or blocking, to prevent disk space issues"
+  },
+  {
+    "service": "Microsoft Exchange",
+    "aliases": [
+      "Microsoft Exchange",
+      "Certificate Name Mismatch",
+      "SMTPSendFailedException"
+    ],
+    "keywords": [
+      "TestName mismatch External Domain",
+      "service URL Exchange",
+      "AutoDiscover",
+      "trong quá trình triển khai ad",
+      "không phải lúc nào domain",
+      "RB_Certificate Name Mismatch",
+      "SMTPSendFailedException",
+      "421 4.4.2 Message submission rate",
+      "khi gửi mail bằng app",
+      "các email này sẽ bị chặn lại",
+      "RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit."
+    ],
+    "description": "Hỗ trợ việc phát hiện và giải quyết lỗi không chính xác hoặc tên thức áp sertificate, cũng như lỗi gửi mail bằng app do số lượng gửi quá mặt định."
+  },
+  {
+    "service": "Microsoft Teams",
+    "aliases": [
+      "Microsoft Teams",
+      "Teams Meeting Record",
+      "Recorded Meetings in Teams"
+    ],
+    "keywords": [
+      "Teams",
+      "meeting",
+      "record",
+      "khi user cần tìm file record meeting",
+      "Tìm file record meeting trong Teams"
+    ],
+    "description": "Assists in finding recorded meetings within Microsoft Teams"
+  },
+  {
+    "service": "OnePV",
+    "aliases": [
+      "OnePV",
+      "OnePV Room booking",
+      "OnePV phòng đặt",
+      "OnePV đặt xe",
+      "OnePV Conference room booking"
+    ],
+    "keywords": [
+      "Room",
+      "đặt phòng",
+      "đặt xe",
+      "Onepv",
+      "đặt phòng họp trên ứng dụng onepv",
+      "Tạo thêm room đặt phòng cho ứng dụng OnePV"
+    ],
+    "description": "Supports creating additional rooms for parking or conference booking on the OnePV application"
+  },
+  {
+    "service": "Windows Server, SQL",
+    "aliases": [
+      "Windows Server, SQL",
+      "SQL HealthCheck Bat File",
+      "Healtcheck SQL Access Denied"
+    ],
+    "keywords": [
+      "Testrun bat file",
+      "RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER"
+    ],
+    "description": "Supports resolving User Access Deny errors when running SQL Server HealthCheck Bat File"
+  }
+]

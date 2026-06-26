@@ -1,0 +1,86 @@
+[
+  {
+    "service_id": "thu_dien_tu",
+    "service_name": "Thư điện tử",
+    "description": "Dịch vụ hỗ trợ sử dụng, xử lý sự cố hộp thư điện tử nội bộ PVcomBank",
+    "aliases": [
+      "exchange",
+      "https://mail.pvcombank.com.vn",
+      "mail.pvcombank.com.vn",
+      "outlook"
+    ],
+    "symptoms": [
+      "khôi phục email",
+      "không gửi được email",
+      "không nhận được email",
+      "không tìm thấy email",
+      "phân quyền gửi thư",
+      "tăng dung lượng hòm thư",
+      "xóa nhầm email"
+    ],
+    "common_keywords": [
+      "dung lượng",
+      "email",
+      "hòm thư",
+      "quyền gửi"
+    ]
+  },
+  {
+    "service_id": "0.02-smartvista",
+    "service_name": "0.02-Smartvista",
+    "description": "Dịch vụ quản lý các giao dịch nghiệp vụ Core Thẻ",
+    "aliases": [
+      "https://smartvista.pvcombank.com.vn",
+      "smartvista.pvcombank.com.vn"
+    ],
+    "symptoms": [
+      "test"
+    ],
+    "common_keywords": [
+      "test"
+    ]
+  },
+  {
+    "service_id": "0.03-fcc",
+    "service_name": "0.03-FCC",
+    "description": "Dịch vụ quản lý các giao dịch nghiệp vụ Ngân hàng lõi",
+    "aliases": [
+      "fcc.pvcb.vn",
+      "https://fcc.pvcb.vn"
+    ],
+    "symptoms": [
+      "test"
+    ],
+    "common_keywords": [
+      "test"
+    ]
+  },
+  {
+    "service_id": "0.04-microbank",
+    "service_name": "0.04-MicroBank",
+    "description": "Dịch vụ quản lý các giao dịch nghiệp vụ Ngân hàng lõi",
+    "aliases": [
+      "test"
+    ],
+    "symptoms": [
+      "test"
+    ],
+    "common_keywords": [
+      "test"
+    ]
+  },
+  {
+    "service_id": "kenh_ban_va_dich_vu_so",
+    "service_name": "KÊNH BÁN VÀ DỊCH VỤ SỐ",
+    "description": "Dịch vụ quản lý các giao dịch nghiệp vụ Ngân hàng lõi",
+    "aliases": [
+      "test"
+    ],
+    "symptoms": [
+      "test"
+    ],
+    "common_keywords": [
+      "test"
+    ]
+  }
+]
