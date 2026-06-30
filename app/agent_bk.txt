@@ -1,388 +1,863 @@
-import json
-import re
-from app.llm import call_llm
-from app.tool import search_RB
+def run_agent(session_id, user_input, vector_store, selected_lane=None):
+    state = get_session(session_id)
+    ensure_state(state)
+    ctx = state.get("candidate_context", {})
+    print("CTX ACTIVE:", ctx.get("active"))
+    print("CTX OBJECT ID:", id(ctx))
+    # =====================================================
+    # PHASE 6C — ASSISTANT UTTERANCE HANDLER
+    # Chỉ xử lý các utterance do chính assistant gợi ý
+    # =====================================================
+    #if ctx.get("active"):
+    if ctx:
+        normalized_input = normalize(user_input)
 
-# =====================================================
-# GLOBAL CONVERSATION STATE (single session CLI version)
-# =====================================================
-conversation_state = {
-    "mode": "idle",                 # idle | clarifying
-    "original_query": "",
-    "clarify_turns": 0,
-    "pending_slot": None,           # issue_type | service | error_message
-    "slots": {
-        "issue_type": None,
-        "service": None,
-        "error_message": None
-    },
-    "history": []
-}
+        print("RAW INPUT:", user_input)
+        print("NORMALIZED INPUT:", normalized_input)
+        print("SESSION ID AGENT:", session_id)
 
-MAX_CLARIFY_TURNS = 3
+        if normalized_input in [
+            "mo runbook nay",
+            "mo rb nay",
+            "xem runbook nay",
+            "xem rb nay"
+        ]:
+            ctx["show_full_runbook"] = True
 
-# =====================================================
-# HELPERS
-# =====================================================
-def reset_state():
-    conversation_state["mode"] = "idle"
-    conversation_state["original_query"] = ""
-    conversation_state["clarify_turns"] = 0
-    conversation_state["pending_slot"] = None
-    conversation_state["slots"] = {
-        "issue_type": None,
-        "service": None,
-        "error_message": None
-    }
-    conversation_state["history"] = []
+            return build_agent_result_candidate_from_context(
+                query=ctx.get("original_query"),
+                ctx=ctx,
+                turn_reason="open_runbook"
+            )
 
+        if normalized_input in [
+            "cho toi phuong an khac",
+            "phuong an khac",
+        ]:
+            candidates = ctx.get("current_lane_candidates", ctx.get("tier1", []))
 
-def safe_parse_json(text):
-    try:
-        match = re.search(r"\{.*\}", text, re.DOTALL)
-        if match:
-            return json.loads(match.group(0))
-    except Exception as e:
-        print("⚠️ JSON parse error:", e)
-    return None
+            if candidates:
+                next_index = ctx.get("current_index", 0) + 1
+                if next_index >= len(candidates):
+                    next_index = 0
 
+                ctx["current_index"] = next_index
+                ctx["show_full_runbook"] = False
 
-def format_runbook(rb):
-    """
-    Trả raw runbook, giữ nguyên tiếng Việt và các bước.
-    Không dùng LLM rewrite.
-    """
-    if not rb:
-        return "❌ Không tìm thấy runbook phù hợp."
+            return build_agent_result_candidate_from_context(
+                query=ctx.get("original_query"),
+                ctx=ctx,
+                turn_reason="next_primary"
+            )
 
-    precheck = "\n- ".join(rb.get("precheck", [])) if rb.get("precheck") else "(không có)"
-    steps = "\n".join(f"{i+1}. {step}" for i, step in enumerate(rb.get("steps", []))) if rb.get("steps") else "(không có)"
-    postcheck = "\n- ".join(rb.get("postcheck", [])) if rb.get("postcheck") else "(không có)"
+    # =========================
+    # ✅ ACTIVATE RELATED LANE
+    # =========================
+    if selected_lane and ctx.get("active"):
 
-    return f"""
-📘 Tiêu đề: {rb.get('title', '')}
-🖥 Dịch vụ: {rb.get('service', '')}
+        selected_lane_id = selected_lane.get("lane_id")
 
-🔹 Điều kiện thực hiện:
-- {precheck}
+        ctx["current_lane"] = selected_lane_id
 
-🔹 Các bước thực hiện:
-{steps}
-
-🔹 Kiểm tra sau thực hiện:
-- {postcheck}
-""".strip()
-
-
-def build_query_from_state():
-    """
-    Ghép query từ original query + slot info đã thu thập.
-    Dùng khi đã đủ thông tin để search.
-    """
-    parts = []
-
-    if conversation_state["original_query"]:
-        parts.append(conversation_state["original_query"])
-
-    for key in ["issue_type", "service", "error_message"]:
-        val = conversation_state["slots"].get(key)
-        if val:
-            parts.append(val)
-
-    # remove duplicate while keeping order
-    seen = set()
-    out = []
-    for p in parts:
-        p_norm = p.strip().lower()
-        if p_norm and p_norm not in seen:
-            seen.add(p_norm)
-            out.append(p.strip())
-
-    return " ".join(out)
-
-
-# =====================================================
-# DECISION STEP 1: INITIAL DECISION
-# =====================================================
-def decide_initial(user_query):
-    prompt = f"""
-Bạn là IT agent nội bộ.
-
-NHIỆM VỤ:
-Phân tích câu hỏi đầu tiên của user và chọn 1 trong 2 action:
-
-1. "search_runbook"
-   - khi user mô tả đủ rõ vấn đề, hành động hoặc lỗi cụ thể
-   - ví dụ: "quên mật khẩu", "tạo tài khoản mới", "lỗi account locked"
-
-2. "ask_more"
-   - khi user hỏi mơ hồ, thiếu thông tin, thiếu hệ thống hoặc thiếu lỗi cụ thể
-   - ví dụ: "lỗi rồi", "không vào được", "bị lỗi đăng nhập"
-
-Nếu chọn ask_more:
-- BẮT BUỘC điền:
-  - "message": câu hỏi làm rõ bằng tiếng Việt
-  - "next_slot": 1 trong các giá trị:
-    "issue_type", "service", "error_message"
-
-QUAN TRỌNG:
-- Chỉ trả JSON
-- Không giải thích
-- Không dịch câu hỏi user sang tiếng Anh
-
-FORMAT:
-{{
-  "action": "search_runbook hoặc ask_more",
-  "query": "...",
-  "message": "...",
-  "next_slot": "issue_type | service | error_message | null"
-}}
-
-User query:
-{user_query}
-"""
-
-    result = call_llm(prompt)
-    print("\n🧠 RAW LLM initial decision:", result)
-
-    decision = safe_parse_json(result)
-
-    if decision:
-        print("✅ PARSED initial decision:", decision)
-        return decision
-
-    # fallback: nếu parse fail, cứ search luôn
-    print("⚠️ Parse fail → fallback search")
-    return {
-        "action": "search_runbook",
-        "query": user_query,
-        "message": "",
-        "next_slot": None
-    }
-
-
-# =====================================================
-# DECISION STEP 2: DECIDE WITH STATE
-# =====================================================
-def decide_with_state(user_input):
-    """
-    Khi đang clarifying, dùng state hiện tại + user_input mới
-    để decide xem hỏi tiếp hay search.
-    """
-    slots = conversation_state["slots"]
-    prompt = f"""
-Bạn là IT agent nội bộ.
-
-Đây là trạng thái hội thoại hiện tại:
-
-Original query:
-{conversation_state["original_query"]}
-
-Known slots:
-- issue_type: {slots.get("issue_type")}
-- service: {slots.get("service")}
-- error_message: {slots.get("error_message")}
-
-Pending slot:
-{conversation_state["pending_slot"]}
-
-User reply mới nhất:
-{user_input}
-
-NHIỆM VỤ:
-1. Xác định xem đã đủ thông tin để tìm runbook chưa.
-2. Nếu chưa đủ:
-   - chọn action = "ask_more"
-   - tạo message hỏi tiếp bằng tiếng Việt
-   - điền next_slot còn thiếu nhất
-3. Nếu đã đủ:
-   - chọn action = "search_runbook"
-   - tạo query ngắn gọn, bằng tiếng Việt, kết hợp thông tin đã biết
-   - message để rỗng
-   - next_slot = null
-
-QUAN TRỌNG:
-- Chỉ trả JSON
-- Không giải thích
-- Không dịch sang tiếng Anh
-
-FORMAT:
-{{
-  "action": "search_runbook hoặc ask_more",
-  "query": "...",
-  "message": "...",
-  "next_slot": "issue_type | service | error_message | null"
-}}
-"""
-
-    result = call_llm(prompt)
-    print("\n🧠 RAW LLM state decision:", result)
-
-    decision = safe_parse_json(result)
-
-    if decision:
-        print("✅ PARSED state decision:", decision)
-        return decision
-
-    # fallback nếu parse fail:
-    # nếu đã có ít nhất 2 slot thì search, không thì hỏi tiếp
-    filled_count = sum(1 for v in slots.values() if v)
-    if filled_count >= 2:
-        return {
-            "action": "search_runbook",
-            "query": build_query_from_state(),
-            "message": "",
-            "next_slot": None
+        # ✅ thay tier1 = candidates của lane
+        for lane in ctx.get("tier2_lanes", []):
+            if lane["lane_id"] == selected_lane_id:
+                ctx["tier1"] = lane["candidates"]
+                ctx["current_index"] = 0
+                break
+    # append user message
+    state["history"].append({"role": "user", "text": user_input})
+    # LOGGING
+    log_event(
+        event="agent_start",
+        session_id=session_id,
+        data={
+            "user_input": user_input
+        },
+        decision_trace={
+            "action": "start",
+            "reason": "new_query_received",
+            "confidence": 1.0
         }
+    )
 
-    return {
-        "action": "ask_more",
-        "query": "",
-        "message": "Bạn có thể mô tả rõ hơn lỗi bạn đang gặp hoặc hệ thống bạn đang sử dụng không?",
-        "next_slot": "service"
-    }
 
+    # =====================================================
+    # 1) CLARIFYING FLOW
+    # =====================================================
+    # Nếu đang trong chế độ clarify thì xử lý riêng và return luôn.
+    # KHÔNG cho rơi xuống idle search flow bên dưới.
+    if state["mode"] == "clarifying":
+
+        print("🟡 CLARIFY MODE ACTIVE:", state.get("pending_slot"))
+
+        pending_slot = state.get("pending_slot")
+        state["clarify_turns"] += 1
+
+        # quá số lượt hỏi → stop
+        if state["clarify_turns"] > MAX_CLARIFY_TURNS:
+            reset_session(session_id)
+            return "❌ Tôi chưa đủ thông tin để xác định runbook phù hợp. Bạn vui lòng đặt lại câu hỏi rõ hơn."
+
+        # =====================================================
+        # SERVICE CONFIRM
+        # =====================================================
+        if pending_slot == "service":
+
+            resolved = state.get("resolved_service")
+            user_text = normalize(user_input)
+
+            log_service_clarify_input(
+                session_id=session_id,
+                state=state,
+                user_input=user_input
+            )
+
+            # =====================
+            # Case 1: user confirm
+            # =====================
+            if "đúng" in user_text or "phải" in user_text or "ok" in user_text:
+                if resolved:
+                    service_value = resolved
+
+                    log_service_clarify_extract(
+                        session_id=session_id,
+                        state=state,
+                        user_input=user_input,
+                        extracted_service=service_value,
+                        confidence=1.0,
+                        result="success",
+                        reason="user_confirm_existing_service"
+                    )
+
+                    # ✅ update state
+                    state["slots"]["service"] = service_value
+                    state["resolved_service"] = service_value
+
+                    next_slot = "issue_type"
+                    state["pending_slot"] = next_slot
+
+                    msg = f"Bạn đang gặp lỗi gì trên {service_value}?"
+
+                    start_clarify(state, user_input, next_slot)
+
+                    return reply(session_id, state, msg)
+
+            # =====================
+            # Case 2: resolve mới
+            # =====================
+            else:
+                new_service_info = resolve_service_v2(
+                    user_input,
+                    state=state,
+                    use_llm=True
+                )
+
+                new_service_norm = normalize_service_result(new_service_info)
+
+                log_service_clarify_extract(
+                    session_id=session_id,
+                    state=state,
+                    user_input=user_input,
+                    extracted_service=new_service_norm.get("service"),
+                    confidence=new_service_norm.get("confidence"),
+                    result=(
+                        "success"
+                        if new_service_norm.get("status") == "resolved"
+                        and new_service_norm.get("service")
+                        and new_service_norm.get("is_strong")
+                        else "fail"
+                    ),
+                    reason=f"user_provided_new_service:{new_service_norm.get('reason')}"
+                )
+
+                # ✅ CASE SUCCESS
+                if (
+                    new_service_norm.get("status") == "resolved"
+                    and new_service_norm.get("is_strong")
+                    and new_service_norm.get("service")
+                ):
+                    service_value = new_service_norm["service"]
+
+                    state["slots"]["service"] = service_value
+                    state["resolved_service"] = service_value
+                    state["service_confidence"] = new_service_norm.get("confidence")
+                    state["service_source"] = new_service_norm.get("source")
+
+                    next_slot = "issue_type"
+                    state["pending_slot"] = next_slot
+
+                    msg = f"Bạn đang gặp lỗi gì trên {service_value}?"
+
+                    start_clarify(state, user_input, next_slot)
+
+                    return reply(session_id, state, msg)
+
+                # ✅ CASE FAIL (QUAN TRỌNG)
+                else:
+                    msg = "Mình chưa xác định rõ bạn đang nói đến dịch vụ nào. Bạn vui lòng nói rõ hơn (ví dụ: AD, Exchange, VPN...)"
+
+                    start_clarify(state, user_input, "service")
+
+                    return reply(session_id, state, msg)
+
+
+        # =====================================================
+        # ISSUE TYPE RESOLUTION
+        # =====================================================
+        if pending_slot == "issue_type":
+            service = state["slots"].get("service") or state.get("resolved_service")
+            log_event(
+                event="clarify_input",
+                session_id=session_id,
+                data={
+                    "flow_context": "clarify",
+                    "slot": "issue_type",
+                    "user_input": user_input,
+                    "collected_slots": state.get("slots", {}).copy(),
+                },
+                decision_trace={
+                    "action": "receive_input",
+                    "reason": "user_response_issue_type",
+                    "confidence": 1.0
+                }
+            )
+
+            # Nếu vì lý do nào đó chưa có service chắc chắn → quay lại confirm service
+            if not service:
+                msg = generate_clarify_message_fallback("service", user_input)
+                start_clarify(state, user_input, "service")
+                return reply(session_id, state, msg)
+
+            result = resolve_issue_type(user_input, service, state)
+            log_issue_type_resolve_attempt(
+                session_id=session_id,
+                state=state,
+                user_input=user_input,
+                service=service,
+                result=result
+            )
+
+            print("🧩 ISSUE TYPE RESULT:", result)
+
+            # Nếu match keyword → lưu issue_type và SEARCH NGAY
+            if result.get("issue_type"):
+                state["slots"]["issue_type"] = result["issue_type"]
+                log_issue_type_selected(
+                    session_id=session_id,
+                    state=state,
+                    service=service,
+                    issue_type=result["issue_type"]
+                )
+
+                query = f"{service} {result['issue_type']}"
+                state["semantic_query"] = query
+                log_clarify_query_built(
+                    session_id=session_id,
+                    state=state,
+                    query=query,
+                    service=service,
+                    issue_type=result["issue_type"]
+                )
+
+                candidate_result = retrieve_candidates_multiquery(
+                    user_input=query,
+                    state=state,
+                    vector_store=vector_store,
+                    runbook_data=RUNBOOK_DATA
+                )
+
+                tier1 = candidate_result["tier1_candidates"]
+                tier2 = candidate_result["tier2_candidates"]
+                #tier2_lanes = candidate_result.get("tier2_lanes", [])
+
+                match, idx = detect_strong_match_by_score(full_candidates)
+
+                if match:
+                    rb = enrich_runbook_from_json(full_candidates[idx])
+                    remember_success(state, query, rb)
+                    state["mode"] = "idle"
+                    state["pending_slot"] = None
+                    log_clarify_strong_match(
+                        session_id=session_id,
+                        state=state,
+                        query=query,
+                        selected_rb=full_candidates[idx]
+                    )
+                    
+                    return reply(session_id, state, format_runbook(rb))
+
+
+                # Có keyword nhưng search chưa đủ mạnh → hỏi error_message
+                next_slot = "error_message"
+
+                msg = "Bạn có nhận được thông báo lỗi hoặc mã lỗi nào không? Nếu có, bạn hãy nhập lên đây để tôi có thể tìm kiếm chính xác hơn."
+                log_clarify_next_issue_type(
+                    session_id=session_id,
+                    state=state,
+                    from_slot=state.get("pending_slot"),
+                    to_slot=next_slot,
+                    reason="match_not_strong_after_issue_type"
+                )
+                start_clarify(state, user_input, next_slot)
+
+                return reply(session_id, state, msg)
+
+            # Không match keyword → hỏi error_message để refine
+            if result.get("needs_more"):
+                next_slot = "error_message"
+                log_clarify_next_issue_type(
+                    session_id=session_id,
+                    state=state,
+                    from_slot=state.get("pending_slot"),   # ✅ FIX
+                    to_slot=next_slot,                     # ✅ FIX
+                    reason="issue_type_not_clear"
+                )
+
+                msg = "Bạn có nhận được thông báo lỗi hoặc mã lỗi nào không? Nếu có, bạn hãy nhập lên đây để tôi có thể tìm kiếm chính xác hơn."
+                start_clarify(state, user_input, next_slot)
+
+                return reply(session_id, state, msg)
+
+            # Safety fallback
+            msg = generate_clarify_message_fallback("error_message", user_input)
+            log_clarify_next_issue_type(
+                session_id=session_id,
+                state=state,
+                reason="fallback"
+            )
+            start_clarify(state, user_input, "error_message")
+            return reply(session_id, state, msg)
+
+        # =====================================================
+        # ERROR MESSAGE
+        # =====================================================
+        if pending_slot == "error_message":
+            service = state["slots"].get("service") or state.get("resolved_service")
+            issue_type = state["slots"].get("issue_type")
+            # Dừng lại nếu bị troll
+            user_text = normalize(user_input)
+            log_event(
+                event="clarify_input",
+                session_id=session_id,
+                data={
+                    "flow_context": "clarify",
+                    "slot": "error_message",
+                    "user_input": user_input,
+                    "collected_slots": state.get("slots", {}).copy(),
+                },
+                decision_trace={
+                    "action": "receive_input",
+                    "reason": "user_response_error_message",
+                    "confidence": 1.0
+                }
+            )
+
+            if "không" in user_text and (
+                "mã lỗi" in user_text
+                or "ma loi" in user_text
+                or "error" in user_text
+                or "thông báo lỗi" in user_text
+                or "thong bao loi" in user_text
+            ):
+                # Graceful exit khỏi clarify flow, KHÔNG reset session.
+                state["mode"] = "idle"
+                state["pending_slot"] = None
+                state["last_result_status"] = "clarify_stopped_no_error_message"
+                state["last_action"] = "clarify_stop"
+
+                return reply(
+                    session_id,
+                    state,
+                    "❌ Không có mã lỗi hoặc thông tin bổ sung, tôi chưa thể xác định runbook phù hợp.\n"
+                    "👉 Bạn vui lòng mô tả rõ hơn theo hướng: thao tác nào bị lỗi, lỗi xảy ra ở màn hình/bước nào, "
+                    "hoặc chọn một nhóm vấn đề gần nhất như: không đăng nhập được, lỗi gửi/nhận, tài khoản bị khóa, dung lượng, phân quyền..."
+                )
+
+            # Lấy thông tin lỗi user vừa nhập
+            new_error_msg = user_input.strip()
+            old_error_msg = state["slots"].get("error_message")
+
+            if old_error_msg:
+                combined_error_msg = f"{old_error_msg} {new_error_msg}".strip()
+            else:
+                combined_error_msg = new_error_msg
+
+            state["slots"]["error_message"] = combined_error_msg
+            # 🔥 BACKFILL ISSUE_TYPE từ error_message nếu chưa có
+            service = state["slots"].get("service") or state.get("resolved_service")
+
+            # chỉ backfill nếu hiện tại chưa có issue_type
+            if not state["slots"].get("issue_type") and service:
+                retry_result = resolve_issue_type(new_error_msg, service, state)
+
+                if retry_result and retry_result.get("issue_type"):
+                    state["slots"]["issue_type"] = retry_result["issue_type"]
+                    print("🔁 ISSUE TYPE BACKFILLED:", retry_result["issue_type"])
+            issue_type = state["slots"].get("issue_type")  # ✅ refresh lại
+
+            # Nếu trước đó đã có error_message thì cộng dồn thêm,
+            # vì user có thể bổ sung thông tin qua nhiều lượt clarify.
+
+
+            # Build query từ đủ 3 slot:
+            # service + issue_type + error_message
+            query_parts = []
+
+            if service:
+                query_parts.append(service)
+
+            if issue_type:
+                query_parts.append(issue_type)
+
+            if combined_error_msg:
+                query_parts.append(combined_error_msg)
+
+            query = " ".join(query_parts)
+            state["semantic_query"] = query
+
+            print("🔎 ERROR MESSAGE SEARCH QUERY:", query)
+
+            candidate_result = retrieve_candidates_multiquery(
+                user_input=query,
+                state=state,
+                vector_store=vector_store,
+                runbook_data=RUNBOOK_DATA
+            )
+
+            tier1 = candidate_result["tier1_candidates"]
+            tier2 = candidate_result["tier2_candidates"]
+            
+            full_candidates = tier1 + tier2
+            meta_candidates = []
+
+            for c in full_candidates:
+                c["score"] = c.get("scores", {}).get("final_score", 0.0)
+                c["title"] = c.get("short_label") or c.get("runbook_id", "")
+
+            log_event(
+                event="retrieval_done",
+                session_id=session_id,
+                data={
+                    "flow_context": "clarify_search",
+                    "query": query,
+                    "candidate_count": len(full_candidates) if full_candidates else 0,
+                    "top_k": [
+                        {
+                            "rank": i + 1,
+                            "title": rb.get("title"),
+                            "score": rb.get("score", 0.0)
+                        }
+                        for i, rb in enumerate(full_candidates[:3])
+                    ] if full_candidates else []
+                },
+                decision_trace={
+                    "action": "retrieve",
+                    "reason": "clarify_search",
+                    "confidence": full_candidates[0].get("score", 0.0) if full_candidates else 0.0
+                }
+            )
+
+            # Search trước, chỉ trả runbook nếu strong match
+            match, idx = detect_strong_match_by_score(full_candidates)
+
+            if match:
+                    rb = enrich_runbook_from_json(full_candidates[idx])
+                    remember_success(state, query, rb)
+                    state["mode"] = "idle"
+                    state["pending_slot"] = None
+                    log_clarify_strong_match(
+                        session_id=session_id,
+                        state=state,
+                        query=query,
+                        selected_rb=full_candidates[idx]
+                    )
+                    
+                    return reply(session_id, state, format_runbook(rb))
+            
+            # Nếu chưa match mà vẫn còn lượt clarify thì hỏi thêm thông tin lỗi
+            if state["clarify_turns"] < MAX_CLARIFY_TURNS:
+                next_slot = "error_message"
+
+                msg = generate_clarify_message_llm(user_input, state, next_slot)
+
+                if not msg:
+                    service = state["slots"].get("service") or state.get("resolved_service")
+
+                    if service:
+                        msg = (
+                            f"Với {service}, lỗi xảy ra ở thao tác hoặc chức năng nào, "
+                            "ví dụ đăng nhập, phân quyền, kết nối, gửi/nhận, dung lượng hoặc đồng bộ?"
+                        )
+                    else:
+                        msg = (
+                            "Lỗi xảy ra ở thao tác hoặc chức năng CNTT nào, "
+                            "ví dụ đăng nhập, phân quyền, kết nối, gửi/nhận, dung lượng hoặc đồng bộ?"
+                        )
+                log_clarify_next_issue_type(
+                    session_id=session_id,
+                    state=state,
+                    from_slot=state.get("pending_slot"),
+                    to_slot=next_slot,
+                    reason="match_not_strong_after_issue_type"
+                )
+
+                start_clarify(state, user_input, next_slot)
+
+                return reply(session_id, state, msg)
+
+            # Nếu đã hết lượt clarify mà vẫn không match → graceful exit, KHÔNG reset session.
+            state["mode"] = "idle"
+            state["pending_slot"] = None
+            state["last_result_status"] = "clarify_max_turns_reached"
+            state["last_action"] = "clarify_stop"
+            
+            log_event(
+                event="clarify_stop",
+                session_id=session_id,
+                data={
+                    "flow_context": "clarify",
+                    "reason": "max_turns_reached",
+                    "collected_slots": state.get("slots", {}).copy()
+                },
+                decision_trace={
+                    "action": "clarify_stop",
+                    "reason": "max_turns_reached",
+                    "confidence": 0.0
+                }
+            )
+            return reply(
+                session_id,
+                state,
+                "❌ Tôi chưa đủ thông tin để xác định runbook phù hợp. "
+                "Bạn có thể đặt lại câu hỏi với dịch vụ + nhóm lỗi cụ thể hơn, ví dụ: Exchange lỗi gửi mail, Active Directory reset password, VPN không đăng nhập được."
+            )
+
+        # =====================================================
+        # UNKNOWN CLARIFY STATE
+        # =====================================================
+        reset_session(session_id)
+        return "❌ Trạng thái làm rõ chưa hợp lệ. Bạn vui lòng đặt lại câu hỏi."
 
 # =====================================================
-# CLARIFY QUESTION GENERATOR
+# CANDIDATE MODE (Phase 3)
 # =====================================================
-def generate_clarify_message_fallback(next_slot, user_input):
-    """
-    Nếu LLM trả ask_more nhưng message rỗng,
-    code sẽ fallback bằng message cố định theo slot.
-    """
-    if next_slot == "issue_type":
-        return "Bạn có thể mô tả rõ hơn lỗi hoặc vấn đề bạn đang gặp không?"
-    elif next_slot == "service":
-        return "Bạn đang thao tác trên hệ thống hoặc dịch vụ nào?"
-    elif next_slot == "error_message":
-        return "Bạn có thấy mã lỗi hoặc thông báo lỗi cụ thể nào không?"
-    else:
-        return f"Bạn có thể mô tả rõ hơn về '{user_input}' được không?"
 
+    #ctx = state.get("candidate_context", {})
 
-# =====================================================
-# SLOT FILLING
-# =====================================================
-def fill_pending_slot_with_user_reply(user_input):
-    """
-    Gán user_input vào slot còn thiếu hiện tại.
-    Version tối giản: pending_slot nào đang đợi thì nhét thẳng vào đó.
-    """
-    pending = conversation_state["pending_slot"]
-    if pending in conversation_state["slots"]:
-        conversation_state["slots"][pending] = user_input.strip()
+    if ctx.get("active") and state["mode"] != "clarifying":
 
+        print("🟢 CANDIDATE MODE ACTIVE")
 
-# =====================================================
-# AGENT MAIN RUNTIME
-# =====================================================
-def run_agent(user_input):
-    # lưu lịch sử
-    conversation_state["history"].append({
-        "role": "user",
-        "text": user_input
-    })
+        # ===== REFINE QUERY =====
+        refined_query = " ".join([
+            ctx.get("original_query", ""),
+            " ".join(ctx.get("refinement_history", [])),
+            user_input
+        ])
 
-    # -------------------------------------------------
-    # CASE 1: đang ở mode clarifying
-    # -------------------------------------------------
-    if conversation_state["mode"] == "clarifying":
-        conversation_state["clarify_turns"] += 1
+        ctx["refinement_history"].append(user_input)
 
-        # nếu hỏi quá nhiều turn mà vẫn chưa xong
-        if conversation_state["clarify_turns"] > MAX_CLARIFY_TURNS:
-            reset_state()
-            return "❌ Tôi vẫn chưa đủ thông tin để xác định runbook phù hợp. Bạn vui lòng nêu rõ hệ thống và lỗi cụ thể giúp tôi."
+        state["semantic_query"] = refined_query
 
-        # fill câu trả lời user vào slot đang chờ
-        fill_pending_slot_with_user_reply(user_input)
+        candidate_result = retrieve_candidates_multiquery(
+            user_input=refined_query,
+            state=state,
+            vector_store=vector_store,
+            runbook_data=RUNBOOK_DATA
+        )
 
-        decision = decide_with_state(user_input)
-        action = decision.get("action")
+        tier1 = candidate_result["tier1_candidates"]
+        tier2_lanes = candidate_result.get("tier2_lanes", [])
 
-        # ----- hỏi tiếp -----
-        if action == "ask_more":
-            next_slot = decision.get("next_slot")
-            msg = decision.get("message")
+        # update context
+        ctx["tier1"] = tier1
+        ctx["tier2"] = tier2_lanes
+        ctx["current_index"] = 0
 
-            if not msg or not msg.strip():
-                msg = generate_clarify_message_fallback(next_slot, user_input)
+        return build_agent_result_candidate_from_context(
+            query=effective_query,
+            ctx=ctx,
+            turn_reason="candidate_presented"
+        )
+        
 
-            conversation_state["pending_slot"] = next_slot
-            conversation_state["mode"] = "clarifying"
+    # =====================================================
+    # 2) IDLE FLOW
+    # =====================================================
+    # Từ đây trở xuống chỉ chạy khi state["mode"] != "clarifying"
 
-            conversation_state["history"].append({
-                "role": "assistant",
-                "text": msg
+    # 2.1) failure handling
+    if is_failure(user_input, state, ):
+        return handle_retry(session_id, state, vector_store)
+
+    # 2.2) semantic cache
+    cached = check_semantic_cache(user_input)
+
+    if cached:
+        print("⚡ SEMANTIC CACHE HIT")
+
+        log_event(
+            event="cache_hit",
+            session_id=session_id,
+            data={
+                "query_type": "initial",
+                "query": user_input,
+                "runbook_id": cached.get("runbook_id") if isinstance(cached, dict) else None,
+                "runbook_title": cached.get("title") if isinstance(cached, dict) else None
+            },
+            decision_trace={
+                "action": "cache_hit",
+                "reason": "semantic_cache_matched_before_vector_search",
+                "confidence": 1.0
+            }
+        )
+
+        remember_success(state, user_input, cached)
+        state["last_result_status"] = "cache_returned"
+        state["last_action"] = "search"
+
+        return reply(
+            session_id,
+            state,
+            "✅ (từ semantic cache)\n\n" + format_runbook(cached)
+        )
+
+    #✅ MISS → log ngay sau if
+    log_event(
+        event="cache_miss",
+        session_id=session_id,
+        data={
+            "query_type": "initial",
+            "query": user_input
+        },
+        decision_trace={
+            "action": "cache_miss",
+            "reason": "no_semantic_cache_match_continue_to_vector_search",
+            "confidence": 0.0
+        }
+    )
+    
+# ============================================================
+# EARLY SERVICE RESOLUTION - V2
+# ============================================================
+
+    service_resolution = None
+    normalized_service = None
+
+    # Chỉ resolve service nếu state chưa có resolved_service.
+    # Tránh ghi đè context đã rõ trong clarify/session trước đó.
+    if not state.get("resolved_service"):
+        service_resolution = resolve_service_v2(
+            user_input,
+            state=state,
+            use_llm=True
+        )
+
+        normalized_service = normalize_service_result(service_resolution)
+
+        # Lưu raw result để logging/debug/training
+        state["last_service_resolution"] = service_resolution
+
+        # Nếu resolver quyết định strong thì mới ghi vào state
+        if (
+            normalized_service["status"] == "resolved"
+            and normalized_service["is_strong"]
+            and normalized_service["service"]
+        ):
+            state["resolved_service"] = normalized_service["service"]
+            state["service_confidence"] = normalized_service["confidence"]
+            state["service_source"] = normalized_service["source"]
+
+            # Nếu anh đang dùng decision_trace trong state
+            state.setdefault("decision_trace", []).append({
+                "action": "resolve_service",
+                "reason": normalized_service["reason"],
+                "service": normalized_service["service"],
+                "confidence": normalized_service["confidence"],
+                "source": normalized_service["source"],
+                "flow_context": "initial_service_resolve",
             })
 
-            return msg
+        else:
+            # Không set resolved_service nếu ambiguous/unresolved.
+            # Để flow search-first tiếp tục xử lý bằng query gốc.
+            state.setdefault("decision_trace", []).append({
+                "action": "service_not_resolved",
+                "reason": normalized_service["reason"],
+                "status": normalized_service["status"],
+                "confidence": normalized_service["confidence"],
+                "source": normalized_service["source"],
+                "flow_context": "initial_service_resolve",
+                "candidates": normalized_service.get("candidates", [])[:5],
+            })
 
-        # ----- đủ dữ liệu để search -----
-        if action == "search_runbook":
-            final_query = decision.get("query") or build_query_from_state()
+    else:
+        # Đã có resolved_service trong state từ trước.
+        normalized_service = {
+            "service": state.get("resolved_service"),
+            "confidence": state.get("service_confidence"),
+            "source": state.get("service_source", "state"),
+            "is_strong": True,
+            "status": "resolved",
+            "reason": "service_already_in_state",
+            "candidates": [],
+        }
 
-            print(f"🔧 Tool call (clarified): search_RB('{final_query}')")
-
-            rb = search_RB(final_query)
-
-            answer = format_runbook(rb)
-
-            # kết thúc phiên clarifying
-            reset_state()
-            return answer
-
-        # fallback
-        msg = "Bạn có thể mô tả rõ hơn hoặc cung cấp hệ thống/lỗi cụ thể không?"
-        conversation_state["history"].append({
-            "role": "assistant",
-            "text": msg
-        })
-        return msg
-
-    # -------------------------------------------------
-    # CASE 2: query mới hoàn toàn
-    # -------------------------------------------------
-    decision = decide_initial(user_input)
-    action = decision.get("action")
-
-    # ----- search ngay -----
-    if action == "search_runbook":
-        tool_query = decision.get("query") or user_input
-
-        print(f"🔧 Tool call: search_RB('{tool_query}')")
-
-        rb = search_RB(tool_query)
-
-        answer = format_runbook(rb)
-
-        # hoàn tất 1-turn
-        reset_state()
-        return answer
-
-    # ----- bắt đầu clarify loop -----
-    if action == "ask_more":
-        msg = decision.get("message")
-        next_slot = decision.get("next_slot")
-
-        if not msg or not msg.strip():
-            msg = generate_clarify_message_fallback(next_slot, user_input)
-
-        conversation_state["mode"] = "clarifying"
-        conversation_state["original_query"] = user_input
-        conversation_state["clarify_turns"] = 1
-        conversation_state["pending_slot"] = next_slot
-
-        conversation_state["history"].append({
-            "role": "assistant",
-            "text": msg
+        state.setdefault("decision_trace", []).append({
+            "action": "reuse_resolved_service",
+            "reason": "service_already_firstin_state",
+            "service": state.get("resolved_service"),
+            "confidence": state.get("service_confidence"),
+            "source": state.get("service_source", "state"),
+            "flow_context": "initial_service_resolve",
         })
 
-        return msg
+    # 2.4) first search
+    effective_query = user_input
+    state["semantic_query"] = effective_query
+    # Logging
+    log_event(
+    event="query_prepared",
+    session_id=session_id,
+    data={
+        "query_type": "initial",
+        "raw_query": user_input,
+        "semantic_query": effective_query
+    },
+    decision_trace={
+        "action": "prepare_query",
+        "reason": "initial_search",
+        "confidence": 1.0
+    }
+    )
+    candidate_result = retrieve_candidates_multiquery(
+        user_input=effective_query,   # ✅ sửa luôn chỗ này
+        state=state,
+        vector_store=vector_store,
+        runbook_data=RUNBOOK_DATA
+    )
 
-    # ----- fallback unknown -----
-    rb = search_RB(user_input)
-    answer = format_runbook(rb)
-    reset_state()
-    return answer
+    tier1 = candidate_result["tier1_candidates"]
+    #tier2 = candidate_result["tier2_candidates"]
+    tier2_lanes = candidate_result.get("tier2_lanes", [])
+
+    # ✅ THÊM DÒNG NÀY (critical để không vỡ hệ thống)
+    
+    tier2_flat = []
+    for lane in tier2_lanes:
+        tier2_flat.extend(lane.get("candidates", []))
+
+    full_candidates = tier1 + tier2_flat
+    meta_candidates = []   # hoặc None, giữ tương thích
+    
+    for c in full_candidates:
+        c["score"] = c.get("scores", {}).get("final_score", 0.0)
+        c["title"] = c.get("short_label") or c.get("runbook_id", "")
+
+
+    log_event(
+    event="retrieval_done",
+    session_id=session_id,
+    data={
+        "query_type": "initial",
+        "query": effective_query,
+        "candidate_count": len(full_candidates) if full_candidates else 0,
+        "top_k": [
+            {
+                "rank": i + 1,
+                "runbook_id": rb.get("runbook_id"),
+                "title": rb.get("title"),
+                "score": rb.get("score", 0.0)
+            }
+            for i, rb in enumerate(full_candidates[:3])
+        ] if full_candidates else []
+    },
+    decision_trace={
+        "action": "retrieve",
+        "reason": "initial_vector_search_completed",
+        "confidence": (
+            full_candidates[0].get("score", 0.0)
+            if full_candidates else 0.0
+        )
+    }
+    )
+    # 2.5) STRONG MATCH → RETURN NGAY
+    match, idx = detect_strong_match_by_score(full_candidates)
+
+    #if match:
+        #rb = enrich_runbook_from_json(full_candidates[idx])
+        #selected = full_candidates[idx]
+    if match:
+        selected = full_candidates[idx]
+
+        primary = selected
+
+        alternatives = [
+            c for i, c in enumerate(full_candidates)
+            if i != idx
+        ]
+        log_event(
+            event="strong_match_found",
+            session_id=session_id,
+            data={
+                "flow_context": "initial_search",
+                "query_type": "initial",
+
+                # TRAINING SIGNAL: raw input
+                "user_input": user_input,
+
+                # TRAINING SIGNAL: query dùng để search
+                "semantic_query": effective_query,
+
+                # TRAINING SIGNAL: selected result
+                "selected_title": selected.get("title"),
+                "selected_service": selected.get("service"),
+                "selected_score": selected.get("score", 0.0),
+                "candidate_index": idx,
+
+                # TRAINING SIGNAL: top-k candidates (rất quan trọng cho retrieval tuning)
+                "top_k": [
+                    {
+                        "rank": i + 1,
+                        "title": rb.get("title"),
+                        "service": rb.get("service"),
+                        "score": rb.get("score", 0.0)
+                    }
+                    for i, rb in enumerate(full_candidates[:3])
+                ],
+
+                # TRAINING SIGNAL: label (positive case)
+                "label": "positive_match"
+            },
+            decision_trace={
+                "action": "return_runbook",
+                "reason": "strong_match trong lan query dau tien",
+                "confidence": selected.get("score", 0.0)
+            }
+        )
+
+    # ===== SAVE CANDIDATE CONTEXT =====
+    ctx = state["candidate_context"]
+
+    ctx["active"] = True
+    ctx["original_query"] = effective_query
+    ctx["refinement_history"] = []
+
+    ctx["tier1"] = tier1
+    ctx["tier2_lanes"] = tier2_lanes
+    ctx["current_lane_candidates"] = tier1   # ✅ FIX
+
+    ctx["current_lane"] = "tier1"
+    ctx["current_lane_label"] = "Hướng chính"
+    #ctx["current_lane_candidates"] = tier1
+    ctx["current_index"] = 0
+
+    # ✅ mặc định chưa mở full runbook
+    ctx["show_full_runbook"] = False
+
+    return build_agent_result_candidate_from_context(
+    query=effective_query,
+    ctx=ctx,
+    turn_reason="candidate_presented"
+    )

@@ -19,12 +19,12 @@ CACHE_THRESHOLD = 0.82
 RUNBOOK_DATA = None
 
 def load_runbook_data():
-    global RUNBOOK_DATA
-
+    global RUNBOOK_DATA, runbook_map
+    
     if RUNBOOK_DATA is None:
         with open("data/runbook_data.json", "r", encoding="utf-8") as f:
             RUNBOOK_DATA = json.load(f)
-
+       
     return RUNBOOK_DATA
 
 

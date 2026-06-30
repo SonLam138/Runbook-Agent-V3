@@ -12,11 +12,17 @@ SESSION_FILE = BASE_DIR / "data" / "sessions.json"
 SESSION_FILE.parent.mkdir(parents=True, exist_ok=True)
 
 # =====================================================
-# DEFAULT STATE (RẤT QUAN TRỌNG)
+# ✅ RUNTIME SESSION (QUAN TRỌNG NHẤT CHO PHASE 6)
+# =====================================================
+# 👉 Giữ state trong RAM giữa các lần gọi agent
+RUNTIME_SESSIONS = {}
+
+# =====================================================
+# DEFAULT STATE
 # =====================================================
 DEFAULT_STATE = {
     # ===== core state =====
-    "mode": "idle",                  # idle | clarifying
+    "mode": "idle",
     "original_query": "",
     "clarify_turns": 0,
     "pending_slot": None,
@@ -42,13 +48,31 @@ DEFAULT_STATE = {
     # ===== semantic cache (per session) =====
     "semantic_cache": [],
 
+    # ===== ✅ CANDIDATE CONTEXT (PHASE 6)
+    "candidate_context": {
+        "active": False,
+        "original_query": None,
+        "refinement_history": [],
+        "tier1": [],
+        "tier2_lanes": [],
+        "current_lane_candidates": [],
+        "current_lane": "tier1",
+        "current_lane_label": "Hướng chính",
+        "current_index": 0,
+        "service_locked": False,
+        "resolved_service": None,
+        "service_candidates": [],
+        "clarify_reason": None,
+        "flow_state": None,
+        "show_full_runbook": False
+    },
+
     # ===== debug =====
     "last_action": None
 }
 
-
 # =====================================================
-# LOAD / SAVE
+# LOAD / SAVE FILE
 # =====================================================
 def load_sessions():
     if not SESSION_FILE.exists():
@@ -58,7 +82,7 @@ def load_sessions():
         with open(SESSION_FILE, "r", encoding="utf-8") as f:
             sessions = json.load(f)
 
-        # 🔥 NEW: rebuild semantic cache runtime
+        # rebuild semantic cache
         rebuild_runtime_semantic_cache_from_sessions(sessions)
 
         return sessions
@@ -77,25 +101,46 @@ def save_sessions(data):
 
 
 # =====================================================
-# SESSION API
+# ✅ SESSION API (FIX CHÍNH Ở ĐÂY)
 # =====================================================
 def get_session(session_id: str) -> dict:
+
+    # ✅ PRIORITY 1: runtime cache (KHÔNG reset giữa calls)
+    if session_id in RUNTIME_SESSIONS:
+        return RUNTIME_SESSIONS[session_id]
+
+    # ✅ fallback: load từ file
     sessions = load_sessions()
 
     if session_id not in sessions:
         sessions[session_id] = deepcopy(DEFAULT_STATE)
         save_sessions(sessions)
 
-    return sessions[session_id]
+    # ✅ cache vào RAM
+    RUNTIME_SESSIONS[session_id] = sessions[session_id]
+
+    return RUNTIME_SESSIONS[session_id]
 
 
 def update_session(session_id: str, state: dict):
+
+    # ✅ update runtime trước
+    RUNTIME_SESSIONS[session_id] = state
+
+    # ✅ sync xuống file
     sessions = load_sessions()
     sessions[session_id] = state
     save_sessions(sessions)
 
 
 def reset_session(session_id: str):
+
+    state = deepcopy(DEFAULT_STATE)
+
+    # ✅ reset runtime
+    RUNTIME_SESSIONS[session_id] = state
+
+    # ✅ reset file
     sessions = load_sessions()
-    sessions[session_id] = deepcopy(DEFAULT_STATE)
+    sessions[session_id] = state
     save_sessions(sessions)

@@ -10,6 +10,7 @@ def call_llm(prompt):
             json={
                 "model": MODEL,
                 "prompt": prompt,
+                "temperature": 0.3,
                 "stream": False
             }
         )

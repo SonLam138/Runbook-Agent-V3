@@ -14,6 +14,10 @@ DATA_FILE = "data/runbook_data.json"
 # =====================================================
 # HELPERS
 # =====================================================
+def safe_str(value):
+    return str(value) if value is not None else ""
+
+
 def normalize_keyword(kw):
     if isinstance(kw, list):
         return " ".join(str(k).strip() for k in kw if k)
@@ -27,9 +31,6 @@ def normalize_list_text(value):
 
 
 def build_runbook_text(rb):
-    """
-    RICH TEXT cho embedding – IMPORTANT
-    """
     kw_text = normalize_keyword(rb.get("keyword", ""))
     intents_text = normalize_list_text(rb.get("intents", []))
     precheck_text = normalize_list_text(rb.get("precheck", []))
@@ -51,29 +52,26 @@ def build_runbook_text(rb):
 
 
 def build_metadata(rb):
-    kw_text = normalize_keyword(rb.get("keyword", ""))
+    title = safe_str(rb.get("title")).strip()
 
     return {
-        "title": rb.get("title", ""),
-        "service": rb.get("service", ""),
-        "keyword": kw_text,
-        "description": rb.get("description", "")
+        "runbook_id": title,
+        "title": title,
+        "service": safe_str(rb.get("service")),
+        "keyword": normalize_keyword(rb.get("keyword", "")),
+        "description": safe_str(rb.get("description")).strip()
     }
 
-def load_chroma(collection_name="runbooks", db_path="./chroma_db"):
-    """
-    Dùng embedding_model đã load sẵn từ app.load_model
-    để tránh load model 2 lần
-    """
-    # Tạo custom embedding function dùng model đã load
+
+# =====================================================
+# LOAD COLLECTION (RUNTIME)
+# =====================================================
+def load_chroma(collection_name=COLLECTION_NAME, db_path=CHROMA_PATH):
+
     class PreLoadedEmbeddingFunction:
         def __call__(self, input):
-            # Chroma expects parameter named 'input', not 'texts'
             return embedding_model.encode(input, normalize_embeddings=True).tolist()
-        
-        def __repr__(self):
-            return "PreLoadedEmbeddingFunction"
-    
+
     client = chromadb.PersistentClient(path=db_path)
 
     collection = client.get_or_create_collection(
@@ -84,62 +82,65 @@ def load_chroma(collection_name="runbooks", db_path="./chroma_db"):
     return collection
 
 
+# =====================================================
+# BUILD CHROMA (ONLY RUN MANUALLY)
+# =====================================================
+def build_chroma():
+
+    with open(DATA_FILE, "r", encoding="utf-8") as f:
+        runbooks = json.load(f)
+
+    client = chromadb.PersistentClient(path=CHROMA_PATH)
+
+    try:
+        client.delete_collection(COLLECTION_NAME)
+        print("🧹 Deleted old collection")
+    except:
+        pass
+
+    collection = client.get_or_create_collection(
+        name=COLLECTION_NAME,
+        metadata={"hnsw:space": "cosine"}
+    )
+
+    ids = []
+    documents = []
+    metadatas = []
+    embeddings = []
+
+    for i, rb in enumerate(runbooks):
+
+        title = (rb.get("title") or "").strip()
+
+        if not title:
+            print(f"⚠️ Missing title at index {i}, skip")
+            continue
+
+        text = build_runbook_text(rb)
+        metadata = build_metadata(rb)
+
+        emb = embedding_model.encode(
+            [text],
+            normalize_embeddings=True
+        )[0]
+
+        ids.append(title)
+        documents.append(text)
+        metadatas.append(metadata)
+        embeddings.append(emb.tolist())
+
+    collection.add(
+        ids=ids,
+        documents=documents,
+        metadatas=metadatas,
+        embeddings=embeddings
+    )
+
+    print(f"✅ Loaded {len(ids)} runbooks into Chroma")
+
 
 # =====================================================
-# LOAD DATA
+# MAIN (ONLY WHEN RUN DIRECTLY)
 # =====================================================
-with open(DATA_FILE, "r", encoding="utf-8") as f:
-    runbooks = json.load(f)
-
-
-# =====================================================
-# INIT CHROMA (PERSISTENT)
-# =====================================================
-client = chromadb.PersistentClient(
-    path=CHROMA_PATH
-)
-
-# wipe collection cũ để tránh mix embedding
-try:
-    client.delete_collection(COLLECTION_NAME)
-    print("🧹 Deleted old collection")
-except:
-    pass
-
-collection = client.get_or_create_collection(
-    name=COLLECTION_NAME,
-    metadata={"hnsw:space": "cosine"}
-)
-
-
-# =====================================================
-# INSERT DATA
-# =====================================================
-ids = []
-documents = []
-metadatas = []
-embeddings = []
-
-for i, rb in enumerate(runbooks):
-    text = build_runbook_text(rb)
-    metadata = build_metadata(rb)
-
-    emb = embedding_model.encode(
-        [text],
-        normalize_embeddings=True
-    )[0]
-
-    ids.append(str(i))
-    documents.append(text)
-    metadatas.append(metadata)
-    embeddings.append(emb.tolist())
-
-
-collection.add(
-    ids=ids,
-    documents=documents,
-    metadatas=metadatas,
-    embeddings=embeddings
-)
-
-print(f"✅ Loaded {len(runbooks)} runbooks into Chroma")
+if __name__ == "__main__":
+    build_chroma()

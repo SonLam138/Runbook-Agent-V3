@@ -95,6 +95,21 @@ class ChromaStore(VectorStore):
         for metadata, dist in zip(metadatas, distances):
             rb = dict(metadata or {})
 
+            # ✅ FIX: đảm bảo luôn có runbook_id
+            if "runbook_id" not in rb:
+
+                # Case metadata đã có
+                if isinstance(metadata, dict):
+                    rb["runbook_id"] = metadata.get("runbook_id")
+
+                # fallback: dùng title
+                if not rb.get("runbook_id"):
+                    rb["runbook_id"] = rb.get("title")
+
+            # ❗ last fallback (hiếm)
+            if not rb.get("runbook_id"):
+                rb["runbook_id"] = str(rb.get("title", "unknown"))
+
             title = rb.get("title", "")
 
             if title in exclude_titles:
@@ -154,6 +169,21 @@ class ChromaStore(VectorStore):
 
         for metadata, dist in zip(metadatas, distances):
             rb = dict(metadata or {})
+
+            # ✅ FIX: đảm bảo luôn có runbook_id
+            if "runbook_id" not in rb:
+
+                # Case metadata đã có
+                if isinstance(metadata, dict):
+                    rb["runbook_id"] = metadata.get("runbook_id")
+
+                # fallback: dùng title
+                if not rb.get("runbook_id"):
+                    rb["runbook_id"] = rb.get("title")
+
+            # ❗ last fallback (hiếm)
+            if not rb.get("runbook_id"):
+                rb["runbook_id"] = str(rb.get("title", "unknown"))
 
             title = rb.get("title", "")
 

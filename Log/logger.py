@@ -333,3 +333,14 @@ def log_clarify_next_issue_type(
             "confidence": 0.0
         }
     )
+
+
+def log(event, data):
+    with open(f"D:\Runbook_Agent\multiquery_log.txt", "a", encoding="utf-8") as f:
+        f.write(f"\n--- {event} ---\n")
+
+        if isinstance(data, dict):
+            for k, v in data.items():
+                f.write(f"{k}: {v}\n")
+        else:
+            f.write(str(data) + "\n")

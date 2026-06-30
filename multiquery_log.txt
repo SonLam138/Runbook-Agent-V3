@@ -1,0 +1,1667 @@
+
+--- multiquery_built ---
+user_input: remote mailbox
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'remote mailbox', 'weight': 1.0}, {'type': 'service_issue', 'query': 'remote mailbox', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: remote mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.7035340336195951}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.5585049209312045}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5555422716205839}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: remote mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.7035340336195951}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.5585049209312045}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5555422716205839}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'final_score': 0.9794175420244938, 'coverage': 2}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'final_score': 0.7981311511640056, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.7944278395257298, 'coverage': 2}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'final_score': 0.7818146464597151, 'coverage': 2}, {'runbook_id': 'Xóa Mailbox Database', 'final_score': 0.7616708348184399, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_Enable Remote Mailbox (Exchange Online)']
+tier2: ['Enable Mailbox Group qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'Xóa Mailbox Database']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Enable Mailbox Group qua ADMP', 'short_label': 'Enable Mailbox Group qua ADMP', 'llm_hint': 'Các security group khi tạo mới không có email, sau khi sử dụng phát sinh nhu cầu'}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'short_label': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'llm_hint': 'Sau khi cài đặt dịch vụ thư điện tử Micosoft Exchange, khi gửi mail bằng app, nế'}]
+
+--- multiquery_built ---
+user_input: Active Directory Active directory
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'Active Directory Active directory', 'weight': 1.0}, {'type': 'service_issue', 'query': 'Active Directory Active directory', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: Active Directory Active directory
+top_results: [{'runbook_id': 'Nâng cấp ADC lên PDC', 'score': 0.5389188949892254}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.46888282073526333}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.4600976157495169}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: Active Directory Active directory
+top_results: [{'runbook_id': 'Nâng cấp ADC lên PDC', 'score': 0.5389188949892254}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.46888282073526333}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.4600976157495169}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Nâng cấp ADC lên PDC', 'final_score': 0.7736486187365318, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.6861035259190792, 'coverage': 2}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'final_score': 0.6751220196868961, 'coverage': 2}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.6674238163422546, 'coverage': 2}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.6672937923189297, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Nâng cấp ADC lên PDC']
+tier2: ['RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Enable Mailbox Group qua ADMP', 'Thu hồi tài khoản Domain qua ADMP', 'Tạo tài khoản Domain qua ADMP']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Nâng cấp ADC lên PDC', 'short_label': 'Nâng cấp ADC lên PDC', 'llm_hint': 'Trong quá trình vận hành Domain Controller, không may máy chủ PDC bị lỗi không t'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'short_label': 'Enable Mailbox Group qua ADMP', 'llm_hint': 'Các security group khi tạo mới không có email, sau khi sử dụng phát sinh nhu cầu'}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- multiquery_built ---
+user_input: mailbox
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'mailbox', 'weight': 1.0}, {'type': 'service_issue', 'query': 'mailbox', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.6298949958140331}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.6037803711532773}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5989873475354955}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.6298949958140331}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.6037803711532773}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5989873475354955}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'final_score': 0.8873687447675414, 'coverage': 2}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'final_score': 0.8547254639415967, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.8487341844193694, 'coverage': 2}, {'runbook_id': 'Xóa Mailbox Database', 'final_score': 0.8176216242137909, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.769860085953591, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_Enable Remote Mailbox (Exchange Online)', 'Enable Mailbox Group qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'Xóa Mailbox Database']
+tier2: ['Lỗi tạo tài khoản Lync và Mailbox qua ADMP']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'short_label': 'Enable Mailbox Group qua ADMP', 'llm_hint': 'Các security group khi tạo mới không có email, sau khi sử dụng phát sinh nhu cầu'}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}]
+
+--- multiquery_built ---
+user_input: bung bét
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'bung bét', 'weight': 1.0}, {'type': 'service_issue', 'query': 'bung bét', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: bung bét
+top_results: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'score': 0.3710004014010444}, {'runbook_id': 'RB_Check phân quyền được phép gửi mail vào toàn bộ group', 'score': 0.361765657208315}, {'runbook_id': 'Xóa file mail.queue', 'score': 0.3207732914672916}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: bung bét
+top_results: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'score': 0.3710004014010444}, {'runbook_id': 'RB_Check phân quyền được phép gửi mail vào toàn bộ group', 'score': 0.361765657208315}, {'runbook_id': 'Xóa file mail.queue', 'score': 0.3207732914672916}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'final_score': 0.5637505017513055, 'coverage': 2}, {'runbook_id': 'RB_Check phân quyền được phép gửi mail vào toàn bộ group', 'final_score': 0.5522070715103937, 'coverage': 2}, {'runbook_id': 'Xóa file mail.queue', 'final_score': 0.5009666143341145, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.47099013701944825, 'coverage': 2}, {'runbook_id': 'RB_Cập nhật Desktop và ScreenSaver toàn hàng', 'final_score': 0.4693953056597072, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'RB_Check phân quyền được phép gửi mail vào toàn bộ group']
+tier2: ['Xóa file mail.queue', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'RB_Cập nhật Desktop và ScreenSaver toàn hàng']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'short_label': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'llm_hint': 'User chạy file bat healtcheck bị lỗi access deny'}, {'runbook_id': 'RB_Check phân quyền được phép gửi mail vào toàn bộ group', 'short_label': 'RB_Check phân quyền được phép gửi mail vào toàn bộ group', 'llm_hint': ''}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Xóa file mail.queue', 'short_label': 'Xóa file mail.queue', 'llm_hint': 'Khi hàng đợi thư bị kẹt hoặc lỗi hoặc file Queue.mail tăng dung lượng lớn, gây đ'}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}, {'runbook_id': 'RB_Cập nhật Desktop và ScreenSaver toàn hàng', 'short_label': 'RB_Cập nhật Desktop và ScreenSaver toàn hàng', 'llm_hint': 'Khi nhận yêu cầu thay đổi màn hình nền Desktop hoặc màn hình chờ theo các chương'}]
+
+--- multiquery_built ---
+user_input: mailbox
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'mailbox', 'weight': 1.0}, {'type': 'service_issue', 'query': 'mailbox', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.6298949958140331}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.6037803711532773}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5989873475354955}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.6298949958140331}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.6037803711532773}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5989873475354955}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'final_score': 0.8873687447675414, 'coverage': 2}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'final_score': 0.8547254639415967, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.8487341844193694, 'coverage': 2}, {'runbook_id': 'Xóa Mailbox Database', 'final_score': 0.8176216242137909, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.769860085953591, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_Enable Remote Mailbox (Exchange Online)', 'Enable Mailbox Group qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'Xóa Mailbox Database']
+tier2: ['Lỗi tạo tài khoản Lync và Mailbox qua ADMP']
+strong_tier1: ['RB_Enable Remote Mailbox (Exchange Online)', 'Enable Mailbox Group qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'Xóa Mailbox Database']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'short_label': 'Enable Mailbox Group qua ADMP', 'llm_hint': 'Các security group khi tạo mới không có email, sau khi sử dụng phát sinh nhu cầu'}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'short_label': 'Enable Mailbox Group qua ADMP', 'llm_hint': 'Các security group khi tạo mới không có email, sau khi sử dụng phát sinh nhu cầu'}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}]
+
+--- multiquery_built ---
+user_input: AD AD
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'AD AD', 'weight': 1.0}, {'type': 'service_issue', 'query': 'AD AD', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: AD AD
+top_results: [{'runbook_id': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'score': 0.4509864321293682}, {'runbook_id': 'Nâng cấp ADC lên PDC', 'score': 0.4321596218154464}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.424755582846722}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: AD AD
+top_results: [{'runbook_id': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'score': 0.4509864321293682}, {'runbook_id': 'Nâng cấp ADC lên PDC', 'score': 0.4321596218154464}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.424755582846722}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'final_score': 0.6637330401617102, 'coverage': 2}, {'runbook_id': 'Nâng cấp ADC lên PDC', 'final_score': 0.6401995272693081, 'coverage': 2}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'final_score': 0.6309444785584025, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.6119178510549593, 'coverage': 2}, {'runbook_id': 'Create VLAN trên FI UCS', 'final_score': 0.6059305461290175, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Hướng dẫn move computer vào đúng OU qua ADMP', 'Nâng cấp ADC lên PDC', 'Enable Mailbox Group qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Create VLAN trên FI UCS']
+tier2: []
+strong_tier1: ['Hướng dẫn move computer vào đúng OU qua ADMP', 'Nâng cấp ADC lên PDC', 'Enable Mailbox Group qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Create VLAN trên FI UCS']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'short_label': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'llm_hint': 'Trên hệ thống AD có từng OU của các phòng, ban. Cần move đúng computers của các '}, {'runbook_id': 'Nâng cấp ADC lên PDC', 'short_label': 'Nâng cấp ADC lên PDC', 'llm_hint': 'Trong quá trình vận hành Domain Controller, không may máy chủ PDC bị lỗi không t'}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'short_label': 'Enable Mailbox Group qua ADMP', 'llm_hint': 'Các security group khi tạo mới không có email, sau khi sử dụng phát sinh nhu cầu'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'short_label': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'llm_hint': 'Trên hệ thống AD có từng OU của các phòng, ban. Cần move đúng computers của các '}, {'runbook_id': 'Nâng cấp ADC lên PDC', 'short_label': 'Nâng cấp ADC lên PDC', 'llm_hint': 'Trong quá trình vận hành Domain Controller, không may máy chủ PDC bị lỗi không t'}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'short_label': 'Enable Mailbox Group qua ADMP', 'llm_hint': 'Các security group khi tạo mới không có email, sau khi sử dụng phát sinh nhu cầu'}]
+
+--- multiquery_built ---
+user_input: bung bét
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'bung bét', 'weight': 1.0}, {'type': 'service_issue', 'query': 'bung bét', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: bung bét
+top_results: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'score': 0.3710004014010444}, {'runbook_id': 'RB_Check phân quyền được phép gửi mail vào toàn bộ group', 'score': 0.361765657208315}, {'runbook_id': 'Xóa file mail.queue', 'score': 0.3207732914672916}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: bung bét
+top_results: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'score': 0.3710004014010444}, {'runbook_id': 'RB_Check phân quyền được phép gửi mail vào toàn bộ group', 'score': 0.361765657208315}, {'runbook_id': 'Xóa file mail.queue', 'score': 0.3207732914672916}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'final_score': 0.5637505017513055, 'coverage': 2}, {'runbook_id': 'RB_Check phân quyền được phép gửi mail vào toàn bộ group', 'final_score': 0.5522070715103937, 'coverage': 2}, {'runbook_id': 'Xóa file mail.queue', 'final_score': 0.5009666143341145, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.47099013701944825, 'coverage': 2}, {'runbook_id': 'RB_Cập nhật Desktop và ScreenSaver toàn hàng', 'final_score': 0.4693953056597072, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'RB_Check phân quyền được phép gửi mail vào toàn bộ group']
+tier2: ['Xóa file mail.queue', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'RB_Cập nhật Desktop và ScreenSaver toàn hàng']
+strong_tier1: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'short_label': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'llm_hint': 'User chạy file bat healtcheck bị lỗi access deny'}, {'runbook_id': 'RB_Check phân quyền được phép gửi mail vào toàn bộ group', 'short_label': 'RB_Check phân quyền được phép gửi mail vào toàn bộ group', 'llm_hint': ''}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Xóa file mail.queue', 'short_label': 'Xóa file mail.queue', 'llm_hint': 'Khi hàng đợi thư bị kẹt hoặc lỗi hoặc file Queue.mail tăng dung lượng lớn, gây đ'}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}, {'runbook_id': 'RB_Cập nhật Desktop và ScreenSaver toàn hàng', 'short_label': 'RB_Cập nhật Desktop và ScreenSaver toàn hàng', 'llm_hint': 'Khi nhận yêu cầu thay đổi màn hình nền Desktop hoặc màn hình chờ theo các chương'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- multiquery_built ---
+user_input: đập đá
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'đập đá', 'weight': 1.0}, {'type': 'service_issue', 'query': 'đập đá', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: đập đá
+top_results: [{'runbook_id': 'Nâng cấp ADC lên PDC', 'score': 0.30818932966012214}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3024199792773745}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'score': 0.2862810279087328}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: đập đá
+top_results: [{'runbook_id': 'Nâng cấp ADC lên PDC', 'score': 0.30818932966012214}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3024199792773745}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'score': 0.2862810279087328}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Nâng cấp ADC lên PDC', 'final_score': 0.4852366620751527, 'coverage': 2}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.4780249740967182, 'coverage': 2}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'final_score': 0.457851284885916, 'coverage': 2}, {'runbook_id': 'Slideshow Desktop & Screen Saver qua GPO', 'final_score': 0.45758491253692546, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.4561781550826963, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Nâng cấp ADC lên PDC', 'Thu hồi tài khoản Domain qua ADMP', 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'Slideshow Desktop & Screen Saver qua GPO', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP']
+tier2: []
+strong_tier1: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Nâng cấp ADC lên PDC', 'short_label': 'Nâng cấp ADC lên PDC', 'llm_hint': 'Trong quá trình vận hành Domain Controller, không may máy chủ PDC bị lỗi không t'}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'short_label': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'llm_hint': 'User chạy file bat healtcheck bị lỗi access deny'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: []
+
+--- multiquery_built ---
+user_input: đập đá
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'đập đá', 'weight': 1.0}, {'type': 'service_issue', 'query': 'đập đá', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: đập đá
+top_results: [{'runbook_id': 'Nâng cấp ADC lên PDC', 'score': 0.30818932966012214}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3024199792773745}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'score': 0.2862810279087328}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: đập đá
+top_results: [{'runbook_id': 'Nâng cấp ADC lên PDC', 'score': 0.30818932966012214}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3024199792773745}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'score': 0.2862810279087328}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Nâng cấp ADC lên PDC', 'final_score': 0.4852366620751527, 'coverage': 2}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.4780249740967182, 'coverage': 2}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'final_score': 0.457851284885916, 'coverage': 2}, {'runbook_id': 'Slideshow Desktop & Screen Saver qua GPO', 'final_score': 0.45758491253692546, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.4561781550826963, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Nâng cấp ADC lên PDC', 'Thu hồi tài khoản Domain qua ADMP', 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'Slideshow Desktop & Screen Saver qua GPO', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP']
+tier2: []
+strong_tier1: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Nâng cấp ADC lên PDC', 'short_label': 'Nâng cấp ADC lên PDC', 'llm_hint': 'Trong quá trình vận hành Domain Controller, không may máy chủ PDC bị lỗi không t'}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'short_label': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'llm_hint': 'User chạy file bat healtcheck bị lỗi access deny'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: []
+
+--- multiquery_built ---
+user_input: đập đá chơi đá
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'đập đá chơi đá', 'weight': 1.0}, {'type': 'service_issue', 'query': 'đập đá chơi đá', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: đập đá chơi đá
+top_results: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'score': 0.32111770825602703}, {'runbook_id': 'Slideshow Desktop & Screen Saver qua GPO', 'score': 0.3186151670111532}, {'runbook_id': 'RB_Tạo Entra OIDC Applications cho SSO', 'score': 0.31511682614529934}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: đập đá chơi đá
+top_results: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'score': 0.32111770825602703}, {'runbook_id': 'Slideshow Desktop & Screen Saver qua GPO', 'score': 0.3186151670111532}, {'runbook_id': 'RB_Tạo Entra OIDC Applications cho SSO', 'score': 0.31511682614529934}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'final_score': 0.5013971353200338, 'coverage': 2}, {'runbook_id': 'Slideshow Desktop & Screen Saver qua GPO', 'final_score': 0.4982689587639415, 'coverage': 2}, {'runbook_id': 'RB_Tạo Entra OIDC Applications cho SSO', 'final_score': 0.4938960326816242, 'coverage': 2}, {'runbook_id': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'final_score': 0.48743768603963533, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.4831059766563188, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'Slideshow Desktop & Screen Saver qua GPO', 'RB_Tạo Entra OIDC Applications cho SSO', 'Hướng dẫn move computer vào đúng OU qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP']
+tier2: []
+strong_tier1: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'short_label': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'llm_hint': 'User chạy file bat healtcheck bị lỗi access deny'}, {'runbook_id': 'Slideshow Desktop & Screen Saver qua GPO', 'short_label': 'Slideshow Desktop & Screen Saver qua GPO', 'llm_hint': 'Trước đây, hệ thống sử dụng Group Policy (GPO) để đẩy trực tiếp file .scr (scree'}, {'runbook_id': 'RB_Tạo Entra OIDC Applications cho SSO', 'short_label': 'RB_Tạo Entra OIDC Applications cho SSO', 'llm_hint': 'Sử dụng khi các hệ thống khác muốn login bằng tài khoản và sử dung MFA của Entra'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: []
+
+--- multiquery_built ---
+user_input: đập đá chơi đá tài khoản
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'đập đá chơi đá tài khoản', 'weight': 1.0}, {'type': 'service_issue', 'query': 'đập đá chơi đá tài khoản', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: đập đá chơi đá tài khoản
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.43053385327459726}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.4239396456425246}, {'runbook_id': 'Nâng cấp ADC lên PDC', 'score': 0.39238667305627506}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: đập đá chơi đá tài khoản
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.43053385327459726}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.4239396456425246}, {'runbook_id': 'Nâng cấp ADC lên PDC', 'score': 0.39238667305627506}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.6381673165932465, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.6299245570531558, 'coverage': 2}, {'runbook_id': 'Nâng cấp ADC lên PDC', 'final_score': 0.5904833413203439, 'coverage': 2}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'final_score': 0.5881801609649355, 'coverage': 2}, {'runbook_id': 'RB_Tạo Entra OIDC Applications cho SSO', 'final_score': 0.586686920558299, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Nâng cấp ADC lên PDC', 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'RB_Tạo Entra OIDC Applications cho SSO']
+tier2: []
+strong_tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Nâng cấp ADC lên PDC', 'short_label': 'Nâng cấp ADC lên PDC', 'llm_hint': 'Trong quá trình vận hành Domain Controller, không may máy chủ PDC bị lỗi không t'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}]
+
+--- multiquery_built ---
+user_input: ADManagerPlus tạo tài khoản mới
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'ADManagerPlus tạo tài khoản mới', 'weight': 1.0}, {'type': 'service_issue', 'query': 'ADManagerPlus tạo tài khoản mới', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: ADManagerPlus tạo tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.6235832118157357}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5719076313760983}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.5676793391473998}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: ADManagerPlus tạo tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.6235832118157357}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5719076313760983}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.5676793391473998}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.8794790147696696, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.8148845392201229, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.8095991739342497, 'coverage': 2}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.7373851396038696, 'coverage': 2}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'final_score': 0.7310327685996385, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Tạo tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP']
+tier2: ['Thu hồi tài khoản Domain qua ADMP', 'Enable Mailbox Group qua ADMP']
+strong_tier1: ['Tạo tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'short_label': 'Enable Mailbox Group qua ADMP', 'llm_hint': 'Các security group khi tạo mới không có email, sau khi sử dụng phát sinh nhu cầu'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}]
+
+--- multiquery_built ---
+user_input: Exchange remote mailbox
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'Exchange remote mailbox', 'weight': 1.0}, {'type': 'service_issue', 'query': 'Exchange remote mailbox', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: Exchange remote mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.71514007835426}, {'runbook_id': 'Xóa Mailbox Database', 'score': 0.5659325881638889}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'score': 0.5581633698695265}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: Exchange remote mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.71514007835426}, {'runbook_id': 'Xóa Mailbox Database', 'score': 0.5659325881638889}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'score': 0.5581633698695265}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'final_score': 0.9939250979428249, 'coverage': 2}, {'runbook_id': 'Xóa Mailbox Database', 'final_score': 0.8074157352048611, 'coverage': 2}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'final_score': 0.7977042123369081, 'coverage': 2}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'final_score': 0.7882512642879135, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.784539704804848, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_Enable Remote Mailbox (Exchange Online)']
+tier2: ['Xóa Mailbox Database', 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'Enable Mailbox Group qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+strong_tier1: ['RB_Enable Remote Mailbox (Exchange Online)']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Xóa Mailbox Database', 'short_label': 'Xóa Mailbox Database', 'llm_hint': 'Các Mailbox Database sau một thời gian sử dụng, có nhiều tài khoản email đã bị v'}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'short_label': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'llm_hint': 'Sau khi cài đặt dịch vụ thư điện tử Micosoft Exchange, khi gửi mail bằng app, nế'}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'short_label': 'Enable Mailbox Group qua ADMP', 'llm_hint': 'Các security group khi tạo mới không có email, sau khi sử dụng phát sinh nhu cầu'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}]
+
+--- multiquery_built ---
+user_input: Exchange enable remote mailbox
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'Exchange enable remote mailbox', 'weight': 1.0}, {'type': 'service_issue', 'query': 'Exchange enable remote mailbox', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: Exchange enable remote mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.764972520674824}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.6347204903658308}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5894204885581457}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: Exchange enable remote mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.764972520674824}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.6347204903658308}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5894204885581457}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'final_score': 1.05621565084353, 'coverage': 2}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'final_score': 0.8934006129572885, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.836775610697682, 'coverage': 2}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'final_score': 0.8280442727941818, 'coverage': 2}, {'runbook_id': 'Xóa file mail.queue', 'final_score': 0.8133643235640364, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_Enable Remote Mailbox (Exchange Online)']
+tier2: ['Enable Mailbox Group qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'Xóa file mail.queue']
+strong_tier1: ['RB_Enable Remote Mailbox (Exchange Online)']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Enable Mailbox Group qua ADMP', 'short_label': 'Enable Mailbox Group qua ADMP', 'llm_hint': 'Các security group khi tạo mới không có email, sau khi sử dụng phát sinh nhu cầu'}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'short_label': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'llm_hint': 'Sau khi cài đặt dịch vụ thư điện tử Micosoft Exchange, khi gửi mail bằng app, nế'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}]
+
+--- multiquery_built ---
+user_input: tạo tài khoản
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tạo tài khoản', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tạo tài khoản', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tạo tài khoản
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5952627509761101}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.5572178940608888}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5241545017279506}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tạo tài khoản
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5952627509761101}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.5572178940608888}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5241545017279506}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.8440784387201377, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.7965223675761111, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.7551931271599382, 'coverage': 2}, {'runbook_id': 'Create VLAN trên FI UCS', 'final_score': 0.7519987370212871, 'coverage': 2}, {'runbook_id': 'RB_Tạo Entra OIDC Applications cho SSO', 'final_score': 0.7446479151612074, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Tạo tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP']
+tier2: ['RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Create VLAN trên FI UCS', 'RB_Tạo Entra OIDC Applications cho SSO']
+strong_tier1: ['Tạo tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Create VLAN trên FI UCS', 'short_label': 'Create VLAN trên FI UCS', 'llm_hint': 'Người dùng khác không thể tìm kiếm địa chỉ gửi mail, không tìm kiếm được teams c'}, {'runbook_id': 'RB_Tạo Entra OIDC Applications cho SSO', 'short_label': 'RB_Tạo Entra OIDC Applications cho SSO', 'llm_hint': 'Sử dụng khi các hệ thống khác muốn login bằng tài khoản và sử dung MFA của Entra'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}]
+
+--- multiquery_built ---
+user_input: remote mailbox
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'remote mailbox', 'weight': 1.0}, {'type': 'service_issue', 'query': 'remote mailbox', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: remote mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.7035340336195951}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.5585049209312045}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5555422716205839}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: remote mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.7035340336195951}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.5585049209312045}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5555422716205839}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'final_score': 0.9794175420244938, 'coverage': 2}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'final_score': 0.7981311511640056, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.7944278395257298, 'coverage': 2}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'final_score': 0.7818146464597151, 'coverage': 2}, {'runbook_id': 'Xóa Mailbox Database', 'final_score': 0.7616708348184399, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_Enable Remote Mailbox (Exchange Online)']
+tier2: ['Enable Mailbox Group qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'Xóa Mailbox Database']
+strong_tier1: ['RB_Enable Remote Mailbox (Exchange Online)']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Enable Mailbox Group qua ADMP', 'short_label': 'Enable Mailbox Group qua ADMP', 'llm_hint': 'Các security group khi tạo mới không có email, sau khi sử dụng phát sinh nhu cầu'}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'short_label': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'llm_hint': 'Sau khi cài đặt dịch vụ thư điện tử Micosoft Exchange, khi gửi mail bằng app, nế'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}]
+
+--- multiquery_built ---
+user_input: remote mailbox
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'remote mailbox', 'weight': 1.0}, {'type': 'service_issue', 'query': 'remote mailbox', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: remote mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.7035340336195951}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.5585049209312045}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5555422716205839}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: remote mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.7035340336195951}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.5585049209312045}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5555422716205839}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'final_score': 0.9794175420244938, 'coverage': 2}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'final_score': 0.7981311511640056, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.7944278395257298, 'coverage': 2}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'final_score': 0.7818146464597151, 'coverage': 2}, {'runbook_id': 'Xóa Mailbox Database', 'final_score': 0.7616708348184399, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_Enable Remote Mailbox (Exchange Online)']
+tier2: ['Enable Mailbox Group qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'Xóa Mailbox Database']
+strong_tier1: ['RB_Enable Remote Mailbox (Exchange Online)']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Enable Mailbox Group qua ADMP', 'short_label': 'Enable Mailbox Group qua ADMP', 'llm_hint': 'Các security group khi tạo mới không có email, sau khi sử dụng phát sinh nhu cầu'}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'short_label': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'llm_hint': 'Sau khi cài đặt dịch vụ thư điện tử Micosoft Exchange, khi gửi mail bằng app, nế'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}]
+
+--- multiquery_built ---
+user_input: tạo tài khoản mới
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tạo tài khoản mới', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tạo tài khoản mới', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tạo tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.59405444091745}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.5537194409385243}, {'runbook_id': 'Create VLAN trên FI UCS', 'score': 0.5263126412537463}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tạo tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.59405444091745}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.5537194409385243}, {'runbook_id': 'Create VLAN trên FI UCS', 'score': 0.5263126412537463}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.8425680511468124, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.7921493011731554, 'coverage': 2}, {'runbook_id': 'Create VLAN trên FI UCS', 'final_score': 0.7578908015671829, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.7575622109023318, 'coverage': 2}, {'runbook_id': 'RB_Tạo Entra OIDC Applications cho SSO', 'final_score': 0.7440411101106176, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Tạo tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP']
+tier2: ['Create VLAN trên FI UCS', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'RB_Tạo Entra OIDC Applications cho SSO']
+strong_tier1: ['Tạo tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Create VLAN trên FI UCS', 'short_label': 'Create VLAN trên FI UCS', 'llm_hint': 'Người dùng khác không thể tìm kiếm địa chỉ gửi mail, không tìm kiếm được teams c'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'RB_Tạo Entra OIDC Applications cho SSO', 'short_label': 'RB_Tạo Entra OIDC Applications cho SSO', 'llm_hint': 'Sử dụng khi các hệ thống khác muốn login bằng tài khoản và sử dung MFA của Entra'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}]
+
+--- multiquery_built ---
+user_input: tạo tài khoản mới
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tạo tài khoản mới', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tạo tài khoản mới', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tạo tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.59405444091745}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.5537194409385243}, {'runbook_id': 'Create VLAN trên FI UCS', 'score': 0.5263126412537463}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tạo tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.59405444091745}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.5537194409385243}, {'runbook_id': 'Create VLAN trên FI UCS', 'score': 0.5263126412537463}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.8425680511468124, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.7921493011731554, 'coverage': 2}, {'runbook_id': 'Create VLAN trên FI UCS', 'final_score': 0.7578908015671829, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.7575622109023318, 'coverage': 2}, {'runbook_id': 'RB_Tạo Entra OIDC Applications cho SSO', 'final_score': 0.7440411101106176, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Tạo tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP']
+tier2: ['Create VLAN trên FI UCS', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'RB_Tạo Entra OIDC Applications cho SSO']
+strong_tier1: ['Tạo tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Create VLAN trên FI UCS', 'short_label': 'Create VLAN trên FI UCS', 'llm_hint': 'Người dùng khác không thể tìm kiếm địa chỉ gửi mail, không tìm kiếm được teams c'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'RB_Tạo Entra OIDC Applications cho SSO', 'short_label': 'RB_Tạo Entra OIDC Applications cho SSO', 'llm_hint': 'Sử dụng khi các hệ thống khác muốn login bằng tài khoản và sử dung MFA của Entra'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}]
+
+--- multiquery_built ---
+user_input: tài khoản mới
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài khoản mới', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài khoản mới', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5391719104153886}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5179154667945406}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.4983906460517884}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5391719104153886}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5179154667945406}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.4983906460517884}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.7739648880192357, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.7473943334931757, 'coverage': 2}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.7229883075647355, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.7132127347373305, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.711632791467901, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Tạo tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Thu hồi tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+tier2: []
+strong_tier1: ['Tạo tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Thu hồi tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- multiquery_built ---
+user_input: m a i l
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'm a i l', 'weight': 1.0}, {'type': 'service_issue', 'query': 'm a i l', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: m a i l
+top_results: [{'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.3538815075990702}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.3369706260459755}, {'runbook_id': 'Xóa file mail.queue', 'score': 0.3344916791171163}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: m a i l
+top_results: [{'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.3538815075990702}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.3369706260459755}, {'runbook_id': 'Xóa file mail.queue', 'score': 0.3344916791171163}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.5423518844988378, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.5212132825574693, 'coverage': 2}, {'runbook_id': 'Xóa file mail.queue', 'final_score': 0.5181145988963953, 'coverage': 2}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'final_score': 0.5161074146686265, 'coverage': 2}, {'runbook_id': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'final_score': 0.5085038511735698, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_Apply Retention Policy cho mailbox Exchange 2016', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'Xóa file mail.queue', 'Enable Mailbox Group qua ADMP', 'Hướng dẫn move computer vào đúng OU qua ADMP']
+tier2: []
+strong_tier1: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}, {'runbook_id': 'Xóa file mail.queue', 'short_label': 'Xóa file mail.queue', 'llm_hint': 'Khi hàng đợi thư bị kẹt hoặc lỗi hoặc file Queue.mail tăng dung lượng lớn, gây đ'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: []
+
+--- multiquery_built ---
+user_input: m a i l b o x
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'm a i l b o x', 'weight': 1.0}, {'type': 'service_issue', 'query': 'm a i l b o x', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: m a i l b o x
+top_results: [{'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.373976643682402}, {'runbook_id': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'score': 0.3739317619438396}, {'runbook_id': 'Xóa file mail.queue', 'score': 0.372767427875367}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: m a i l b o x
+top_results: [{'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.373976643682402}, {'runbook_id': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'score': 0.3739317619438396}, {'runbook_id': 'Xóa file mail.queue', 'score': 0.372767427875367}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.5674708046030025, 'coverage': 2}, {'runbook_id': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'final_score': 0.5674147024297995, 'coverage': 2}, {'runbook_id': 'Xóa file mail.queue', 'final_score': 0.5659592848442088, 'coverage': 2}, {'runbook_id': 'Xóa Mailbox Database', 'final_score': 0.5592566283049901, 'coverage': 2}, {'runbook_id': 'RB_Certificate Name Mismatch', 'final_score': 0.5525806208790637, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_Apply Retention Policy cho mailbox Exchange 2016', 'Hướng dẫn move computer vào đúng OU qua ADMP', 'Xóa file mail.queue', 'Xóa Mailbox Database', 'RB_Certificate Name Mismatch']
+tier2: []
+strong_tier1: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}, {'runbook_id': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'short_label': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'llm_hint': 'Trên hệ thống AD có từng OU của các phòng, ban. Cần move đúng computers của các '}, {'runbook_id': 'Xóa file mail.queue', 'short_label': 'Xóa file mail.queue', 'llm_hint': 'Khi hàng đợi thư bị kẹt hoặc lỗi hoặc file Queue.mail tăng dung lượng lớn, gây đ'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: []
+
+--- multiquery_built ---
+user_input: m a i l b o x
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'm a i l b o x', 'weight': 1.0}, {'type': 'service_issue', 'query': 'm a i l b o x', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: m a i l b o x
+top_results: [{'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.373976643682402}, {'runbook_id': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'score': 0.3739317619438396}, {'runbook_id': 'Xóa file mail.queue', 'score': 0.372767427875367}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: m a i l b o x
+top_results: [{'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.373976643682402}, {'runbook_id': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'score': 0.3739317619438396}, {'runbook_id': 'Xóa file mail.queue', 'score': 0.372767427875367}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.5674708046030025, 'coverage': 2}, {'runbook_id': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'final_score': 0.5674147024297995, 'coverage': 2}, {'runbook_id': 'Xóa file mail.queue', 'final_score': 0.5659592848442088, 'coverage': 2}, {'runbook_id': 'Xóa Mailbox Database', 'final_score': 0.5592566283049901, 'coverage': 2}, {'runbook_id': 'RB_Certificate Name Mismatch', 'final_score': 0.5525806208790637, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_Apply Retention Policy cho mailbox Exchange 2016', 'Hướng dẫn move computer vào đúng OU qua ADMP', 'Xóa file mail.queue', 'Xóa Mailbox Database', 'RB_Certificate Name Mismatch']
+tier2: []
+strong_tier1: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}, {'runbook_id': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'short_label': 'Hướng dẫn move computer vào đúng OU qua ADMP', 'llm_hint': 'Trên hệ thống AD có từng OU của các phòng, ban. Cần move đúng computers của các '}, {'runbook_id': 'Xóa file mail.queue', 'short_label': 'Xóa file mail.queue', 'llm_hint': 'Khi hàng đợi thư bị kẹt hoặc lỗi hoặc file Queue.mail tăng dung lượng lớn, gây đ'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: []
+
+--- multiquery_built ---
+user_input: tài
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3618498749095922}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.34758811712419324}, {'runbook_id': 'RB_Certificate Name Mismatch', 'score': 0.3306362121548614}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3618498749095922}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.34758811712419324}, {'runbook_id': 'RB_Certificate Name Mismatch', 'score': 0.3306362121548614}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.5523123436369902, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.5344851464052416, 'coverage': 2}, {'runbook_id': 'RB_Certificate Name Mismatch', 'final_score': 0.5132952651935767, 'coverage': 2}, {'runbook_id': 'Tìm file record meeting trong Teams', 'final_score': 0.49930935085928707, 'coverage': 2}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'final_score': 0.49686194435671294, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'RB_Certificate Name Mismatch', 'Tìm file record meeting trong Teams']
+tier2: ['RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER']
+strong_tier1: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'RB_Certificate Name Mismatch', 'short_label': 'RB_Certificate Name Mismatch', 'llm_hint': 'Trong quá trình triển khai AD và Exchange, không phải lúc nào domain và địa chỉ '}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'short_label': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'llm_hint': 'User chạy file bat healtcheck bị lỗi access deny'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- multiquery_built ---
+user_input: tài khoản
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài khoản', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài khoản', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài khoản
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.5170814601166611}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5062989977885249}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.48544423355332345}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài khoản
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.5170814601166611}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5062989977885249}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.48544423355332345}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.7463518251458264, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.7328737472356561, 'coverage': 2}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.7068052919416543, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.6915407951679958, 'coverage': 2}, {'runbook_id': 'RB_Certificate Name Mismatch', 'final_score': 0.6897923531341437, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Tạo tài khoản Domain qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'RB_Certificate Name Mismatch']
+tier2: []
+strong_tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Tạo tài khoản Domain qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'RB_Certificate Name Mismatch']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}]
+
+--- multiquery_built ---
+user_input: mail
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'mail', 'weight': 1.0}, {'type': 'service_issue', 'query': 'mail', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: mail
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.5904807673002986}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.5519731064958902}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5497348256703675}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: mail
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.5904807673002986}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'score': 0.5519731064958902}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5497348256703675}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'final_score': 0.8381009591253733, 'coverage': 2}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'final_score': 0.7899663831198627, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.7871685320879593, 'coverage': 2}, {'runbook_id': 'RB_Check phân quyền được phép gửi mail vào toàn bộ group', 'final_score': 0.7706178860591627, 'coverage': 2}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'final_score': 0.7563962582008267, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_Enable Remote Mailbox (Exchange Online)', 'Enable Mailbox Group qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'RB_Check phân quyền được phép gửi mail vào toàn bộ group', 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.']
+tier2: []
+strong_tier1: ['RB_Enable Remote Mailbox (Exchange Online)', 'Enable Mailbox Group qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'RB_Check phân quyền được phép gửi mail vào toàn bộ group', 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'short_label': 'Enable Mailbox Group qua ADMP', 'llm_hint': 'Các security group khi tạo mới không có email, sau khi sử dụng phát sinh nhu cầu'}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'short_label': 'Enable Mailbox Group qua ADMP', 'llm_hint': 'Các security group khi tạo mới không có email, sau khi sử dụng phát sinh nhu cầu'}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}]
+
+--- multiquery_built ---
+user_input: đăng ký mới
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'đăng ký mới', 'weight': 1.0}, {'type': 'service_issue', 'query': 'đăng ký mới', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: đăng ký mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5005072252359571}, {'runbook_id': 'Nâng cấp ADC lên PDC', 'score': 0.4834373026320721}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.48337981219397697}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: đăng ký mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5005072252359571}, {'runbook_id': 'Nâng cấp ADC lên PDC', 'score': 0.4834373026320721}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.48337981219397697}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.7256340315449464, 'coverage': 2}, {'runbook_id': 'Nâng cấp ADC lên PDC', 'final_score': 0.7042966282900901, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.7042247652424712, 'coverage': 2}, {'runbook_id': 'Upgrade DHCP server 2012 to DHCP server 2022 or 2025', 'final_score': 0.6907400075629021, 'coverage': 2}, {'runbook_id': 'RB_Tạo Entra OIDC Applications cho SSO', 'final_score': 0.688524970729896, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Tạo tài khoản Domain qua ADMP', 'Nâng cấp ADC lên PDC', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Upgrade DHCP server 2012 to DHCP server 2022 or 2025', 'RB_Tạo Entra OIDC Applications cho SSO']
+tier2: []
+strong_tier1: ['Tạo tài khoản Domain qua ADMP', 'Nâng cấp ADC lên PDC', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Upgrade DHCP server 2012 to DHCP server 2022 or 2025', 'RB_Tạo Entra OIDC Applications cho SSO']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'Nâng cấp ADC lên PDC', 'short_label': 'Nâng cấp ADC lên PDC', 'llm_hint': 'Trong quá trình vận hành Domain Controller, không may máy chủ PDC bị lỗi không t'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'Nâng cấp ADC lên PDC', 'short_label': 'Nâng cấp ADC lên PDC', 'llm_hint': 'Trong quá trình vận hành Domain Controller, không may máy chủ PDC bị lỗi không t'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}]
+
+--- multiquery_built ---
+user_input: tài
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3618498749095922}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.34758811712419324}, {'runbook_id': 'RB_Certificate Name Mismatch', 'score': 0.3306362121548614}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3618498749095922}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.34758811712419324}, {'runbook_id': 'RB_Certificate Name Mismatch', 'score': 0.3306362121548614}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.5523123436369902, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.5344851464052416, 'coverage': 2}, {'runbook_id': 'RB_Certificate Name Mismatch', 'final_score': 0.5132952651935767, 'coverage': 2}, {'runbook_id': 'Tìm file record meeting trong Teams', 'final_score': 0.49930935085928707, 'coverage': 2}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'final_score': 0.49686194435671294, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'RB_Certificate Name Mismatch', 'Tìm file record meeting trong Teams']
+tier2: ['RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER']
+strong_tier1: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'RB_Certificate Name Mismatch', 'short_label': 'RB_Certificate Name Mismatch', 'llm_hint': 'Trong quá trình triển khai AD và Exchange, không phải lúc nào domain và địa chỉ '}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'short_label': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'llm_hint': 'User chạy file bat healtcheck bị lỗi access deny'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- multiquery_built ---
+user_input: tài
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3618498749095922}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.34758811712419324}, {'runbook_id': 'RB_Certificate Name Mismatch', 'score': 0.3306362121548614}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3618498749095922}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.34758811712419324}, {'runbook_id': 'RB_Certificate Name Mismatch', 'score': 0.3306362121548614}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.5523123436369902, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.5344851464052416, 'coverage': 2}, {'runbook_id': 'RB_Certificate Name Mismatch', 'final_score': 0.5132952651935767, 'coverage': 2}, {'runbook_id': 'Tìm file record meeting trong Teams', 'final_score': 0.49930935085928707, 'coverage': 2}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'final_score': 0.49686194435671294, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'RB_Certificate Name Mismatch', 'Tìm file record meeting trong Teams']
+tier2: ['RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER']
+strong_tier1: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'RB_Certificate Name Mismatch', 'short_label': 'RB_Certificate Name Mismatch', 'llm_hint': 'Trong quá trình triển khai AD và Exchange, không phải lúc nào domain và địa chỉ '}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'short_label': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'llm_hint': 'User chạy file bat healtcheck bị lỗi access deny'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- multiquery_built ---
+user_input: tài
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3618498749095922}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.34758811712419324}, {'runbook_id': 'RB_Certificate Name Mismatch', 'score': 0.3306362121548614}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3618498749095922}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.34758811712419324}, {'runbook_id': 'RB_Certificate Name Mismatch', 'score': 0.3306362121548614}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.5523123436369902, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.5344851464052416, 'coverage': 2}, {'runbook_id': 'RB_Certificate Name Mismatch', 'final_score': 0.5132952651935767, 'coverage': 2}, {'runbook_id': 'Tìm file record meeting trong Teams', 'final_score': 0.49930935085928707, 'coverage': 2}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'final_score': 0.49686194435671294, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'RB_Certificate Name Mismatch', 'Tìm file record meeting trong Teams']
+tier2: ['RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER']
+strong_tier1: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'RB_Certificate Name Mismatch', 'short_label': 'RB_Certificate Name Mismatch', 'llm_hint': 'Trong quá trình triển khai AD và Exchange, không phải lúc nào domain và địa chỉ '}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'short_label': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'llm_hint': 'User chạy file bat healtcheck bị lỗi access deny'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- multiquery_built ---
+user_input: tài
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3618498749095922}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.34758811712419324}, {'runbook_id': 'RB_Certificate Name Mismatch', 'score': 0.3306362121548614}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3618498749095922}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.34758811712419324}, {'runbook_id': 'RB_Certificate Name Mismatch', 'score': 0.3306362121548614}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.5523123436369902, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.5344851464052416, 'coverage': 2}, {'runbook_id': 'RB_Certificate Name Mismatch', 'final_score': 0.5132952651935767, 'coverage': 2}, {'runbook_id': 'Tìm file record meeting trong Teams', 'final_score': 0.49930935085928707, 'coverage': 2}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'final_score': 0.49686194435671294, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'RB_Certificate Name Mismatch', 'Tìm file record meeting trong Teams']
+tier2: ['RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER']
+strong_tier1: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'RB_Certificate Name Mismatch', 'short_label': 'RB_Certificate Name Mismatch', 'llm_hint': 'Trong quá trình triển khai AD và Exchange, không phải lúc nào domain và địa chỉ '}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'short_label': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'llm_hint': 'User chạy file bat healtcheck bị lỗi access deny'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- multiquery_built ---
+user_input: tài nghỉ việc nghỉ việc
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài nghỉ việc nghỉ việc', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài nghỉ việc nghỉ việc', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài nghỉ việc nghỉ việc
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.5497308791004556}, {'runbook_id': 'Lync Server 2013 - Gia hạn Certificate', 'score': 0.3765017513047352}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'score': 0.371787990476369}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài nghỉ việc nghỉ việc
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.5497308791004556}, {'runbook_id': 'Lync Server 2013 - Gia hạn Certificate', 'score': 0.3765017513047352}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'score': 0.371787990476369}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.7871635988755695, 'coverage': 2}, {'runbook_id': 'Lync Server 2013 - Gia hạn Certificate', 'final_score': 0.5706271891309189, 'coverage': 2}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'final_score': 0.5647349880954613, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.5584165277962315, 'coverage': 2}, {'runbook_id': 'Xóa file mail.queue', 'final_score': 0.5513092263624211, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Thu hồi tài khoản Domain qua ADMP']
+tier2: ['Lync Server 2013 - Gia hạn Certificate', 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'Xóa file mail.queue']
+strong_tier1: ['Thu hồi tài khoản Domain qua ADMP']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Lync Server 2013 - Gia hạn Certificate', 'short_label': 'Lync Server 2013 - Gia hạn Certificate', 'llm_hint': 'Certificate hết hạn gây dừng service Lync'}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'short_label': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'llm_hint': 'User chạy file bat healtcheck bị lỗi access deny'}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- multiquery_built ---
+user_input: tài
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3618498749095922}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.34758811712419324}, {'runbook_id': 'RB_Certificate Name Mismatch', 'score': 0.3306362121548614}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3618498749095922}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.34758811712419324}, {'runbook_id': 'RB_Certificate Name Mismatch', 'score': 0.3306362121548614}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.5523123436369902, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.5344851464052416, 'coverage': 2}, {'runbook_id': 'RB_Certificate Name Mismatch', 'final_score': 0.5132952651935767, 'coverage': 2}, {'runbook_id': 'Tìm file record meeting trong Teams', 'final_score': 0.49930935085928707, 'coverage': 2}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'final_score': 0.49686194435671294, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'RB_Certificate Name Mismatch', 'Tìm file record meeting trong Teams']
+tier2: ['RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER']
+strong_tier1: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'RB_Certificate Name Mismatch', 'short_label': 'RB_Certificate Name Mismatch', 'llm_hint': 'Trong quá trình triển khai AD và Exchange, không phải lúc nào domain và địa chỉ '}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'short_label': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'llm_hint': 'User chạy file bat healtcheck bị lỗi access deny'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- multiquery_built ---
+user_input: tài nghỉ việc tài nghỉ việc
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài nghỉ việc tài nghỉ việc', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài nghỉ việc tài nghỉ việc', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài nghỉ việc tài nghỉ việc
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.5344765525948061}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'score': 0.36046877442855374}, {'runbook_id': 'Lync Server 2013 - Gia hạn Certificate', 'score': 0.3603413063847518}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài nghỉ việc tài nghỉ việc
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.5344765525948061}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'score': 0.36046877442855374}, {'runbook_id': 'Lync Server 2013 - Gia hạn Certificate', 'score': 0.3603413063847518}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.7680956907435076, 'coverage': 2}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'final_score': 0.5505859680356922, 'coverage': 2}, {'runbook_id': 'Lync Server 2013 - Gia hạn Certificate', 'final_score': 0.5504266329809397, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.549034978913486, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.5380173488834417, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Thu hồi tài khoản Domain qua ADMP']
+tier2: ['RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'Lync Server 2013 - Gia hạn Certificate', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+strong_tier1: ['Thu hồi tài khoản Domain qua ADMP']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'short_label': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'llm_hint': 'User chạy file bat healtcheck bị lỗi access deny'}, {'runbook_id': 'Lync Server 2013 - Gia hạn Certificate', 'short_label': 'Lync Server 2013 - Gia hạn Certificate', 'llm_hint': 'Certificate hết hạn gây dừng service Lync'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- multiquery_built ---
+user_input: tài
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3618498749095922}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.34758811712419324}, {'runbook_id': 'RB_Certificate Name Mismatch', 'score': 0.3306362121548614}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.3618498749095922}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.34758811712419324}, {'runbook_id': 'RB_Certificate Name Mismatch', 'score': 0.3306362121548614}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.5523123436369902, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.5344851464052416, 'coverage': 2}, {'runbook_id': 'RB_Certificate Name Mismatch', 'final_score': 0.5132952651935767, 'coverage': 2}, {'runbook_id': 'Tìm file record meeting trong Teams', 'final_score': 0.49930935085928707, 'coverage': 2}, {'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'final_score': 0.49686194435671294, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'RB_Certificate Name Mismatch', 'Tìm file record meeting trong Teams']
+tier2: ['RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER']
+strong_tier1: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'RB_Certificate Name Mismatch', 'short_label': 'RB_Certificate Name Mismatch', 'llm_hint': 'Trong quá trình triển khai AD và Exchange, không phải lúc nào domain và địa chỉ '}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'short_label': 'RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER', 'llm_hint': 'User chạy file bat healtcheck bị lỗi access deny'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- multiquery_built ---
+user_input: tài mailbox lỗi
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài mailbox lỗi', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài mailbox lỗi', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài mailbox lỗi
+top_results: [{'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.6201905179440458}, {'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.611861296785965}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'score': 0.5706824235104826}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài mailbox lỗi
+top_results: [{'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.6201905179440458}, {'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.611861296785965}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'score': 0.5706824235104826}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.8752381474300572, 'coverage': 2}, {'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'final_score': 0.8648266209824562, 'coverage': 2}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'final_score': 0.8133530293881032, 'coverage': 2}, {'runbook_id': 'Xóa Mailbox Database', 'final_score': 0.8111701801202709, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.8081856446678098, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'RB_Enable Remote Mailbox (Exchange Online)', 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'Xóa Mailbox Database', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+tier2: []
+strong_tier1: ['Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'RB_Enable Remote Mailbox (Exchange Online)', 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'Xóa Mailbox Database', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}, {'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'short_label': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'llm_hint': 'Sau khi cài đặt dịch vụ thư điện tử Micosoft Exchange, khi gửi mail bằng app, nế'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}, {'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'short_label': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'llm_hint': 'Sau khi cài đặt dịch vụ thư điện tử Micosoft Exchange, khi gửi mail bằng app, nế'}]
+
+--- multiquery_built ---
+user_input: không nhận được mail
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'không nhận được mail', 'weight': 1.0}, {'type': 'service_issue', 'query': 'không nhận được mail', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: không nhận được mail
+top_results: [{'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'score': 0.5731061873784108}, {'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.5729000690188509}, {'runbook_id': 'Xóa file mail.queue', 'score': 0.5666436421104125}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: không nhận được mail
+top_results: [{'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'score': 0.5731061873784108}, {'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.5729000690188509}, {'runbook_id': 'Xóa file mail.queue', 'score': 0.5666436421104125}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'final_score': 0.8163827342230134, 'coverage': 2}, {'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'final_score': 0.8161250862735636, 'coverage': 2}, {'runbook_id': 'Xóa file mail.queue', 'final_score': 0.8083045526380156, 'coverage': 2}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'final_score': 0.7996164976855694, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.7702332667545818, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'RB_Enable Remote Mailbox (Exchange Online)', 'Xóa file mail.queue', 'Enable Mailbox Group qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP']
+tier2: []
+strong_tier1: ['RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'RB_Enable Remote Mailbox (Exchange Online)', 'Xóa file mail.queue', 'Enable Mailbox Group qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'short_label': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'llm_hint': 'Sau khi cài đặt dịch vụ thư điện tử Micosoft Exchange, khi gửi mail bằng app, nế'}, {'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}, {'runbook_id': 'Xóa file mail.queue', 'short_label': 'Xóa file mail.queue', 'llm_hint': 'Khi hàng đợi thư bị kẹt hoặc lỗi hoặc file Queue.mail tăng dung lượng lớn, gây đ'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'short_label': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'llm_hint': 'Sau khi cài đặt dịch vụ thư điện tử Micosoft Exchange, khi gửi mail bằng app, nế'}, {'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}, {'runbook_id': 'Xóa file mail.queue', 'short_label': 'Xóa file mail.queue', 'llm_hint': 'Khi hàng đợi thư bị kẹt hoặc lỗi hoặc file Queue.mail tăng dung lượng lớn, gây đ'}]
+
+--- multiquery_built ---
+user_input: Exchange
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'Exchange', 'weight': 1.0}, {'type': 'service_issue', 'query': 'Exchange', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: Exchange
+top_results: [{'runbook_id': 'RB_Certificate Name Mismatch', 'score': 0.5169573579737915}, {'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.5034708455460509}, {'runbook_id': 'Xóa file mail.queue', 'score': 0.5015382381835043}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: Exchange
+top_results: [{'runbook_id': 'RB_Certificate Name Mismatch', 'score': 0.5169573579737915}, {'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.5034708455460509}, {'runbook_id': 'Xóa file mail.queue', 'score': 0.5015382381835043}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_Certificate Name Mismatch', 'final_score': 0.7461966974672394, 'coverage': 2}, {'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'final_score': 0.7293385569325637, 'coverage': 2}, {'runbook_id': 'Xóa file mail.queue', 'final_score': 0.7269227977293803, 'coverage': 2}, {'runbook_id': 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'final_score': 0.7043285665576204, 'coverage': 2}, {'runbook_id': 'Xóa Mailbox Database', 'final_score': 0.6915245635241438, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_Certificate Name Mismatch', 'RB_Enable Remote Mailbox (Exchange Online)', 'Xóa file mail.queue', 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'Xóa Mailbox Database']
+tier2: []
+strong_tier1: ['RB_Certificate Name Mismatch', 'RB_Enable Remote Mailbox (Exchange Online)', 'Xóa file mail.queue', 'RB_SMTPSendFailedException: 421 4.4.2 Message submission rate for this client has exceeded the configured limit.', 'Xóa Mailbox Database']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Certificate Name Mismatch', 'short_label': 'RB_Certificate Name Mismatch', 'llm_hint': 'Trong quá trình triển khai AD và Exchange, không phải lúc nào domain và địa chỉ '}, {'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}, {'runbook_id': 'Xóa file mail.queue', 'short_label': 'Xóa file mail.queue', 'llm_hint': 'Khi hàng đợi thư bị kẹt hoặc lỗi hoặc file Queue.mail tăng dung lượng lớn, gây đ'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Certificate Name Mismatch', 'short_label': 'RB_Certificate Name Mismatch', 'llm_hint': 'Trong quá trình triển khai AD và Exchange, không phải lúc nào domain và địa chỉ '}, {'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}, {'runbook_id': 'Xóa file mail.queue', 'short_label': 'Xóa file mail.queue', 'llm_hint': 'Khi hàng đợi thư bị kẹt hoặc lỗi hoặc file Queue.mail tăng dung lượng lớn, gây đ'}]
+
+--- multiquery_built ---
+user_input: tài khoản
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài khoản', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài khoản', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài khoản
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.5170814601166611}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5062989977885249}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.48544423355332345}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài khoản
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.5170814601166611}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5062989977885249}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.48544423355332345}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.7463518251458264, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.7328737472356561, 'coverage': 2}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.7068052919416543, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.6915407951679958, 'coverage': 2}, {'runbook_id': 'RB_Certificate Name Mismatch', 'final_score': 0.6897923531341437, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Tạo tài khoản Domain qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'RB_Certificate Name Mismatch']
+tier2: []
+strong_tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Tạo tài khoản Domain qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'RB_Certificate Name Mismatch']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}]
+
+--- multiquery_built ---
+user_input: tài khoản
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài khoản', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài khoản', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài khoản
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.5170814601166611}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5062989977885249}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.48544423355332345}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài khoản
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.5170814601166611}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5062989977885249}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.48544423355332345}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.7463518251458264, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.7328737472356561, 'coverage': 2}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.7068052919416543, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.6915407951679958, 'coverage': 2}, {'runbook_id': 'RB_Certificate Name Mismatch', 'final_score': 0.6897923531341437, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Tạo tài khoản Domain qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'RB_Certificate Name Mismatch']
+tier2: []
+strong_tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Tạo tài khoản Domain qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'RB_Certificate Name Mismatch']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}]
+
+--- multiquery_built ---
+user_input: tài khoản mới
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài khoản mới', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài khoản mới', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5391719104153886}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5179154667945406}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.4983906460517884}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5391719104153886}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5179154667945406}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.4983906460517884}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.7739648880192357, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.7473943334931757, 'coverage': 2}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.7229883075647355, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.7132127347373305, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.711632791467901, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Tạo tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Thu hồi tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+tier2: []
+strong_tier1: ['Tạo tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Thu hồi tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- multiquery_built ---
+user_input: tài khoản mới
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài khoản mới', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài khoản mới', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5391719104153886}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5179154667945406}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.4983906460517884}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5391719104153886}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5179154667945406}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.4983906460517884}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.7739648880192357, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.7473943334931757, 'coverage': 2}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.7229883075647355, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.7132127347373305, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.711632791467901, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Tạo tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Thu hồi tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+tier2: []
+strong_tier1: ['Tạo tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Thu hồi tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- multiquery_built ---
+user_input: tài khoản mới
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài khoản mới', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài khoản mới', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5391719104153886}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5179154667945406}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.4983906460517884}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5391719104153886}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5179154667945406}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.4983906460517884}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.7739648880192357, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.7473943334931757, 'coverage': 2}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.7229883075647355, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.7132127347373305, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.711632791467901, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Tạo tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Thu hồi tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+tier2: []
+strong_tier1: ['Tạo tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Thu hồi tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- multiquery_built ---
+user_input: tài khoản mới
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài khoản mới', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài khoản mới', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5391719104153886}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5179154667945406}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.4983906460517884}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5391719104153886}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5179154667945406}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.4983906460517884}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.7739648880192357, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.7473943334931757, 'coverage': 2}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.7229883075647355, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.7132127347373305, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.711632791467901, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Tạo tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Thu hồi tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+tier2: []
+strong_tier1: ['Tạo tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Thu hồi tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- multiquery_built ---
+user_input: tạo tài khoản
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tạo tài khoản', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tạo tài khoản', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tạo tài khoản
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5952627509761101}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.5572178940608888}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5241545017279506}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tạo tài khoản
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5952627509761101}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.5572178940608888}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5241545017279506}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.8440784387201377, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.7965223675761111, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.7551931271599382, 'coverage': 2}, {'runbook_id': 'Create VLAN trên FI UCS', 'final_score': 0.7519987370212871, 'coverage': 2}, {'runbook_id': 'RB_Tạo Entra OIDC Applications cho SSO', 'final_score': 0.7446479151612074, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Tạo tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP']
+tier2: ['RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Create VLAN trên FI UCS', 'RB_Tạo Entra OIDC Applications cho SSO']
+strong_tier1: ['Tạo tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Create VLAN trên FI UCS', 'short_label': 'Create VLAN trên FI UCS', 'llm_hint': 'Người dùng khác không thể tìm kiếm địa chỉ gửi mail, không tìm kiếm được teams c'}, {'runbook_id': 'RB_Tạo Entra OIDC Applications cho SSO', 'short_label': 'RB_Tạo Entra OIDC Applications cho SSO', 'llm_hint': 'Sử dụng khi các hệ thống khác muốn login bằng tài khoản và sử dung MFA của Entra'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}]
+
+--- multiquery_built ---
+user_input: tạo tài khoản mới
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tạo tài khoản mới', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tạo tài khoản mới', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tạo tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.59405444091745}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.5537194409385243}, {'runbook_id': 'Create VLAN trên FI UCS', 'score': 0.5263126412537463}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tạo tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.59405444091745}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.5537194409385243}, {'runbook_id': 'Create VLAN trên FI UCS', 'score': 0.5263126412537463}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.8425680511468124, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.7921493011731554, 'coverage': 2}, {'runbook_id': 'Create VLAN trên FI UCS', 'final_score': 0.7578908015671829, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.7575622109023318, 'coverage': 2}, {'runbook_id': 'RB_Tạo Entra OIDC Applications cho SSO', 'final_score': 0.7440411101106176, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Tạo tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP']
+tier2: ['Create VLAN trên FI UCS', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'RB_Tạo Entra OIDC Applications cho SSO']
+strong_tier1: ['Tạo tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Create VLAN trên FI UCS', 'short_label': 'Create VLAN trên FI UCS', 'llm_hint': 'Người dùng khác không thể tìm kiếm địa chỉ gửi mail, không tìm kiếm được teams c'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'RB_Tạo Entra OIDC Applications cho SSO', 'short_label': 'RB_Tạo Entra OIDC Applications cho SSO', 'llm_hint': 'Sử dụng khi các hệ thống khác muốn login bằng tài khoản và sử dung MFA của Entra'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}]
+
+--- multiquery_built ---
+user_input: tài khoản
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài khoản', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài khoản', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài khoản
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.5170814601166611}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5062989977885249}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.48544423355332345}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài khoản
+top_results: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.5170814601166611}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5062989977885249}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.48544423355332345}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.7463518251458264, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.7328737472356561, 'coverage': 2}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.7068052919416543, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.6915407951679958, 'coverage': 2}, {'runbook_id': 'RB_Certificate Name Mismatch', 'final_score': 0.6897923531341437, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Tạo tài khoản Domain qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'RB_Certificate Name Mismatch']
+tier2: []
+strong_tier1: ['Thu hồi tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Tạo tài khoản Domain qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'RB_Certificate Name Mismatch']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}]
+
+--- multiquery_built ---
+user_input: tài khoản remote mailbox
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài khoản remote mailbox', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài khoản remote mailbox', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài khoản remote mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.6745016897998086}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.5593304019338672}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5479107059037576}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài khoản remote mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.6745016897998086}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.5593304019338672}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5479107059037576}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'final_score': 0.9431271122497608, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.799163002417334, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.7848883823796969, 'coverage': 2}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.7690518511434242, 'coverage': 2}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'final_score': 0.7661275671204338, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_Enable Remote Mailbox (Exchange Online)']
+tier2: ['Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'Tạo tài khoản Domain qua ADMP', 'Enable Mailbox Group qua ADMP']
+strong_tier1: ['RB_Enable Remote Mailbox (Exchange Online)']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}]
+
+--- multiquery_built ---
+user_input: tài khoản mới
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài khoản mới', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài khoản mới', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5391719104153886}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5179154667945406}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.4983906460517884}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài khoản mới
+top_results: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5391719104153886}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'score': 0.5179154667945406}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'score': 0.4983906460517884}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.7739648880192357, 'coverage': 2}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'final_score': 0.7473943334931757, 'coverage': 2}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.7229883075647355, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.7132127347373305, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.711632791467901, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['Tạo tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Thu hồi tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+tier2: []
+strong_tier1: ['Tạo tài khoản Domain qua ADMP', 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'Thu hồi tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- candidate_enriched ---
+sample: []
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'short_label': 'RB_Thay đổi thông tin tài khoản Domain qua ADMP', 'llm_hint': ''}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- multiquery_built ---
+user_input: tài khoản mới remote mailbox
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài khoản mới remote mailbox', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài khoản mới remote mailbox', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài khoản mới remote mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.661224349974416}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5679691523831792}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.5649408555909657}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài khoản mới remote mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.661224349974416}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'score': 0.5679691523831792}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'score': 0.5649408555909657}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'final_score': 0.92653043746802, 'coverage': 2}, {'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'final_score': 0.809961440478974, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.8061760694887071, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.7752977822542171, 'coverage': 2}, {'runbook_id': 'Enable Mailbox Group qua ADMP', 'final_score': 0.7695471280526519, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_Enable Remote Mailbox (Exchange Online)']
+tier2: ['Tạo tài khoản Domain qua ADMP', 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'Enable Mailbox Group qua ADMP']
+strong_tier1: ['RB_Enable Remote Mailbox (Exchange Online)']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Tạo tài khoản Domain qua ADMP', 'short_label': 'Tạo tài khoản Domain qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP. Tài khoản có tích hợp cả mailbox và L'}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}]
+
+--- multiquery_built ---
+user_input: tài khoản mới remote mailbox xóa mailbox
+semantic_query: 
+resolved_service: None
+views: [{'type': 'raw', 'query': 'tài khoản mới remote mailbox xóa mailbox', 'weight': 1.0}, {'type': 'service_issue', 'query': 'tài khoản mới remote mailbox xóa mailbox', 'weight': 1.25}]
+
+--- multiquery_retrieval_per_query ---
+query_type: raw
+query: tài khoản mới remote mailbox xóa mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.6494528772219264}, {'runbook_id': 'Xóa Mailbox Database', 'score': 0.6166127587377783}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5885748726283718}]
+
+--- multiquery_retrieval_per_query ---
+query_type: service_issue
+query: tài khoản mới remote mailbox xóa mailbox
+top_results: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'score': 0.6494528772219264}, {'runbook_id': 'Xóa Mailbox Database', 'score': 0.6166127587377783}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'score': 0.5885748726283718}]
+
+--- multiquery_merge_done ---
+candidates: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'final_score': 0.9118160965274079, 'coverage': 2}, {'runbook_id': 'Xóa Mailbox Database', 'final_score': 0.8707659484222229, 'coverage': 2}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'final_score': 0.8357185907854647, 'coverage': 2}, {'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'final_score': 0.7837129347225339, 'coverage': 2}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'final_score': 0.7517400168455013, 'coverage': 2}]
+
+--- candidate_split_tier ---
+tier1: ['RB_Enable Remote Mailbox (Exchange Online)', 'Xóa Mailbox Database', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+tier2: ['Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'Thu hồi tài khoản Domain qua ADMP']
+strong_tier1: ['RB_Enable Remote Mailbox (Exchange Online)', 'Xóa Mailbox Database', 'RB_Apply Retention Policy cho mailbox Exchange 2016']
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}, {'runbook_id': 'Xóa Mailbox Database', 'short_label': 'Xóa Mailbox Database', 'llm_hint': 'Các Mailbox Database sau một thời gian sử dụng, có nhiều tài khoản email đã bị v'}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'short_label': 'Lỗi tạo tài khoản Lync và Mailbox qua ADMP', 'llm_hint': 'Tạo mới tài khoản Domain qua công cụ ADMP bị báo lỗi không tạo được Lync và Mail'}, {'runbook_id': 'Thu hồi tài khoản Domain qua ADMP', 'short_label': 'Thu hồi tài khoản Domain qua ADMP', 'llm_hint': 'Khi cán bộ nhân viên nghỉ việc, cần thu hồi tài khoản Domain đã cấp theo quy địn'}]
+
+--- candidate_enriched ---
+sample: [{'runbook_id': 'RB_Enable Remote Mailbox (Exchange Online)', 'short_label': 'RB_Enable Remote Mailbox (Exchange Online)', 'llm_hint': 'Khi người dùng có 2 mailbox ( do chưa migrate, hoặc migrate lỗi ), muốn gộp lại '}, {'runbook_id': 'Xóa Mailbox Database', 'short_label': 'Xóa Mailbox Database', 'llm_hint': 'Các Mailbox Database sau một thời gian sử dụng, có nhiều tài khoản email đã bị v'}, {'runbook_id': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'short_label': 'RB_Apply Retention Policy cho mailbox Exchange 2016', 'llm_hint': 'Người dùng muốn tự động xóa/archive email sau 1 khoảng thời gian nhất định do bị'}]

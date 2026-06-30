@@ -27,7 +27,7 @@
   },
   {
     "title": "RB_Apply Retention Policy cho mailbox Exchange 2016",
-    "service": "Exchange 2016",
+    "service": "Exchange",
     "keyword": "Retention Policy, Mailbox đầy dung lượng, xóa hoặc archive mailbox định kỳ",
     "keyword_list": [
       "Retention Policy",
@@ -291,7 +291,7 @@
   },
   {
     "title": "Xóa Mailbox Database",
-    "service": "Exchange 2016",
+    "service": "Exchange",
     "keyword": "Delete, Mailbox Database, khoảng trắng",
     "keyword_list": [
       "Delete",
@@ -501,8 +501,7 @@
     "precheck": [
       "Tài khoản Domain đã tạo thành công. Được phân quyền Admin Lync và Exchange hoặc phần role trong ADMP"
     ],
-    "steps": [],
-    "postcheck": [
+    "steps": [
       "Bước 2 : Enable tài khoản Lync. Có thể active qua ADMP hoặc Lync web admin",
       "Bước 2.1: ADMP : Chọn tab Management, chọn mục User Management Enable/Disable Skype(Lync) Users",
       "Bước 2.2 : Web : Truy cập link : https://lyncpool1.pvcb.vn/cscp. Đăng nhập tài khoản quản trị Lync. Chọn mục Users Enable users add user cần active chọn :",
@@ -516,6 +515,9 @@
       "Tích dấu Create User Mailbox",
       "Find the users : nhập username cần tạo mailbox",
       "Ấn Search sau đó tích chọn user và ấn Apply",
+      "Người dùng có thể truy cập Lync và Mailbox qua ứng dụng hoặc webmail"
+    ],
+    "postcheck": [
       "Người dùng có thể truy cập Lync và Mailbox qua ứng dụng hoặc webmail"
     ],
     "source_file": "D:\\runbook\\RB_Lỗi tạo tài khoản Lync và Mailbox qua ADMP.docx"
@@ -671,7 +673,7 @@
   },
   {
     "title": "RB_Thay đổi thông tin tài khoản Domain qua ADMP",
-    "service": "ADManagerPlus",
+    "service": "Active Directory",
     "keyword": "",
     "keyword_list": [],
     "description": "",
@@ -689,7 +691,7 @@
   },
   {
     "title": "Thu hồi tài khoản Domain qua ADMP",
-    "service": "ADManagerPlus",
+    "service": "Active Directory",
     "keyword": "Thu hồi tài khoản, nghỉ việc, ADMP",
     "keyword_list": [
       "Thu hồi tài khoản",
@@ -746,7 +748,7 @@
   },
   {
     "title": "Tạo tài khoản Domain qua ADMP",
-    "service": "ADManagerPlus",
+    "service": "Active Directory",
     "keyword": "Tạo tài khoản, ADMP",
     "keyword_list": [
       "Tạo tài khoản",
@@ -803,7 +805,7 @@
   },
   {
     "title": "Xóa file mail.queue",
-    "service": "Mail Exchange",
+    "service": "Exchange",
     "keyword": "Exchange, mail.queue",
     "keyword_list": [
       "Exchange",
@@ -830,34 +832,6 @@
       "Service Transport phải start được và phải thấy có file mail.queue mới được tạo tự động"
     ],
     "source_file": "D:\\runbook\\RB_Xóa file mail.queue.docx"
-  },
-  {
-    "title": "Xóa Mailbox Database",
-    "service": "Exchange 2016",
-    "keyword": "Delete, Mailbox Database, khoảng trắng",
-    "keyword_list": [
-      "Delete",
-      "Mailbox Database",
-      "khoảng trắng"
-    ],
-    "description": "Các Mailbox Database sau một thời gian sử dụng, có nhiều tài khoản email đã bị vô hiệu hóa, tuy nhiên dung lượng ổ cứng dành cho những email này vẫn còn tạo ra các khoảng trắng, chiếm dụng tài nguyên ổ cứng, mặc dù Microsoft có hỗ trợ việc ghi đè dữ liệu lên các khoảng trắng này nhưng trong trường hợp cần thu hồi tài nguyên nhanh chóng, ta có thể migrate toàn bộ mailbox sang Mailbox Database khác và xóa bỏ Database đó để thu hồi tài nguyên",
-    "intents": [
-      "Delete",
-      "Mailbox Database",
-      "khoảng trắng",
-      "chiếm dụng tài nguyên ổ cứng"
-    ],
-    "precheck": [
-      "Tài khoản thực hiện cần được cấp quyền Orgazination Management"
-    ],
-    "steps": [
-      "Bước 1: Tạo Mailbox Database mới và các bản Copies của nó",
-      "Bước 2: Move các mailbox trong Mailbox Database cần xóa sang Mailbox Database khác",
-      "Bước 3: Xóa Mailbox Database và các bản Copies trên cấu hình ECP",
-      "Bước 4: Xóa ổ đĩa vật lý trên các máy chủ Exchange"
-    ],
-    "postcheck": [],
-    "source_file": "D:\\runbook\\RB_Xóa Mailbox Database.docx"
   },
   {
     "title": "RB_XỬ LÝ KHI CÓ YÊU CẦU PHÂN QUYỀN CHẠY FILE BAT HEATHCHECK HỆ THỐNG SQL SERVER",

@@ -258,7 +258,7 @@
   },
   {
     "title": "Lỗi tạo tài khoản Lync và Mailbox qua ADMP",
-    "service": "ADManagerPlus",
+    "service": "Active Directory",
     "keyword": "ADMP, lỗi tài khoản Lync, ConstraintViolationNoLeadingOrTrailingWhitespace",
     "keyword_list": [
       "ADMP",
@@ -347,7 +347,7 @@
   },
   {
     "title": "RB_Thay đổi thông tin tài khoản Domain qua ADMP",
-    "service": "ADManagerPlus",
+    "service": "Active Directory",
     "keyword": "",
     "keyword_list": [],
     "patterns": [],
@@ -356,7 +356,7 @@
   },
   {
     "title": "Thu hồi tài khoản Domain qua ADMP",
-    "service": "ADManagerPlus",
+    "service": "Active Directory",
     "keyword": "Thu hồi tài khoản, nghỉ việc, ADMP",
     "keyword_list": [
       "Thu hồi tài khoản",
@@ -402,7 +402,7 @@
   },
   {
     "title": "Tạo tài khoản Domain qua ADMP",
-    "service": "ADManagerPlus",
+    "service": "Active Directory",
     "keyword": "Tạo tài khoản, ADMP",
     "keyword_list": [
       "Tạo tài khoản",
